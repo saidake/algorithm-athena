@@ -8,16 +8,16 @@ A collection of programming tech documents with detailed explanations.
 - [Configuration](docs/Configuration.md)
 
   A tutorial document for configuring various development environments.  
-- [Questions](docs/Configuration.md)
+- [Questions](docs/Questions.md)
 
-  A collection of commonly encounterred development questions.
+  A collection of commonly encountered development questions.
 
-- [SourceCodeAnalysis](docs/Configuration.md)
+- [SourceCodeAnalysis](docs/SourceCodeAnalysis.md)
 
-  A document containing analyses of various depedency source codes.
-- [SystemDesign](docs/Configuration.md)
+  A document containing analyses of various dependency source codes.
+- [SystemDesign](docs/SystemDesign.md)
 
-  A document convering system design standards and funciton design schemas.
+  A document covering system design standards and function design schemas.
 - [ReleaseNotes](docs/ReleaseNotes.md)
 
   Record updates for Simi Docs releases.
