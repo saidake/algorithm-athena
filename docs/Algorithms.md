@@ -3898,7 +3898,7 @@ class Solution {
         int n = nums.length;
         // A list containing all subsets.
         List<List<Integer>> ans = new ArrayList<>(1 << n);
-        // Traverse all subset indecies, where `i` represents all combinations in binary.
+        // Traverse all subset indices, where `i` represents all combinations in binary.
         for (int i = 0; i < (1 << n); i++) { 
             // Add the current subset to the list.
             List<Integer> subset = new ArrayList<>();
@@ -5657,32 +5657,76 @@ The total hiring cost is 4.
 ### Analysis
 
 #### Implementation
+<!-- 82 / 162 -->
 ```java
 class Solution {
     public long totalCost(int[] costs, int k, int candidates) {
-        int[] indecies=new int[costs.length];
-        for(int i=0; i<costs.length; i++){
-            indecies[i]=i;
-            for(int j=i+1; j<costs.length; j++){
-                if(costs[j]<costs[i]){
-                    indecies[i]=j;
-                    indecies[j]=i;
+        // Store the ordered indices
+        int len=costs.length;
+        int[] costInds=new int[len+1];
+        for(int i=1; i<costInds.length; i++){
+            if(costInds[i]==0)costInds[i]=i;
+            for(int j=i+1; j<costInds.length; j++){
+                if(costInds[j]==0)costInds[j]=j;
+                if(costs[costInds[j]-1]<costs[costInds[i]-1]){
+                    int temp=costInds[i];
+                    costInds[i]=costInds[j];
+                    costInds[j]=temp;
                 }
             }
         }
-       long totalCost=0;
-        int prev=1;
-        int num=0;
-        for(num<k){
-            int ind=indecies[0];
-            totalCost+=costs[ind];
-            num++;
+        long totalCost=0;
+        int left=candidates;
+        int right=len-1-candidates;
+        Queue<Integer> leftCompQue=new PriorityQueue<>();
+        Queue<Integer> rightCompQue=new PriorityQueue<>();
+        //int leftComp=-1;
+        //int rightComp=-1;
+        //Arrays.stream(costInds).forEach(System.out::println);
+        for(int i=1, num=0; i<costInds.length&&num<k; i++){
+            if(left>right){
+                totalCost+=costs[costInds[i]-1];
+                num++;
+                //System.out.println("Add Index when left>=right: "+(costs[costInds[i]-1]));
+                continue;
+            }
+
+            if(costInds[i]-1<left){
+                int cost=costs[costInds[i]-1];
+                Integer leftComp=leftCompQue.peek();
+                if(leftComp!=null&&leftComp<cost){
+                    totalCost+=leftCompQue.poll();
+                    //System.out.println("Add cost when leftComp<cost: "+(leftComp)+" "+cost);
+                }else{
+                    totalCost+=cost;
+                    //System.out.println("Add cost when costInds[i]-1<left: "+cost+" "+left);
+                    left++;
+                    if(left<right){
+                        leftCompQue.offer(costs[left-1]);
+                    }
+                }
+                num++;
+            }else if(costInds[i]>right){
+                int cost=costs[costInds[i]-1];
+                Integer rightComp=rightCompQue.peek();
+                if(rightComp!=null&&rightComp<cost){
+                    totalCost+=rightCompQue.poll();
+                    //System.out.println("Add cost when rightComp<cost: "+(rightComp)+" "+cost);
+                }else{
+                    totalCost+=cost;
+                    right--;
+                    //System.out.println("Add cost when costInds[i]-1>right: "+cost+" "+right);
+                    if(left<right){
+                        rightCompQue.offer(costs[right-1]);
+                    }
+                }
+                num++;
+            }
         }
         return totalCost;
     }
 }
 ```
-
 
 # SQL Problems
 ## 1. Odd and Even Transactions
