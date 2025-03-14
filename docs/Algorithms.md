@@ -5657,70 +5657,45 @@ The total hiring cost is 4.
 ### Analysis
 
 #### Implementation
-<!-- 82 / 162 -->
 ```java
 class Solution {
     public long totalCost(int[] costs, int k, int candidates) {
-        // Store the ordered indices
+        long totalCost=0;
         int len=costs.length;
-        int[] costInds=new int[len+1];
-        for(int i=1; i<costInds.length; i++){
-            if(costInds[i]==0)costInds[i]=i;
-            for(int j=i+1; j<costInds.length; j++){
-                if(costInds[j]==0)costInds[j]=j;
-                if(costs[costInds[j]-1]<costs[costInds[i]-1]){
-                    int temp=costInds[i];
-                    costInds[i]=costInds[j];
-                    costInds[j]=temp;
-                }
+        Queue<Integer> leftCompQue=new PriorityQueue<>(candidates);
+        Queue<Integer> rightCompQue=new PriorityQueue<>(candidates);
+        if(costs.length<candidates*2){
+            Arrays.sort(costs);
+            for(int i=0;i<k;i++){
+                totalCost+=costs[i];
+            }
+            return totalCost;
+        }else {
+            for(int i=0; i<candidates; i++){
+                leftCompQue.offer(costs[i]);
+                rightCompQue.offer(costs[len-1-i]);
             }
         }
-        long totalCost=0;
-        int left=candidates;
-        int right=len-1-candidates;
-        Queue<Integer> leftCompQue=new PriorityQueue<>();
-        Queue<Integer> rightCompQue=new PriorityQueue<>();
-        //int leftComp=-1;
-        //int rightComp=-1;
-        //Arrays.stream(costInds).forEach(System.out::println);
-        for(int i=1, num=0; i<costInds.length&&num<k; i++){
-            if(left>right){
-                totalCost+=costs[costInds[i]-1];
-                num++;
-                //System.out.println("Add Index when left>=right: "+(costs[costInds[i]-1]));
-                continue;
-            }
 
-            if(costInds[i]-1<left){
-                int cost=costs[costInds[i]-1];
-                Integer leftComp=leftCompQue.peek();
-                if(leftComp!=null&&leftComp<cost){
-                    totalCost+=leftCompQue.poll();
-                    //System.out.println("Add cost when leftComp<cost: "+(leftComp)+" "+cost);
-                }else{
-                    totalCost+=cost;
-                    //System.out.println("Add cost when costInds[i]-1<left: "+cost+" "+left);
-                    left++;
-                    if(left<right){
-                        leftCompQue.offer(costs[left-1]);
-                    }
-                }
+        for(int left=candidates, right=len-1-candidates, num=0; num<k; ){
+            Integer leftCost=leftCompQue.peek();
+            Integer rightCost=rightCompQue.peek();
+            if(leftCost!=null && (rightCost==null||leftCost<=rightCost)){
+                totalCost+=leftCost;
+                leftCompQue.poll();
                 num++;
-            }else if(costInds[i]>right){
-                int cost=costs[costInds[i]-1];
-                Integer rightComp=rightCompQue.peek();
-                if(rightComp!=null&&rightComp<cost){
-                    totalCost+=rightCompQue.poll();
-                    //System.out.println("Add cost when rightComp<cost: "+(rightComp)+" "+cost);
-                }else{
-                    totalCost+=cost;
-                    right--;
-                    //System.out.println("Add cost when costInds[i]-1>right: "+cost+" "+right);
-                    if(left<right){
-                        rightCompQue.offer(costs[right-1]);
-                    }
+                if(left<=right){
+                    leftCompQue.offer(costs[left]);
                 }
+                left++;
+            }else if(rightCost!=null){
+                totalCost+=rightCost;
                 num++;
+                rightCompQue.poll();
+                if(left<=right){
+                    rightCompQue.offer(costs[right]);
+                }
+                right--;
             }
         }
         return totalCost;
