@@ -5654,54 +5654,65 @@ The total hiring cost is 4.
 * `1 <= costs[i] <= 10^5`
 * `1 <= k, candidates <= costs.length`
 
-### Analysis
+### Heap Solution
+Use two min-heaps, `leftQue` and `rightQue`, to store candidates from the left and right sides.
+
+Since the heap maintains automatical sorting, each poll retrieves the lowest-cost candidate corresponding to each selection.
 
 #### Implementation
 ```java
 class Solution {
     public long totalCost(int[] costs, int k, int candidates) {
-        long totalCost=0;
-        int len=costs.length;
-        Queue<Integer> leftCompQue=new PriorityQueue<>(candidates);
-        Queue<Integer> rightCompQue=new PriorityQueue<>(candidates);
-        if(costs.length<candidates*2){
+        int len = costs.length;
+        long ans = 0;
+
+        // Verify if all elements are the candidates
+        if (candidates * 2 + k > len) {
             Arrays.sort(costs);
-            for(int i=0;i<k;i++){
-                totalCost+=costs[i];
+            for (int i = 0; i < k; i++) {
+                ans += costs[i];
             }
-            return totalCost;
-        }else {
-            for(int i=0; i<candidates; i++){
-                leftCompQue.offer(costs[i]);
-                rightCompQue.offer(costs[len-1-i]);
-            }
+            return ans;
         }
 
-        for(int left=candidates, right=len-1-candidates, num=0; num<k; ){
-            Integer leftCost=leftCompQue.peek();
-            Integer rightCost=rightCompQue.peek();
-            if(leftCost!=null && (rightCost==null||leftCost<=rightCost)){
-                totalCost+=leftCost;
-                leftCompQue.poll();
-                num++;
-                if(left<=right){
-                    leftCompQue.offer(costs[left]);
-                }
-                left++;
-            }else if(rightCost!=null){
-                totalCost+=rightCost;
-                num++;
-                rightCompQue.poll();
-                if(left<=right){
-                    rightCompQue.offer(costs[right]);
-                }
-                right--;
+        PriorityQueue<Integer> leftQue = new PriorityQueue<>();
+        PriorityQueue<Integer> rightQue = new PriorityQueue<>();
+        // Initialize `leftQue` and `rightQue`
+        for (int i = 0; i < candidates; i++) {
+            leftQue.offer(costs[i]);
+            rightQue.offer(costs[len-1-i]);
+        }
+        int left = candidates;
+        int right = len - 1 - candidates;
+        // Select lower-cost candidates from `leftQue` and `rightQue`
+        while (k-- > 0) {
+            if (leftQue.peek() <= rightQue.peek()) {
+                ans += leftQue.poll();
+                leftQue.offer(costs[left++]);
+            } else {
+                ans += rightQue.poll();
+                rightQue.offer(costs[right--]);
             }
         }
-        return totalCost;
+        return ans;
     }
 }
 ```
+#### Time and Space Complexity
+* Time Complexity: $O(n\log n)$
+    * Verify if all elements are the candidates    
+        `Arrays.sort` has $O(n\log n)$ time complexity for primitive type and the loop iterates over `k` elements, the time complexity of this step is $O(n\log n +k)$.
+
+    * Initialize `leftQue` and `rightQue`
+        This loop traverse the number from `0` to `candidates`, resulting in a time complexity of $O(m)$ where `m` is the number of candidates.
+
+    * Select lower-cost candidates from `leftQue` and `rightQue`
+        This loop only selects the `k` candidates with lowest costs, resulting in a time complexity of $O(k)$.
+
+    Therefore, the overall time complexity is $O(n\log n + k +m)$.
+* Space Complexity: $O(m)$
+
+    The `leftQue` and `rightQue` each take $O(m)$ space where `m` is the number of candidates.
 
 # SQL Problems
 ## 1. Odd and Even Transactions
