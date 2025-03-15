@@ -4,7 +4,7 @@ A collection of programming tech documents with detailed explanations.
 ## Table of Contents
 - [Algorithms](docs/Algorithms.md)
 
-  An algorithm problem document with detailed, illustrated solutions, including time and space complexity analysis.
+  A detailed LeetCode problem analysis document with illustrated, high-performance Java solutions, including time and space complexity analysis.
 - [Configuration](docs/Configuration.md)
 
   A tutorial document for configuring various development environments.  
