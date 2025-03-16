@@ -61,6 +61,8 @@
       - [22. Find the Longest Equal Subarray](#22-find-the-longest-equal-subarray)
     - Handle the right side separately
       - [40. Count Subarrays Where Max Element Appears at Least K Times](#40-count-subarrays-where-max-element-appears-at-least-k-times)
+    - Fixed-size
+      - [44. Find Indices With Index and Value Difference I](#44-find-indices-with-index-and-value-difference-i) 
   - String
     - [23. License Key Formatting](#23-license-key-formatting)
   - Traversal
@@ -5755,23 +5757,43 @@ Hence, [-1,-1] is returned.
 * `0 <= indexDifference <= 100`
 * `0 <= valueDifference <= 50`
 
-### Analysis
+### Sliding Window Solution (Fixed-Size)
+Use a fixed-size sliding window of `indexDifference` and move it to right across `nums`, 
+with `i` as the left index and `j` as the right index. 
+
+According to the problem description, at each step, the required largest difference equals the absolute difference between `nums[j]` and either the **maximum value** or the **minimum value** in the range $nums[0\sim i]$.
 
 #### Implementation
 ```java
 class Solution {
-    public int[] findIndices(int[] nums, int indexDifference, int valueDifference) {
-         for(int i=0; i<nums.length; i++){
-            for(int j=i+indexDifference; j<nums.length; j++){
-                if(Math.abs(nums[j]-nums[i])>=valueDifference){
-                    return new int[]{i,j};
-                }
-            }
-         }
-         return new int[]{-1,-1};
+  public int[] findIndices(int[] nums, int indexDifference, int valueDifference) {
+    int max = 0;
+    int min = 0;
+    // Iterate over `nums` starting form index `indexDifference`
+    for (int j = indexDifference; j < nums.length; j++) {
+      int i = j - indexDifference;
+      if (nums[i] > nums[max]) {
+        max = i;
+      } else if (nums[i] < nums[min]) {
+        min = i;
+      }
+      if (nums[max] - nums[j] >= valueDifference) {
+        return new int[]{max, j};
+      }
+      if (nums[j] - nums[min] >= valueDifference) {
+        return new int[]{min, j};
+      }
     }
+    return new int[]{-1, -1};
+  }
 }
 ```
+#### Time and Space Complexity
+* Time Complexity: $O(n-indexDifference)$  
+
+    The main loop runs in $O(n-indexDifference)$ where `n` is the length of `nums`.
+
+* Space Complexity: $O(1)$
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to Top](#table-of-contents)  
