@@ -35,6 +35,7 @@
     - [30. Count Common Words With One Occurrence](#30-count-common-words-with-one-occurrence)
   - Heap
     - [39. Trapping Rain Water II](#39-trapping-rain-water-ii)
+    - [43. Total Cost to Hire K Workers](#43-total-cost-to-hire-k-workers)
   - Fenwick Tree
     - [14. Distribute Elements Into Two Arrays II](#14-distribute-elements-into-two-arrays-ii)
   - Graph 
@@ -5767,10 +5768,10 @@ Hence, [-1,-1] is returned.
 * `0 <= valueDifference <= 50`
 
 ### Sliding Window Solution (Fixed-Size)
-Use a fixed-size sliding window of `indexDifference` and move it to right across `nums`, 
-with `i` as the left index and `j` as the right index. 
+To satisfy `abs(i - j) >= indexDifference`, use a fixed-size sliding window of `indexDifference` and slide it to the right across `nums`, with `i` as the left index and `j` as the right index, so that indices from `0` to `i` remain valid for each move in `j`.
 
-According to the problem description, at each step, the required largest difference equals the absolute difference between `nums[j]` and either the **maximum value** or the **minimum value** in the range $nums[0\sim i]$.
+To meet the condition `abs(nums[i] - nums[j]) >= valueDifference`, compute the largest difference between `nums[j]` and `nums[0 ~ i]` at each step.  
+This is equivalent to the absolute difference between `nums[j]` and either the **maximum value** or the **minimum value** in the range `nums[0 ~ i]`.
 
 #### Implementation
 ```java
