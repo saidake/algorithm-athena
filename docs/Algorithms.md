@@ -5703,7 +5703,7 @@ class Solution {
 }
 ```
 #### Time and Space Complexity
-* Time Complexity: $O(n\log n + k + m \log m + k \log m)$
+* Time Complexity: $O(n\log n + m \log m + k \log m)$
     * Verify if all elements are the candidates    
 
         `Arrays.sort` has a time complexity of $O(n\log n)$ for primitive types, where `n` is the length of `costs`, and since the loop iterates over `k` elements, 
