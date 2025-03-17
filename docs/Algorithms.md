@@ -5660,7 +5660,7 @@ The total hiring cost is 4.
 ### Heap Solution
 Use two min-heaps, `leftQue` and `rightQue`, to store candidates from the left and right sides.
 
-Since the heap maintains automatical sorting, each poll retrieves the lowest-cost candidate corresponding to each selection.
+Since the heap maintains automatic sorting, each poll retrieves the lowest-cost candidate corresponding to each selection.
 
 #### Implementation
 ```java
@@ -5678,8 +5678,8 @@ class Solution {
             return ans;
         }
 
-        PriorityQueue<Integer> leftQue = new PriorityQueue<>();
-        PriorityQueue<Integer> rightQue = new PriorityQueue<>();
+        PriorityQueue<Integer> leftQue = new PriorityQueue<>(candidates);
+        PriorityQueue<Integer> rightQue = new PriorityQueue<>(candidates);
         // Initialize `leftQue` and `rightQue`
         for (int i = 0; i < candidates; i++) {
             leftQue.offer(costs[i]);
@@ -5702,17 +5702,25 @@ class Solution {
 }
 ```
 #### Time and Space Complexity
-* Time Complexity: $O(n\log n)$
+* Time Complexity: $O(n\log n + k + m \log m + k \log m)$
     * Verify if all elements are the candidates    
-        `Arrays.sort` has $O(n\log n)$ time complexity for primitive type and the loop iterates over `k` elements, the time complexity of this step is $O(n\log n +k)$.
 
-    * Initialize `leftQue` and `rightQue`
-        This loop traverse the number from `0` to `candidates`, resulting in a time complexity of $O(m)$ where `m` is the number of candidates.
+        `Arrays.sort` has a time complexity of $O(n\log n)$ for primitive types, where `n` is the length of `costs`, and since the loop iterates over `k` elements, 
+        the total time complexity of this step is $O(n\log n +k)$.
+
+    * Initialize `leftQue` and `rightQue`  
+        
+        The `offer` method of `PriorityQueue` has a time complexity of $O(\log m)$, where `m` is the number of candidates, , which is also the length of the `PriorityQueue`.
+        Since the loop traverses numbers from `0` to `candidates`, the total time complexity of this step is $O(m \log m)$, .
 
     * Select lower-cost candidates from `leftQue` and `rightQue`
-        This loop only selects the `k` candidates with lowest costs, resulting in a time complexity of $O(k)$.
 
-    Therefore, the overall time complexity is $O(n\log n + k +m)$.
+        The `peek` and `poll` methods of `PriorityQueue` have a time complexity of $O(\log m)$, where `m` is the number of candidates, which is also the length of the `PriorityQueue`.
+        Since the loop only selects the `k` lowest-cost candidates, the total time complexity of this step is $O(k \log m)$.
+
+    Based on the above analysis, the total time complexity is $O(n\log n + k + m \log m + k \log m)$.  
+    The $k+k \log m$ simplifies to $k \log m$ as $k \log m$ dominates $k$ due to the slower growth of $\log m$ compared to $k$.  
+    Thus, the final time complexity is $O(n\log n + m \log m + k \log m)$.
 * Space Complexity: $O(m)$
 
     The `leftQue` and `rightQue` each take $O(m)$ space where `m` is the number of candidates.
