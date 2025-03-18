@@ -5804,6 +5804,65 @@ class Solution {
     The main loop runs in $O(n-indexDifference)$ where `n` is the length of `nums`.
 
 * Space Complexity: $O(1)$
+
+## 45. Intersection of Two Arrays II
+[Back to Top](#table-of-contents)
+### Overview
+Given two integer arrays `nums1` and `nums2`, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+**Example 1:**
+> **Input:** nums1 = [1,2,2,1], nums2 = [2,2]  
+> **Output:** [2,2]
+
+**Example 2:**
+> **Input:** nums1 = [4,9,5], nums2 = [9,4,9,8,4]  
+> **Output:** [4,9]  
+> **Explanation:** [9,4] is also accepted.
+ 
+
+**Constraints:**
+* `1 <= nums1.length, nums2.length <= 1000`
+* `0 <= nums1[i], nums2[i] <= 1000`
+
+### Analysis 
+
+#### Python3 implementation
+```python
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        numDict={}
+        for ind in range(len(nums1)):
+            val=nums1[ind]
+            numDict[val]=numDict.get(val,[])
+            numDict[val].append(ind)
+        left=-1
+        right=-1
+        res=[]
+        maxRange=[0,0]
+        for ind in range(len(nums2)):
+            val=nums2[ind]
+            if left == -1 and val in numDict:
+                left=ind
+                right=ind
+            elif right != -1 and val in numDict and right+1 in numDict.get(val):
+                right+=1
+            elif right !=-1 and (numDict.get(val) is None or right+1 not in numDict.get(val)):
+                print(left)
+                print(right)
+                if right-left > maxRange[1]-maxRange[0]:
+                    maxRange[0]=left
+                    maxRange[1]=right+1
+                left=-1
+                right=-1
+
+        if left!=-1 and right!=-1 and right-left > maxRange[1]-maxRange[0]:
+            maxRange[0]=left
+            maxRange[1]=right+1
+        return nums2[maxRange[0]:maxRange[1]]
+```
+
+
+
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to Top](#table-of-contents)  
