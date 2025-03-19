@@ -5830,35 +5830,20 @@ Given two integer arrays `nums1` and `nums2`, return an array of their intersect
 ```python
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        # val - index (The index belongs to `nums1`)
         numDict={}
         for ind in range(len(nums1)):
             val=nums1[ind]
-            numDict[val]=numDict.get(val,[])
-            numDict[val].append(ind)
-        left=-1
-        right=-1
+            numDict[val]=numDict.get(val,0)
+            numDict[val]+=1
         res=[]
-        maxRange=[0,0]
+        # Traverse `nums2`
         for ind in range(len(nums2)):
             val=nums2[ind]
-            if left == -1 and val in numDict:
-                left=ind
-                right=ind
-            elif right != -1 and val in numDict and right+1 in numDict.get(val):
-                right+=1
-            elif right !=-1 and (numDict.get(val) is None or right+1 not in numDict.get(val)):
-                print(left)
-                print(right)
-                if right-left > maxRange[1]-maxRange[0]:
-                    maxRange[0]=left
-                    maxRange[1]=right+1
-                left=-1
-                right=-1
-
-        if left!=-1 and right!=-1 and right-left > maxRange[1]-maxRange[0]:
-            maxRange[0]=left
-            maxRange[1]=right+1
-        return nums2[maxRange[0]:maxRange[1]]
+            if val in numDict and numDict.get(val,0)>0:
+                res.append(val)
+                numDict[val]-=1
+        return res
 ```
 
 
