@@ -126,7 +126,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n \log n)$
     * `Arrays.sort` has a time complexity of $O(nlogn)$;
     * The loop iterates through the array with a step of 2, so it runs $n/2$ times, resulting a time complexity of $O(n)$.  
@@ -234,7 +234,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(m+n)$  (`m` is the length of array `edges`)
     * `Arrays.setAll`   
     
@@ -371,7 +371,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 - Time Complexity: $O(n)$
 
     In the worst case, DFS visits all nodes in the tree, leading to a time complexity of $O(n)$, where $n$ is the number of nodes in the tree.
@@ -450,7 +450,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 - Time Complexity: $O(n)$
 
     Similar to the previous solution, visiting all nodes in the tree in the worst case results in a time complexity of $O(n)$, where $n$ is the total number of nodes.
@@ -538,7 +538,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(\log n)$
 
     In each recursive call, the array range is split into **two** approximately equal part, resulting in a total recursion time of $O(\log n)$.
@@ -635,7 +635,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$ 
 
     The `for` loop iterates over each character in the string `s`, resulting in a time complexity of $O(n)$.
@@ -743,7 +743,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$ 
     
     The `for` loop iterates from `minJump` to `len` (the length of the string s), resulting in a time complexity of $O(n)$.
@@ -815,7 +815,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The `for` loop iterate over the stairs starting from `3`, yielding a time complexity of $O(n)$.
@@ -902,7 +902,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The `for` loop runs in $O(n)$ time.
@@ -1066,7 +1066,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The `for` loop runs from `i=2` to `i=len`, where `len` is the length of the string `s`, resulting in a time complexity of $O(n)$
@@ -1261,7 +1261,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     * Create a HashMap for each group to store the frequency of each element  
@@ -1489,7 +1489,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n \log k)$
     * Precomputation
 
@@ -1567,7 +1567,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The `for` loop takes $O(n)$ time.
@@ -1644,7 +1644,7 @@ class Solution {
   }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(2^n)$
 
     Alice and Bob can make two possible choices at each step, and the total number of choices is `right-left`,
@@ -1732,7 +1732,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n^2)$ 
 
     The sum of iterations for both loop is:  
@@ -1759,7 +1759,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n^2)$ 
 
     The sum of iterations for both loop is:  
@@ -1831,7 +1831,7 @@ public class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(2^n)$ 
 
     The total number of recursive calls is proportional to $2^n$, 
@@ -1913,7 +1913,7 @@ public class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(2^n)$  
     
     The worst-case time complexity remains the same, but it is faster than the original solution in general cases.
@@ -2047,7 +2047,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n \times neg)$ 
     * Calculate the sum of nums.
 
@@ -2092,7 +2092,7 @@ public class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n \times neg)$ 
     * Calculate the sum of nums.
 
@@ -2265,7 +2265,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n\log n)$ 
     * Traverse array `nums`
     
@@ -2347,7 +2347,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     Since the `replace` method has a time complexity of $O(n)$ and is executed at most twice, while `charAt` and `Integer.parseInt` take $O(1)$ time, the overall time complexity of the `for` is $O(n)$.
@@ -2474,7 +2474,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The `for` loop has time complexity $O(n)$, resulting in an overall time complexity of $O(n)$.
@@ -2576,7 +2576,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$  
 
     The `for` loop takes $O(n)$ time.
@@ -2680,7 +2680,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(1)$
 * Space Complexity: $O(1)$
 
@@ -2806,7 +2806,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(1)$
  
     The time and space used during the precomputation process are not factored into the solution.
@@ -2920,7 +2920,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(1)$
 * Space Complexity: $O(1)$
 ## 21. Range Product Queries of Powers
@@ -3001,7 +3001,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(bc^2)$
     * Integer.bitCount(n)
     
@@ -3143,7 +3143,7 @@ class Solution {
   }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$  
     * Traverse array nums
     
@@ -3216,7 +3216,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The time complexity of methods `toUpperCase, replaceAll, toCharArray` are all $O(n)$.  
@@ -3302,7 +3302,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n^2)$
     * `Arrays.sort` has a time complexity of $O(nlogn)$.
 
@@ -3371,7 +3371,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The `for` loop iterates `nums.length/2 - 2` times, leading to a time complexity of $O(n)$.
@@ -3432,7 +3432,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(nlogn)$
     * `Arrays.sort` has a time complexity of $O(nlogn)$.
     * Traverse the array `people`  using two pointers, left and right.
@@ -3562,7 +3562,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
 
     The `while` loop runs in $O(n)$ time, as index `j` skips over traversed elements in the inner loop, not affecting the total number of iterations.
@@ -3630,7 +3630,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(m + n)$
 
     The `Arrays.copyOf` method takes $O(m)$ time and the `for` loop takes $O(n)$ time, 
@@ -3771,7 +3771,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n\times2^n)$
 
     let's use `nums = [1,2,3,4]` as an example:  
@@ -3854,7 +3854,7 @@ class Solution {
 }
 
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n\times2^n)$
 
     The recursive call decreases by `1` each time. 
@@ -3919,7 +3919,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n\times2^n)$
 
     The outer loop iterates over all subset indices, running in $O(2^n)$ time.
@@ -3987,7 +3987,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(m + n)$
     * Count words for `words1` array
     
@@ -4047,7 +4047,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n \log n)$
     * `Arrays.sort` has a time complexity of $O(n \log n)$;
     * The loop traverse the `nums` array with a step size of 2.
@@ -4217,7 +4217,7 @@ class MyCalendarTwo {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(m \times n)$
     * `insertable` method
         This method traverse the tree until a `null` location is found or range overlaps.
@@ -4406,7 +4406,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n \log n+m)$
     * If `threshold = 0`, set all results to `true` and return.  
 
@@ -4519,7 +4519,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n^2)$
     * Map the elements in the `nums` array to the indices of the frequency array `freq`.
         
@@ -4682,7 +4682,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$ 
 
   The main loop iterates through the array `b`, resulting in a time complexity of $O(n)$.
@@ -4744,7 +4744,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n^2)$ 
 
   The total number of iterations is $\sum_{i=0}^{n}i=\frac{n\times (n+1)}{2}$, resulting in a time complexity of $O(n^2)$
@@ -4842,7 +4842,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n+q)$ 
   * Since every element in `nums` must be traversed, and processed queries do not need to be revisited, the total time complexity is $O(n+q)$, where `n` and `q` are the length of `nums` and `queries` respectively.
 * Space Complexity: $O(n)$
@@ -4958,7 +4958,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n^2)$
     * Count the occurrences of `0` and `1` in the board  
 
@@ -5174,7 +5174,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: 
   * Initialize the `boundary` and `visited` array with the first and last columns.
     
@@ -5310,7 +5310,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n)$
   * Find the maximum element in `nums`.
     
@@ -5460,7 +5460,7 @@ class Pair implements Comparable<Pair> {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(m \log n)$
   * Initialize the `graph` array
   
@@ -5549,7 +5549,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n\times m)$
   * The outer loop iterates `n` times, and the inner loop iterates `m` times, where `n` is the number of graph nodes and `m` is the length of `edges` array.
   Therefore, the overall time complexity is $O(n\times m)$.
@@ -5613,7 +5613,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n^2)$
 
   The number of iterations of the main loop is $\sum_{i=0}^{i=n}i=\frac{n\times(n+1)}{2}$, resulting in a time complexity of $O(n^2)$.
@@ -5702,7 +5702,7 @@ class Solution {
     }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n\log n + m \log m + k \log m)$
     * Verify if all elements are the candidates    
 
@@ -5798,14 +5798,14 @@ class Solution {
   }
 }
 ```
-#### Time and Space Complexity
+#### Complexity Analysis
 * Time Complexity: $O(n-indexDifference)$  
 
     The main loop runs in $O(n-indexDifference)$ where `n` is the length of `nums`.
 
 * Space Complexity: $O(1)$
 
-## 45. Common Elements between Two Arrays II
+## 45. Common Elements between Two Arrays
 [Back to Top](#table-of-contents)
 ### Overview
 Given two integer arrays `nums1` and `nums2`, return an array of their common elements, with each element appearing as many times as it does in both arrays.
@@ -5825,29 +5825,83 @@ The order of the elements in the result does not matter.
 * `1 <= nums1.length, nums2.length <= 1000`
 * `0 <= nums1[i], nums2[i] <= 1000`
 
-### Analysis 
+### Map Solution
 
 #### Python3 implementation
 ```python
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        # val - index (The index belongs to `nums1`)
-        numDict={}
-        for ind in range(len(nums1)):
-            val=nums1[ind]
-            numDict[val]=numDict.get(val,0)
-            numDict[val]+=1
-        res=[]
-        # Traverse `nums2`
-        for ind in range(len(nums2)):
-            val=nums2[ind]
-            if val in numDict and numDict.get(val,0)>0:
-                res.append(val)
-                numDict[val]-=1
-        return res
+        # Retrieve a frequency map of `nums1`
+        cnt = Counter(nums1)
+        ans = []
+        # Iterate through `nums2`
+        for x in nums2:
+            if cnt[x] > 0:
+                cnt[x] -= 1
+                ans.append(x)
+        return ans
 ```
+#### Complexity Analysis
+* Time Complexity: $O(n+m)$
+  * Retrieve a frequency map of `nums1`
+    
+    The `Counter` method has $O(n)$ time complexity where `n` is the length of `nums1`.
+  * Iterate through `nums2`
 
+    This loop traverses all elements of `nums2`, yielding in a time complexity of $O(m)$, where `m` is the length of `nums2`.
+* Space Complexity: $O(n + min(m,n))$
+  * The `cnt` stores the frequency of elements in `nums1`, requiring $O(n)$ space.
 
+  * The size of `ans` depends on the smaller of `nums1` and `nums2`, leading to a space complexity of $O(min(m,n))$.
+
+  Thus, the overall space complexity is $O(n + min(m,n))$.
+
+#### Java Implementation
+```java
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        // Traverse `nums1` to build the frequency map
+        for(int num : nums1) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        int[] res = new int[nums1.length]; 
+        int index = 0;
+        // Iterate over `nums2`
+        for(int num : nums2) {
+            if(map.containsKey(num) && map.get(num) > 0) {
+                res[index++] = num;
+                map.put(num, map.get(num) - 1);
+            }
+        }
+        // Split `res`
+        return Arrays.copyOfRange(res, 0, index);
+    }
+}
+```
+#### Complexity Analysis
+* Time Complexity: $O(m+n)$
+  * Traverse `nums1` to build the frequency map
+    
+    The method `put` and `getOrDefault` of Map run in $O(1)$ time.
+    Iterating through `nums1` resuls in an total time complexity of $O(n)$, where `n` is its length.
+
+  * Iterate over `nums2`
+
+    The method `put` and `containsKey` of Map run in $O(1)$ time.
+    Similar to the previous step, the total time complexity of this step is $O(m)$, where `m` is the length of `nums2`.
+
+  * Split `res`
+
+    `Arrays.copyOfRange` has a time complexity of $O(min(m,n))$ as only the common elements need to be traversed.
+
+  Therefore, the overall time complexity is $O(m+n)$.
+* Space Complexity: $O(n+min(m,n))$
+
+  * The `map` stores the frequency of elements in `nums1`, requiring $O(n)$ space.
+  * The `Arrays.copyOfRange` takes $O(min(m,n))$ space to create the result array.
+
+  Thus, the overall space complexity is $O(n + min(m,n))$.
 
 # SQL Problems
 ## 1. Odd and Even Transactions
