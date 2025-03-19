@@ -5805,13 +5805,14 @@ class Solution {
 
 * Space Complexity: $O(1)$
 
-## 45. Intersection of Two Arrays II
+## 45. Common Elements between Two Arrays II
 [Back to Top](#table-of-contents)
 ### Overview
-Given two integer arrays `nums1` and `nums2`, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+Given two integer arrays `nums1` and `nums2`, return an array of their common elements, with each element appearing as many times as it does in both arrays.
+The order of the elements in the result does not matter.
 
 **Example 1:**
-> **Input:** nums1 = [1,2,2,1], nums2 = [2,2]  
+> **Input:** nums1 = [1,2,3,2,1], nums2 = [2,2]  
 > **Output:** [2,2]
 
 **Example 2:**
