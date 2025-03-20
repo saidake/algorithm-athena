@@ -5911,6 +5911,122 @@ class Solution {
 
   Thus, the overall space complexity is $O(n)$.
 
+## 46. Number of Paths with Max Score
+[Back to Top](#table-of-contents)
+### Overview
+You are given a square `board` of characters. 
+You can move on the board starting at the bottom right square marked with the character `'S'`.
+
+You need to reach the top left square marked with the character `'E'`. 
+The rest of the squares are labeled either with a numeric character `1, 2, ..., 9` or with an obstacle `'X'`. 
+In one move you can go up, left or up-left (diagonally) only if there is no obstacle there.
+
+Return a list of two integers: 
+the first integer is the maximum sum of numeric characters you can collect, and the second is the number of such paths that you can take to get that maximum sum, taken modulo `10^9 + 7`.
+
+In case there is no path, return `[0, 0]`.
+
+**Example 1:**
+> **Input:** board = ["E23","2X2","12S"]  
+> **Output:** [7,1]
+
+**Example 2:**
+> **Input:** board = ["E12","1X1","21S"]  
+> **Output:** [4,2]
+
+**Example 3:**
+> **Input:** board = ["E11","XXX","11S"]  
+> **Output:** [0,0]
+
+**Constraints:**
+* `2 <= board.length == board[i].length <= 100`
+
+### Analysis
+
+#### Java Implementation
+<!-- 13 / 25 -->
+```java
+class Solution {
+
+    private int maxSum=0;
+    private int pathNum=0;
+    private int MOD = 1000_000_007;
+
+    public int[] pathsWithMaxScore(List<String> board) {
+        int len=board.size();
+        // E 1 1 3 4 5
+        // X 4 5 2 X X
+        // 3 X 4 3 X 4
+        // 4 4[X]3 1 2
+        // 2 3 4 5 2 X
+        // 1 3 4 2 X S
+
+        // E 1 2
+        // 1 X 1
+        // 2 1 5
+
+        
+
+        // Detect impassable area
+        int dx=-1;
+        int dy=-1;
+        for(int y=0; y<len; y++){
+            boolean hasX=false;
+            for(int x=0; x<len; x++){
+                if(board.get(x).charAt(y)=='X' && x>=dx && y>=dy){
+                    dx=x;
+                    dy=y;
+                    hasX=true;
+                }
+            }
+            if(!hasX)break;
+        }
+        // System.out.println(dx);
+        // System.out.println(dy);
+
+        dfs(board, len-1, len-1, 0, dx, dy);
+        return new int[]{maxSum, pathNum};
+    }
+
+    private void dfs(List<String> board, int x, int y, int sum, int dx, int dy) {
+        if(x>=board.size() || x<0 || y>=board.size() || y<0)return;
+        char cur=board.get(x).charAt(y);
+        if(cur=='E'){
+            if(sum==this.maxSum){
+                this.pathNum+=1;
+            }else if(sum>this.maxSum){
+                this.maxSum=sum;
+                this.pathNum=1;
+            }
+            return;
+        }
+        if(cur=='X')return;
+        // System.out.println(x);
+        // System.out.println(y);
+        // System.out.println(dx);
+        // System.out.println(dy);
+        // System.out.println(x>=dx && y<=dy);
+        // E X
+        // X S
+        // System.out.println("-------------");
+        if(x>=dx && y<=dy)return;
+
+        int val=cur=='S'?0:Character.getNumericValue(cur);
+        // System.out.println(cur);
+        // System.out.println(val);
+        // System.out.println("-------------");
+        // go up
+        int newSum=(sum+val)%MOD;
+        dfs(board, x-1, y, newSum, dx, dy);
+        // go left
+        dfs(board, x, y-1, newSum, dx, dy);
+        // go up-left
+        dfs(board, x-1, y-1, newSum, dx, dy);
+    }
+}
+```
+
+
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to Top](#table-of-contents)  
