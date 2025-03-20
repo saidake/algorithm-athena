@@ -33,6 +33,7 @@
       - [35. Maximum Multiplication Score](#35-maximum-multiplication-score)
   - HashMap
     - [30. Count Common Words With One Occurrence](#30-count-common-words-with-one-occurrence)
+    - [45. Intersection of Two Arrays II](#45-common-elements-between-two-arrays)
   - Heap
     - [39. Trapping Rain Water II](#39-trapping-rain-water-ii)
     - [43. Total Cost to Hire K Workers](#43-total-cost-to-hire-k-workers)
@@ -5805,7 +5806,7 @@ class Solution {
 
 * Space Complexity: $O(1)$
 
-## 45. Common Elements between Two Arrays
+## 45. Intersection of Two Arrays II
 [Back to Top](#table-of-contents)
 ### Overview
 Given two integer arrays `nums1` and `nums2`, return an array of their common elements, with each element appearing as many times as it does in both arrays.
@@ -5825,19 +5826,21 @@ The order of the elements in the result does not matter.
 * `1 <= nums1.length, nums2.length <= 1000`
 * `0 <= nums1[i], nums2[i] <= 1000`
 
-### Map Solution
+### HashMap Solution
+1. Build a map `freq1` for elements in `nums1`.
+2. Iterate through `nums2` to identify common elements with `nums1`.
 
 #### Python3 implementation
 ```python
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
         # Retrieve a frequency map of `nums1`
-        cnt = Counter(nums1)
+        freq1 = Counter(nums1)
         ans = []
         # Iterate through `nums2`
         for x in nums2:
-            if cnt[x] > 0:
-                cnt[x] -= 1
+            if freq1[x] > 0:
+                freq1[x] -= 1
                 ans.append(x)
         return ans
 ```
@@ -5849,29 +5852,31 @@ class Solution:
   * Iterate through `nums2`
 
     This loop traverses all elements of `nums2`, yielding in a time complexity of $O(m)$, where `m` is the length of `nums2`.
-* Space Complexity: $O(n + min(m,n))$
-  * The `cnt` stores the frequency of elements in `nums1`, requiring $O(n)$ space.
+* Space Complexity: $O(n)$
+  * The `cnt` stores element frequencies in `nums1`, requiring $O(n)$ space in the worst case when all elements are unique.
 
   * The size of `ans` depends on the smaller of `nums1` and `nums2`, leading to a space complexity of $O(min(m,n))$.
 
-  Thus, the overall space complexity is $O(n + min(m,n))$.
+  If $m \le n$, the $min(m,n)=m$, so $n+min(m,n)=n+m$, which is still $O(n)$ since $m\le n$.  
+  If $n<m$, then $min(m,n)=n$, so $n+min(m,n)=n+n=2n$, which is O(n).  
+  Thus, the overall space complexity is $O(n)$.
 
 #### Java Implementation
 ```java
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> freq1 = new HashMap<>();
         // Traverse `nums1` to build the frequency map
         for(int num : nums1) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            freq1.put(num, freq1.getOrDefault(num, 0) + 1);
         }
         int[] res = new int[nums1.length]; 
         int index = 0;
         // Iterate over `nums2`
         for(int num : nums2) {
-            if(map.containsKey(num) && map.get(num) > 0) {
+            if(freq1.containsKey(num) && freq1.get(num) > 0) {
                 res[index++] = num;
-                map.put(num, map.get(num) - 1);
+                freq1.put(num, freq1.get(num) - 1);
             }
         }
         // Split `res`
@@ -5896,12 +5901,15 @@ class Solution {
     `Arrays.copyOfRange` has a time complexity of $O(min(m,n))$ as only the common elements need to be traversed.
 
   Therefore, the overall time complexity is $O(m+n)$.
-* Space Complexity: $O(n+min(m,n))$
+* Space Complexity: $O(n)$
 
-  * The `map` stores the frequency of elements in `nums1`, requiring $O(n)$ space.
-  * The `Arrays.copyOfRange` takes $O(min(m,n))$ space to create the result array.
+  * The `freq1` stores the frequency of elements in `nums1`, requiring $O(n)$ space in the worst case when all elements are unique.
+  * The `Arrays.copyOfRange` takes $O(min(m,n))$ space to create a result array.
 
-  Thus, the overall space complexity is $O(n + min(m,n))$.
+  If $m \le n$, the $min(m,n)=m$, so $n+min(m,n)=n+m$, which is still $O(n)$ since $m\le n$.  
+  If $n<m$, then $min(m,n)=n$, so $n+min(m,n)=n+n=2n$, which is O(n). 
+
+  Thus, the overall space complexity is $O(n)$.
 
 # SQL Problems
 ## 1. Odd and Even Transactions
