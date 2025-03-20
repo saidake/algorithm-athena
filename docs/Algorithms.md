@@ -5910,7 +5910,7 @@ class Solution {
   If $n<m$, then $min(m,n)=n$, so $n+min(m,n)=n+n=2n$, which is O(n). 
 
   Thus, the overall space complexity is $O(n)$.
-
+<!-- 
 ## 46. Number of Paths with Max Score
 [Back to Top](#table-of-contents)
 ### Overview
@@ -5943,9 +5943,9 @@ In case there is no path, return `[0, 0]`.
 
 ### Analysis
 
-#### Java Implementation
+#### Java Implementation -->
 <!-- 13 / 25 -->
-```java
+<!-- ```java
 class Solution {
 
     private int maxSum=0;
@@ -6024,7 +6024,7 @@ class Solution {
         dfs(board, x-1, y-1, newSum, dx, dy);
     }
 }
-```
+``` -->
 
 
 # SQL Problems
