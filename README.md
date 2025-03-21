@@ -1,5 +1,5 @@
 # Simi Docs
-A collection of programming tech documents with detailed explanations.
+Simi Docs is a collection of technical documents.
 
 ## Table of Contents
 - [Algorithms](docs/Algorithms.md)
@@ -23,4 +23,12 @@ A collection of programming tech documents with detailed explanations.
   Record updates for Simi Docs releases.
 - [pdf](./pdf/)
 
-  Check this folder for more technical documents.
+  Explore this folder for technical PDFs on Java, Python, Spring Boot, Math, Internet, DatabaseAndMiddleware, and Configuration.
+
+- [temppdf](./temppdf/)
+
+  Stores outdated PDFs for furture updates or archival purposes.
+- [temp](./temp/)
+
+  A temporary folder for storing transient files.
+
