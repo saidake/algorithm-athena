@@ -5941,101 +5941,105 @@ In case there is no path, return `[0, 0]`.
 **Constraints:**
 * `2 <= board.length == board[i].length <= 100`
 
-### Analysis
-
+### Depth-first Search Solution
+1. Define a two-dimensional array `dpRoad` to store the maximum score from `'E'` to the current grid in `board`.
+    * Use backtracking to calculate the cumulative score for each path and track the maximum score for the current grid.
+2. Starting from `'S'`, compute the number of paths with the maximum score.
 #### Java Implementation
-<!-- 13 / 25 -->
 ```java
 class Solution {
-
-    private int maxSum=0;
-    private int pathNum=0;
-    private int MOD = 1000_000_007;
-
     public int[] pathsWithMaxScore(List<String> board) {
-        int len=board.size();
-        // E 1 1 3 4 5
+        int rLen = board.size(), cLen = board.get(0).length();
+        dpScore = new int[rLen][cLen];
+        dpRoad = new int[rLen][cLen];
+
+        // Fill `dpRoad` with `-1`
+        for (int i = 0; i < rLen; i++) {
+            Arrays.fill(dpRoad[i], -1);
+        }
+
+        //[E]1 1 3 4 5
         // X 4 5 2 X X
         // 3 X 4 3 X 4
-        // 4 4[X]3 1 2
+        // 4 4 X 3 1 2
         // 2 3 4 5 2 X
-        // 1 3 4 2 X S
+        // 1 3 4 2 X[S]
+        
+        // Find the maximum score in the grid `board[rLen-1][cLen-1]`
+        int maxScore = dfsScore(board, rLen - 1, cLen - 1);
 
-        // E 1 2
-        // 1 X 1
-        // 2 1 5
-
-        // Detect left and right impassable area
-        int dr1=-1;
-        int dc1=-1;
-        int dr2=-1;
-        int dc2=-1;
-        for(int c=0; c<len; c++){
-            boolean hasX=false;
-            for(int r=0; r<len; r++){
-                if(board.get(r).charAt(c)=='X' && r>=dr1 && c>=dc1){
-                    dr1=r;
-                    dc1=c;
-                    hasX=true;
-                }
-            }
-            // No 'X' exists in this column, exit the loop;
-            if(!hasX)break;
-        }
-
-        for(int c=0; c<len && c>dc1; c++){
-            boolean hasX=false;
-            for(int r=0; r<len; r++){
-                if(board.get(r).charAt(len-1-c)=='X' && r<=dr2 && c>=dc2){
-                    dr2=r;
-                    dc2=c;
-                    hasX=true;
-                }
-            }
-            if(!hasX)break;
-        }
-        // System.out.println(dx);
-        // System.out.println(dy);
-        dfs(board, len-1, len-1, 0, dr1, dc1, dr2, dc2);
-        return new int[]{maxSum, pathNum};
+        maxScore = maxScore == Integer.MIN_VALUE ? 0 : maxScore;
+        int roadNum = dfsRoad(board, rLen - 1, cLen - 1);
+        return new int[] { maxScore, roadNum };
     }
 
-    private void dfs(List<String> board, int r, int c, int sum, int dr1, int dc1, int dr2, int dc2) {
-        if(r>=board.size() || r<0 || c>=board.size() || c<0)return;
-        char cur=board.get(r).charAt(c);
-        if(cur=='E'){
-            if(sum==this.maxSum){
-                this.pathNum+=1;
-            }else if(sum>this.maxSum){
-                this.maxSum=sum;
-                this.pathNum=1;
-            }
-            return;
+    public int mod = 1_000_000_007;
+    public int[][] dpScore;
+
+    /**
+     * Calculate the score for the grid at position `board[r][c]` 
+     * , starting from 'S'.
+     * 
+     * @param board The game board
+     * @param r The row index of the grid
+     * @param c The column index of the grid
+     * @return The score of the grid at `board[r][c]`
+     */
+    public int dfsScore(List<String> board, int r, int c) {
+        // End conditions
+        if (r == 0 && c == 0) {
+            return 0;
         }
-        if(cur=='X')return;
-        // System.out.println(x);
-        // System.out.println(y);
-        // System.out.println(dx);
-        // System.out.println(dy);
-        // System.out.println(x>=dx && y<=dy);
-        // E X
-        // X S
-        // System.out.println("-------------");
-        if(r>=dr1 && c<=dc1)return;
-        if(r<=dr2 && c>=dc2)return;
+        if (r < 0 || c < 0) {
+            return Integer.MIN_VALUE;
+        }
+        char C = board.get(r).charAt(c);
+        if (C == 'X') {
+            return Integer.MIN_VALUE;
+        }
+        if (dpScore[r][c] != 0) {
+            return dpScore[r][c];
+        }
 
-        int val=cur=='S'?0:Character.getNumericValue(cur);
-        // System.out.println(cur);
-        // System.out.println(val);
-        // System.out.println("-------------");
-
-        // go up
-        int newSum=(sum+val)%MOD;
-        dfs(board, r-1, c, newSum, dr1, dc1, dr2, dc2);
-        // go left
-        dfs(board, r, c-1, newSum, dr1, dc1, dr2, dc2);
-        // go up-left
-        dfs(board, r-1, c-1, newSum, dr1, dc1, dr2, dc2);
+        // Find the maximum score from the each backtracking path in the current grid.
+        int backScore = 
+            Math.max(
+                dfsScore(board, r - 1, c - 1), // go up-left
+                Math.max(
+                    dfsScore(board, r - 1, c), // go left
+                    dfsScore(board, r, c - 1)) // go up
+                );
+        
+        int myScore = C == 'S' ? 0 : C - '0';
+        int allScore = backScore == Integer.MIN_VALUE ? backScore : myScore + backScore;
+        dpScore[r][c] = allScore;
+        return allScore; 
+    }
+    
+    public int[][] dpRoad;
+    public int result = 0;
+    public int dfsRoad(List<String> board, int r, int c) {
+        if (r == 0 && c == 0) {
+            return 1;
+        }
+        if (dpRoad[r][c] != -1) {
+            return dpRoad[r][c];
+        }
+        int ways = 0;
+        char C = board.get(r).charAt(c);
+        int myScore = C == 'S' ? 0 : C - '0';
+        // Find a grid that excatly matches the current maximum score in `dpScore[r][c] - myScore`, indicating it is part of the path with the maximum score for the current grid.
+        if (r > 0 && dpScore[r][c] - myScore == dpScore[r - 1][c]) {
+            ways = (ways + dfsRoad(board, r - 1, c)) % mod;
+        }
+        if (c > 0 && dpScore[r][c] - myScore == dpScore[r][c - 1]) {
+            ways = (ways + dfsRoad(board, r, c - 1)) % mod;
+        }
+        if (r > 0 && c > 0 && dpScore[r][c] - myScore == dpScore[r - 1][c - 1]) {
+            ways = (ways + dfsRoad(board, r - 1, c - 1)) % mod;
+        }
+        dpRoad[r][c] = ways;
+        return ways;
     }
 }
 ```
