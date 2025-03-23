@@ -5910,7 +5910,7 @@ class Solution {
   If $n<m$, then $min(m,n)=n$, so $n+min(m,n)=n+n=2n$, which is O(n). 
 
   Thus, the overall space complexity is $O(n)$.
-<!-- 
+
 ## 46. Number of Paths with Max Score
 [Back to Top](#table-of-contents)
 ### Overview
@@ -5943,9 +5943,9 @@ In case there is no path, return `[0, 0]`.
 
 ### Analysis
 
-#### Java Implementation -->
+#### Java Implementation
 <!-- 13 / 25 -->
-<!-- ```java
+```java
 class Solution {
 
     private int maxSum=0;
@@ -5965,17 +5965,30 @@ class Solution {
         // 1 X 1
         // 2 1 5
 
-        
-
-        // Detect impassable area
-        int dx=-1;
-        int dy=-1;
-        for(int y=0; y<len; y++){
+        // Detect left and right impassable area
+        int dr1=-1;
+        int dc1=-1;
+        int dr2=-1;
+        int dc2=-1;
+        for(int c=0; c<len; c++){
             boolean hasX=false;
-            for(int x=0; x<len; x++){
-                if(board.get(x).charAt(y)=='X' && x>=dx && y>=dy){
-                    dx=x;
-                    dy=y;
+            for(int r=0; r<len; r++){
+                if(board.get(r).charAt(c)=='X' && r>=dr1 && c>=dc1){
+                    dr1=r;
+                    dc1=c;
+                    hasX=true;
+                }
+            }
+            // No 'X' exists in this column, exit the loop;
+            if(!hasX)break;
+        }
+
+        for(int c=0; c<len && c>dc1; c++){
+            boolean hasX=false;
+            for(int r=0; r<len; r++){
+                if(board.get(r).charAt(len-1-c)=='X' && r<=dr2 && c>=dc2){
+                    dr2=r;
+                    dc2=c;
                     hasX=true;
                 }
             }
@@ -5983,14 +5996,13 @@ class Solution {
         }
         // System.out.println(dx);
         // System.out.println(dy);
-
-        dfs(board, len-1, len-1, 0, dx, dy);
+        dfs(board, len-1, len-1, 0, dr1, dc1, dr2, dc2);
         return new int[]{maxSum, pathNum};
     }
 
-    private void dfs(List<String> board, int x, int y, int sum, int dx, int dy) {
-        if(x>=board.size() || x<0 || y>=board.size() || y<0)return;
-        char cur=board.get(x).charAt(y);
+    private void dfs(List<String> board, int r, int c, int sum, int dr1, int dc1, int dr2, int dc2) {
+        if(r>=board.size() || r<0 || c>=board.size() || c<0)return;
+        char cur=board.get(r).charAt(c);
         if(cur=='E'){
             if(sum==this.maxSum){
                 this.pathNum+=1;
@@ -6009,22 +6021,24 @@ class Solution {
         // E X
         // X S
         // System.out.println("-------------");
-        if(x>=dx && y<=dy)return;
+        if(r>=dr1 && c<=dc1)return;
+        if(r<=dr2 && c>=dc2)return;
 
         int val=cur=='S'?0:Character.getNumericValue(cur);
         // System.out.println(cur);
         // System.out.println(val);
         // System.out.println("-------------");
+
         // go up
         int newSum=(sum+val)%MOD;
-        dfs(board, x-1, y, newSum, dx, dy);
+        dfs(board, r-1, c, newSum, dr1, dc1, dr2, dc2);
         // go left
-        dfs(board, x, y-1, newSum, dx, dy);
+        dfs(board, r, c-1, newSum, dr1, dc1, dr2, dc2);
         // go up-left
-        dfs(board, x-1, y-1, newSum, dx, dy);
+        dfs(board, r-1, c-1, newSum, dr1, dc1, dr2, dc2);
     }
 }
-``` -->
+```
 
 
 # SQL Problems
