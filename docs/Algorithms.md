@@ -5944,6 +5944,9 @@ In case there is no path, return `[0, 0]`.
 ### Depth-first Search Solution
 Example: 
 ```
+board: ["E11345","X452XX","3X43X4","44X312","23452X","1342XS"]
+output: [27,1]
+
 [E]1 1 3 4 5
  X 4 5 2 X X
  3 X 4 3 X 4
@@ -6060,19 +6063,19 @@ class Solution {
 
   * Fill each grid with its maximum score starting from `board[rLen-1][cLen-1]`
   
-    Since all grids are traversed at most once at a dfs call and the the score culculation runs in constant time in the backtracking process, this step runs in $O(rLen\times cLen)$ time.
+    Since each grid is visited at most once and the score culculation takes constant time during backtracking, this step runs in $O(rLen\times cLen)$ time.
 
   * Calculate the number of valid paths with the maximum score
 
-    Similar to the previous step, all grids are traversed at most once, leading to a time complexity of $O(rLen\times cLen)$.
+    Similar to the previous step, all grids are visited at most once, resulting in a time complexity of $O(rLen\times cLen)$.
 
   Therefore, the overall time complexity is $O(rLen\times cLen)$.
 * Space Complexity: $O(rLen\times cLen)$
 
     * Both `dpScore` and `dpRoad` require $O(rLen\times cLen)$ space.
-    * The maximum stack depth for `dfsScore` and `dfsRoad` is $rLen+cLen$ as at most three grids in up, left and up-left direction are checked in each call, taking $O(rLen+cLen)$ space.
+    * The maximum stack depth for `dfsScore` and `dfsRoad` is $O(rLen+cLen)$ as at most three grids in up, left and up-left direction are checked in each call.
    
-   Therefore, the total space complexity is $O(rLen+cLen)$.
+   Therefore, the total space complexity is $O(rLen\times cLen)$.
 
 # SQL Problems
 ## 1. Odd and Even Transactions
