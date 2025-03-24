@@ -5942,9 +5942,23 @@ In case there is no path, return `[0, 0]`.
 * `2 <= board.length == board[i].length <= 100`
 
 ### Depth-first Search Solution
-1. Define a two-dimensional array `dpRoad` to store the maximum score from `'E'` to the current grid in `board`.
-    * Use backtracking to calculate the cumulative score for each path and track the maximum score for the current grid.
-2. Starting from `'S'`, compute the number of paths with the maximum score.
+Example: 
+```
+[E]1 1 3 4 5
+ X 4 5 2 X X
+ 3 X 4 3 X 4
+ 4 4 X 3 1 2
+ 2 3 4 5 2 X
+ 1 3 4 2 X[S]
+```
+
+1. Define a two-dimensional array `dpScore` to store the maximum score from `'E'` to the each grid in `board`.
+    
+    * Use backtracking to calculate the cumulative score for each path and track the maximum score for each grid.
+2. Define a two-dimensional array `dpRoad` to store the number of paths with the maximum score starting from `'S'`.
+   
+   * Compare `dpScore[r][c] - curScore` with adjacent grids like `dpScore[r-1][c]`, `dpScore[r-1][c-1]` and `dpScore[r][c-1]`. If any match, the grid is part of a valid path with the maximum score.
+
 #### Java Implementation
 ```java
 class Solution {
@@ -5957,18 +5971,12 @@ class Solution {
         for (int i = 0; i < rLen; i++) {
             Arrays.fill(dpRoad[i], -1);
         }
-
-        //[E]1 1 3 4 5
-        // X 4 5 2 X X
-        // 3 X 4 3 X 4
-        // 4 4 X 3 1 2
-        // 2 3 4 5 2 X
-        // 1 3 4 2 X[S]
         
-        // Find the maximum score in the grid `board[rLen-1][cLen-1]`
+        // Fill each grid with its maximum score starting from `board[rLen-1][cLen-1]`
         int maxScore = dfsScore(board, rLen - 1, cLen - 1);
 
         maxScore = maxScore == Integer.MIN_VALUE ? 0 : maxScore;
+        // Calculate the number of valid paths with the maximum score
         int roadNum = dfsRoad(board, rLen - 1, cLen - 1);
         return new int[] { maxScore, roadNum };
     }
@@ -6010,8 +6018,8 @@ class Solution {
                     dfsScore(board, r, c - 1)) // go up
                 );
         
-        int myScore = C == 'S' ? 0 : C - '0';
-        int allScore = backScore == Integer.MIN_VALUE ? backScore : myScore + backScore;
+        int curScore = C == 'S' ? 0 : C - '0';
+        int allScore = backScore == Integer.MIN_VALUE ? backScore : curScore + backScore;
         dpScore[r][c] = allScore;
         return allScore; 
     }
@@ -6027,15 +6035,15 @@ class Solution {
         }
         int ways = 0;
         char C = board.get(r).charAt(c);
-        int myScore = C == 'S' ? 0 : C - '0';
-        // Find a grid that excatly matches the current maximum score in `dpScore[r][c] - myScore`, indicating it is part of the path with the maximum score for the current grid.
-        if (r > 0 && dpScore[r][c] - myScore == dpScore[r - 1][c]) {
+        int curScore = C == 'S' ? 0 : C - '0';
+        // Find grids that excatly matches the current maximum score in `dpScore[r][c] - curScore`.
+        if (r > 0 && dpScore[r][c] - curScore == dpScore[r - 1][c]) {
             ways = (ways + dfsRoad(board, r - 1, c)) % mod;
         }
-        if (c > 0 && dpScore[r][c] - myScore == dpScore[r][c - 1]) {
+        if (c > 0 && dpScore[r][c] - curScore == dpScore[r][c - 1]) {
             ways = (ways + dfsRoad(board, r, c - 1)) % mod;
         }
-        if (r > 0 && c > 0 && dpScore[r][c] - myScore == dpScore[r - 1][c - 1]) {
+        if (r > 0 && c > 0 && dpScore[r][c] - curScore == dpScore[r - 1][c - 1]) {
             ways = (ways + dfsRoad(board, r - 1, c - 1)) % mod;
         }
         dpRoad[r][c] = ways;
@@ -6043,7 +6051,28 @@ class Solution {
     }
 }
 ```
+#### Complexity Analysis
+* Time Complexity: $O(rLen \times cLen)$
+  * Fill `dpRoad` with `-1`
 
+    The loop iterates over the rows in `board` in $O(rLen)$ time, and `Arrays.fill` runs in $O(cLen)$ time.
+    Thus, the total time compleixty of this step is $O(rLen\times cLen)$.
+
+  * Fill each grid with its maximum score starting from `board[rLen-1][cLen-1]`
+  
+    Since all grids are traversed at most once at a dfs call and the the score culculation runs in constant time in the backtracking process, this step runs in $O(rLen\times cLen)$ time.
+
+  * Calculate the number of valid paths with the maximum score
+
+    Similar to the previous step, all grids are traversed at most once, leading to a time complexity of $O(rLen\times cLen)$.
+
+  Therefore, the overall time complexity is $O(rLen\times cLen)$.
+* Space Complexity: $O(rLen\times cLen)$
+
+    * Both `dpScore` and `dpRoad` require $O(rLen\times cLen)$ space.
+    * The maximum stack depth for `dfsScore` and `dfsRoad` is $rLen+cLen$ as at most three grids in up, left and up-left direction are checked in each call, taking $O(rLen+cLen)$ space.
+   
+   Therefore, the total space complexity is $O(rLen+cLen)$.
 
 # SQL Problems
 ## 1. Odd and Even Transactions
