@@ -6222,18 +6222,54 @@ The result format is in the following example.
 > High Salary: Accounts 3, 6, and 8.
 
 ### Analysis
-Group the data with the income range.
+1. Use of Common Table Expressions (CTEs)
+
+    Define two CTEs: one for storing the salary categories and another for counting the number of employees in each category.
+
+2. Direct Query with `UNION ALL`
+
+    Directly select and combine the results for each salary category in a single query using `UNION ALL`. 
 
 ### MySQL Implementation
 ```sql
-# Write your MySQL query statement below
+WITH category AS(
+    SELECT 'Low Salary' AS category
+    union
+    SELECT 'Average Salary'
+    union 
+    SELECT 'High Salary'
+), cnt AS (
+    SELECT
+        CASE 
+        WHEN income<20000 THEN 'Low Salary'
+        WHEN income>=20000 AND income<=50000 THEN 'Average Salary'
+        WHEN income>50000 THEN 'High Salary '
+        END AS category,
+        count(1) AS accounts_count
+    FROM
+        accounts
+    GROUP BY 1
+) 
 
-WITH Salaries as(
-    SELECT 
-        CASE WHEN income <20000 THEN 'Low Salary' WHEN income >=20000 and income <=50000 THEN 'Average Salary' ELSE 'High Salary' END AS salary
-    FROM Accounts
-)
-
-SELECT salary, COUNT(salary) FROM Salaries GROUP BY salary;
+SELECT
+    category.category,
+    IFNULL(accounts_count,0) AS accounts_count
+FROM category
+LEFT JOIN cnt
+ON category.category=cnt.category;
 ```
 
+### Oracle Implementation
+```sql
+SELECT  'Low Salary' AS category, NVL(count(account_id),0) accounts_count 
+    FROM accounts  
+    WHERE income <20000
+UNION ALL 
+    SELECT  'Average Salary' AS category, NVL(count(account_id),0) ct 
+        FROM accounts  
+        WHERE income  between  20000 and 50000 
+UNION ALL 
+    SELECT 'High Salary'  AS category, NVL( count(account_id),0) ct
+        FROM accounts 
+        WHERE income > 50000; 
+```
