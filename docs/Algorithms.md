@@ -81,7 +81,8 @@
   - Union-Find
     - [33. Graph Connectivity With Threshold](#33-graph-connectivity-with-threshold)
 - [SQL Problems](#sql-problems)
-    - [1. Odd and Even Transactions](#29-odd-and-even-transactions)
+    - [1. Odd and Even Transactions](#1-odd-and-even-transactions)
+    - [2. Find Customer Referee](#2-find-customer-referee)
 # Algorithm Problems
 ## 1. Array Partition
 [Back to Top](#table-of-contents)  
@@ -4123,7 +4124,90 @@ Use `O` to indicate the presence of a range to the left or right of the current 
     Seperate the above two ranges into three ranges: `[start, cur.start]`, `[cur.start, end]`, and `[end, cur.end]`.  
     If the `cur.left` or `cur.right` exits, compare `[start, cur.start]` with `cur.left` or `[end, cur.end]` with `cur.right` until a `null` location is found for insertion or another split is needed.
 
-#### Implementation
+
+#### Pyton3 Implementation
+```python
+class SegmentTree:
+    def __init__(self, startTime, endTime):
+        self.left=None
+        self.right=None
+        self.overlap=False
+        self.startTime=startTime
+        self.endTime=endTime
+
+class MyCalendarTwo:
+    def __init__(self):
+        self.tree=None
+
+    def book(self, startTime, endTime):
+        if not self.insertable(self.tree, startTime, endTime):
+            return False  # Avoid checking itself
+        self.tree =self.insert(self.tree, startTime, endTime)
+        return True
+
+    def insertable(self, node, startTime, endTime):
+        if startTime >= endTime: 
+            return True
+        if node is None: 
+            return True
+        # If the new element is on the right
+        if startTime >= node.endTime:
+            return self.insertable(node.right, startTime, endTime)
+        # If the new element is on the left
+        elif endTime <= node.startTime:
+            return self.insertable(node.left, startTime, endTime)
+        # If the two elements overlap
+        else:
+            # 26 32, 32 35                              26 32
+            # 25 26, 26 32, 32 35                       25 32
+            # 18 25, 25 26, 26 32, 32 35                18 26
+            # 18 25, 25 26, 26 32, 32 35, 40 45         40 45
+            # 18 19, 25 26, 25 26, 26 32, 32 35, 40 45  19 26
+
+
+            if node.overlap: 
+                return False
+            # if startTime>node.startTime and endTime<node.endTime:
+            #     return True
+            return (self.insertable(node.left, startTime, node.startTime) and self.insertable(node.right, node.endTime, endTime))
+
+    def insert(self, node, startTime, endTime):
+        if startTime >= endTime: return node  # ?
+        if node is None: return SegmentTree(startTime, endTime) # ?
+
+        # [[],[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]]
+        # 10 20 <- [50,60]
+        # 10 20, 50 60  <- [10,40]
+        # 10 20, 20 40, 50 60  <- [5,15]
+        # 5 10, 10 15, 15 20, 20 40, 50 60  <- [5,10]
+
+        # If the new element is on the right
+        if startTime >= node.endTime:
+            print(f"test1 right {node.startTime} {node.endTime} {startTime} {endTime}")
+            node.right=self.insert(node.right, startTime, endTime)
+        # If the new element is on the left
+        elif endTime <= node.startTime:
+            print(f"test2 left  {node.startTime} {node.endTime} {startTime} {endTime}")
+            node.left=self.insert(node.left, startTime, endTime)
+        # If the two elements overlap
+        else:
+            node.overlap=True
+            print(f"test3 overlap {node.startTime} {node.endTime} {startTime} {endTime}")
+            a = min(startTime, node.startTime)
+            b = max(startTime, node.startTime)
+            c = min(endTime, node.endTime)
+            d = max(endTime, node.endTime)
+            print(f"test3 overlap abcd {a} {b} {c} {d}")
+            # newNode= SegmentTree(b,c)
+            node.left=self.insert(node.left,a,b)
+            node.right=self.insert(node.right,c,d)
+            node.startTime=b
+            node.endTime=c
+            # print(f"test4, overlap: {node.overlap}")
+        return node  
+```
+
+#### Java Implementation
 ```java
 class MyCalendarTwo {
     class SegmentTree {
