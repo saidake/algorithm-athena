@@ -4095,6 +4095,233 @@ Implement the `MyCalendarTwo` class:
 * `0 <= start < end <= 109`
 * At most `1000` calls will be made to `book`.
 
+### Array Solution
+Define an array `self.cal` to store the insert elements and `self.cnt` to store the overlap count in indices of each `startTime`.
+1. Insert `endTime` to `self.cal` and `self.cnt` if it not exists and copy the overlap count from `r-1`.
+    * If the previous element is a `startTime`,
+3. Increment overlap count for the affected range.
+4. Insert `startTime`
+   * If startTime already exists, increment its overlap count.  
+        
+        * the overlap count of `endTime` remains unchanged in this step.
+   
+   * Insert startTime and set its count based on the previous interval.
+        * If startTime doesn't exist, copy overlap count from index `l-1` and increase it.
+        * Since the `endTime` remains unchanged in each step,
+        
+
+Example: 
+```
+Input:
+["MyCalendarTwo","book","book","book","book","book"]
+[[],[1,2],[1,3],[3,8],[2,3],[2,4]]
+
+Step 1:
+    Insert [1,2]
+    self.cal: [0, inf]
+    self.cnt: [0, 0]
+    l: 1 r: 1
+    self.cal: [0, 1, 2, inf]
+    self.cnt: [0, 1, 0, 0]
+Step 2:
+    Insert [1,3]
+    self.cal: [0, 1, 2, inf]
+    self.cnt: [0, 1, 0, 0]
+    l: 2 r: 3
+    self.cal: [0, 1, 2, 3, inf]
+    self.cnt: [0, 2, 1, 0, 0]
+Step 3:
+    Insert [3,8]
+    self.cal: [0, 1, 2, 3, inf]
+    self.cnt: [0, 2, 1, 0, 0]
+    l: 4 r: 4
+    self.cal: [0, 1, 2, 3, 8, inf]
+    self.cnt: [0, 2, 1, 1, 0, 0]
+Step 4:
+    Insert [2,3]
+    self.cal: [0, 1, 2, 3, 8, inf]
+    self.cnt: [0, 2, 1, 1, 0, 0]
+    l: 3 r: 3
+    self.cal: [0, 1, 2, 3, 8, inf]
+    self.cnt: [0, 2, 2, 1, 0, 0]
+Step 5:
+    Insert [2,4]
+    self.cal: [0, 1, 2, 3, 8, inf]
+    self.cnt: [0, 2, 2, 1, 0, 0]
+    l: 3 r: 4
+```
+
+Example usage of `bisect_right` and `bisect_left`:
+```
+a = [3, 8]
+b = [3, 3, 8, 8]
+c = [3, 3, 5, 8, 8]
+
+L, R = bisect_right(a, val1), bisect_left(a, val2)
+
+Case 1 (val2 <= 3):
+[3, 8]
+ L
+ R
+[3, 3, 8, 8]
+ L
+ R
+
+Case 2 (val1 >= 3, val2 <=8):
+[3, 8]
+    L
+    R
+[3, 3, 8, 8]
+       L
+       R 
+[3, 3, 5, 8, 8]
+       L  R 
+
+Case 3 (val1 >= 3 and val1 < 8, val2 >=8):
+[3, 8]
+    L
+    R  
+[3, 3, 8, 8]
+       L
+          R 
+[3, 3, 5, 8, 8]
+       L     R 
+
+
+Case 4 (val1 >=8):
+[3, 8]
+    L
+    R
+[3, 3, 8, 8]
+          L
+          R 
+```
+
+#### Pyton3 Implementation
+```python
+class MyCalendarTwo:
+
+    def __init__(self):
+        self.cal, self.cnt = [0, inf], [0, 0]
+
+    def book(self, startTime: int, endTime: int) -> bool:
+        # Find insertion positions for startTime and endTime
+        l, r = bisect_right(self.cal, startTime), bisect_left(self.cal, endTime)
+
+        # print("------------------------------------------")
+        # print(f"Insert [{startTime},{endTime}]") 
+        # print(f"self.cal: {self.cal}") 
+        # print(f"self.cnt: {self.cnt}") 
+        # print(f"l: {l} r: {r}") 
+
+        # Check if the new booking would cause a triple booking
+        if 2 in self.cnt[l-1:r]: 
+            return False
+
+        # Insert `endTime` to `self.cal` and `self.cnt` if it not exists
+        if endTime < self.cal[r]: 
+            self.cal.insert(r, endTime)
+            self.cnt.insert(r, self.cnt[r - 1])
+
+        # Increment overlap count for the affected range
+        for i in range(l, r): 
+            self.cnt[i] += 1
+
+        # If startTime already exists, increment its overlap count
+        if startTime == self.cal[l - 1]: 
+            self.cnt[l - 1] += 1
+        else:
+            # If startTime doesn't exist, copy overlap count from index `l-1` and increase it.
+            self.cal.insert(l, startTime)
+            self.cnt.insert(l, self.cnt[l - 1] + 1)
+        # print(f"self.cal: {self.cal}")
+        # print(f"self.cnt: {self.cnt}")
+        return True
+```
+#### Java Implementation
+```java
+import java.util.ArrayList;
+
+class MyCalendarTwo {
+    private ArrayList<Integer> cal;  // List of event times
+    private ArrayList<Integer> cnt;  // List of overlap counts
+
+    public MyCalendarTwo() {
+        cal = new ArrayList<>();
+        cnt = new ArrayList<>();
+        // Initialize with sentinel values
+        cal.add(0);
+        cal.add(Integer.MAX_VALUE);  // Using MAX_VALUE instead of Python's inf
+        cnt.add(0);
+        cnt.add(0);
+    }
+
+    public boolean book(int startTime, int endTime) {
+        // Find insertion points using binary search
+        int l = bisectRight(cal, startTime);  // Position where startTime fits
+        int r = bisectLeft(cal, endTime);     // Position where endTime fits
+
+        // Check for triple overlap in the affected range
+        for (int i = l - 1; i < r; i++) {
+            if (cnt.get(i) >= 2) {
+                return false;
+            }
+        }
+
+        // Insert endTime if it’s not already in cal
+        if (endTime < cal.get(r)) {
+            cal.add(r, endTime);
+            cnt.add(r, cnt.get(r - 1));
+        }
+
+        // Increment overlap counts in the range [l, r)
+        for (int i = l; i < r; i++) {
+            cnt.set(i, cnt.get(i) + 1);
+        }
+
+        // Handle startTime: increment previous count or insert new point
+        if (startTime == cal.get(l - 1)) {
+            cnt.set(l - 1, cnt.get(l - 1) + 1);
+        } else {
+            cal.add(l, startTime);
+            cnt.add(l, cnt.get(l - 1) + 1);
+        }
+
+        return true;
+    }
+
+    // Binary search to find the rightmost insertion point for target
+    private int bisectRight(ArrayList<Integer> list, int target) {
+        int left = 0;
+        int right = list.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (list.get(mid) <= target) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+
+    // Binary search to find the leftmost insertion point for target
+    private int bisectLeft(ArrayList<Integer> list, int target) {
+        int left = 0;
+        int right = list.size();
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (list.get(mid) < target) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+}
+```
+
 ### Segment Tree Solution
 A segment tree is used to store ranges efficiently. Below is the process to insert a new range node into the tree.
 
@@ -4183,21 +4410,17 @@ class MyCalendarTwo:
 
         # If the new element is on the right
         if startTime >= node.endTime:
-            print(f"test1 right {node.startTime} {node.endTime} {startTime} {endTime}")
             node.right=self.insert(node.right, startTime, endTime)
         # If the new element is on the left
         elif endTime <= node.startTime:
-            print(f"test2 left  {node.startTime} {node.endTime} {startTime} {endTime}")
             node.left=self.insert(node.left, startTime, endTime)
         # If the two elements overlap
         else:
             node.overlap=True
-            print(f"test3 overlap {node.startTime} {node.endTime} {startTime} {endTime}")
             a = min(startTime, node.startTime)
             b = max(startTime, node.startTime)
             c = min(endTime, node.endTime)
             d = max(endTime, node.endTime)
-            print(f"test3 overlap abcd {a} {b} {c} {d}")
             # newNode= SegmentTree(b,c)
             node.left=self.insert(node.left,a,b)
             node.right=self.insert(node.right,c,d)
@@ -4282,14 +4505,15 @@ class MyCalendarTwo {
             //      L2    R2     cur.start, cur.end
             // [L1, L2] - [L2, R1] - [R1,R2]
 
-            // Range1: [a,b] 
             int a = Math.min(cur.start, start);
             int b = Math.max(cur.start, start);
-            // Range2: [b,c] 
-            // Range3: [c,d] 
+
             int c = Math.min(cur.end, end);
             int d = Math.max(cur.end, end);
-            
+            // Range1: [a,b] 
+            // Range2: [b,c] 
+            // Range3: [c,d] 
+
             // One of the ranges [a,b] or [c,d] must overlap with `cur`.
             // and it will continue to be compared with a neighboring node of `cur`.
             cur.left = insert(a, b, cur.left);
