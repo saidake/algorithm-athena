@@ -9,6 +9,8 @@
       - [34. Sort Array by Increasing Frequency](#34-sort-array-by-increasing-frequency)
   - Backtracking
     - [29. Power Set LCCI](#29-power-set-lcci)
+  - Binary Search
+    - [32. My Calendar II](#32-my-calendar-ii)
   - Conditional Logic
     - [2. Add Edges to Make Degrees of All Nodes Even](#2-add-edges-to-make-degrees-of-all-nodes-even)
   - Depth-first Search
@@ -4096,19 +4098,34 @@ Implement the `MyCalendarTwo` class:
 * At most `1000` calls will be made to `book`.
 
 ### Array Solution
-Define an array `self.cal` to store the insert elements and `self.cnt` to store the overlap count in indices of each `startTime`.
-1. Insert `endTime` to `self.cal` and `self.cnt` if it not exists and copy the overlap count from `r-1`.
-    * If the previous element is a `startTime`,
-3. Increment overlap count for the affected range.
-4. Insert `startTime`
-   * If startTime already exists, increment its overlap count.  
+Define an array `self.cal` to store inserted elements and `self.cnt` to track the overlap count at each `startTime` index.
+ * The value in `self.cnt` at `startTime` represents the total overlap count at that moment.
+ * The value in `self.cnt` at `endTime` indicates the number of events covered the current event.
+
+Solution: 
+1. Insert `endTime`.
+   * if it already exists, ignore it, as the number of overlapping events remain unchanged.
+   * if it doesn't exist, directly copy `self.cnt[r-1]` to `self.cnt[r]`, as explained below:
+      * If `self.cal[r-1]` is a `startTime`, the current event must overlap with the previous one.
         
-        * the overlap count of `endTime` remains unchanged in this step.
-   
-   * Insert startTime and set its count based on the previous interval.
-        * If startTime doesn't exist, copy overlap count from index `l-1` and increase it.
-        * Since the `endTime` remains unchanged in each step,
-        
+        Copy `self.cnt[r-1]` to `self.cnt[r]` since there are now `self.cnt[r-1]` events now cover the current event.
+      * If `self.cal[r-1]` is an `endTime`, the current event does not overlap with it but overlaps with the events covered by the previous event.
+    
+        Similarly, copy `self.cnt[r-1]` to `self.cnt[r]` since there are now `self.cnt[r-1]` events now cover the current event.
+
+2. Increment the overlap count for the affected range.
+3. Insert `startTime`.
+    * If `startTime` already exists, increment its overlap count.
+    * If `startTime` does not exist, directly copy `self.cnt[l-1]` to `self.cnt[l]` and increase it by `1`, explained as follows:
+
+      * If `self.cal[l-1]` is a startTime, the current event must overlap with the previous one.
+
+        Copy `self.cnt[l-1]` to `self.cnt[l]` and increment it by `1`, as there are `self.cnt[l-1] + 1` events now cover the current event.
+
+      * If `self.cal[l-1]` is an endTime, the current event does not overlap with it but overlaps with the events covered by the previous event.
+
+        Similarly, copy `self.cnt[l-1]` to `self.cnt[l]` and increment it by `1`, as there are `self.cnt[l-1] + 1` events now cover the current event.
+
 
 Example: 
 ```
@@ -4118,37 +4135,47 @@ Input:
 
 Step 1:
     Insert [1,2]
-    self.cal: [0, inf]
-    self.cnt: [0, 0]
-    l: 1 r: 1
-    self.cal: [0, 1, 2, inf]
-    self.cnt: [0, 1, 0, 0]
+    Before: 
+        self.cal: [0, inf]
+        self.cnt: [0, 0]
+        l: 1 r: 1
+    After:
+        self.cal: [0, 1, 2, inf]
+        self.cnt: [0, 1, 0, 0]
 Step 2:
     Insert [1,3]
-    self.cal: [0, 1, 2, inf]
-    self.cnt: [0, 1, 0, 0]
-    l: 2 r: 3
-    self.cal: [0, 1, 2, 3, inf]
-    self.cnt: [0, 2, 1, 0, 0]
+    Before: 
+        self.cal: [0, 1, 2, inf]
+        self.cnt: [0, 1, 0, 0]
+        l: 2 r: 3
+    After:
+        self.cal: [0, 1, 2, 3, inf]
+        self.cnt: [0, 2, 1, 0, 0]
 Step 3:
     Insert [3,8]
-    self.cal: [0, 1, 2, 3, inf]
-    self.cnt: [0, 2, 1, 0, 0]
-    l: 4 r: 4
-    self.cal: [0, 1, 2, 3, 8, inf]
-    self.cnt: [0, 2, 1, 1, 0, 0]
+    Before: 
+        self.cal: [0, 1, 2, 3, inf]
+        self.cnt: [0, 2, 1, 0, 0]
+        l: 4 r: 4
+    After:
+        self.cal: [0, 1, 2, 3, 8, inf]
+        self.cnt: [0, 2, 1, 1, 0, 0]
 Step 4:
     Insert [2,3]
-    self.cal: [0, 1, 2, 3, 8, inf]
-    self.cnt: [0, 2, 1, 1, 0, 0]
-    l: 3 r: 3
-    self.cal: [0, 1, 2, 3, 8, inf]
-    self.cnt: [0, 2, 2, 1, 0, 0]
+    Before: 
+        self.cal: [0, 1, 2, 3, 8, inf]
+        self.cnt: [0, 2, 1, 1, 0, 0]
+        l: 3 r: 3
+    After:
+        self.cal: [0, 1, 2, 3, 8, inf]
+        self.cnt: [0, 2, 2, 1, 0, 0]
 Step 5:
     Insert [2,4]
-    self.cal: [0, 1, 2, 3, 8, inf]
-    self.cnt: [0, 2, 2, 1, 0, 0]
-    l: 3 r: 4
+    Before: 
+        self.cal: [0, 1, 2, 3, 8, inf]
+        self.cnt: [0, 2, 2, 1, 0, 0]
+        l: 3 r: 4
+    Overlap check failed, return false.
 ```
 
 Example usage of `bisect_right` and `bisect_left`:
@@ -4227,7 +4254,7 @@ class MyCalendarTwo:
         for i in range(l, r): 
             self.cnt[i] += 1
 
-        # If startTime already exists, increment its overlap count
+        # Insert `startTime`
         if startTime == self.cal[l - 1]: 
             self.cnt[l - 1] += 1
         else:
@@ -4238,6 +4265,34 @@ class MyCalendarTwo:
         # print(f"self.cnt: {self.cnt}")
         return True
 ```
+#### Complexity Analysis
+* Time Complexity: 
+  * Find insertion positions for startTime and endTime
+    
+    Both `bisect_right` and `bisect_left` have a time complexity of $O(\log n)$.
+  * Check if the new booking would cause a triple booking
+
+    In the worst case, it traverses all elements in the `self.cnt` array, resulting in a time complexity of $O(n)$.
+  * Insert `endTime` to `self.cal` and `self.cnt` if it not exists  
+
+    If the condition is `true`, the `insert` method takes $O(n)$ time.
+  * Increment overlap count for the affected range
+  
+    In the worst case, it traverses all elements in the `self.cnt` array, resulting in a time complexity of $O(n)$.
+
+  * Insert `startTime`
+  
+    If `startTime` is not found, the `insert` method takes $O(n)$ time.
+    
+  For each booking, the time complexity is $O(n)$ in the worst case due to the insertion and potential shifting of elements in the list dominate the overall time.
+
+  For `n` bookings, the total time complexity would be $O(n^2)$ in the worst case.
+
+* Space Complexity: $O(n)$
+  * Both `self.cal` and `sel.cnt` requires $O(n)$ space where `n` is the number of bookings.
+
+  Thus, the space complexity is $O(n)$.
+
 #### Java Implementation
 ```java
 import java.util.ArrayList;
@@ -4257,29 +4312,29 @@ class MyCalendarTwo {
     }
 
     public boolean book(int startTime, int endTime) {
-        // Find insertion points using binary search
+        // Find insertion positions for startTime and endTime
         int l = bisectRight(cal, startTime);  // Position where startTime fits
         int r = bisectLeft(cal, endTime);     // Position where endTime fits
 
-        // Check for triple overlap in the affected range
+        // Check if the new booking would cause a triple booking
         for (int i = l - 1; i < r; i++) {
             if (cnt.get(i) >= 2) {
                 return false;
             }
         }
 
-        // Insert endTime if it’s not already in cal
+        // Insert `endTime` to `self.cal` and `self.cnt` if it not exists  
         if (endTime < cal.get(r)) {
             cal.add(r, endTime);
             cnt.add(r, cnt.get(r - 1));
         }
 
-        // Increment overlap counts in the range [l, r)
+        // Increment overlap count for the affected range
         for (int i = l; i < r; i++) {
             cnt.set(i, cnt.get(i) + 1);
         }
 
-        // Handle startTime: increment previous count or insert new point
+        // Insert `startTime`
         if (startTime == cal.get(l - 1)) {
             cnt.set(l - 1, cnt.get(l - 1) + 1);
         } else {
@@ -4321,115 +4376,156 @@ class MyCalendarTwo {
     }
 }
 ```
+#### Complexity Analysis
+* Time Complexity: 
+  * Find insertion positions for startTime and endTime
+    
+    Both `bisectRight` and `bisectLeft` have a time complexity of $O(\log n)$.
+  * Check if the new booking would cause a triple booking
+
+    In the worst case, it traverses all elements in the `cnt` array, resulting in a time complexity of $O(n)$.
+  * Insert `endTime` to `cal` and `cnt` if it not exists  
+
+    If the condition is `true`, the `insert` method takes $O(n)$ time.
+  * Increment overlap count for the affected range
+  
+    In the worst case, it traverses all elements in the `cnt` array, resulting in a time complexity of $O(n)$.
+
+  * Insert `startTime`
+  
+    If `startTime` is not found, the `insert` method takes $O(n)$ time.
+    
+  For each booking, the time complexity is $O(n)$ in the worst case due to the insertion and potential shifting of elements in the list dominate the overall time.
+
+  For `n` bookings, the total time complexity would be $O(n^2)$ in the worst case.
+
+* Space Complexity: $O(n)$
+  * Both `cal` and `cnt` requires $O(n)$ space where `n` is the number of bookings.
+
+  Thus, the space complexity is $O(n)$.
 
 ### Segment Tree Solution
-A segment tree is used to store ranges efficiently. Below is the process to insert a new range node into the tree.
+Use a segment tree to efficiently store events. 
 
-Use `O` to indicate the presence of a range to the left or right of the current node, 
-`X` to indicate no range to the left or right, 
-`start` for the start of new range, and `end` for the end of the new range.
+Define a fixed node `root` to represent the root event in the tree.
+* Use `O` to denote the presence of a range to the left or right of the current node, 
+`X` to denote the absence of such a range, 
+* Use `start` for the start of a new range, and `end` for the end of the new range.
 
-* If the new range does not overlap with the current node `cur`, continue comparing it with `cur.left` or `cur.right` until a `null` location is found for insertion or further overlap occurs, requiring another split.  
+Solution:  
+
+When a new booking event arrives, recursively check the left and right nodes from `root`.
+
+  * If the new range does not overlap with the current node `node`, continue comparing it with `node.left` or `node.right` until a `null` location is found for insertion or further overlap occurs, requiring another split.  
     Example:   
-    * If the new range is to the left of `cur`, and `cur.left` exits, continue comparing 
+    * If the new range is to the left of `node`, and `node.left` exits, continue comparing 
         ```
-                        O [cur.start, cur.end] X   
+                        O [node.start, node.end] X   
         [start, end]  
         ```
-    * If the new range is to the left of `cur`, and `cur.left` is `null`, insert `[start, end]` there.
+    * If the new range is to the left of `node`, and `node.left` is `null`, insert `[start, end]` there.
         ```
-                        X [cur.start, cur.end] O   
+                        X [node.start, node.end] O   
         [start, end]  
         ```
-* If the new range overlaps with `cur`, split the two ranges into three parts, set the middle range as the new `cur` and compare the left range with `cur.left` and the right range with `cur.right` until a `null` location is found for insertion or further overlap occurs, requiring another split.    
+  * If the new range overlaps with `node`, split the two ranges into three parts, set the middle range as the new `node` and compare the left range with `node.left` and the right range with `node.right` until a `null` location is found for insertion or further overlap occurs, requiring another split.    
 
     Example: 
     ```
     [start, end]
-       X [cur.start, cur.end] O
+       X [node.start, node.end] O
     ```
-    Seperate the above two ranges into three ranges: `[start, cur.start]`, `[cur.start, end]`, and `[end, cur.end]`.  
-    If the `cur.left` or `cur.right` exits, compare `[start, cur.start]` with `cur.left` or `[end, cur.end]` with `cur.right` until a `null` location is found for insertion or another split is needed.
+    Seperate the above two ranges into three ranges: `[start, node.start]`, `[node.start, end]`, and `[end, node.end]`.  
+    If the `node.left` or `node.right` exits, compare `[start, node.start]` with `node.left` or `[end, node.end]` with `node.right` until a `null` location is found for insertion or another split is needed.
 
 
 #### Pyton3 Implementation
 ```python
 class SegmentTree:
     def __init__(self, startTime, endTime):
-        self.left=None
-        self.right=None
-        self.overlap=False
-        self.startTime=startTime
-        self.endTime=endTime
+        self.left = None
+        self.right = None
+        self.overlap = False
+        self.startTime = startTime
+        self.endTime = endTime
 
 class MyCalendarTwo:
     def __init__(self):
-        self.tree=None
+        self.root = None
 
     def book(self, startTime, endTime):
-        if not self.insertable(self.tree, startTime, endTime):
-            return False  # Avoid checking itself
-        self.tree =self.insert(self.tree, startTime, endTime)
+        # Check if the new event can be booked
+        if not self.insertable(self.root, startTime, endTime):
+            return False  
+        # Insert the new event into the tree
+        self.root = self.insert(self.root, startTime, endTime)
         return True
 
     def insertable(self, node, startTime, endTime):
+        # If the range is invalid, it's always insertable
         if startTime >= endTime: 
             return True
         if node is None: 
             return True
-        # If the new element is on the right
+        # Check if the new event is on the right side
         if startTime >= node.endTime:
             return self.insertable(node.right, startTime, endTime)
-        # If the new element is on the left
+        # Check if the new event is on the left side
         elif endTime <= node.startTime:
             return self.insertable(node.left, startTime, endTime)
-        # If the two elements overlap
+        # If there's an overlap, return False
         else:
-            # 26 32, 32 35                              26 32
-            # 25 26, 26 32, 32 35                       25 32
-            # 18 25, 25 26, 26 32, 32 35                18 26
-            # 18 25, 25 26, 26 32, 32 35, 40 45         40 45
-            # 18 19, 25 26, 25 26, 26 32, 32 35, 40 45  19 26
-
-
             if node.overlap: 
                 return False
-            # if startTime>node.startTime and endTime<node.endTime:
-            #     return True
-            return (self.insertable(node.left, startTime, node.startTime) and self.insertable(node.right, node.endTime, endTime))
+            # Recursively check the left and right subtrees for insertability
+            return (self.insertable(node.left, startTime, node.startTime) and 
+                    self.insertable(node.right, node.endTime, endTime))
 
     def insert(self, node, startTime, endTime):
-        if startTime >= endTime: return node  # ?
-        if node is None: return SegmentTree(startTime, endTime) # ?
-
-        # [[],[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]]
-        # 10 20 <- [50,60]
-        # 10 20, 50 60  <- [10,40]
-        # 10 20, 20 40, 50 60  <- [5,15]
-        # 5 10, 10 15, 15 20, 20 40, 50 60  <- [5,10]
-
-        # If the new element is on the right
+        # If the range is invalid, return the node as is
+        if startTime >= endTime: 
+            return node  
+        # Create a new node if the current one is None
+        if node is None: 
+            return SegmentTree(startTime, endTime) 
+        # If the new event is on the right side, insert it there
         if startTime >= node.endTime:
-            node.right=self.insert(node.right, startTime, endTime)
-        # If the new element is on the left
+            node.right = self.insert(node.right, startTime, endTime)
+        # If the new event is on the left side, insert it there
         elif endTime <= node.startTime:
-            node.left=self.insert(node.left, startTime, endTime)
-        # If the two elements overlap
+            node.left = self.insert(node.left, startTime, endTime)
+        # If there's an overlap, mark the current node and split the range
         else:
-            node.overlap=True
+            node.overlap = True
+            # Merge ranges if necessary
             a = min(startTime, node.startTime)
             b = max(startTime, node.startTime)
             c = min(endTime, node.endTime)
             d = max(endTime, node.endTime)
-            # newNode= SegmentTree(b,c)
-            node.left=self.insert(node.left,a,b)
-            node.right=self.insert(node.right,c,d)
-            node.startTime=b
-            node.endTime=c
-            # print(f"test4, overlap: {node.overlap}")
+            node.left = self.insert(node.left, a, b)
+            node.right = self.insert(node.right, c, d)
+            node.startTime = b
+            node.endTime = c
         return node  
 ```
+#### Complexity Analysis
+* Time Complexity: $O(n\log n)$ (Base Case) or $O(n^2)$ (Worst Case)
+    * `insertable` method
 
+        This method traverses the tree until a `null` location is found or range overlaps.
+        * In the best case (when the tree is balanced), each recursive call halves the search space, leading to a logarithmic time complexity of $O(\log n)$.
+        * In the worst case, the tree is like a linked list, resulting in a time complexity of $O(n)$.
+    * `insert` method
+
+        Similar to `insertable`, it has a time complexity of $O(\log n)$ or $O(n)$.
+
+    The overall time complexity for `n` bookings is $O(n\log n)$ (Base Case) or $O(n^2)$ (Worst Case).
+
+* Space Complexity: $O(\log n)$ (Best Case) or $O(n)$ (Worst Case)
+
+    The stack depth depends on the segment tree's depth, requiring $(\log n)$ in the base case for a balanced tree, and $(n)$ space in the worst case when the tree degenerates into a linked list.
+
+    Thus, the overall space complexity is $O(\log n)$ (Best Case) or $O(n)$ (Worst Case).
 #### Java Implementation
 ```java
 class MyCalendarTwo {
@@ -4457,28 +4553,28 @@ class MyCalendarTwo {
     }
 
     /**
-     * Check the location of the current range relative to the `cur`.
+     * Check the location of the current range relative to the `node`.
      */
-    private boolean insertable(int start, int end, SegmentTree cur) {
+    private boolean insertable(int start, int end, SegmentTree node) {
         if (start >= end) return true;
-        if (cur == null) return true;
-        if (start >= cur.end) { 
+        if (node == null) return true;
+        if (start >= node.end) { 
             // Check right side
-            return insertable(start, end, cur.right);
-        } else if (end <= cur.start) { 
+            return insertable(start, end, node.right);
+        } else if (end <= node.start) { 
             // check left side
-            return insertable(start, end, cur.left);
+            return insertable(start, end, node.left);
         } else { 
-            // Ignore the current range if the `cur` node is already overlapped
-            if (cur.overlap) { 
+            // Ignore the current range if the `node` node is already overlapped
+            if (node.overlap) { 
                 return false;
             } else { 
-                // The current range from `start` to `end` is within the `cur` range
-                if (start >= cur.start && end <= cur.end) { 
+                // The current range from `start` to `end` is within the `node` range
+                if (start >= node.start && end <= node.end) { 
                     return true;
                 } else { 
                     // Check left and right side
-                    return insertable(start, cur.start, cur.left) && insertable(cur.end, end, cur.right);
+                    return insertable(start, node.start, node.left) && insertable(node.end, end, node.right);
                 }
             }
         }
@@ -4487,60 +4583,64 @@ class MyCalendarTwo {
     /**
      * Insert the current range to a `null` location or split it if overlapping.
      */
-    private SegmentTree insert(int start, int end, SegmentTree cur) {
+    private SegmentTree insert(int start, int end, SegmentTree node) {
         if (start >= end) 
-            return cur;
-        if (cur == null) 
+            return node;
+        if (node == null) 
             return new SegmentTree(start, end);
         
-        if (start >= cur.end) { 
-            // The curreng range is positioned to right of the `cur` node
-            cur.right = insert(start, end, cur.right);
-        } else if (end <= cur.start) { 
-            // The curreng range is positioned to left of the `cur` node
-            cur.left = insert(start, end, cur.left);
+        if (start >= node.end) { 
+            // The current range is positioned to right of the `node` node
+            node.right = insert(start, end, node.right);
+        } else if (end <= node.start) { 
+            // The current range is positioned to left of the `node` node
+            node.left = insert(start, end, node.left);
         } else {
-            cur.overlap = true;
+            node.overlap = true;
             //    L1   R1        start, end
-            //      L2    R2     cur.start, cur.end
+            //      L2    R2     node.start, node.end
             // [L1, L2] - [L2, R1] - [R1,R2]
 
-            int a = Math.min(cur.start, start);
-            int b = Math.max(cur.start, start);
+            int a = Math.min(node.start, start);
+            int b = Math.max(node.start, start);
 
-            int c = Math.min(cur.end, end);
-            int d = Math.max(cur.end, end);
+            int c = Math.min(node.end, end);
+            int d = Math.max(node.end, end);
             // Range1: [a,b] 
             // Range2: [b,c] 
             // Range3: [c,d] 
 
-            // One of the ranges [a,b] or [c,d] must overlap with `cur`.
-            // and it will continue to be compared with a neighboring node of `cur`.
-            cur.left = insert(a, b, cur.left);
-            cur.right = insert(c, d, cur.right);
+            // One of the ranges [a,b] or [c,d] must overlap with `node`.
+            // and it will continue to be compared with a neighboring node of `node`.
+            node.left = insert(a, b, node.left);
+            node.right = insert(c, d, node.right);
             
-            cur.start = b;
-            cur.end = c;
+            node.start = b;
+            node.end = c;
         }
         
-        return cur;
+        return node;
     }
 }
 ```
 #### Complexity Analysis
-* Time Complexity: $O(m \times n)$
+* Time Complexity: $O(n\log n)$ (Base Case) or $O(n^2)$ (Worst Case)
     * `insertable` method
-        This method traverse the tree until a `null` location is found or range overlaps.
-        * If the tree is balanced, each search halves the search time, resulting in a time complexity of $O(\log n)$.
+
+        This method traverses the tree until a `null` location is found or range overlaps.
+        * In the best case (when the tree is balanced), each recursive call halves the search space, leading to a logarithmic time complexity of $O(\log n)$.
         * In the worst case, the tree is like a linked list, resulting in a time complexity of $O(n)$.
     * `insert` method
-        Similar to `insertable`, this method need to traverse the tree until a `null` location is found or range overlaps, then perform constant-time split and reset operation, resulting in a time complexity of $O(n)$.
 
-    For `m` bookings, the total time complexity is $O(m \times n)$.
-* Space Complexity: $O(n)$
+        Similar to `insertable`, it has a time complexity of $O(\log n)$ or $O(n)$.
 
-    The stack depth depends on the segment tree's depth, requiring $(n)$ space in the worst case when the tree degenerates into a linked list.
-    Thus, the overall space complexity is $O(n)$.
+    The overall time complexity for `n` bookings is $O(n\log n)$ (Base Case) or $O(n^2)$ (Worst Case).
+
+* Space Complexity: $O(\log n)$ (Best Case) or $O(n)$ (Worst Case)
+
+    The stack depth depends on the segment tree's depth, requiring $(\log n)$ in the base case for a balanced tree, and $(n)$ space in the worst case when the tree degenerates into a linked list.
+
+    Thus, the overall space complexity is $O(\log n)$ (Best Case) or $O(n)$ (Worst Case).
 
 ## 33. Graph Connectivity With Threshold
 [Back to Top](#table-of-contents)  
