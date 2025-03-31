@@ -89,7 +89,7 @@
 ## 1. Array Partition
 [Back to Top](#table-of-contents)  
 ### Source
-https://leetcode.cn/problems/array-partition/
+https://leetcode.com/problems/array-partition/
 ### Array Solution
 In each group, the larger integer will be omitted, and we need to maximize the `sum`.
 Therefore, The omitted value must be smaller.
@@ -126,7 +126,7 @@ Note that the space complexity of `Arrays.sort` is:
 ## 2. Add Edges to Make Degrees of All Nodes Even
 [Back to Top](#table-of-contents)
 ### Source
-https://leetcode.cn/problems/add-edges-to-make-degrees-of-all-nodes-even/
+https://leetcode.com/problems/add-edges-to-make-degrees-of-all-nodes-even/
 ### Conditional Logic Solution
 To make all node degrees in the graph even by adding only two edges, the following conditions must be met:
 * The number of nodes with odd degrees must be even and cannot exceed 4.
@@ -205,41 +205,8 @@ class Solution {
 
 ## 3. Amount of Time for Binary Tree to Be Infected
 [Back to Top](#table-of-contents)
-### Overview
-You are given the `root` of a binary tree with unique values, and an integer `start`. 
-At minute `0`, an infection starts from the node with value `start`.
-
-Each minute, a node becomes infected if:
-* The node is currently uninfected.
-* The node is adjacent to an infected node.
-Return the number of minutes needed for the entire tree to be infected.
-
-**Example 1:**
-
-![aoftfbttb1](assets/Algorithms/aoftfbttb1.png)
-> **Input:** root = [1,5,3,null,4,10,6,9,2], start = 3  
-> **Output:** 4  
-> **Explanation:** The following nodes are infected during:  
-    - Minute 0: Node 3  
-    - Minute 1: Nodes 1, 10 and 6  
-    - Minute 2: Node 5  
-    - Minute 3: Node 4  
-    - Minute 4: Nodes 9 and 2  
-    It takes 4 minutes for the whole tree to be infected so we return 4.
-
-**Example 2:**
-
-![aoftfbttb2](assets/Algorithms/aoftfbttb2.png)
-> **Input:** root = [1], start = 1  
-> **Output:** 0  
-> **Explanation:** At minute 0, the only node in the tree is infected so we return 0.
-
-**Constraints:**
-* The number of nodes in the tree is in the range `[1, 10^5]`.
-* `1 <= Node.val <= 10^5`
-* Each node has a unique value.
-* A node with a value of `start` exists in the tree.
-
+### Source
+https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
 ### Depth-first Search Solution
 The number of minutes required to infect the entire tree corresponds to the longest infection path starting from the node with the value `start`. 
 
@@ -414,33 +381,8 @@ class Solution {
     Therefore, the overall space complexity of the solution is $O(n)$.
 
 ## 4. Search in Rotated Sorted Array
-### Overview
-There is an integer array `nums` sorted in ascending order (with distinct values).
-
-Prior to being passed to your function, `nums` is **possibly rotated** at an unknown pivot index `k` (`1 <= k < nums.length`) such that the resulting array is `[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]` (0-indexed). 
-For example, `[0,1,2,4,5,6,7]` might be rotated at pivot index `3` and become `[4,5,6,7,0,1,2]`.
-
-Given the array `nums` after the possible rotation and an integer `target`, return the index of `target` if it is in `nums`, or `-1` if it is not in `nums`.
-
-**Example 1:**
-> **Input:** nums = [4,5,6,7,0,1,2], target = 0  
-> **Output:** 4
-
-**Example 2:**
-> **Input:** nums = [4,5,6,7,0,1,2], target = 3  
-> **Output:** -1
-
-**Example 3:**
-> **Input:** nums = [1], target = 0  
-> **Output:** -1
-
-**Constraints:**
-* `1 <= nums.length <= 5000`
-* `-10^4 <= nums[i] <= 10^4`
-* All values of `nums` are unique.
-* `nums` is an ascending array that is possibly rotated.
-* `-10^4 <= target <= 10^4`
-
+### Source
+https://leetcode.com/problems/search-in-rotated-sorted-array/
 ### Analysis
 Since the original array is sorted in ascending order, even if it is rotated, splitting the array into two parts around the central element ensures that one part will always be sorted.  
 Define a central element `pivot`.  
@@ -496,33 +438,8 @@ class Solution {
 
 ## 5. Jump Game VII
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a 0-indexed binary string `s` and two integers `minJump` and `maxJump`. 
-In the beginning, you are standing at index `0`, which is equal to `'0'`. 
-You can move from index `i` to index `j` if the following conditions are fulfilled:
-* `i + minJump <= j <= min(i + maxJump, s.length - 1)`, and
-* `s[j] == '0'`. 
-
-Return true if you can reach index `s.length - 1` in `s`, or `false` otherwise.
-
-**Example 1:**
-
-> **Input:** s = "011010", minJump = 2, maxJump = 3  
-> **Output:** true  
-> **Explanation:**  
-> In the first step, move from index 0 to index 3.   
-> In the second step, move from index 3 to index 5.
-
-**Example 2:** 
-
-> **Input:** s = "01101110", minJump = 2, maxJump = 3  
-> **Output:** false
-
-**Constraints:** 
-* `2 <= s.length <= 10^5`
-* `s[i]` is either `'0'` or `'1'`.
-* `s[0] == '0'`
-* `1 <= minJump <= maxJump < s.length`
+### Source
+https://leetcode.com/problems/jump-game-vii/
 
 ### Analysis
 The `minJump` and `maxJump` define the reachable range for each index `i` in the string `s`. 
@@ -701,30 +618,8 @@ class Solution {
 
 ## 6. Climbing Stairs
 [Back to Top](#table-of-contents)  
-### Overview
-You are climbing a staircase. It takes `n` steps to reach the top.
-
-Each time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?
-
-**Example 1:**
-> **Input:** n = 2  
-> **Output:** 2  
-> **Explanation:** There are two ways to climb to the top.
-> 1. 1 step + 1 step  
-> 2. 2 steps
-
-**Example 2:**
-> **Input:** n = 3  
-> **Output:** 3  
-> **Explanation:** There are three ways to climb to the top.  
-> 1. 1 step + 1 step + 1 step  
-> 2. 1 step + 2 steps  
-> 3. 2 steps + 1 step
-
-
-**Constraints:**
-* `1 <= n <= 45`
-
+### Source
+https://leetcode.com/problems/climbing-stairs/
 ### Analysis
 Here is a simple example when `n=5`:
 ```text
@@ -769,31 +664,8 @@ class Solution {
 * Space Complexity: $O(1)$
 ## 7. Count All Valid Pickup and Delivery Options
 [Back to Top](#table-of-contents)  
-### Overview
-Given `n` orders, each order consists of a pickup and a delivery service.
-
-Count all valid pickup/delivery possible sequences such that delivery(i) is always after of pickup(i). 
-
-Since the answer may be too large, return it modulo 10^9 + 7.
-
-**Example 1:**
-> **Input:** n = 1  
-> **Output:** 1  
-> **Explanation:** Unique order (P1, D1), Delivery 1 always is after of Pickup 1.
-
-**Example 2:**
-> **Input:** n = 2  
-> **Output:** 6  
-> **Explanation:** All possible orders:   
-(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).  
-This is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.
-
-**Example 3:**
-> **Input:** n = 3  
-> **Output:** 90
-
-**Constraints:**
-* `1 <= n <= 500`
+### Source
+https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
 ### Analysis
 When `n=2`, the following are all possible combinations:
 ```text
@@ -859,51 +731,8 @@ class Solution {
 
 ## 8. Decode Ways II
 [Back to Top](#table-of-contents)  
-### Overview
-A message containing letters from `A-Z` can be encoded into numbers using the following mapping:
-```text
-'A' -> "1"
-'B' -> "2"
-...
-'Z' -> "26"
-```
-To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped into:
-
-`"AAJF"` with the grouping `(1 1 10 6)`
-`"KJF"` with the grouping `(11 10 6)`
-Note that the grouping `(1 11 06)` is invalid because `"06"` cannot be mapped into `'F'` since `"6"` is different from `"06"`.
-
-In addition to the mapping above, an encoded message may contain the `'*'` character, which can represent any digit from '1' to '9' ('0' is excluded). For example, the encoded message "1*" may represent any of the encoded messages `"11"`, `"12"`, `"13"`, `"14"`, `"15"`, `"16"`, `"17"`, `"18"`, or `"19"`. Decoding `"1*"` is equivalent to decoding any of the encoded messages it can represent.
-
-Given a string `s` consisting of digits and `'*'` characters, return the **number** of ways to **decode** it.
-
-Since the answer may be very large, return it **modulo** $10^9+7$.
-
-**Example 1:**
-> **Input:** s = "*"  
-> **Output:** 9  
-> **Explanation:** The encoded message can represent any of the encoded messages "1", "2", "3","4", "5", "6", "7", "8", or "9".  
-> Each of these can be decoded to the strings "A", "B", "C", "D", "E", "F", "G", "H", and"I" respectively.  
-> Hence, there are a total of 9 ways to decode "*".  
-
-**Example 2:**
-> **Input:** s = "1*"  
-> **Output:** 18  
-> **Explanation:** The encoded message can represent any of the encoded messages "11", "12", "13", "14", "15", "16", "17", "18", or "19".  
-> Each of these encoded messages have 2 ways to be decoded (e.g. "11" can be decoded to "AA" or "K").  
-> Hence, there are a total of 9 * 2 = 18 ways to decode "1*".
-
-**Example 3:**
-> **Input:** s = "2*"  
-> **Output:** 15  
-> **Explanation:**  
-> The encoded message can represent any of the encoded messages "21", "22","23", "24", "25", "26", "27", "28", or "29".  
-> "21", "22", "23", "24", "25", and "26" have 2 ways of being decoded, but "27", "28", and"29" only have 1 way.  
-> Hence, there are a total of (6 * 2) + (3 * 1) = 12 + 3 = 15 ways to decode "2*".
-
-**Constraints:**
-* `1 <= s.length <= 10^5`
-* `s[i]` is a digit or `'*'`.
+### Source
+https://leetcode.com/problems/decode-ways-ii/
 ### Analysis
 Here is a random example to demonstrate the decode process:
 ```text
@@ -1029,30 +858,8 @@ class Solution {
 
 ## 9. Make the XOR of All Segments Equal to Zero
 [Back to Top](#table-of-contents)  
-### Overview
-You are given an array `nums` and an integer `k`. The `XOR` of a segment `[left, right]` where `left <= right` is the `XOR` of all the elements with indices between `left` and `right`, inclusive: `nums[left] XOR nums[left+1] XOR ... XOR nums[right]`.
-
-Return the minimum number of elements to change in the array such that the `XOR` of all segments of size `k` is equal to zero.
-
-**Example 1:**
-> **Input:** nums = [1,2,0,3,0], k = 1  
-> **Output:** 3  
-> **Explanation:** Modify the array from [1,2,0,3,0] to from [0,0,0,0,0].
-
-**Example 2:**
-> **Input:** nums = [3,4,5,2,1,7,3,4,7], k = 3  
-> **Output:** 3  
-> **Explanation:** Modify the array from [3,4,5,2,1,7,3,4,7] to [3,4,7,3,4,7,3,4,7].
-
-**Example 3:**
-> **Input:** nums = [1,2,4,1,2,5,1,2,6], k = 3  
-> **Output:** 3  
-> **Explanation:** Modify the array from [1,2,4,1,2,5,1,2,6] to [1,2,3,1,2,3,1,2,3].
-
-**Constraints:**
-* `1 <= k <= nums.length <= 2000`
-* `0 <= nums[i] < 2^10`
-
+### Source
+https://leetcode.com/problems/make-the-xor-of-all-segments-equal-to-zero/
 ### Dynamic Programming Solution
 Since the `XOR` result of any segments with a length `k` equals `0`, for index `i`, the following holds:
 $$nums[i] \oplus nums[i+1] \oplus ... \oplus nums[i+k-1] =0$$
@@ -1246,53 +1053,8 @@ class Solution {
 
 ## 10. Maximize Value of Function in a Ball Passing Game
 [Back to Top](#table-of-contents)  
-### Overview
-You are given an integer array `receiver` of length `n` and an integer `k`. 
-`n` players are playing a ball-passing game.
-
-You choose the starting player, `i`. The game proceeds as follows:   
-
-player `i` passes the ball to player `receiver[i]`, who then passes it to `receiver[receiver[i]]`, 
-and so on, for `k` passes in total. The game's score is the sum of the indices of the players who touched the ball, 
-including repetitions, i.e. `i + receiver[i] + receiver[receiver[i]] + ... + receiver(k)[i]`.
-
-Return the `maximum` possible score.
-
-**Notes:**
-* `receiver` may contain duplicates.
-
-* `receiver[i]` may be equal to `i`.
-
-
-**Example 1:**
-> **Input:** `receiver = [2, 0, 1]`, `k = 4`  
-> **Output:** `6`  
-> **Explanation:**  
-> Starting with player `i = 2`, the initial score is `2`.
-> | Pass | Sender Index | Receiver Index | Score |
-> |------|--------------|----------------|-------|
-> | 1    | 2            | 1              | 3     |
-> | 2    | 1            | 0              | 3     |
-> | 3    | 0            | 2              | 5     |
-> | 4    | 2            | 1              | 6     |
-
-**Example 2:**
-> **Input:** `receiver = [1, 1, 1, 2, 3]`, `k = 3`  
-> **Output:** `10`  
-> **Explanation:**  
-> Starting with player `i = 4`, the initial score is `4`.  
-> | Pass | Sender Index | Receiver Index | Score |
-> |------|--------------|----------------|-------|
-> | 1    | 4            | 3              | 7     |
-> | 2    | 3            | 2              | 9     |
-> | 3    | 2            | 1              | 10    |
-
-**Constraints:**
-* `1 <= receiver.length == n <= 10^5`
-
-* `0 <= receiver[i] <= n - 1`
-
-* `1 <= k <= 10^10`
+### Source
+https://leetcode.com/problems/maximize-value-of-function-in-a-ball-passing-game/
 ### Analysis
 Using simple enumeration, we can calculate the sum at each index and compare them to determine the maximum sum.  
 However, calculating for each index involves a significant amount of repeat computation, resulting in very low performance, we need to minimize the number of passes and avoid redundant calculations.
@@ -1461,28 +1223,8 @@ class Solution {
         The other variables, such as `len`, `passCount`, `i`, `x`, `k`, `ctz`, `s`, and `ans`, require constant extra space.
 ## 11. Minimum Deletions to Make String Balanced
 [Back to Top](#table-of-contents)  
-You are given a string `s` consisting only of characters `'a'` and `'b'`.
-
-You can delete any number of characters in `s` to make `s` **balanced**. `s` is **balanced** if there is no pair of indices `(i,j)` such that `i < j` and `s[i] = 'b'` and `s[j]= 'a'`.
-
-Return the **minimum** number of deletions needed to make `s` **balanced**.
-
-
-**Example 1:**
-> **Input:** s = "aababbab"  
-> **Output:** 2  
-> **Explanation:** You can either:  
-Delete the characters at 0-indexed positions 2 and 6 ("aababbab" -> "aaabbb"), or  
-Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
-
-**Example 2:**
-> **Input:** s = "bbaaaaabb"  
-> **Output:** 2  
-> **Explanation:** The only solution is to delete the first two characters.
-
-**Constraints:**
-* 1 <= s.length <= 10^5
-* `s[i]` is `'a'` or `'b'`.
+### Source
+https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/
 
 ### Dynamic Programming Solution
 Define `f[i]` to represent the minimum deletions required for the first `i` characters of the string `s`. As we traverse the string `s`, the logic is as follows:
@@ -1522,38 +1264,8 @@ class Solution {
 
 ## 12. Stone Game
 [Back to Top](#table-of-contents)
-### Overview
-Alice and Bob play a game with piles of stones.
-There are an even number of piles arranged in a row, and each pile has a positive integer number of stones `piles[i]`.
-
-The objective of the game is to end with the most stones. The **total** number of stones across all the piles is **odd**,
-so there are no ties.
-
-Alice and Bob take turns, with Alice starting first. Each turn, a player takes the entire pile of stones either
-from the beginning or from the end of the row. This continues until there are no more piles left,
-at which point the person with the most stones wins.
-
-Assuming Alice and Bob play optimally, return true if Alice wins the game, or false if Bob wins.
-
-**Example 1:**
-> **Input:** piles = [5,3,4,5]  
-> **Output:** true  
-> **Explanation:**  
-    Alice starts first, and can only take the first 5 or the last 5.  
-    Say she takes the first 5, so that the row becomes [3, 4, 5].  
-    If Bob takes 3, then the board is [4, 5], and Alice takes 5 to win with 10 points.  
-    If Bob takes the last 5, then the board is [3, 4], and Alice takes 4 to win with 9 points.  
-    This demonstrated that taking the first 5 was a winning move for Alice, so we return true.
-
-**Example 2:** 
-> **Input:** piles = [3,7,2,3]  
-> **Output:** true
-
-**Constraints:**
-* `2 <= piles.length <= 500`
-* `piles.length` is even.
-* `1 <= piles[i] <= 500`
-* `sum(piles[i])` is odd.
+### Source
+https://leetcode.com/problems/stone-game/
 ### Depth-first Search Solution
 Recursively evaluate the `piles` array from both the start and end,
 using a flag variable `isAliceTurn` to track whose turn it is and only calculate the sum for Alice.  
@@ -1718,35 +1430,8 @@ class Solution {
 
 ## 13. Target Sum
 [Back to Top](#table-of-contents) 
-### Overview
-You are given an integer array `nums` and an integer `target`.  
-You want to build an expression out of nums by adding one of the symbols `'+'` and `'-'` 
-before each integer in nums and then concatenate all the integers.
-
-+ For example, if `nums = [2, 1]`, you can add a `'+'` before `2` and a `'-'` before `1` and concatenate 
-them to build the expression `"+2-1"`.
-+ Return the number of different expressions that you can build, which evaluates to target.
-
-**Example 1:**  
-> **Input:** nums = [1,1,1,1,1], target = 3  
-> **Output:** 5  
-> **Explanation:**  
-    There are 5 ways to assign symbols to make the sum of nums be target 3.  
-    -1 + 1 + 1 + 1 + 1 = 3  
-    +1 - 1 + 1 + 1 + 1 = 3  
-    +1 + 1 - 1 + 1 + 1 = 3  
-    +1 + 1 + 1 - 1 + 1 = 3  
-    +1 + 1 + 1 + 1 - 1 = 3  
-
-**Example 2:**
-> **Input:** nums = [1], target = 1  
-> **Output:** 1
-
-**Constraints:**
-* `1 <= nums.length <= 20`
-* `0 <= nums[i] <= 1000`
-* `0 <= sum(nums[i]) <= 1000`
-* `-1000 <= target <= 1000`
+### Source
+https://leetcode.com/problems/target-sum/
 ### Depth-first Search Solution
 Each element of the array nums can be added either a `+` or `-` sign, 
 resulting in `2` choices per element and a total of $2^n$ combinations for `n` elements.  
@@ -2056,54 +1741,8 @@ public class Solution {
 
 ## 14. Distribute Elements Into Two Arrays II
 [Back to Top](#table-of-contents) 
-### Overview
-You are given a **1-indexed** array of integers `nums` of length `len`.
-
-We define a function `greaterCount` such that `greaterCount(arr, val)` returns the number of elements in `arr` that are strictly greater than `val`.
-
-You need to distribute all the elements of `nums` between two arrays `arr1` and `arr2` using `len` operations. In the first operation, append `nums[1]` to `arr1`. In the second operation, append `nums[2]` to `arr2`. Afterwards, in the i<sup>th</sup> operation:
-
-* If `greaterCount(arr1, nums[i]) > greaterCount(arr2, nums[i])`, append `nums[i]` to `arr1`.
-* If `greaterCount(arr1, nums[i]) < greaterCount(arr2, nums[i])`, append `nums[i]` to `arr2`.
-* If `greaterCount(arr1, nums[i]) == greaterCount(arr2, nums[i])`, append `nums[i]` to the array with a lesser number of elements.
-* If there is still a tie, append `nums[i]` to `arr1`.
-
-The array result is formed by concatenating the arrays `arr1` and `arr2`. For example, if `arr1 == [1,2,3]` and `arr2 == [4,5,6]`, then `result = [1,2,3,4,5,6]`.
-
-Return the integer array `result`.
-
-**Example 1:**
-
-> **Input:** nums = [2,1,3,3]  
-> **Output:** [2,3,1,3]  
-> **Explanation:** After the first 2 operations, arr1 = [2] and arr2 = [1].  
-> In the 3rd operation, the number of elements greater than 3 is zero in both arrays. Also, the lengths are equal, hence, append nums[3] to arr1.  
-> In the 4th operation, the number of elements greater than 3 is zero in both arrays. As the length of arr2 is lesser, hence, append nums[4] to arr2.  
-> After 4 operations, arr1 = [2,3] and arr2 = [1,3].  
-> Hence, the array result formed by concatenation is [2,3,1,3].  
-
-**Example 2:**
-
-> **Input:** nums = [5,14,3,1,2]  
-> **Output:** [5,3,1,2,14]  
-> **Explanation:** After the first 2 operations, arr1 = [5] and arr2 = [14].  
-> In the 3rd operation, the number of elements greater than 3 is one in both arrays. Also, the lengths are equal, hence, append nums[3] to arr1.  
-> In the 4th operation, the number of elements greater than 1 is greater in arr1 than arr2 (2 > 1). Hence, append nums[4] to arr1.  
-> In the 5th operation, the number of elements greater than 2 is greater in arr1 than arr2 (2 > 1). Hence, append nums[5] to arr1.  
-> After 5 operations, arr1 = [5,3,1,2] and arr2 = [14].  
-> Hence, the array result formed by concatenation is [5,3,1,2,14].
-
-**Example 3:**
-
-> **Input:** nums = [3,3,3,3]  
-> **Output:** [3,3,3,3]  
-> **Explanation:** At the end of 4 operations, arr1 = [3,3] and arr2 = [3,3].  
-> Hence, the array result formed by concatenation is [3,3,3,3].
-
-**Constraints:**
-* `3 <= n <= 10^5`
-* `1 <= nums[i] <= 10^9`
-
+### Source
+https://leetcode.com/problems/distribute-elements-into-two-arrays-ii/
 ### Analysis
 Follow the problem description, the key point is to find the number of elements in array `nums` that are strictly greater than val.
 
@@ -2233,36 +1872,8 @@ class Solution {
 
 ## 15. Max Difference You Can Get From Changing an Integer
 [Back to Top](#table-of-contents)  
-### Overview
-
-You are given an integer `num`. You will apply the following steps exactly **two** times:
-* Pick a digit `x` `(0 <= x <= 9)`.
-* Pick another digit `y` `(0 <= y <= 9)`. The digit `y` can be equal to `x`.
-* Replace all the occurrences of `x` in the decimal representation of `num` by `y`.
-* The new integer **cannot** have any leading zeros, also the new integer **cannot** be 0.
-
-Let `a` and `b` be the results of applying the operations to `num` the first and second times, respectively.
-
-Return the max difference between `a` and `b`.
-
-**Example 1:**
-> **Input:** num = 555  
-> **Output:** 888  
-> **Explanation:**   
-The first time pick x = 5 and y = 9 and store the new integer in a.  
-The second time pick x = 5 and y = 1 and store the new integer in b.  
-We have now a = 999 and b = 111 and max difference = 888
-
-**Example 2:**
-> **Input:** num = 9  
-> **Output:** 8  
-> **Explanation:** The first time pick x = 9 and y = 9 and store the new integer in a.  
-The second time pick x = 9 and y = 1 and store the new integer in b.  
-We have now a = 9 and b = 1 and max difference = 8
-
-**Constraints:**
-
-* `1 <= num <= 10^8`
+### Source
+https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/
 
 ### Greedy Solution
 To find the maximum difference between `a` and `b`, we need to determine the maximum value  (`max`) and minimum value (`min`), where `a` and `b` can be any of these values.
@@ -2302,32 +1913,8 @@ class Solution {
 
 ## 16. Maximum Length of Subarray With Positive Product
 [Back to Top](#table-of-contents)
-### Overview
-Given an array of integers `nums`, find the maximum length of a subarray where the product of all its elements is positive.
-
-A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
-
-Return the maximum length of a subarray with positive product.
-
-**Example 1:**
-> **Input:** nums = [1,-2,-3,4]  
-> **Output:** 4  
-> **Explanation:** The array nums already has a positive product of 24.
-
-**Example 2:**
-> **Input:** nums = [0,1,-2,-3,-4]  
-> **Output:** 3  
-> **Explanation:** The longest subarray with positive product is [1,-2,-3] which has a product of 6.
-Notice that we cannot include 0 in the subarray since that'll make the product 0 which is not positive.
-
-**Example 3:**
-> **Input:** nums = [-1,-2,-3,0,1]  
-> **Output:** 2  
-> **Explanation:** The longest subarray with positive product is [-1,-2] or [-2,-3].
-
-**Constraints:**
-* `1 <= nums.length <= 10^5`
-* `-10^9 <= nums[i] <= 10^9`
+### Source
+https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/
 
 ### Greedy Solution
 Use two variables (`positiveLen` and `negativeLen`) to track the length of subarrays with positive and negative products:
@@ -2430,38 +2017,8 @@ class Solution {
 
 
 ## 17. Construct the Minimum Bitwise Array II
-### Overview
-You are given an array `nums` consisting of `n` prime integers.
-
-You need to construct an array `ans` of length `n`, such that, for each index `i`, the bitwise `OR` of `ans[i]` and `ans[i] + 1` is equal to `nums[i]`, i.e. `ans[i] OR (ans[i] + 1) == nums[i]`.
-
-Additionally, you must minimize each value of `ans[i]` in the resulting array.
-
-If it is not possible to find such a value for `ans[i]` that satisfies the condition, then set `ans[i] = -1`.
-
-**Example 1:**
-
-> **Input:** nums = [2,3,5,7]  
-> **Output:** [-1,1,4,3]  
-> **Explanation:**
-> * For `i = 0`, as there is no value for `ans[0]` that satisfies `ans[0] OR (ans[0] + 1) = 2`, so `ans[0] = -1`.
-> * For `i = 1`, the smallest `ans[1]` that satisfies `ans[1] OR (ans[1] + 1) = 3` is `1`, because `1 OR (1 + 1) = 3`.
-> * For `i = 2`, the smallest `ans[2]` that satisfies `ans[2] OR (ans[2] + 1) = 5` is `4`, because `4 OR (4 + 1) = 5`.
-> * For `i = 3`, the smallest `ans[3]` that satisfies `ans[3] OR (ans[3] + 1) = 7` is `3`, because `3 OR (3 + 1) = 7`.
-
-**Example 2:**
-> **Input:** nums = [11,13,31]  
-> **Output:** [9,12,15]  
-> **Explanation:**  
-> * For `i = 0`, the smallest `ans[0]` that satisfies `ans[0] OR (ans[0] + 1) = 11` is `9`, because `9 OR (9 + 1) = 11`.
-> * For `i = 1`, the smallest `ans[1]` that satisfies `ans[1] OR (ans[1] + 1) = 13` is `12`, because `12 OR (12 + 1) = 13`.
-> * For `i = 2`, the smallest `ans[2]` that satisfies `ans[2] OR (ans[2] + 1) = 31` is `15`, because `15 OR (15 + 1) = 31`.
-
-**Constraints:**
-* `1 <= nums.length <= 100`
-* `2 <= nums[i] <= 10^9`
-* `nums[i]` is a prime number.
-
+### Source
+https://leetcode.com/problems/construct-the-minimum-bitwise-array-ii/
 ### Analysis
 Here are several examples:
 ```text
@@ -2533,41 +2090,8 @@ class Solution {
 
 ## 18. Egg Drop With 2 Eggs and N Floors
 [Back to Top](#table-of-contents)  
-### Overview
-You are given two identical eggs and you have access to a building with `n` floors labeled from `1` to `n`.
-
-You know that there exists a floor `f` where `0 <= f <= n` such that any egg dropped at a floor higher than `f` will break, and any egg dropped at or below floor `f` will not break.
-
-In each move, you may take an unbroken egg and drop it from any floor `x` (where `1 <= x <= n`). If the egg breaks, you can no longer use it. However, if the egg does not break, you may reuse it in future moves.
-
-Return the minimum number of moves that you need to determine with certainty what the value of `f` is.
-
-
-**Example 1:**
-> **Input:** n = 2  
-> **Output:** 2  
-> **Explanation:**  
- We can drop the first egg from floor 1 and the second egg from floor 2.  
-If the first egg breaks, we know that f = 0.  
-If the second egg breaks but the first egg didn't, we know that f = 1.  
-Otherwise, if both eggs survive, we know that f = 2.
-
-**Example 2:**
-> **Input:** n = 100  
-> **Output:** 14  
-> **Explanation:** One optimal strategy is:  
-> - Drop the 1st egg at floor 9. If it breaks, we know f is between 0 and 8.  
-    Drop the 2nd egg starting from floor 1 and going up one at a time to find f within 8 more drops.  
-    Total drops is 1 + 8 = 9.
-> - If the 1st egg does not break, drop the 1st egg again at floor 22.  
-    If it breaks, we know f is between 9 and 21. Drop the 2nd egg starting from floor 10 and going up one at a time to find f within 12 more drops.  
-    Total drops is 2 + 12 = 14.
-> - If the 1st egg does not break again, follow a similar process dropping the 1st egg from floors 34, 45, 55, 64, 72, 79, 85, 90, 94, 97, 99, and 100.  
-    Regardless of the outcome, it takes at most 14 drops to determine f.
-
-**Constraints:**
-* `1 <= n <= 1000`
-
+### Source
+https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
 ### Analysis
 Dropping the egg from floor `1` to the top floor `n` is the simplest method, but with the second egg, we can narrow down the approximate range where the floor `f` is located.
 
@@ -2633,52 +2157,8 @@ class Solution {
 
 ## 19. Find Number of Ways to Reach the K-th Stair
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a **non-negative** integer `k`. There exists a staircase with an infinite number of stairs, with the **lowest** stair numbered 0.
-
-Alice has an integer `jump`, with an initial value of `0`. 
-She starts on stair 1 and wants to reach stair `k` using any number of operations. 
-If she is on stair `i`, in one operation she can:
-
-Go down to stair `i - 1`. This operation cannot be used consecutively or on stair 0.
-Go up to stair $i + 2^{\text{jump}}$. And then, `jump` becomes `jump + 1`.
-Return the total number of ways Alice can reach stair `k`.
-
-Note that it is possible that Alice reaches the stair `k`, and performs some operations to reach the stair `k` again.
-
-**Example 1:**
-> **Input:** k = 0  
-> **Output:** 2  
-> **Explanation:**  
-> The 2 possible ways of reaching stair 0 are:
-> * Alice starts at stair 1.
->   * Using an operation of the first type, she goes down 1 stair to reach stair 0.
-> * Alice starts at stair 1.
->   * Using an operation of the first type, she goes down 1 stair to reach stair 0.
->   * Using an operation of the second type, she goes up 20 stairs to reach stair 1.
->   * Using an operation of the first type, she goes down 1 stair to reach stair 0.
-
-**Example 2:**
-> **Input:** k = 1  
-> **Output:** 4  
-> **Explanation:**  
-> The 4 possible ways of reaching stair 1 are:
-> * Alice starts at stair 1. Alice is at stair 1.  
-> * Alice starts at stair 1.  
->   * Using an operation of the first type, she goes down 1 stair to reach stair 0.  
->   * Using an operation of the second type, she goes up 20 stairs to reach stair 1.  
-> * Alice starts at stair 1.
->   * Using an operation of the second type, she goes up 20 stairs to reach stair 2.
->   * Using an operation of the first type, she goes down 1 stair to reach stair 1.
-> * Alice starts at stair 1.
->   * Using an operation of the first type, she goes down 1 stair to reach stair 0.
->   * Using an operation of the second type, she goes up 20 stairs to reach stair 1.
->   * Using an operation of the first type, she goes down 1 stair to reach stair 0.
->   * Using an operation of the second type, she goes up 21 stairs to reach stair 2.
->   * Using an operation of the first type, she goes down 1 stair to reach stair 1.
-
-**Constraints:**
-* `0 <= k <= 10^9`
+### Source
+https://leetcode.com/problems/find-number-of-ways-to-reach-the-k-th-stair/
 
 ### Analysis
 Based on the formula for the sum of a geometric series:
@@ -2760,42 +2240,8 @@ class Solution {
 * Space Complexity: $O(1)$
 ## 20. Minimum Moves to Capture The Queen
 [Back to Top](#table-of-contents)  
-### Overview
-There is a **1-indexed** `8 x 8` chessboard containing 3 pieces.
-
-You are given `6` integers `a`, `b`, `c`, `d`, `e`, and `f` where:
-
-* `(a, b)` denotes the position of the white rook.
-* `(c, d)` denotes the position of the white bishop.
-* `(e, f)` denotes the position of the black queen.
-Given that you can only move the white pieces, return the **minimum** number of moves required to capture the black queen.
-
-**Note** that:
-
-* Rooks can move any number of squares either vertically or horizontally, but cannot jump over other pieces. 
-* Bishops can move any number of squares diagonally, but cannot jump over other pieces. 
-* A rook or a bishop can capture the queen if it is located in a square that they can move to. 
-* The queen does not move. 
-
-**Example 1:**   
-![mmtctq1](assets/Algorithms/mmtctq1.png)
-
-> **Input:** a = 1, b = 1, c = 8, d = 8, e = 2, f = 3  
-> **Output:** 2  
-> **Explanation:** We can capture the black queen in two moves by moving the white rook to (1, 3) then to (2, 3).  
-> It is impossible to capture the black queen in less than two moves since it is not being attacked by any of the pieces at the beginning.  
-
-**Example 2:**  
-![mmtctq2](assets/Algorithms/mmtctq2.png)
-> **Input:** a = 5, b = 3, c = 3, d = 4, e = 5, f = 2  
-> **Output:** 1  
-> **Explanation:** We can capture the black queen in a single move by doing one of the following: 
-> - Move the white rook to (5, 2).
-> - Move the white bishop to (5, 2).
-
-**Constraints:**
-* `1 <= a, b, c, d, e, f <= 8`
-* No two pieces are on the same square.
+### Source
+https://leetcode.com/problems/minimum-moves-to-capture-the-queen/
 
 ### Analysis
 Here are the coordinates of the pieces:
@@ -2872,34 +2318,8 @@ class Solution {
 * Space Complexity: $O(1)$
 ## 21. Range Product Queries of Powers
 [Back to Top](#table-of-contents)  
-### Overview
-Given a positive integer `n`, there exists a **0-indexed** array called `powers`, composed of the **minimum** number of powers of `2` that sum to `n`. The array is sorted in **non-decreasing** order, and there is only one way to form the array.
-
-You are also given a **0-indexed** 2D integer array `queries`, where `queries[i] = [lefti, righti]`. Each `queries[i]` represents a query where you have to find the product of all `powers[j]` with $left_i <= j <= right_i$.
-
-Return an array `answers`, equal in length to `queries`, where `answers[i]` is the answer to the $i^{th}$ query. Since the answer to the $i^{th}$  query may be too large, each `answers[i]`should be returned modulo $10^9 + 7$.
-
-**Example 1:**
-> **Input:** n = 15, queries = [[0,1],[2,2],[0,3]]  
-> **Output:** [2,4,64]  
-> **Explanation:**  
-> For n = 15, powers = [1,2,4,8]. It can be shown that powers cannot be a smaller size.  
-> Answer to 1st query: powers[0] * powers[1] = 1 * 2 = 2.  
-> Answer to 2nd query: powers[2] = 4.  
-> Answer to 3rd query: powers[0] * powers[1] * powers[2] * powers[3] = 1 * 2 * 4 * 8 = 64.  
-> Each answer modulo $10^9 + 7$ yields the same answer, so [2,4,64] is returned.
-
-**Example 2:**
-> **Input:** n = 2, queries = [[0,0]]  
-> **Output:** [2]  
-> **Explanation:**  
-> For n = 2, powers = [2].  
-> The answer to the only query is powers[0] = 2. The answer modulo $10^9 + 7$ is the same, so [2] is returned.
-
-**Constraints:**
-* `1 <= n <= 10^9`
-* `1 <= queries.length <= 10^5`
-* `0 <= start_i <= end_i < powers.length`
+### Source
+https://leetcode.com/problems/range-product-queries-of-powers/
 
 ### Analysis
 In the problem description, "the minimum number of powers of 2 that sum to n" corresponds to the number of set bits in the binary representation of the integer `n`.
@@ -2979,34 +2399,8 @@ class Solution {
 
 ## 22. Find the Longest Equal Subarray
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a **0-indexed** integer array nums and an integer `k`.  
-A subarray is called **equal** if all of its elements are equal. Note that the empty subarray is an **equal** subarray.  
-Return the length of the **longest** possible equal subarray after deleting **at most** `k` elements from `nums`.  
-A **subarray** is a contiguous, possibly empty sequence of elements within an array.
-
-**Example 1:**
-> **Input:** nums = [1,3,2,3,1,3], k = 3  
-> **Output:** 3  
-> **Explanation:**   
-> It's optimal to delete the elements at index 2 and index 4.  
-> After deleting them, nums becomes equal to [1, 3, 3, 3].  
-> The longest equal subarray starts at i = 1 and ends at j = 3 with length equal to 3.  
-> It can be proven that no longer equal subarrays can be created.
-
-**Example 2:**
-> **Input:** nums = [1,1,2,2,1,1], k = 2  
-> **Output:** 4  
-> **Explanation:**   
-> It's optimal to delete the elements at index 2 and index 3.  
-> After deleting them, nums becomes equal to [1, 1, 1, 1].  
-> The array itself is an equal subarray, so the answer is 4.  
-> It can be proven that no longer equal subarrays can be created.
-
-**Constraints:**  
-* `1 <= nums.length <= 10^5`
-* `1 <= nums[i] <= nums.length`
-* `0 <= k <= nums.length`
+### Source
+https://leetcode.com/problems/find-the-longest-equal-subarray/
 ### Analysis
 Finding the longest possible equal subarray involves counting the number of identical numbers.   
 Since we can delete at most `k` elements, 
@@ -3115,33 +2509,8 @@ class Solution {
 
 ## 23. License Key Formatting
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a license key represented as a string `s` that consists of only alphanumeric characters and dashes.  
-The string is separated into `n + 1` groups by `n` dashes. 
-You are also given an integer `k`.
-
-We want to reformat the string `s` such that each group contains exactly `k` characters, 
-except for the first group, which could be shorter than `k` but still must contain at least one character.   
-Furthermore, there must be a dash inserted between two groups, and you should convert all lowercase letters to uppercase.
-
-Return the reformatted license key.
-
-**Example 1:**
-> **Input:** s = "5F3Z-2e-9-w", k = 4  
-> **Output:** "5F3Z-2E9W"  
-> **Explanation:** The string s has been split into two parts, each part has 4 characters.   
-> Note that the two extra dashes are not needed and can be removed.
-
-**Example 2:**
-> **Input:** s = "2-5g-3-J", k = 2  
-> **Output:** "2-5G-3J"  
-> **Explanation:** The string s has been split into three parts, each part has 2 characters except the first part as it could be shorter as mentioned above.
- 
-
-**Constraints:**
-* `1 <= s.length <= 10^5`
-* `s` consists of English letters, digits, and dashes `'-'`.
-* `1 <= k <= 10^4`
+### Source
+https://leetcode.com/problems/license-key-formatting/
 ### Analysis
 First, capitalize the entire string and remove all `'-'` characters.
 Determine the length of the first substring using `s.length % k`, then append the remaining substrings of length `k`.
@@ -3177,48 +2546,8 @@ class Solution {
     Therefore, the total space complexity is $O(n)$
 ## 24. Find the Number of Ways to Place People I
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a 2D array `points` of size `n x 2` representing integer coordinates of some points on a 2D plane, where `points[i] = [xi, yi]`.
-
-Count the number of pairs of points `(A, B)`, where
-
-* `A` is on the **upper left** side of `B`, and
-* there are no other points in the rectangle (or line) they make (**including the border**).
-Return the count.
-
-**Example 1:**
-
-> **Input:** points = [[1,1],[2,2],[3,3]]  
-> **Output:** 0  
-> **Explanation:**  
-![ftnowtppI1](assets/Algorithms/ftnowtppI1.png)  
-    There is no way to choose `A` and `B` so `A` is on the upper left side of `B`.
-
-**Example 2:** 
-> **Input:** points = [[6,2],[4,4],[2,6]]  
-> **Output:** 2  
-> **Explanation:**
-![ftnowtppI2](assets/Algorithms/ftnowtppI2.png)  
-> * The left one is the pair `(points[1], points[0])`, where `points[1]` is on the upper left side of `points[0]` and the rectangle is empty.
-> * The middle one is the pair `(points[2], points[1])`, same as the left one it is a valid pair.
-> * The right one is the pair `(points[2], points[0])`, where `points[2]` is on the upper left side of `points[0]`, but `points[1]` is inside the rectangle so it's not a valid pair.
-
-**Example 3:**
-> **Input:** points = [[3,1],[1,3],[1,1]]  
-> **Output:** 2  
-> **Explanation:**
-![ftnowtppI3](assets/Algorithms/ftnowtppI3.png)  
-* The left one is the pair `(points[2], points[0])`, where `points[2]` is on the upper left side of `points[0]` and there are no other points on the line they form.  
-    Note that it is a valid state when the two points form a line.
-* The middle one is the pair `(points[1], points[2])`, it is a valid pair same as the left one.
-* The right one is the pair `(points[1], points[0])`, it is not a valid pair as `points[2]` is on the border of the rectangle.
-
-**Constraints:**
-
-* `2 <= n <= 50`
-* `points[i].length == 2`
-* `0 <= points[i][0], points[i][1] <= 50`
-* All `points[i]` are distinct.
+### Source
+https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/
 
 ### Analysis
 Sort the `points` array in ascending order by the `x` coordinate, and in descending order by the `y` coordinate when `x` coordinates are the same.
@@ -3269,36 +2598,8 @@ Note that the space complexity of `Arrays.sort` is:
 
 
 ## 25. Maximum Number of Operations With the Same Score I
-You are given an array of integers `nums`. Consider the following operation:
-
-* Delete the first two elements `nums` and define the score of the operation as the sum of these two elements.
-You can perform this operation until `nums` contains fewer than two elements. Additionally, the **same** score must be achieved in **all** operations.
-
-Return the **maximum** number of operations you can perform.
-
-**Example 1:**
-> **Input:** nums = [3,2,1,4,5]  
-> **Output:** 2  
-> **Explanation:**  
-> * We can perform the first operation with the score `3 + 2 = 5`. After this operation, `nums = [1,4,5]`.
-> * We can perform the second operation as its score is `4 + 1 = 5`, the same as the previous operation. After this operation, `nums = [5]`.
-> * As there are fewer than two elements, we can't perform more operations.
-
-**Example 2:**
-> **Input:** nums = [1,5,3,3,4,1,3,2,2,3]  
-> **Output:** 2  
-> **Explanation:**  
-> * We can perform the first operation with the score 1 + 5 = 6. After this operation, nums = [3,3,4,1,3,2,2,3].
-> * We can perform the second operation as its score is 3 + 3 = 6, the same as the previous operation. After this operation, nums = [4,1,3,2,2,3].
-> * We cannot perform the next operation as its score is 4 + 1 = 5, which is different from the previous scores.
-
-**Example 3:**
-> **Input:** nums = [5,3]  
-> **Output:** 1  
-
-**Constraints:**
-* `2 <= nums.length <= 100`
-* `1 <= nums[i] <= 1000`
+### Source
+https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-i/
 
 ### Analysis
 Since `2 <= nums.length <= 100`, the operation score can be determined using the first two elements of the array nums.   
@@ -3329,31 +2630,8 @@ class Solution {
     Only a constant amount of additional space is used.
 ## 26. Boats to Save People
 [Back to Top](#table-of-contents)  
-### Overview
-You are given an array `people` where `people[i]` is the weight of the **i-th** person, 
-and an infinite number of boats where each boat can carry a maximum weight of `limit`. 
-Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most `limit`.
-
-Return the minimum number of boats to carry every given person.
-
-**Example 1:**
-> **Input:** people = [1,2], limit = 3  
-> **Output:** 1  
-> **Explanation:** 1 boat (1, 2)
-
-**Example 2:**
-> **Input:** people = [3,2,2,1], limit = 3  
-> **Output:** 3  
-> **Explanation:** 3 boats (1, 2), (2) and (3)
-
-**Example 3:**
-> **Input:** people = [3,5,3,4], limit = 5  
-> **Output:** 4  
-> **Explanation:** 4 boats (3), (3), (4), (5)
-
-**Constraints:**
-* `1 <= people.length <= 5 * 10^4`
-* `1 <= people[i] <= limit <= 3 * 10^4` 
+### Source
+https://leetcode.com/problems/boats-to-save-people/
 
 ### Analysis
 Since each boat can carry a maximum weight of `limit`, carry the heaviest person first.   
@@ -3397,41 +2675,8 @@ Note that the space complexity of `Arrays.sort` is:
 * $O(n)$ for sorting object arrays.
 ## 27. Find the Lexicographically Largest String From the Box I
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a string `word`, and an integer `numFriends`.
-
-Alice is organizing a game for her `numFriends` friends. There are multiple rounds in the game, where in each round:
-
-* `word` is split into `numFriends` **non-empty** strings, such that no previous round has had the exact same split.
-
-* All the split words are put into a box.
-
-Find the lexicographically largest string from the box after all the rounds are finished.
-
-Lexicographically largest string: 
-
-* A string `a` is lexicographically smaller than a string `b` if in the first position where `a` and `b` differ, string `a` has a letter that appears earlier in the alphabet than the corresponding letter in `b`.
-* If the first `min(a.length, b.length)` characters do not differ, then the shorter string is the lexicographically smaller one.
-
-**Example 1:**
-> **Input:** word = "dbca", numFriends = 2  
-> **Output:** "dbc"  
-> **Explanation:**  
-> All possible splits are:  
-> * `"d"` and `"bca"`.
-> * `"db"` and `"ca"`.
-> * `"dbc"` and `"a"`.
-
-**Example 2:**
-> **Input:** word = "gggg", numFriends = 4  
-> **Output:** "g"  
-> **Explanation:**  
-> The only possible split is: `"g"`, `"g"`, `"g"`, and `"g"`.
-
-**Constraints:**
-* `1 <= word.length <= 5 * 10^3`
-* word consists only of lowercase English letters.
-* `1 <= numFriends <= word.length`
+### Source
+https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i/
 
 ### Two-Pointer Solution
 Define a variable `k` used to find the length of the longest common prefix between the substrings starting at `i` and `j`.
@@ -3518,39 +2763,8 @@ class Solution {
 
 ## 28. Merge Sorted Array
 [Back to Top](#table-of-contents)  
-### Overview
-You are given two integer arrays `nums1` and `nums2`, sorted in non-decreasing order, and two integers `m` and `n`, representing the number of elements in `nums1` and `nums2` respectively.
-
-Merge `nums1` and `nums2` into a single array sorted in non-decreasing order.
-
-The final sorted array should not be returned by the function, but instead be stored inside the array `nums1`. To accommodate this, `nums1` has a length of `m + n`, where the first `m` elements denote the elements that should be merged, and the last `n` elements are set to `0` and should be ignored. `nums2` has a length of `n`.
-
-**Example 1:**
-> **Input:** nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3  
-> **Output:** [1,2,2,3,5,6]  
-> **Explanation:** The arrays we are merging are [1,2,3] and [2,5,6].  
-> The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
-
-**Example 2:**
-> **Input:** nums1 = [1], m = 1, nums2 = [], n = 0  
-> **Output:** [1]  
-> **Explanation:** The arrays we are merging are [1] and [].  
-> The result of the merge is [1].
-
-**Example 3:**
-> **Input:** nums1 = [0], m = 0, nums2 = [1], n = 1  
-> **Output:** [1]  
-> **Explanation:** The arrays we are merging are [] and [1].  
-> The result of the merge is [1].  
-> Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
- 
-
-**Constraints:**
-* `nums1.length == m + n`
-* `nums2.length == n`
-* `0 <= m, n <= 200`
-* `1 <= m + n <= 200`
-* `-10^9 <= nums1[i], nums2[j] <= 10^9`
+### Source
+https://leetcode.com/problems/merge-sorted-array/
 
 ### Two-Pointer Solution
 Copy a new array `nums1Cp` from `nums1` as a comparing array, and merge elements from arrays 'nums1Cp' and 'nums2' into 'nums1':
@@ -3589,26 +2803,8 @@ class Solution {
 
 ## 29. Power Set LCCI
 [Back to Top](#table-of-contents)  
-### Overview
-Write a method to return all subsets of a set. The elements in a set are pairwise distinct.
-
-Note: The result set should not contain duplicated subsets.
-
-**Example:**  
-> **Input:**  nums = [1,2,3]  
-> **Output:**  
-> ```
-> [  
->   [3],  
->   [1],  
->   [2],  
->   [1,2,3],  
->   [1,3],  
->   [2,3],  
->   [1,2],  
->   []  
-> ]
-> ```
+### Source
+https://leetcode.com/problems/power-set-lcci/
 ### Backtracking Solution
 Use two recursive calls within a method to find subsets for result array `ans`.
 * Both the first and the second calls exhibit the same behavior, saving the `path` array upon reaching the end of the `nums` array.
@@ -3881,33 +3077,8 @@ class Solution {
 
 ## 30. Count Common Words With One Occurrence
 [Back to Top](#table-of-contents)  
-### Overview
-Given two string arrays `words1` and `words2`, return the number of strings that appear `exactly once` in each of the two arrays.
-
-**Example 1:** 
-> **Input:** words1 = ["leetcode","is","amazing","as","is"], words2 = ["amazing","leetcode","is"]  
-> **Output:** 2  
-> **Explanation:**
-> - "leetcode" appears exactly once in each of the two arrays. We count this string.
-> - "amazing" appears exactly once in each of the two arrays. We count this string.
-> - "is" appears in each of the two arrays, but there are 2 occurrences of it in words1. We do not count this string.
-> - "as" appears once in words1, but does not appear in words2. We do not count this string.
-Thus, there are 2 strings that appear exactly once in each of the two arrays.
-
-**Example 2:**  
-> **Input:** words1 = ["b","bb","bbb"], words2 = ["a","aa","aaa"]  
-> **Output:** 0  
-> **Explanation:** There are no strings that appear in each of the two arrays.
-
-**Example 3:**
-> **Input:** words1 = ["a","ab"], words2 = ["a","a","a","ab"]  
-> **Output:** 1  
-> **Explanation:** The only string that appears exactly once in each of the two arrays is "ab".
-
-**Constraints:**
-* `1 <= words1.length, words2.length <= 1000`
-* `1 <= words1[i].length, words2[j].length <= 30`
-* `words1[i]` and `words2[j]` consists only of lowercase English letters.
+### Source
+https://leetcode.com/problems/count-common-words-with-one-occurrence/
 
 ### HashMap Solution
 Use two Hashmaps to count the word occurrences in both arrays and identify strings that appear exactly once in each.
@@ -3952,31 +3123,8 @@ class Solution {
 
 ## 31. Minimum Number Game
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a **0-indexed** integer array `nums` of even length and there is also an empty array `arr`.  
-Alice and Bob decided to play a game where in every round Alice and Bob will do one move. The rules of the game are as follows:
-
-* Every round, first Alice will remove the minimum element from `nums`, and then Bob does the same.
-* Now, first Bob will append the removed element in the array `arr`, and then Alice does the same.
-* The game continues until `nums` becomes empty.
-
-Return the resulting array `arr`.
-
-**Example 1:**
-> **Input:** nums = [5,4,2,3]  
-> **Output:** [3,2,5,4]  
-> **Explanation:** In round one, first Alice removes 2 and then Bob removes 3. Then in arr firstly Bob appends 3 and then Alice appends 2. So arr = [3,2].  
-At the begining of round two, nums = [5,4]. Now, first Alice removes 4 and then Bob removes 5. Then both append in arr which becomes [3,2,5,4].
-
-**Example 2:**
-> **Input:** nums = [2,5]  
-> **Output:** [5,2]  
-> **Explanation:** In round one, first Alice removes 2 and then Bob removes 5. Then in arr firstly Bob appends and then Alice appends. So arr = [5,2].
-
-**Constraints:**
-* `2 <= nums.length <= 100`
-* `1 <= nums[i] <= 100`
-* `nums.length % 2 == 0`
+### Source
+https://leetcode.com/problems/minimum-number-game/
 
 ### Array Solution
 Sort the `nums` array, and swap every two elements.
@@ -4007,37 +3155,8 @@ class Solution {
 
 ## 32. My Calendar II
 [Back to Top](#table-of-contents)  
-### Overview
-You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a triple booking.
-
-A triple booking happens when three events have some non-empty intersection (i.e., some moment is common to all the three events.).
-
-The event can be represented as a pair of integers `startTime` and `endTime` that represents a booking on the half-open interval `[startTime, endTime)`, the range of real numbers `x` such that `startTime <= x < endTime`.
-
-Implement the `MyCalendarTwo` class:
-
-* `MyCalendarTwo()` Initializes the calendar object.
-* `boolean book(int startTime, int endTime)` Returns `true` if the event can be added to the calendar successfully without causing a triple booking. Otherwise, return `false` and do not add the event to the calendar.
-
-**Example 1:**
-> **Input:**  
-["MyCalendarTwo", "book", "book", "book", "book", "book", "book"]  
-[[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]]  
-> **Output:**  
-[null, true, true, true, false, true, true]
-
-**Explanation:**
-> MyCalendarTwo myCalendarTwo = new MyCalendarTwo();  
-> myCalendarTwo.book(10, 20); // return True, The event can be booked.   
-> myCalendarTwo.book(50, 60); // return True, The event can be booked.  
-> myCalendarTwo.book(10, 40); // return True, The event can be double booked.   
-> myCalendarTwo.book(5, 15);  // return False, The event cannot be booked, because it would result in a triple booking.  
-> myCalendarTwo.book(5, 10); // return True, The event can be booked, as it does not use time 10 which is already double booked.  
-> myCalendarTwo.book(25, 55); // return True, The event can be booked, as the time in [25, 40) will be double booked with the third event, the time [40, 50) will be single booked, and the time [50, 55) will be double booked with the second event.  
-
-**Constraints:**
-* `0 <= start < end <= 109`
-* At most `1000` calls will be made to `book`.
+### Source
+https://leetcode.com/problems/my-calendar-ii/
 
 ### Array Solution
 Define an array `self.cal` to store inserted elements and `self.cnt` to track the overlap count at each `startTime` index.
@@ -4586,58 +3705,8 @@ class MyCalendarTwo {
 
 ## 33. Graph Connectivity With Threshold
 [Back to Top](#table-of-contents)  
-### Overview
-We have `n` cities labeled from `1` to `n`. 
-Two different cities with labels `x` and `y` are directly connected by a bidirectional road if and only if `x` and `y` share a common divisor strictly greater than some `threshold`.   
-More formally, cities with labels `x` and `y` have a road between them if there exists an integer `z` such that all of the following are true:
-* `x % z == 0`
-* `y % z == 0`
-* `z > threshold`
-
-Given the two integers, `n` and `threshold`, and an array of `queries`, you must determine for each `queries[i] = [a_i, b_i]` if cities `a_i` and `b_i` are connected directly or indirectly. (i.e. there is some path between them).
-
-Return an array `answer`, where `answer.length == queries.length` and `answer[i]` is `true` if for the **i-th** query, there is a path between `a_i` and `b_i`, or `answer[i]` is false if there is no path.
-
-**Example 1:**  
-![gcwt1](assets/Algorithms/gcwt1.png)  
-> **Input:** n = 6, threshold = 2, queries = [[1,4],[2,5],[3,6]]  
-> **Output:** [false,false,true]  
-> **Explanation:** The divisors for each number:  
-1:   1  
-2:   1, 2  
-3:   1, 3  
-4:   1, 2, 4  
-5:   1, 5  
-6:   1, 2, 3, 6  
-Using the underlined divisors above the threshold, only cities 3 and 6 share a common divisor, so they are the
-only ones directly connected.   
-The result of each query:  
-[1,4]   1 is not connected to 4  
-[2,5]   2 is not connected to 5  
-[3,6]   3 is connected to 6 through path 3--6 
-
-**Example 2:**  
-![gcwt2](assets/Algorithms/gcwt2.png)   
-> **Input:** n = 6, threshold = 0, queries = [[4,5],[3,4],[3,2],[2,6],[1,3]]  
-> **Output:** [true,true,true,true,true]  
-> **Explanation:** The divisors for each number are the same as the previous example.   
-However, since the threshold is 0,
-all divisors can be used. Since all numbers share 1 as a divisor, all cities are connected.
-
-**Example 3:**  
-![gcwt3](assets/Algorithms/gcwt3.png)   
-> **Input:** n = 5, threshold = 1, queries = [[4,5],[4,5],[3,2],[2,3],[3,4]]  
-> **Output:** [false,false,false,false,false]  
-> **Explanation:** Only cities 2 and 4 share a common divisor 2 which is strictly greater than the threshold 1, so they are the only ones directly connected.  
-Please notice that there can be multiple queries for the same pair of nodes [x, y], and that the query [x, y] is equivalent to the query [y, x].
-
-**Constraints:**
-* `2 <= n <= 10^4`
-* `0 <= threshold <= n`
-* `1 <= queries.length <= 10^5`
-* `queries[i].length == 2`
-* `1 <= a_i, b_i <= cities`
-* `a_i != b_i`
+### Source
+https://leetcode.com/problems/graph-connectivity-with-threshold/
 
 ### Union-Find Solution
 Use Union-Find to construct an index array `parent`, where each element initially satisfis `parent[i]=i`.  
@@ -4789,22 +3858,8 @@ class Solution {
 
 ## 34. Sort Array by Increasing Frequency
 [Back to Top](#table-of-contents)  
-### Overview
-Given an array of integers `nums`, sort the array in increasing order based on the frequency of the values. If multiple values have the same frequency, sort them in decreasing order.
-
-**Example 1:**
-> **Input:** nums = [1,1,2,2,2,3]  
-> **Output:** [3,1,1,2,2,2]  
-> **Explanation:** '3' has a frequency of 1, '1' has a frequency of 2, and '2' has a frequency of 3.
-
-**Example 2:**
-> **Input:** nums = [2,3,1,3,2]  
-> **Output:** [1,3,3,2,2]  
-> **Explanation:** '2' and '3' both have a frequency of 2, so they are sorted in decreasing order.
-
-**Example 3:**
-> **Input:** nums = [-1,1,-6,4,5,-6,1,4,1]  
-> **Output:** [5,-1,4,4,-6,-6,1,1,1]
+### Source
+https://leetcode.com/problems/sort-array-by-increasing-frequency/
 
 ### Array Solution
 Map elements in `nums` to indices of `freq`, where indices represent elements of `nums` and the values represent their frequency.
@@ -4901,32 +3956,8 @@ class Solution {
 
 ## 35. Maximum Multiplication Score
 [Back to Top](#table-of-contents)  
-### Overview
-You are given an integer array `a` of size 4 and another integer array `b` of size **at least** 4.
-
-You need to choose 4 indices `i0`, `i1`, `i2`, and `i3` from the array b such that `i0 < i1 < i2 < i3`. Your score will be equal to the value `a[0] * b[i0] + a[1] * b[i1] + a[2] * b[i2] + a[3] * b[i3]`.
-
-Return the maximum score you can achieve.
-
-**Example 1:**
-> **Input:** a = [3,2,5,6], b = [2,-6,4,-5,-3,2,-7]  
-> **Output:** 26  
-> **Explanation:**  
-We can choose the indices 0, 1, 2, and 5.  
-The score will be 3 * 2 + 2 * (-6) + 5 * 4 + 6 * 2 = 26.
-
-
-**Example 2:**
-> **Input:** a = [-1,4,5,-2], b = [-5,-1,-3,-2,-4]  
-> **Output:** -1  
-> **Explanation:**  
-We can choose the indices 0, 1, 3, and 4.  
-The score will be (-1) * (-5) + 4 * (-1) + 5 * (-2) + (-2) * (-4) = -1.
-
-**Constraints:**
-* `a.length == 4`
-* `4 <= b.length <= 10^5`
-* `-10^5 <= a[i], b[i] <= 10^5`
+### Source
+https://leetcode.com/problems/maximum-multiplication-score/
 ### Dynamic Programming Solution
 The score expression is:
 ```
@@ -5044,38 +4075,8 @@ class Solution {
 
 ## 36. Find Triangular Sum of an Array
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a 0-indexed integer array `nums`, where `nums[i]` is a digit between `0` and `9` (inclusive).
-
-The triangular sum of `nums` is the value of the only element present in `nums` after the following process terminates:
-
-1. Let `nums` comprise of n elements. If `n == 1`, end the process. Otherwise, create a new 0-indexed integer array `newNums` of length `n - 1`.
-
-2. For each index `i`, where `0 <= i < n - 1`, assign the value of `newNums[i]` as `(nums[i] + nums[i+1]) % 10`, where `%` denotes modulo operator.
-
-3. Replace the array `nums` with `newNums`.
-4. Repeat the entire process starting from step 1.
-
-Return the triangular sum of `nums`.
-
-**Example 1:**
-
-![ftsoaa1](assets/Algorithms/ftsoaa1.png)
-> **Input:** nums = [1,2,3,4,5]  
-> **Output:** 8  
-> **Explanation:**  
-> The above diagram depicts the process from which we obtain the triangular sum of the array.
-Example 2:
-
-**Example 2:**
-> **Input:** nums = [5]  
-> **Output:** 5  
-> **Explanation:**  
-Since there is only one element in nums, the triangular sum is the value of that element itself.
-
-Constraints:
-* `1 <= nums.length <= 1000`
-* `0 <= nums[i] <= 9`
+### Source
+https://leetcode.com/problems/find-triangular-sum-of-an-array/
 
 ### Traversal Solution
 Following the problem's steps to create child loops that compute values for `newNums`.
@@ -5110,47 +4111,8 @@ class Solution {
 
 ## 37. Zero Array Transformation II
 [Back to Top](#table-of-contents)  
-### Overview
-You are given an integer array `nums` of length `n` and a 2D array `queries` where `queries[i] = [li, ri, vali]`.
-
-Each `queries[i]` represents the following action on nums:
-* Decrement the value at each index in the range `[li, ri]` in `nums` by at most `vali`.
-* The amount by which each value is decremented can be chosen independently for each index.
-
-A Zero Array is an array with all its elements equal to 0.
-
-Return the minimum possible non-negative value of `k`, such that after processing the first `k` queries in sequence, `nums` becomes a Zero Array. 
-If no such `k` exists, return -1.
-
-**Example 1:**
-> **Input:** nums = [2,0,2], queries = [[0,2,1],[0,2,1],[1,1,3]]  
-> **Output:** 2  
-> **Explanation:**
-> * **For i = 0 (l = 0, r = 2, val = 1):**
->   * Decrement values at indices `[0, 1, 2]` by `[1, 0, 1]` respectively.
->   * The array will become [1, 0, 1].
-> * **For i = 1 (l = 0, r = 2, val = 1):**
->   * Decrement values at indices `[0, 1, 2]` by `[1, 0, 1]` respectively.
->   * The array will become `[0, 0, 0]`, which is a Zero Array. Therefore, the minimum value of `k` is 2.
-
-**Example 2:**
-> **Input:** nums = [4,3,2,1], queries = [[1,3,2],[0,2,1]]  
-> **Output:** -1  
-> **Explanation:**
-> * **For i = 0 (l = 1, r = 3, val = 2):**
->   * Decrement values at indices `[1, 2, 3]` by `[2, 2, 1]` respectively.
->   * The array will become [4, 1, 0, 0].
-> * **For i = 1 (l = 0, r = 2, val = 1):**
->   * Decrement values at indices `[0, 1, 2]` by `[1, 1, 0]` respectively.
->   * The array will become `[3, 0, 0, 0]`, which is not a Zero Array.
-
-**Constraints:**
-* `1 <= nums.length <= 10^5`
-* `0 <= nums[i] <= 5 * 10^5`
-* `1 <= queries.length <= 10^5`
-* `queries[i].length == 3`
-* `0 <= li <= ri < nums.length`
-* `1 <= vali <= 5`
+### Source
+https://leetcode.com/problems/zero-array-transformation-ii/
 
 ### Difference Array Solution
 Break the problem into a sub-problem:
@@ -5202,41 +4164,8 @@ class Solution {
 
 ## 38. Transform to Chessboard
 [Back to Top](#table-of-contents)  
-### Overview
-You are given an `n x n` binary grid `board`. In each move, you can swap any two rows with each other, or any two columns with each other.
-
-Return the minimum number of moves to transform the board into a chessboard board. If the task is impossible, return `-1`.
-
-A chessboard board is a board where no `0`'s and no `1`'s are 4-directionally adjacent.
-
-**Example 1:**
-
-![](./assets/Algorithms/ttc1.png)  
-> **Input:** board = [[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]]  
-> **Output:** 2  
-> **Explanation:** One potential sequence of moves is shown.
-The first move swaps the first and second column.
-The second move swaps the second and third row.
-
-**Example 2:**
-
-![](./assets/Algorithms/ttc2.png)  
-> **Input:** board = [[0,1],[1,0]]   
-> **Output:** 0  
-> **Explanation:** Also note that the board with 0 in the top left corner, is also a valid chessboard.
-
-**Example 3:**
-
-![](./assets/Algorithms/ttc3.png)
-> **Input:** board = [[1,0],[1,0]]  
-> **Output:** -1  
-> **Explanation:** No matter what sequence of moves you make, you cannot end with a valid chessboard.
-
-**Constraints:**
-* `n == board.length`
-* `n == board[i].length`
-* `2 <= n <= 30`
-* `board[i][j]` is either `0` or `1`.
+### Source
+https://leetcode.com/problems/transform-to-chessboard/
 ### Pattern Rule Solution 
 To avoid adjacent `0` and `1`, each row and column must alternate between `0` and `1`, 
 and the difference between the number of `1` and `0` must be less than or equal to `1`.
@@ -5333,29 +4262,8 @@ class Solution {
 
 ## 39. Trapping Rain Water II
 [Back to Top](#table-of-contents)  
-### Overview
-Given an `m x n` integer matrix `heightMap` representing the height of each unit cell in a 2D elevation map, return the volume of water it can trap after raining.
-
-**Example 1:**
-
-![](assets/Algorithms/trwII1.png)
-> **Input:** heightMap = [[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]  
-> **Output:** 4  
-> **Explanation:** After the rain, water is trapped between the blocks.
-We have two small ponds 1 and 3 units trapped.
-The total volume of water trapped is 4.
-
-**Example 2:** 
-
-![alt text](assets/Algorithms/trwII2.png)
-> **Input:** heightMap = [[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]  
-> **Output:** 10
-
-**Constraints:**
-* `m == heightMap.length`
-* `n == heightMap[i].length`
-* `1 <= m, n <= 200`
-* `0 <= heightMap[i][j] <= 2 * 10^4`
+### Source
+https://leetcode.com/problems/trapping-rain-water-ii/
 
 ### Heap Solution 
 According to the above 2D elevation map, only units surrounded by higher units can trap rain.
@@ -5552,26 +4460,8 @@ class Solution {
   Thus, the total space complexity is $O(m\times n)$.
 
 ## 40. Count Subarrays Where Max Element Appears at Least K Times
-You are given an integer array `nums` and a positive integer `k`.
-
-Return the number of subarrays where the maximum element of `nums` appears at least `k` times in that subarray.
-
-A subarray is a contiguous sequence of elements within an array.
-
-**Example 1:**
-> **Input:** nums = [1,3,2,3,3], k = 2  
-> **Output:** 6  
-> **Explanation:** The subarrays that contain the element 3 at least 2 times are: [1,3,2,3], [1,3,2,3,3], [3,2,3], [3,2,3,3], [2,3,3] and [3,3].
-
-**Example 2:**
-> **Input:** nums = [1,4,2,1], k = 3  
-> **Output:** 0  
-> **Explanation:** No subarray contains the element 4 at least 3 times.
-
-**Constraints:**
-* `1 <= nums.length <= 10^5`
-* `1 <= nums[i] <= 10^6`
-* `1 <= k <= 10^5`
+### Source
+https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/
 
 ### Sliding Window Solution
 With the sliding window approach, handle each of the k valid maximum elements step by step.
@@ -5678,44 +4568,8 @@ class Solution {
 
 ## 41. Path with Maximum Probability
 [Back to Top](#table-of-contents)  
-### Overview
-You are given an undirected weighted graph of `n` nodes (0-indexed), represented by an edge list where `edges[i] = [a, b]` is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge `succProb[i]`.
-
-Given two nodes `start` and `end`, find the path with the maximum probability of success to go from `start` to `end` and return its success probability.
-
-If there is no path from `start` to `end`, return `0`. Your answer will be accepted if it differs from the correct answer by at most `1e-5`.
-
-**Example 1:**
-
-![](assets/Algorithms/pwmp1.png)
-> **Input:** n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start = 0, end = 2  
-> **Output:** 0.25000  
-> **Explanation:** There are two paths from start to end, one having a probability of success = 0.2 and the other has 0.5 * 0.5 = 0.25.
-
-**Example 2:**
-
-![](assets/Algorithms/pwmp2.png)
-
-> **Input:** n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.3], start = 0, end = 2  
-> **Output:** 0.30000
-
-**Example 3:**
-
-![](assets/Algorithms/pwmp3.png)
-
-> **Input:** n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2  
-> **Output:** 0.00000  
-> **Explanation:** There is no path between 0 and 2.  
-
-**Constraints:**
-* `2 <= n <= 10^4`
-* `0 <= start, end < n`
-* `start != end`
-* `0 <= a, b < n`
-* `a != b`
-* `0 <= succProb.length == edges.length <= 2*10^4`
-* `0 <= succProb[i] <= 1`
-* There is at most one edge between every two nodes.
+### Source
+https://leetcode.com/problems/path-with-maximum-probability/
 
 ### Dijkstra Solution
 Dijkstra's Algorithm is a famous algorithm used for finding the shortest path between nodes in a graph.
@@ -5910,44 +4764,8 @@ class Solution {
   * `pathProb` has a space complexity of $O(n)$.
 
 ## 42. Count Prefix and Suffix Pairs I
-You are given a 0-indexed string array words.
-
-Let's define a boolean function `isPrefixAndSuffix` that takes two strings, `str1` and `str2`:
-* `isPrefixAndSuffix(str1, str2)` returns `true` if `str1` is both a prefix and a suffix of `str2`, and `false` otherwise.
-
-For example, `isPrefixAndSuffix("aba", "ababa")` is `true` because `"aba"` is a prefix of `"ababa"` and also a suffix, but `isPrefixAndSuffix("abc", "abcd")` is false.
-
-Return an integer denoting the number of index pairs `(i, j)` such that `i < j`, and `isPrefixAndSuffix(words[i], words[j])` is `true`.
-
-**Example 1:**
-> **Input:** words = ["a","aba","ababa","aa"]  
-> **Output:** 4  
-> **Explanation:** In this example, the counted index pairs are:  
-i = 0 and j = 1 because isPrefixAndSuffix("a", "aba") is true.  
-i = 0 and j = 2 because isPrefixAndSuffix("a", "ababa") is true.  
-i = 0 and j = 3 because isPrefixAndSuffix("a", "aa") is true.  
-i = 1 and j = 2 because isPrefixAndSuffix("aba", "ababa") is true.  
-Therefore, the answer is 4.
-
-**Example 2:**
-> **Input:** words = ["pa","papa","ma","mama"]  
-> **Output:** 2  
-> **Explanation:** In this example, the counted index pairs are:  
-i = 0 and j = 1 because isPrefixAndSuffix("pa", "papa") is true.  
-i = 2 and j = 3 because isPrefixAndSuffix("ma", "mama") is true.  
-Therefore, the answer is 2.  
-
-**Example 3:**
-> **Input:** words = ["abab","ab"]  
-> **Output:** 0  
-> **Explanation:** In this example, the only valid index pair is i = 0 and j = 1, and isPrefixAndSuffix("abab", "ab") is false.
-Therefore, the answer is 0.
-
-
-**Constraints:**
-* `1 <= words.length <= 50`
-* `1 <= words[i].length <= 10`
-* `words[i]` consists only of lowercase English letters.
+### Source
+https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/
 ### Traversal Solution
 Iterate through all possible pairs in the `words` array and check `isPrefixAndSuffix(words[i], words[j])` for each.
 #### Implementation
@@ -5974,41 +4792,8 @@ class Solution {
 
 ## 43. Total Cost to Hire K Workers
 [Back to Top](#table-of-contents)  
-### Overview
-You are given a 0-indexed integer array `costs` where `costs[i]` is the cost of hiring the i-th worker.
-
-You are also given two integers `k` and `candidates`. We want to hire exactly `k` workers according to the following rules:
-* You will run `k` sessions and hire exactly one worker in each session.
-* In each hiring session, choose the worker with the lowest cost from either the first `candidates` workers or the last `candidates` workers. Break the tie by the smallest index.
-  * For example, if `costs = [3,2,7,7,1,2]` and `candidates = 2`, then in the first hiring session, we will choose the 4-th worker because they have the lowest cost `[3,2,7,7,1,2]`.
-  * In the second hiring session, we will choose 1st worker because they have the same lowest cost as 4th worker but they have the smallest index [3,2,7,7,2]. Please note that the indexing may be changed in the process.
-
-* If there are fewer than candidates workers remaining, choose the worker with the lowest cost among them. Break the tie by the smallest index.
-* A worker can only be chosen once.
-Return the total cost to hire exactly `k` workers.
-
-**Example 1:**
-> **Input:** costs = [17,12,10,2,7,2,11,20,8], k = 3, candidates = 4  
-> **Output:** 11  
-> **Explanation:** We hire 3 workers in total. The total cost is initially 0.
-> - In the first hiring round we choose the worker from [17,12,10,2,7,2,11,20,8]. The lowest cost is 2, and we break the tie by the smallest index, which is 3. The total cost = 0 + 2 = 2.
-> - In the second hiring round we choose the worker from [17,12,10,7,2,11,20,8]. The lowest cost is 2 (index 4). The total cost = 2 + 2 = 4.
-> - In the third hiring round we choose the worker from [17,12,10,7,11,20,8]. The lowest cost is 7 (index 3). The total cost = 4 + 7 = 11. Notice that the worker with index 3 was common in the first and last four workers.
-The total hiring cost is 11.
-
-**Example 2:**
-> **Input:** costs = [1,2,4,1], k = 3, candidates = 3  
-> **Output:** 4  
-> **Explanation:** We hire 3 workers in total. The total cost is initially 0.
-> - In the first hiring round we choose the worker from [1,2,4,1]. The lowest cost is 1, and we break the tie by the smallest index, which is 0. The total cost = 0 + 1 = 1. Notice that workers with index 1 and 2 are common in the first and last 3 workers.
-> - In the second hiring round we choose the worker from [2,4,1]. The lowest cost is 1 (index 2). The total cost = 1 + 1 = 2.
-> - In the third hiring round there are less than three candidates. We choose the worker from the remaining workers [2,4]. The lowest cost is 2 (index 0). The total cost = 2 + 2 = 4.
-The total hiring cost is 4.
-
-**Constraints:**
-* `1 <= costs.length <= 10^5` 
-* `1 <= costs[i] <= 10^5`
-* `1 <= k, candidates <= costs.length`
+### Source
+https://leetcode.com/problems/total-cost-to-hire-k-workers/
 
 ### Heap Solution
 Use two min-heaps, `leftQue` and `rightQue`, to store candidates from the left and right sides.
@@ -6080,44 +4865,8 @@ class Solution {
 
 ## 44. Find Indices With Index and Value Difference I
 [Back to Top](#table-of-contents)
-### Overview
-You are given a 0-indexed integer array `nums` having length `n`, an integer `indexDifference`, and an integer `valueDifference`.
-
-Your task is to find **two** indices `i` and `j`, both in the range `[0, n - 1]`, that satisfy the following conditions:
-
-* `abs(i - j) >= indexDifference`, and
-* `abs(nums[i] - nums[j]) >= valueDifference`
-Return an integer array `answer`, where `answer = [i, j] if there are two such indices, and answer = [-1, -1] otherwise. If there are multiple choices for the two indices, return any of them.
-
-Note: `i` and `j` may be equal.
-
-**Example 1:**
-> **Input:** nums = [5,1,4,1], indexDifference = 2, valueDifference = 4  
-> **Output:** [0,3]  
-> **Explanation:** In this example, i = 0 and j = 3 can be selected.
-abs(0 - 3) >= 2 and abs(nums[0] - nums[3]) >= 4.
-Hence, a valid answer is [0,3].
-[3,0] is also a valid answer.
-
-**Example 2:**
-> **Input:** nums = [2,1], indexDifference = 0, valueDifference = 0  
-> **Output:** [0,0]  
-> **Explanation:** In this example, i = 0 and j = 0 can be selected.
-abs(0 - 0) >= 0 and abs(nums[0] - nums[0]) >= 0.
-Hence, a valid answer is [0,0].
-Other valid answers are [0,1], [1,0], and [1,1].
-
-**Example 3:**
-> **Input:** nums = [1,2,3], indexDifference = 2, valueDifference = 4  
-> **Output:** [-1,-1]  
-> **Explanation:** In this example, it can be shown that it is impossible to find two indices that satisfy both conditions.
-Hence, [-1,-1] is returned.
-
-**Constraints:**
-* `1 <= n == nums.length <= 100`
-* `0 <= nums[i] <= 50`
-* `0 <= indexDifference <= 100`
-* `0 <= valueDifference <= 50`
+### Source
+https://leetcode.com/problems/find-indices-with-index-and-value-difference-i/
 
 ### Sliding Window Solution (Fixed-Size)
 To satisfy `abs(i - j) >= indexDifference`, use a fixed-size sliding window of `indexDifference` and slide it to the right across `nums`, with `i` as the left index and `j` as the right index, so that indices from `0` to `i` remain valid for each move in `j`.
@@ -6159,23 +4908,8 @@ class Solution {
 
 ## 45. Intersection of Two Arrays II
 [Back to Top](#table-of-contents)
-### Overview
-Given two integer arrays `nums1` and `nums2`, return an array of their common elements, with each element appearing as many times as it does in both arrays.
-The order of the elements in the result does not matter.
-
-**Example 1:**
-> **Input:** nums1 = [1,2,3,2,1], nums2 = [2,2]  
-> **Output:** [2,2]
-
-**Example 2:**
-> **Input:** nums1 = [4,9,5], nums2 = [9,4,9,8,4]  
-> **Output:** [4,9]  
-> **Explanation:** [9,4] is also accepted.
- 
-
-**Constraints:**
-* `1 <= nums1.length, nums2.length <= 1000`
-* `0 <= nums1[i], nums2[i] <= 1000`
+### Source
+https://leetcode.com/problems/intersection-of-two-arrays-ii/
 
 ### HashMap Solution
 1. Build a map `freq1` for elements in `nums1`.
@@ -6264,33 +4998,8 @@ class Solution {
 
 ## 46. Number of Paths with Max Score
 [Back to Top](#table-of-contents)
-### Overview
-You are given a square `board` of characters. 
-You can move on the board starting at the bottom right square marked with the character `'S'`.
-
-You need to reach the top left square marked with the character `'E'`. 
-The rest of the squares are labeled either with a numeric character `1, 2, ..., 9` or with an obstacle `'X'`. 
-In one move you can go up, left or up-left (diagonally) only if there is no obstacle there.
-
-Return a list of two integers: 
-the first integer is the maximum sum of numeric characters you can collect, and the second is the number of such paths that you can take to get that maximum sum, taken modulo `10^9 + 7`.
-
-In case there is no path, return `[0, 0]`.
-
-**Example 1:**
-> **Input:** board = ["E23","2X2","12S"]  
-> **Output:** [7,1]
-
-**Example 2:**
-> **Input:** board = ["E12","1X1","21S"]  
-> **Output:** [4,2]
-
-**Example 3:**
-> **Input:** board = ["E11","XXX","11S"]  
-> **Output:** [0,0]
-
-**Constraints:**
-* `2 <= board.length == board[i].length <= 100`
+### Source
+https://leetcode.com/problems/number-of-paths-with-max-score/
 
 ### Depth-first Search Solution
 Example: 
@@ -6431,63 +5140,8 @@ class Solution {
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to Top](#table-of-contents)  
-### Overview
-Table: `transactions`
-```
-+------------------+------+  
-| Column Name      | Type |   
-+------------------+------+  
-| transaction_id   | int  |  
-| amount           | int  |  
-| transaction_date | date |  
-+------------------+------+  
-```
-The `transactions_id` column uniquely identifies each row in this table.  
-Each row of this table contains the transaction id, amount and transaction date.
-
-Write a solution to find the `sum of amounts` for `odd` and `even` transactions for each day. If there are no odd or even transactions for a specific date, display as `0`.
-
-Return the result table ordered by `transaction_date` in **ascending** order.
-The result format is in the following example.
-
-**Example:**
-> **Input:**  
-> `transactions` table:  
-> ```text
-> +----------------+--------+------------------+
-> | transaction_id | amount | transaction_date |
-> +----------------+--------+------------------+
-> | 1              | 150    | 2024-07-01       |
-> | 2              | 200    | 2024-07-01       |
-> | 3              | 75     | 2024-07-01       |
-> | 4              | 300    | 2024-07-02       |
-> | 5              | 50     | 2024-07-02       |
-> | 6              | 120    | 2024-07-03       |
-> +----------------+--------+------------------+
-> ```
-> **Output:**  
-> ```text
-> +------------------+---------+----------+
-> | transaction_date | odd_sum | even_sum |
-> +------------------+---------+----------+
-> | 2024-07-01       | 75      | 350      |
-> | 2024-07-02       | 0       | 350      |
-> | 2024-07-03       | 0       | 120      |
-> +------------------+---------+----------+
-> ```
-> **Explanation:**
-> * For transaction dates:
->   * 2024-07-01:
->       * Sum of amounts for odd transactions: 75
->       * Sum of amounts for even transactions: 150 + 200 = 350
->   * 2024-07-02:
->       * Sum of amounts for odd transactions: 0
->       * Sum of amounts for even transactions: 300 + 50 = 350
->   * 2024-07-03:
->       * Sum of amounts for odd transactions: 0
->       * Sum of amounts for even transactions: 120  
->
-> **Note:** The output table is ordered by `transaction_date` in ascending order.
+### Source
+https://leetcode.com/problems/odd-and-even-transactions/
 ### Analysis
 Group the data by the `transaction_date` field (using `GROUP BY` or `PARTITION BY`), and calculate the total amounts for odd and even transactions on each transaction_date.
 
@@ -6519,57 +5173,8 @@ ORDER BY transaction_date ASC;
 
 ## 2. Find Customer Referee
 [Back to Top](#table-of-contents)  
-### Overview
-Table: `Accounts`
-> ```
-> +-------------+------+
-> | Column Name | Type |
-> +-------------+------+
-> | account_id  | int  |
-> | income      | int  |
-> +-------------+------+
-> ```
-> `account_id` is the primary key (column with unique values) for this table.
-Each row contains information about the monthly income for one bank account.
-
-Write a solution to calculate the number of bank accounts for each salary category. The salary categories are:
-
-* `"Low Salary"`: All the salaries strictly less than `$20000`.
-* `"Average Salary"`: All the salaries in the inclusive range `[$20000, $50000]`.
-* `"High Salary"`: All the salaries strictly greater than `$50000`.
-The result table must contain all three categories. If there are no accounts in a category, return `0`.
-
-Return the result table in any order.
-
-The result format is in the following example.
-
-**Example 1:**
-> **Input:**
-> Accounts table:
-> ```
-> +------------+--------+
-> | account_id | income |
-> +------------+--------+
-> | 3          | 108939 |
-> | 2          | 12747  |
-> | 8          | 87709  |
-> | 6          | 91796  |
-> +------------+--------+
-> ```
-> **Output:** 
-> ```
-> +----------------+----------------+
-> | category       | accounts_count |
-> +----------------+----------------+
-> | Low Salary     | 1              |
-> | Average Salary | 0              |
-> | High Salary    | 3              |
-> +----------------+----------------+
-> ```
-> **Explanation:**   
-> Low Salary: Account 2.  
-> Average Salary: No accounts.  
-> High Salary: Accounts 3, 6, and 8.
+### Source
+https://leetcode.com/problems/find-customer-referee/
 
 ### Analysis
 1. Use of Common Table Expressions (CTEs)
