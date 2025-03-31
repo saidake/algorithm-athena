@@ -852,7 +852,7 @@ class Solution {
     Thus, the overall space complexity is $O(n)$.
 #### Consideration
 * Calculate the single-digit decoding cases first to avoid redundant calculations.
-* The time complexity of `s.toCharArray()` is O(n), while the `s.charAt()` has a time complexity of O(1), making `charAt()` more efficient.
+* The time complexity of `s.toCharArray()` is $O(n)$, while the `s.charAt()` has a time complexity of $O(1)$, making `charAt()` more efficient.
 * The values in the `dp` array are taken modulo 10<sup>9</sup> + 7, which is still a very large value. long type is required to prevent integer overflow.
 * Using `Character.getNumericValue()` to obtain the numeric value of `'*'` in string `s` will return `'-1'` and using the `-1` for checking purposes can lead to misleading readability.
 
@@ -2939,7 +2939,7 @@ class Solution {
         Use the Binomial Theorem to derive the result of the equation above: 
         $$(a + b)^n = \sum_{k=0}^n C(n, k) \times a^{n-k} \times b^k$$
         Setting `a=1` gives:
-        $$ (1 + b)^n = \sum_{k=0}^n C(n, k) \times b^k $$
+        $$(1 + b)^n = \sum_{k=0}^n C(n, k) \times b^k$$
         Differentiating both sides with respect to `x` and evaluating at `x=1` yields:
         $$\frac{d}{db}(1+b)^n = \frac{d}{db} \sum_{k=0}^n C(n, k) \times b^k$$
         Using the derivative rule $\frac{d}{dx}(x^n)=nx^{n-1}$, we get:
