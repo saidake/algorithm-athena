@@ -2,9 +2,11 @@
 Simi Docs is a collection of technical documents.
 
 Note:
-* The PDF files may contain mixed Chinese content, which will be gradually phased out in future releases.
 * External sources will be marked with links whenever possible.
 * Most documents contain AI-generated content.
+* Apologies for any unintentional copyright infringement.   
+    Much of the content was written years ago. If you notice any issues or have concerns, I will remove it immediately.   
+    All content is completely free, open, and intended solely for educational purposes.
 * For any concerns or corrections, feel free to contact me at `craigbrowndev@gmail.com` or open an issue on GitHub.
 
 ## Table of Contents
@@ -27,10 +29,6 @@ Note:
 - [ReleaseNotes](docs/ReleaseNotes.md)
 
   Logs updates and changes for Simi Docs releases.
-- [pdf](./pdf/)
-
-  A collection of technical PDFs covering Java, Python, Spring Boot, Mathematics, Internet, Databases, Middleware, and Configuration.
-
 - [temppdf](./temppdf/)
 
   Contains outdated PDFs for future updates or archival purposes.  
