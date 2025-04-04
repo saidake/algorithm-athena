@@ -3161,7 +3161,7 @@ https://leetcode.com/problems/my-calendar-ii/
 ### Array Solution
 Define an array `self.cal` to store inserted elements and `self.cnt` to track the overlap count at each `startTime` index.
  * The value in `self.cnt` at `startTime` represents the total overlap count at that moment.
- * The value in `self.cnt` at `endTime` indicates the number of events covered the current event.
+ * The value in `self.cnt` at `endTime` indicates the number of events that cover the current event.
 
 Solution: 
 1. Insert `endTime`.
@@ -3170,9 +3170,9 @@ Solution:
       * If `self.cal[r-1]` is a `startTime`, the current event must overlap with the previous one.
         
         Copy `self.cnt[r-1]` to `self.cnt[r]` since there are now `self.cnt[r-1]` events now cover the current event.
-      * If `self.cal[r-1]` is an `endTime`, the current event does not overlap with it but overlaps with the events covered by the previous event.
+      * If `self.cal[r-1]` is an `endTime`, the current event does not overlap with it but overlaps with the events that cover the previous event.
     
-        Similarly, copy `self.cnt[r-1]` to `self.cnt[r]` since there are now `self.cnt[r-1]` events now cover the current event.
+        Similarly, copy `self.cnt[r-1]` to `self.cnt[r]` since `self.cnt[r-1]` events now cover the current event.
 
 2. Increment the overlap count for the affected range.
 3. Insert `startTime`.
@@ -3181,12 +3181,11 @@ Solution:
 
       * If `self.cal[l-1]` is a startTime, the current event must overlap with the previous one.
 
-        Copy `self.cnt[l-1]` to `self.cnt[l]` and increment it by `1`, as there are `self.cnt[l-1] + 1` events now cover the current event.
+        Copy `self.cnt[l-1]` to `self.cnt[l]` and increment it by `1`, as `self.cnt[l-1] + 1` events now cover the current event.
 
-      * If `self.cal[l-1]` is an endTime, the current event does not overlap with it but overlaps with the events covered by the previous event.
+      * If `self.cal[l-1]` is an endTime, the current event does not overlap with it but overlaps with the events that covers the previous event.
 
-        Similarly, copy `self.cnt[l-1]` to `self.cnt[l]` and increment it by `1`, as there are `self.cnt[l-1] + 1` events now cover the current event.
-
+        Similarly, copy `self.cnt[l-1]` to `self.cnt[l]` and increment it by `1`, as `self.cnt[l-1] + 1` events cover the current event.
 
 Example: 
 ```
@@ -5136,6 +5135,38 @@ class Solution {
     * The maximum stack depth for `dfsScore` and `dfsRoad` is $O(rLen+cLen)$ as at most three grids in up, left and up-left direction are checked in each call.
    
    Therefore, the total space complexity is $O(rLen\times cLen)$.
+
+## 47. Beautiful Towers II
+### Source
+https://leetcode.cn/problems/beautiful-towers-ii/
+
+### Analysis
+Define a stack `stack` to find the maximum sum of the increasing queue `incQue1` and decreasing queue `incQue2`.  
+$$res=max(sum(incQue1)+sum(incQue2))$$
+
+1. Traverse `maxHeights` from the beginning to find the increasing queue `incQue1` with the maximum sum.
+2. Traverse `maxHeights` from the end to find the increasing queue `incQue2` with maximum sum.
+    * At each index, substract the calculated sum of `incQue1` by the current maximum sum of `incQue2` to find the maximum `res`.
+#### Java Implementation
+```java
+/**
+ * @author Craig Brown
+ * @date April 4, 2025
+ */
+class Solution {
+    public long maximumSumOfHeights(List<Integer> maxHeights) {
+        // Common data
+        Stack<Integer> stack=new Stack<>();
+        int len = maxHeights.size();
+        // Traverse maxHeights from the beginning.
+        for(int i=0; i<len; i++){
+
+            stack.push(maxHeights[i]);
+        }
+        return maxHeights;
+    }
+}
+```
 
 # SQL Problems
 ## 1. Odd and Even Transactions
