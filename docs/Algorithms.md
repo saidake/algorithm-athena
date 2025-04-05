@@ -1,3 +1,8 @@
+<!-- 
+    @author Craig Brown
+    @version simi-docs-1.5.1
+    @date 
+-->
 # Table of Contents
 [Back to Main Project README](../README.md)
 - [Algorithm Problems](#algorithm-problems)
@@ -5154,19 +5159,62 @@ $$res=max(sum(incQue1)+sum(incQue2))$$
  * @date April 4, 2025
  */
 class Solution {
-    public long maximumSumOfHeights(List<Integer> maxHeights) {
+    public long maximumSumOfHeights(List<Integer> mHs) {
         // Common data
         Stack<Integer> stack=new Stack<>();
-        int len = maxHeights.size();
-        // Traverse maxHeights from the beginning.
+        int len = mHs.size();
+        long[] sum1List=new long[len];
+        // Traverse mHs from the beginning
+        stack.push(-1); // IMP
         for(int i=0; i<len; i++){
+            System.out.println("=================");
+            //System.out.println("sum1: "+sum1);
+            int cur=mHs.get(i);
+            // Clear the previous larger values in 'sum1'
+            while(stack.size()>1 && cur <= mHs.get(stack.peek())){
+                int preInd=stack.pop();
+                sum1-=mHs.get(preInd)*(i-preInd);
+                System.out.println("stack.size(): "+stack.size());
+            }
+            // Push the current index to the 'stack'
+            stack.push(i);
+            
+            System.out.println("preInd: "+preInd);
+            System.out.println("i: "+i);
+            System.out.println("previous sum1: "+sum1);
+            
+            sum1+=mHs.get(preInd)*(i-preInd-1)+cur;
+            
+            System.out.println("sum1+= "+(preInd==0?cur*(i-preInd+1):(mHs.get(preInd)*(i-preInd-1)+cur)));
+            stack.stream().forEach(System.out::println);
 
-            stack.push(maxHeights[i]);
+            System.out.println("sum1: "+sum1);
+            sum1List[i]=sum1;
         }
-        return maxHeights;
+
+        // Traverse mHs from the end.
+        stack.clear();
+        int sum2=0;
+        long res=sum1;
+        for(int i=len-1; i>0; i--){
+            int cur=mHs.get(i);
+            if(stack.size()>0 && cur<stack.peek()){
+                while(stack.size()>0 && cur>=stack.peek()){
+                    int pre=stack.pop();
+                    sum2-=mHs.get(pre)*(pre-i);
+                }
+                sum2+=mHs.get(stack.peek())*(stack.peek()-i);
+            }else{
+                stack.push(i);
+                sum2+=cur;
+            }
+            res = Math.max(res,sum1List[i]+sum2);
+        }
+        return res;
     }
 }
 ```
+#### Consideration
 
 # SQL Problems
 ## 1. Odd and Even Transactions
