@@ -5174,46 +5174,52 @@ class Solution {
         // Common data
         Stack<Integer> stack=new Stack<>();
         int len = mHs.size();
-        long[] sum1List=new long[len];
+        long[] sum1List=new long[len+1];
+        sum1List[0]=0;
         // Traverse 'mHs' from the beginning
         stack.push(-1); // IMP
+        int sum1=0;
         for(int i=0; i<len; i++){
-            System.out.println("=================");
+            //System.out.println("=================");
             //System.out.println("sum1: "+sum1);
             int cur=mHs.get(i);
             // Clear the previous larger values in 'sum1'
             while(stack.size()>1 && cur <= mHs.get(stack.peek())){
-                sum1-=cur*(i-stack.peek());
-                System.out.println("stack.size(): "+stack.size());
+                int preInd=stack.pop();
+                sum1-=mHs.get(preInd)*(preInd-stack.peek());
+                // System.out.println("stack.size(): "+stack.size());
             }
             // Push the current index to the 'stack'
-            stack.push(i);
-            
-            System.out.println("preInd: "+preInd);
-            System.out.println("i: "+i);
-            System.out.println("previous sum1: "+sum1);
+            // System.out.println("previous sum1: "+sum1);
+            // System.out.println("i: "+i);
+            // System.out.println("cur: "+cur);
+            // System.out.println("stack.peek(): "+stack.peek());
+
             sum1+=cur*(i-stack.peek());
+            stack.push(i);
+
             stack.stream().forEach(System.out::println);
-            System.out.println("sum1: "+sum1);
-            sum1List[i]=sum1;
+            //System.out.println("sum1: "+sum1);
+            sum1List[i+1]=sum1;
         }
 
         // Traverse mHs from the end.
         stack.clear();
+        stack.push(len);
         int sum2=0;
         long res=sum1;
-        for(int i=len-1; i>0; i--){
+        for(int i=len-1; i>=0; i--){
             int cur=mHs.get(i);
-            if(stack.size()>0 && cur<stack.peek()){
-                while(stack.size()>0 && cur>=stack.peek()){
-                    int pre=stack.pop();
-                    sum2-=mHs.get(pre)*(pre-i);
-                }
-                sum2+=mHs.get(stack.peek())*(stack.peek()-i);
-            }else{
-                stack.push(i);
-                sum2+=cur;
+            while(stack.size()>1 && cur<=mHs.get(stack.peek())){
+                int preInd=stack.pop();
+                sum2-=mHs.get(preInd)*(stack.peek()-preInd);
             }
+            //System.out.println("previous sum2: "+sum2);
+            //System.out.println("cur: "+cur);
+            sum2+=cur*(stack.peek()-i);
+            stack.push(i);
+            stack.stream().forEach(System.out::println);
+            //System.out.println("sum2: "+sum2);
             res = Math.max(res,sum1List[i]+sum2);
         }
         return res;
