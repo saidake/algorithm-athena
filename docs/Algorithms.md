@@ -5183,8 +5183,7 @@ class Solution {
             int cur=mHs.get(i);
             // Clear the previous larger values in 'sum1'
             while(stack.size()>1 && cur <= mHs.get(stack.peek())){
-                int preInd=stack.pop();
-                sum1-=mHs.get(preInd)*(i-preInd);
+                sum1-=cur*(i-stack.peek());
                 System.out.println("stack.size(): "+stack.size());
             }
             // Push the current index to the 'stack'
@@ -5193,12 +5192,8 @@ class Solution {
             System.out.println("preInd: "+preInd);
             System.out.println("i: "+i);
             System.out.println("previous sum1: "+sum1);
-            
-            sum1+=mHs.get(preInd)*(i-preInd-1)+cur;
-            
-            System.out.println("sum1+= "+(preInd==0?cur*(i-preInd+1):(mHs.get(preInd)*(i-preInd-1)+cur)));
+            sum1+=cur*(i-stack.peek());
             stack.stream().forEach(System.out::println);
-
             System.out.println("sum1: "+sum1);
             sum1List[i]=sum1;
         }
