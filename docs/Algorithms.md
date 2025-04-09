@@ -74,6 +74,9 @@
       - [40. Count Subarrays Where Max Element Appears at Least K Times](#40-count-subarrays-where-max-element-appears-at-least-k-times)
     - <a id="h-sliding-window-fixed-size-window">Fixed-size Window</a>
       - [44. Find Indices With Index and Value Difference I](#44-find-indices-with-index-and-value-difference-i) 
+  - <a id="h-stack">Stack</a>
+    - <a id="h-stack-monotonic-stack">Monotonic Stack</a>
+      - [47. Beautiful Towers II](#47-beautiful-towers-ii)
   - <a id="h-string">String</a>
     - [23. License Key Formatting](#23-license-key-formatting)
   - <a id="h-traversal">Traversal</a>
@@ -5153,10 +5156,12 @@ class Solution {
    Therefore, the total space complexity is $O(rLen\times cLen)$.
 
 ## 47. Beautiful Towers II
+[Back to `Monotonic Stack`](#h-stack-monotonic-stack)  
+
 ### Source
 https://leetcode.cn/problems/beautiful-towers-ii/
 
-### Analysis
+### Monotonic Stack Solution
 Define a monotonically increasing stack `stack` to compute the maximum sum of an increasing subarray `incList1` from the beginning of `maxHeights` or `incList2` from the end.
 * Since the previous larger values must be excluded and the relative order must be preserved, a monotonic stack is well-suited for this task.
 * The goal is to find the maximum possible sum of heights in a valid configuration, which is achieved by combining prefix and suffix contributions.
@@ -5252,6 +5257,51 @@ class Solution {
 * `java.util.ArrayDeque` offers better performance than `java.util.Stack` as `Stack` is synchronized and incurs additional locking overhead.
 * When the result may exceed the limits of the data type, relying on automatic type conversion can lead to precision loss.  
   In such cases, explicit type casting should be used to prevent overflow:  `sum1 -= (long) arr[preInd] * (preInd - stack.peek());`
+
+
+## 48. Longest Common Prefix
+[Back to `Monotonic Stack`](#h-stack-monotonic-stack)  
+### Source
+https://leetcode.com/problems/longest-common-prefix/
+### Analysis
+#### Java Implementation
+```java
+class Solution {
+
+    public String longestCommonPrefix(String[] strs) {
+        char[] cList= new char[200];
+        // Initialization
+        for(int i=0; i<strs[0].length(); i++){
+            cList[i]=strs[0].charAt(i);
+        }
+
+        // Find the common prefix
+        int resLen=strs[0].length();
+        for(int i=1; i<strs.length; i++){
+            String str=strs[i];
+            int curLen=0;
+            for(int j=0; j<str.length(); j++){
+                char c=str.charAt(j);
+                if(c!=cList[j]){
+                    cList[j]='!';
+                    break;
+                }
+                curLen++;
+            }
+            resLen=Math.min(resLen,curLen);
+        }
+        // Copy the valid common prefix from `cList` to 'res' array
+        char[] res= new char[resLen];
+        for(int i=0; i<resLen; i++){
+            res[i]=cList[i];
+        }
+        return new String(res);
+    }
+}
+```
+
+
+
 
 # SQL Problems
 ## 1. Odd and Even Transactions
