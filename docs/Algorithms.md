@@ -85,6 +85,7 @@
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [36. Find Triangular Sum of an Array](#36-find-triangular-sum-of-an-array)
     - [42. Count Prefix and Suffix Pairs I](#42-count-prefix-and-suffix-pairs-i)
+    - [48. Longest Common Prefix](#48-longest-common-prefix)
   - <a id="h-two-pointer">Two Pointer</a>
     - [26. Boats to Save People](#26-boats-to-save-people)
     - [27. Find the Lexicographically Largest String From the Box I](#27-find-the-lexicographically-largest-string-from-the-box-i)
@@ -5264,44 +5265,51 @@ class Solution {
 ### Source
 https://leetcode.com/problems/longest-common-prefix/
 ### Analysis
+The length of the longest common prefix cannot exceed the length of the shortest string in the array `strs`.
+
+Solution:
+1. Identify the shortest string in `strs`.
+2. Compare each string with the shortest one, updating the minimium length of the common prefix.
+3. Return the common prefix by extracting the corresponding substring from the shortest string.
 #### Java Implementation
 ```java
+/**
+ * @author Craig Brown
+ * @date April 10, 2025
+ **/ 
 class Solution {
 
     public String longestCommonPrefix(String[] strs) {
-        char[] cList= new char[200];
-        // Initialization
-        for(int i=0; i<strs[0].length(); i++){
-            cList[i]=strs[0].charAt(i);
+        int len=strs.length;
+        String res=strs[0];
+
+        // Identify the shortest string
+        for(String str: strs){
+            if(str.length()<res.length())res=str;
         }
 
-        // Find the common prefix
-        int resLen=strs[0].length();
-        for(int i=1; i<strs.length; i++){
-            String str=strs[i];
-            int curLen=0;
-            for(int j=0; j<str.length(); j++){
-                char c=str.charAt(j);
-                if(c!=cList[j]){
-                    cList[j]='!';
-                    break;
+        // Compare each string to find the longest common prefix
+        int resInd=res.length();
+        for(int i=0; i<len; i++){
+            for(int j=0; j<strs[i].length() && j<res.length(); j++){
+                if(strs[i].charAt(j)!=res.charAt(j)){
+                    resInd=Math.min(resInd, j);
                 }
-                curLen++;
             }
-            resLen=Math.min(resLen,curLen);
         }
-        // Copy the valid common prefix from `cList` to 'res' array
-        char[] res= new char[resLen];
-        for(int i=0; i<resLen; i++){
-            res[i]=cList[i];
-        }
-        return new String(res);
+        return res.substring(0,resInd);
     }
 }
 ```
-
-
-
+#### Complexity Analysis
+* Time Complexity: $O(nm)$
+  * Identify the shortest string
+    * Traversing `strs` has a time complexity of $O(n)$ where `n` is the length of array `strs`.
+  * Compare each string to find the longest common prefix
+    * In the worst case, each string in `strs` contains the entire shortest string, requiring a full traversal.   
+    This results in a total time complexity of $O(nm)$, where `n` is the length of array `strs` and `m` is the length of the shortest string.
+* Space Complexity: $O(1)$
+  * All variables occupy constant space.
 
 # SQL Problems
 ## 1. Odd and Even Transactions
