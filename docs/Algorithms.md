@@ -12,8 +12,9 @@
       - [31. Minimum Number Game](#31-minimum-number-game)
     - <a id="h-array-meaningful-index">Meaningful Index</a> (`Automatic Sorting`)
       - [34. Sort Array by Increasing Frequency](#34-sort-array-by-increasing-frequency)
-  - <a id="h-array-backtracking">Backtracking</a>
+  - <a id="h-backtracking">Backtracking</a>
     - [29. Power Set LCCI](#29-power-set-lcci)
+    - [50. Merge Sort](#50-merge-sort)
   - <a id="h-binarysearch">Binary Search</a>
     - [32. My Calendar II](#32-my-calendar-ii)
   - <a id="h-conditionallogic">Conditional Logic</a>
@@ -75,6 +76,7 @@
       - [44. Find Indices With Index and Value Difference I](#44-find-indices-with-index-and-value-difference-i) 
   - <a id="h-sorting">Sorting</a>
     - [49. Bubble Sort](#49-bubble-sort)
+    - [50. Merge Sort](#50-merge-sort)
   - <a id="h-stack">Stack</a>
     - <a id="h-stack-monotonic-stack">Monotonic Stack</a>
       - [47. Beautiful Towers II](#47-beautiful-towers-ii)
@@ -2818,7 +2820,7 @@ class Solution {
     The array `nums1Cp` occupies $O(m)$ space where `m` is the first `m` integers in array `nums1`.
 
 ## 29. Power Set LCCI
-[Back to `Backtracking`](#h-array-backtracking)  
+[Back to `Backtracking`](#h-backtracking)  
 [Back to `Depth-first Search`](#h-dfs)  
 [Back to `Traversal`](#h-traversal)
 ### Source
@@ -5410,13 +5412,18 @@ public class BubbleSort {
     * All variables occupy constant space.
 
 ## 50. Merge Sort
+[Back to `Backtracking`](#h-backtracking)  
+### Backtracking Solution
+
+### Java Implementation
 ```java
 public class MergeSort {
     public static void mergeSort(int[] arr, int left, int right) {
         // Check whether the range is valid.
         if (left < right) {
-            // Calculate the center index. 
+            // Calculate the middle index (left <= middle <= right)
             //   2 			    left=2  right=2  middle=2
+            //   2 3 			left=2  right=3  middle=2
             //   2 3 4 			left=2  right=4  middle=3
             //   2 3 4 5		left=2  right=5  middle=3
             int middle = (left + right) / 2; 
@@ -5424,12 +5431,35 @@ public class MergeSort {
             mergeSort(arr, left, middle);
             mergeSort(arr, middle + 1, right);
             
-            // Sort the partitions.
-            int[] leftArr=new int[]
-            int[] rightArr=new int[]
-
-
-
+            int lLen=middle-left;
+            int rlen=right-middle+1;
+            int[] lArr=new int[lLen];
+            int[] rArr=new int[rLen];
+            // Split elements from arr to 'lArr' and 'rArr'.
+            for(int i=left; i<left+lLen; i++){
+                lArr[i]=arr[i];
+            }
+            for(int i=right; i<right+rLen; i++){
+                lArr[i]=arr[i];
+            }
+            // Simply merge the sorted left and right partitions.
+            int i=0,j=0,k=left;
+            for(;i<lLen&&j<rLen; k++){
+                if(lArr[i]<rArr[j]){
+                    arr[k]=lArr[i];
+                    i++;
+                }else{
+                    arr[k]=lArr[j];
+                    j++;
+                }
+            }
+            // Handle the remaining elements
+            for(;i<lLen; i++,k++){
+                arr[k]=lArr[i];
+            }
+            for(;j<jLen; j++,k++){
+                arr[k]=rArr[j];
+            }
         }
     }
 
