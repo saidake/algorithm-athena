@@ -5414,7 +5414,7 @@ public class BubbleSort {
 ## 50. Merge Sort
 [Back to `Backtracking`](#h-backtracking)  
 ### Backtracking Solution
-
+Sort every pair of elements based on backtracking paths, then sort groups of four formed from the previously sorted pairs, and continue doubling the group size until the entire array is sorted.
 ### Java Implementation
 ```java
 public class MergeSort {
@@ -5422,25 +5422,24 @@ public class MergeSort {
         // Check whether the range is valid.
         if (left < right) {
             // Calculate the middle index (left <= middle <= right)
-            //   2 			    left=2  right=2  middle=2
             //   2 3 			left=2  right=3  middle=2
             //   2 3 4 			left=2  right=4  middle=3
             //   2 3 4 5		left=2  right=5  middle=3
-            int middle = (left + right) / 2; 
+            int middle = (left + right) / 2;
             //partition the array.
             mergeSort(arr, left, middle);
             mergeSort(arr, middle + 1, right);
-            
+
             int lLen=middle-left;
-            int rlen=right-middle+1;
+            int rLen=lLen==0?right-middle:right-middle+1;
             int[] lArr=new int[lLen];
             int[] rArr=new int[rLen];
             // Split elements from arr to 'lArr' and 'rArr'.
-            for(int i=left; i<left+lLen; i++){
-                lArr[i]=arr[i];
+            for(int i=0; i<lLen; i++){
+                lArr[i]=arr[left+i];
             }
-            for(int i=right; i<right+rLen; i++){
-                lArr[i]=arr[i];
+            for(int i=0; i<rLen; i++){
+                rArr[i]=arr[middle+i];
             }
             // Simply merge the sorted left and right partitions.
             int i=0,j=0,k=left;
@@ -5449,7 +5448,7 @@ public class MergeSort {
                     arr[k]=lArr[i];
                     i++;
                 }else{
-                    arr[k]=lArr[j];
+                    arr[k]=rArr[j];
                     j++;
                 }
             }
@@ -5457,7 +5456,7 @@ public class MergeSort {
             for(;i<lLen; i++,k++){
                 arr[k]=lArr[i];
             }
-            for(;j<jLen; j++,k++){
+            for(;j<rLen; j++,k++){
                 arr[k]=rArr[j];
             }
         }
@@ -5473,7 +5472,7 @@ public class MergeSort {
     }
 }
 ```
-
+#### Complexity Analysis
 
 # SQL Problems
 ## 1. Odd and Even Transactions
