@@ -1,8 +1,8 @@
-<!-- 
-    @author Craig Brown
-    @version simi-docs-1.6.0
-    @source https://github.com/saidake/simi-docs/tree/main/docs
--->
+<!-----------------------------------------------------------
+Author:  Craig Brown
+Version: simi-docs-1.6.0
+Source:  https://github.com/saidake/simi-docs
+------------------------------------------------------------->
 # Table of Contents
 [Back to Main Project README](../README.md)
 - [Algorithm Problems](#algorithm-problems)
@@ -5415,31 +5415,49 @@ public class BubbleSort {
 [Back to `Backtracking`](#h-backtracking)  
 ### Backtracking Solution
 Sort every pair of elements based on backtracking paths, then sort groups of four formed from the previously sorted pairs, and continue doubling the group size until the entire array is sorted.
+
+Note that the comparison process begins at the bottom of the tree when the recursive calls reach their base case and the backtracking starts.
+
+Example:
+```
+
+Original Array:
+    38, 27, 43, 3, 9, 82, 10
+
+Step-by-step Splits:
+                            [38, 27, 43, 3, 9, 82, 10]
+                         /                              \
+                [38, 27, 43, 3]                        [9, 82, 10]
+               /               \                     /           \
+          [38, 27]           [43, 3]              [9, 82]         [10]
+          /     \            /     \             /     \
+       [38]   [27]        [43]   [3]         [9]     [82]
+```
 ### Java Implementation
 ```java
 public class MergeSort {
     public static void mergeSort(int[] arr, int left, int right) {
         // Check whether the range is valid.
         if (left < right) {
-            // Calculate the middle index (left <= middle <= right)
+            // Calculate the middle index (left <= middle < right)
             //   2 3 			left=2  right=3  middle=2
             //   2 3 4 			left=2  right=4  middle=3
             //   2 3 4 5		left=2  right=5  middle=3
             int middle = (left + right) / 2;
-            //partition the array.
+            // Partition the array to ranges [left, middle] and (middle, right].
             mergeSort(arr, left, middle);
-            mergeSort(arr, middle + 1, right);
+            mergeSort(arr, middle+1, right);
 
-            int lLen=middle-left;
-            int rLen=lLen==0?right-middle:right-middle+1;
-            int[] lArr=new int[lLen];
-            int[] rArr=new int[rLen];
+            int lLen=middle-left+1;
+            int rLen=right-middle;
+            int[] lArr=new int[lLen]; // [left, middle]
+            int[] rArr=new int[rLen]; // (middle, right]
             // Split elements from arr to 'lArr' and 'rArr'.
             for(int i=0; i<lLen; i++){
                 lArr[i]=arr[left+i];
             }
             for(int i=0; i<rLen; i++){
-                rArr[i]=arr[middle+i];
+                rArr[i]=arr[middle+1+i];
             }
             // Simply merge the sorted left and right partitions.
             int i=0,j=0,k=left;
@@ -5473,6 +5491,16 @@ public class MergeSort {
 }
 ```
 #### Complexity Analysis
+* Time Complexity: $O()$
+  * There are about $O(\log n )$ recursive calls where `n` is the number of elements in `arr`.
+  * Each recursive call will traverse the elements within this range, resulting in a time complexity of $O()$
+* Space Complexity: $O()$
+  * The depth of the recursive stack is aproximately $O(\log n)$ as the relation between the total number of elements `n` and the depth `D` for a complete binary tree is:
+    $$n=2^D-1$$
+  * A new array with the elements within the range of each recursive call will be created, taking $O()$ space.
+
+#### Consideration
+* The `middle` element should be included in the left range rather than the right, because with `int middle = (left + right) / 2` and `left <= middle < right`, the split may result in the left range having `0` elements and the right range having `2`, potentially leading the right range unsorted. 
 
 # SQL Problems
 ## 1. Odd and Even Transactions
