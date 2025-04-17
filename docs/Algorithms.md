@@ -5491,13 +5491,22 @@ public class MergeSort {
 }
 ```
 #### Complexity Analysis
-* Time Complexity: $O()$
-  * There are about $O(\log n )$ recursive calls where `n` is the number of elements in `arr`.
-  * Each recursive call will traverse the elements within this range, resulting in a time complexity of $O()$
-* Space Complexity: $O()$
-  * The depth of the recursive stack is aproximately $O(\log n)$ as the relation between the total number of elements `n` and the depth `D` for a complete binary tree is:
-    $$n=2^D-1$$
-  * A new array with the elements within the range of each recursive call will be created, taking $O()$ space.
+* Time Complexity: $O(n\log n)$
+  * For a complete binary tree, the total number of elements `n` and the depth `D` satisfy $n=2^D-1$.
+    The depth is $O(\log n)$,
+
+    At every level `D`, all elements in `arr` are traversed for merging, even though they are divided into subarrays, resulting a time complexity of $O(n)$ per level.
+
+  Therefore, the over time complexity is $O(n\log n)$
+
+* Space Complexity: $O(n)$
+  * The depth of the recursive stack is $\log n$, requiring $O(\log n)$ space.
+  * At each level `D`, `arr` is partitioned into `lArr` and `rArr` at each node, but the total number of elements stored across all nodes at that level remains `n`, leading in a space complexity of $O(n)$.
+    
+    As recursive calls complete, the temporary arrays used in each call are released, so the total auxiliary space used by these subarrays at any point in time remains $O(n)$..
+
+
+  The overall space complexity is therefore $O(n)$, as the additional $O(\log n)$ recursion stack space is negligible in comparison.
 
 #### Consideration
 * The `middle` element should be included in the left range rather than the right, because with `int middle = (left + right) / 2` and `left <= middle < right`, the split may result in the left range having `0` elements and the right range having `2`, potentially leading the right range unsorted. 
