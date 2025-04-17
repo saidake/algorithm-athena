@@ -23,6 +23,7 @@ Source:  https://github.com/saidake/simi-docs
     - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [46. Number of Paths with Max Score](#46-number-of-paths-with-max-score)
+    - [51. Quick Sort](#51-quick-sort)
   - <a id="h-dichotomy">Dichotomy</a>
     - [4. Search in Rotated Sorted Array](#4-search-in-rotated-sorted-array)
   - <a id="h-difference-array">Difference Array</a>
@@ -5318,6 +5319,12 @@ class Solution {
 ## 49. Bubble Sort
 [Back to `Sorting`](#h-sorting)  
 [Back to `Traversal`](#h-traversal)  
+### Description
+Given an integer array `arr`, sort it in ascending order.
+
+#### Constraints:
+* `1 <= arr.length <= 10^4`
+* `-10^4 <= arr[i] <= 10^4`
 ### Traversal Solution
 1. Compare each element with the elements that come after it.  
 2. Swap elements to arrange them in ascending or descending order.
@@ -5413,15 +5420,20 @@ public class BubbleSort {
 
 ## 50. Merge Sort
 [Back to `Backtracking`](#h-backtracking)  
+### Description
+Given an integer array `arr`, sort it in ascending order.
+
+#### Constraints:
+* `1 <= arr.length <= 10^4`
+* `-10^4 <= arr[i] <= 10^4`
 ### Backtracking Solution
-Sort every pair of elements based on backtracking paths, then sort groups of four formed from the previously sorted pairs, and continue doubling the group size until the entire array is sorted.
+Sort each pair of elements based on backtracking paths, then repeatedly double the group size and sort until the entire array is sorted.
 
 Note that the comparison process begins at the bottom of the tree when the recursive calls reach their base case and the backtracking starts.
 
 Example:
 ```
-
-Original Array:
+arr:
     38, 27, 43, 3, 9, 82, 10
 
 Step-by-step Splits:
@@ -5435,6 +5447,10 @@ Step-by-step Splits:
 ```
 ### Java Implementation
 ```java
+/**
+ * @author Craig Brown
+ * @date April 17, 2025
+ **/
 public class MergeSort {
     public static void mergeSort(int[] arr, int left, int right) {
         // Check whether the range is valid.
@@ -5510,6 +5526,60 @@ public class MergeSort {
 
 #### Consideration
 * The `middle` element should be included in the left range rather than the right, because with `int middle = (left + right) / 2` and `left <= middle < right`, the split may result in the left range having `0` elements and the right range having `2`, potentially leading the right range unsorted. 
+
+
+## 51. Quick Sort
+[Back to `Depth-first Search`](#h-dfs)  
+### Description
+Given an integer array `arr`, sort it in ascending order.
+
+#### Constraints:
+* `1 <= arr.length <= 10^4`
+* `-10^4 <= arr[i] <= 10^4`
+
+### Depth-first Search Solution
+
+#### Java Implementation
+```java
+/**
+ * @author Craig Brown
+ * @date April 18, 2025
+ **/
+public class MergeSort {
+    public static void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            // Calculate the middle index (left <= middle < right)
+            //   2 3 			left=2  right=3  middle=2
+            //   2 3 4 			left=2  right=4  middle=3
+            //   2 3 4 5		left=2  right=5  middle=3
+            int middle = (left + right) / 2;
+            // Sort the array to make the elements in [left, middle] are less than the elements in (middle, right].
+            int comp=arr[left];
+            for(int i=left, j=left+1;j<=right;j++){
+                if(arr[j]<arr[i]){
+                    int temp=arr[j];
+                    arr[j]=arr[i];
+                    arr[i]=temp;
+                    i++;
+                }
+            }
+            quickSort(arr, left, middle);
+            quickSort(arr, middle+1, right);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {38, 27, 43, 3, 9, 82, 10};
+        quickSort(arr, 0, arr.length - 1);
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+```
 
 # SQL Problems
 ## 1. Odd and Even Transactions
