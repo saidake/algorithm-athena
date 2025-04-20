@@ -23,7 +23,7 @@ Source:  https://github.com/saidake/simi-docs
     - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [46. Number of Paths with Max Score](#46-number-of-paths-with-max-score)
-    - [51. Quick Sort](#51-quick-sort)
+    <!-- - [51. Quick Sort](#51-quick-sort) -->
   - <a id="h-dichotomy">Dichotomy</a>
     - [4. Search in Rotated Sorted Array](#4-search-in-rotated-sorted-array)
   - <a id="h-difference-array">Difference Array</a>
@@ -5527,7 +5527,7 @@ public class MergeSort {
 #### Consideration
 * The `middle` element should be included in the left range rather than the right, because with `int middle = (left + right) / 2` and `left <= middle < right`, the split may result in the left range having `0` elements and the right range having `2`, potentially leading the right range unsorted. 
 
-
+<!-- 
 ## 51. Quick Sort
 [Back to `Depth-first Search`](#h-dfs)  
 ### Description
@@ -5554,9 +5554,9 @@ public class MergeSort {
             //   2 3 4 5		left=2  right=5  middle=3
             int middle = (left + right) / 2;
             // Sort the array to make the elements in [left, middle] are less than the elements in (middle, right].
-            int comp=arr[left];
+            int comp=arr[right];
             for(int i=left, j=left+1;j<=right;j++){
-                if(arr[j]<arr[i]){
+                if(arr[j]<comp){
                     int temp=arr[j];
                     arr[j]=arr[i];
                     arr[i]=temp;
@@ -5579,7 +5579,7 @@ public class MergeSort {
 }
 
 
-```
+``` -->
 
 # SQL Problems
 ## 1. Odd and Even Transactions
