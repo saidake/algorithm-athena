@@ -3,10 +3,9 @@ Simi Docs is a collection of technical documents.
 
 Note:
 * External sources will be marked with links whenever possible.
-* Most documents contain AI-generated content.
-* Apologies for any unintentional copyright infringement.   
-    Much of the content was written years ago. If you notice any issues or have concerns, I will remove it immediately.   
-    All content is completely free, open, and intended solely for educational purposes.
+* These documents were co-authored with AI.
+* This technical documents is licensed under CC-BY-SA. 
+  You are free to use and share it, but you must credit the author Craig Brown and include the original link: https://github.com/saidake/simi-docs.
 * For any concerns or corrections, feel free to contact me at `craigbrowndev@gmail.com` or open an issue on GitHub.
 
 ## Table of Contents
@@ -29,6 +28,12 @@ Note:
 - [ReleaseNotes](docs/ReleaseNotes.md)
 
   Logs updates and changes for Simi Docs releases.
+- [pdf](./pdf/)
+
+    * **Japanese_vx.x.x.pdf**
+    
+      A technical document introducing Japanese grammar.
+
 - [temppdf](./temppdf/)
 
   Contains outdated PDFs for future updates or archival purposes.  
@@ -37,6 +42,4 @@ Note:
   * Once all chinese content is removed, the PDFs will be moved to the `pdf` folder.
 - [temp](./temp/)
 
-  A temporary folder for review content, used by the `simi-review-tool` from the `simi` GitHub project.  
-  * Not recommended for reading.
-  * Once the document content matures, `simi-review-tool` will be introduced in future releases.
+  A temporary folder.  
