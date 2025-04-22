@@ -23,6 +23,7 @@ Source:  https://github.com/saidake/simi-docs
     - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [46. Number of Paths with Max Score](#46-number-of-paths-with-max-score)
+    - [51. Quick Sort](#51-quick-sort)
     <!-- - [51. Quick Sort](#51-quick-sort) -->
   - <a id="h-dichotomy">Dichotomy</a>
     - [4. Search in Rotated Sorted Array](#4-search-in-rotated-sorted-array)
@@ -5496,7 +5497,6 @@ public class MergeSort {
         }
     }
 
-
     public static void main(String[] args) {
         int[] arr = {38, 27, 43, 3, 9, 82, 10};
         mergeSort(arr, 0, arr.length - 1);
@@ -5508,12 +5508,12 @@ public class MergeSort {
 ```
 #### Complexity Analysis
 * Time Complexity: $O(n\log n)$
-  * For a complete binary tree, the total number of elements `n` and the depth `D` satisfy $n=2^D-1$.
-    The depth is $O(\log n)$,
+    * For a complete binary tree corresponding to the recursion path, the total number of elements `N` and the depth `D` satisfy $N=2^D-1$.
+      so the recursion depth is approximately $\log n$, where `n` is the size of `arr`.
 
-    At every level `D`, all elements in `arr` are traversed for merging, even though they are divided into subarrays, resulting a time complexity of $O(n)$ per level.
+      At every level `D`, all `n` elements in `arr` are traversed for merging, even though they are divided into subarrays, resulting a time complexity of $O(n)$ per level.
 
-  Therefore, the over time complexity is $O(n\log n)$
+  Therefore, the overall time complexity is $O(n\log n)$.
 
 * Space Complexity: $O(n)$
   * The depth of the recursive stack is $\log n$, requiring $O(\log n)$ space.
@@ -5523,11 +5523,12 @@ public class MergeSort {
 
 
   The overall space complexity is therefore $O(n)$, as the additional $O(\log n)$ recursion stack space is negligible in comparison.
-
 #### Consideration
 * The `middle` element should be included in the left range rather than the right, because with `int middle = (left + right) / 2` and `left <= middle < right`, the split may result in the left range having `0` elements and the right range having `2`, potentially leading the right range unsorted. 
+* At each step, the array is split at the `middle`, forming a binary recursion tree.
+* Sorting begins from the bottom of the recursion tree via backtracking.
+  Each recursive call focuses on merging two already sorted partitions into a larger sorted array.
 
-<!-- 
 ## 51. Quick Sort
 [Back to `Depth-first Search`](#h-dfs)  
 ### Description
@@ -5538,36 +5539,54 @@ Given an integer array `arr`, sort it in ascending order.
 * `-10^4 <= arr[i] <= 10^4`
 
 ### Depth-first Search Solution
+1. Partition the array using Lomuto’s partition scheme so that elements to the left of the `pivot` are less than it, and elements to the right are greater.
+2. Recursively partition the left and right subarrays until each contains at most two elements.
+   * Note that the `pivot` is excluded, as its final position is already determined.
 
+```
+arr:
+    38, 27, 43, 3, 9, 82, 10
+
+Step-by-step partitions:
+                            [38, 27, 43, 3, 9, 82, 10] 
+                           /             |            \ 
+                    [27, 3, 9]          10        [43, 82, 38] 
+                   /    |     \                   /    |     \
+                [3]     9    [27]              [38]    43     [82]
+
+```
 #### Java Implementation
 ```java
 /**
  * @author Craig Brown
  * @date April 18, 2025
  **/
-public class MergeSort {
+public class QuickSort {
     public static void quickSort(int[] arr, int left, int right) {
         if (left < right) {
-            // Calculate the middle index (left <= middle < right)
-            //   2 3 			left=2  right=3  middle=2
-            //   2 3 4 			left=2  right=4  middle=3
-            //   2 3 4 5		left=2  right=5  middle=3
-            int middle = (left + right) / 2;
-            // Sort the array to make the elements in [left, middle] are less than the elements in (middle, right].
-            int comp=arr[right];
-            for(int i=left, j=left+1;j<=right;j++){
-                if(arr[j]<comp){
+            // Select the rightmost value as the pivot.
+            int pivot=arr[right];
+            int i=left-1, j=left;  // left -1 <= i < right, i < j < right
+            // Maintain elements less than the pivot at or before index i (Lomuto Partition)
+            for(;j<right;j++){
+                if(arr[j]<pivot){
+                    i++;
                     int temp=arr[j];
                     arr[j]=arr[i];
                     arr[i]=temp;
-                    i++;
                 }
             }
-            quickSort(arr, left, middle);
-            quickSort(arr, middle+1, right);
+            // Place pivot after the last smaller element
+            int temp=arr[i+1];
+            arr[i+1]=arr[right];
+            arr[right]=temp;
+            // Recursively sort left and right partitions (excluding pivot)
+            int pivotIndex = i + 1;  // left <= pivotIndex <= right
+
+            quickSort(arr, left, pivotIndex-1);
+            quickSort(arr, pivotIndex+1, right);
         }
     }
-
 
     public static void main(String[] args) {
         int[] arr = {38, 27, 43, 3, 9, 82, 10};
@@ -5577,10 +5596,26 @@ public class MergeSort {
         }
     }
 }
+```
+#### Complexity Analysis
+* Time Complexity: $O(n\log n)$(Averge Case), $O(n^2)$ (Worst Case) 
+  * For a complete recursion binary tree, the total number of elements `n` and the depth `D` satisfy $n=2^D-1$.
+    so the recursion depth is approximately $\log n$, where `n` is the size of `arr`.
 
+    At every level `D`, all `n` elements in `arr` are traversed for partitioning, despite being split into subarrays. This results in a time complexity of $O(n)$ per level.
+  * In the worst case (e.g., when the pivot is always the smallest or largest element), the recursion tree degenerates into a linked list, leading to a time complexity of $O(n^2)$.  
+  
+  Therefore, the average time complexity is $O(n\log n)$, and the worst-case is $O(n)$.  
+  Since each partition step excludes the `pivot`, quick sort tends to outperform merge sort in practice.
 
-``` -->
+* Space Complexity: $O(\log n)$ (Averge Case), $O(n)$ (Worst Case) 
+  * The recursion depth is approximately $\log n$, requiring only constant space at each level.
+  
+  * In the worst case (e.g., when the pivot is always the smallest or largest element), the recursion depth becomes $n$, leading to $O(n)$ space complexity. 
 
+  Thus, the average space complexity is $O(\log n)$, and the worst-case is $O(n)$.
+#### Consideration
+* The `if (left < right)` check ensures no out-of-bounds access, even if the indices exceed valid ranges.
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
