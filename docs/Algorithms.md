@@ -244,25 +244,25 @@ Solution:
  */
 class Solution {
     public int amountOfTime(TreeNode root, int start) {
-        dfs(root, start);
+        backtracking(root, start);
         return this.maxTime;
     }
 
     private int maxTime=0;
 
     /**
-     * Performs DFS to calculate the time to infect the entire tree.
+     * Performs Backtracking to calculate the time to infect the entire tree.
      * 
      * @param root The current node
      * @param start The value where the infection starts
      * @return The path length (positive or negative) used to track infection spread.
      */
-    private int dfs(TreeNode root, int start) {
+    private int backtracking(TreeNode root, int start) {
         if(root==null) {
             return 0;
         }
-        int lLen=dfs(root.left, start);
-        int rLen=dfs(root.right, start);
+        int lLen=backtracking(root.left, start);
+        int rLen=backtracking(root.right, start);
         int maxLen=Math.max(lLen, rLen);
         // Check if the current node has the value 'start'
         if(root.val==start){
@@ -292,12 +292,12 @@ class Solution:
     def __init__(self):
         self.maxTime=0
     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
-        self.dfs(root, start)
+        self.backtracking(root, start)
         return self.maxTime
 
-    def dfs(self, root, start):
+    def backtracking(self, root, start):
         """
-        Performs DFS to calculate the time required to infect the entire tree.
+        Performs Backtracking to calculate the time required to infect the entire tree.
 
         Args:
             root (Optional[TreeNode]): The current node.
@@ -308,8 +308,8 @@ class Solution:
         """
         if root is None:
             return 0
-        lLen = self.dfs(root.left, start)
-        rLen = self.dfs(root.right, start)
+        lLen = self.backtracking(root.left, start)
+        rLen = self.backtracking(root.right, start)
         maxLen = max(lLen, rLen)
         # Check if the current node has the value 'start'
         if root.val == start:
