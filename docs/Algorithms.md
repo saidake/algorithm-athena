@@ -13,6 +13,7 @@ Source:  https://github.com/saidake/simi-docs
     - <a id="h-array-meaningful-index">Meaningful Index</a> (`Automatic Sorting`)
       - [34. Sort Array by Increasing Frequency](#34-sort-array-by-increasing-frequency)
   - <a id="h-backtracking">Backtracking</a>
+    - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [50. Merge Sort](#50-merge-sort)
   - <a id="h-binarysearch">Binary Search</a>
@@ -20,11 +21,9 @@ Source:  https://github.com/saidake/simi-docs
   - <a id="h-conditionallogic">Conditional Logic</a>
     - [2. Add Edges to Make Degrees of All Nodes Even](#2-add-edges-to-make-degrees-of-all-nodes-even)
   - <a id="h-dfs">Depth-first Search</a>
-    - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [46. Number of Paths with Max Score](#46-number-of-paths-with-max-score)
     - [51. Quick Sort](#51-quick-sort)
-    <!-- - [51. Quick Sort](#51-quick-sort) -->
   - <a id="h-dichotomy">Dichotomy</a>
     - [4. Search in Rotated Sorted Array](#4-search-in-rotated-sorted-array)
   - <a id="h-difference-array">Difference Array</a>
@@ -219,182 +218,133 @@ class Solution {
 
     Thus, the total space complexity is $O(m+n)$.
 
-## 3. Amount of Time for Binary Tree to Be Infected
-[Back to `Depth-first Search`](#h-dfs)
+## 3. Amount of Time for Binary Tree to Be Infected  <!-- 3 -->
+[Back to `Backtracking`](#h-backtracking)
 ### Source
 https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
-### Depth-first Search Solution
-The number of minutes required to infect the entire tree corresponds to the longest infection path starting from the node with the value `start`. 
+### Backtracking Solution
+![](./assets\Algorithms\aotfbttbi1.png)
 
-Traverse the tree from the `root` node, defining two variables:
-- `pathLen`: Tracks the path length from the current node.
-- `pathLenToStart`: Tracks the path length to the node with the value `start`.
+Use a **positive** path length to represent the distance from a leaf node to the current node (red path in the image),  
+and a **negative** path length to represent the distance from the node with the `start` value to the current node (green path).
 
-For each node, the following cases apply:
+Solution: 
+1. Use backtracking to calculate the infection time starting from leaf nodes.
+2. When the backtracking process reaches the node with the `start` value, compute the required infection time using the maximum path length at that node.  
+   Then, reset the path length to a **negative value** to indicate the path now originates from the `start` node instead of a leaf.
+3. In each parent node, if a negative path length is returned from either child, combine it with the height of the opposite subtree  
+   to update the maximum infection time and continue propagating the negative path length upward.
 
-- If the current node has the value `start`:
-
-  The answer will be the maximum path length between the left child nodes and the right child nodes.
-
-- If the node with the value `start` is in the left child nodes:
-
-  The answer will be the sum of:
-  - The path length from the current node to the start node (`pathLenToStart` of the left child nodes).
-  - The deepest path length of the right child nodes.
-
-- If the node with the value `start` is in the right child nodes:
-
-  The answer will be the sum of:
-  - The path length from the current node to the start node (`pathLenToStart` of the right child nodes).
-  - The deepest path length of the left child nodes.
-
-#### Implementation
+#### Java Implementation
 ```java
+/**
+ * Author: Craig Brown
+ * Date:   April 25, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */
 class Solution {
-    private class Vo {
-        public boolean hasStartNode;
-        public int pathLen;
-        public int pathLenToStart;
-        public Vo(Vo vo){
-            this.hasStartNode=vo.hasStartNode;
-            this.pathLen=vo.pathLen+1;
-            this.pathLenToStart=vo.hasStartNode?vo.pathLenToStart:vo.pathLenToStart+1;
-        }
-        public Vo(boolean hasStartNode, int pathLen, int pathLenToStart){
-            this.hasStartNode=hasStartNode;
-            this.pathLen=pathLen;
-            this.pathLenToStart=pathLenToStart;
-        }
-    }
-
-    private int ans=0;
-    public int amountOfTime(TreeNode root, int start) {
-        dfs(root,start,new Vo(false,0,0));
-        return this.ans;
-    }
-
-    public Vo dfs(TreeNode root, int start, Vo vo) {
-        if(root==null){
-            --vo.pathLen;
-            return vo;
-        }
-        // Check if the current node has the value 'start'
-        if(root.val==start)vo.hasStartNode=true;
-        Vo vo1=dfs(root.left, start, new Vo(vo));
-        Vo vo2=dfs(root.right, start, new Vo(vo));
-
-        if(root.val==start){
-            // If the current node has the value 'start'
-            this.ans=Math.max(Math.max(ans, vo1.pathLen-vo.pathLen), vo2.pathLen-vo.pathLen);
-        }else if(vo1.hasStartNode){
-            // If the node with value 'start' is among the left child nodes
-            ans=Math.max(ans, vo1.pathLenToStart-vo.pathLenToStart+vo2.pathLen-vo.pathLen);
-        }else if(vo2.hasStartNode){
-            // If the node with value 'start' is among the right child nodes
-            ans=Math.max(ans, vo1.pathLen-vo.pathLen+vo2.pathLenToStart-vo.pathLenToStart);
-        }
-        return new Vo(
-            vo1.hasStartNode||vo2.hasStartNode, 
-            Math.max(vo1.pathLen,vo2.pathLen), 
-            vo1.hasStartNode?vo1.pathLenToStart:vo2.pathLenToStart
-        );
-    }
-}
-```
-#### Complexity Analysis
-- Time Complexity: $O(n)$
-
-    In the worst case, DFS visits all nodes in the tree, leading to a time complexity of $O(n)$, where $n$ is the number of nodes in the tree.
-
-- Space Complexity: $O(n)$
-    - Recursion Stack
-        
-        The DFS traversal uses recursion. In the worst case, the recursion depth can be $O(n)$, leading to a space complexity of $O(n)$ for the recursion stack.
-
-    - Vo Objects
-        
-        Each node in the tree creates a new Vo object during the DFS. 
-        This results in $O(n)$ Vo objects being created, adding to the space complexity.
-
-    - Auxiliary Space
-    
-        The `ans` variable uses constant extra space.
-
-    Therefore, the overall space complexity of the solution is $O(n)$.
-### Optimized Depth-first Search Solution
-Instead of creating a `Vo` object in each recursion, 
-use a positive path length to indicate that the node with value `start` is in the current path, 
-and a negative path length to indicate that the node is not part of the current path.  
-This eliminates the need for the `hasStartNode` and `pathLenToStart` variables from the previous solution.  
-The logic can be summarized as follows:
-
-- If the current node has the value `start`:
-
-  Reset the path length to `1` and begin accumulating it from the current node.  
-  Any previous path length, whether negative or `0`, will be reset to `1`.  
-  Recalculate the longest infection path length if either the left or right child tree produces a larger value.
-
-- If the node with the value `start` is in the left child nodes:
-
-  The answer is the sum of:
-  - The path length from the current node to the start node (`lLen`).
-  - The deepest path length of the right child nodes (`-rLen`).
-
-- If the node with the value `start` is in the right child nodes:
-
-  The answer is the sum of:
-  - The path length from the current node to the start node (`rLen`).
-  - The deepest path length of the left child nodes (`-lLen`).
-
-The second and third cases can be verified together using `Math.abs`.
-
-#### Implementation
-```java
-class Solution {
-    private int ans;
-
     public int amountOfTime(TreeNode root, int start) {
         dfs(root, start);
-        return ans;
+        return this.maxTime;
     }
 
-    private int dfs(TreeNode node, int start) {
-        if (node == null) {
+    private int maxTime=0;
+
+    /**
+     * Performs DFS to calculate the time to infect the entire tree.
+     * 
+     * @param root The current node
+     * @param start The value where the infection starts
+     * @return The path length (positive or negative) used to track infection spread.
+     */
+    private int dfs(TreeNode root, int start) {
+        if(root==null) {
             return 0;
         }
-        int lLen = dfs(node.left, start);
-        int rLen = dfs(node.right, start);
+        int lLen=dfs(root.left, start);
+        int rLen=dfs(root.right, start);
+        int maxLen=Math.max(lLen, rLen);
         // Check if the current node has the value 'start'
-        if (node.val == start) {
-            this.ans = -Math.min(lLen, rLen); 
-            // Reset the path length upon encountering the node with the value 'start'.
-            return 1; 
+        if(root.val==start){
+            this.maxTime=maxLen;
+            // This value starts at `-1` because the parent node is automatically counted in the calculation.
+            return -1;
         }
-        if (lLen > 0 || rLen > 0) {
-            this.ans = Math.max(ans, Math.abs(lLen) + Math.abs(rLen)); 
-            // Accumulate the path length beginning at the node with the value 'start'.
-            return Math.max(lLen, rLen) + 1; 
+        if(lLen<0 || rLen <0){
+            int negLen=lLen<0?lLen:rLen;
+            int posLen=lLen<0?rLen:lLen;
+            // Combine path lengths from infected and uninfected branches
+            this.maxTime=Math.max(maxTime, posLen-negLen);
+            return negLen-1;
         }
-        // The path length is negative if the node with value 'start' is not in the current path.
-        return Math.min(lLen, rLen) - 1; 
+        return maxLen+1;
     }
 }
+```
+#### Python3 Implementation
+```python
+"""
+Author: Craig Brown
+Date:   April 25, 2025
+Source: https://github.com/saidake/simi-docs
+"""
+class Solution:
+    def __init__(self):
+        self.maxTime=0
+    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+        self.dfs(root, start)
+        return self.maxTime
+
+    def dfs(self, root, start):
+        """
+        Performs DFS to calculate the time required to infect the entire tree.
+
+        Args:
+            root (Optional[TreeNode]): The current node.
+            start (int): The value where the infection starts.
+
+        Returns:
+            int: The path length (positive or negative) used to track infection spread.
+        """
+        if root is None:
+            return 0
+        lLen = self.dfs(root.left, start)
+        rLen = self.dfs(root.right, start)
+        maxLen = max(lLen, rLen)
+        # Check if the current node has the value 'start'
+        if root.val == start:
+            self.maxTime=maxLen
+            # This value starts at `-1` because the parent node is automatically counted in the calculation.
+            return -1
+        # Combine path lengths from infected and uninfected branches
+        if lLen<0 or rLen<0:
+            negLen= lLen if lLen<0 else rLen
+            posLen= rLen if lLen<0 else lLen
+            self.maxTime=max(self.maxTime, posLen-negLen)
+            return negLen-1
+        return maxLen+1
 ```
 #### Complexity Analysis
 - Time Complexity: $O(n)$
 
-    Similar to the previous solution, visiting all nodes in the tree in the worst case results in a time complexity of $O(n)$, where $n$ is the total number of nodes.
+    Every node in the binary tree is visited exactly once during the DFS traversal, resulting in a time complexity of $O(n)$,  where $n$ is the total number of nodes.
 
-- Space Complexity: $O(n)$
+- Space Complexity: $O(\log n)$ (Best case), $O(n)$ (Worst Case)
     - Recursion Stack
         
-        The DFS traversal utilizes recursion. In the worst case, the recursion depth can be $O(n)$, leading to a space complexity of $O(n)$ for the recursion stack.
+        The maximum depth of the recursion stack is proportional to the height of the tree.  
+        In the worst case (skewed tree), the height is $O(n)$. In the best case (balanced tree), it is $O(\log n)$.
 
     - Auxiliary Space
     
-        The `ans` variable uses constant extra space.
+        All variables use constant extra space.
 
-    Therefore, the overall space complexity of the solution is $O(n)$.
+    Therefore, the overall space complexity is **$O(\log n)$ in the best case** and **$O(n)$ in the worst case**.
+
+#### Consideration
+* A single return value may not be sufficient for your solution.   
+  You can define a value object to return multiple pieces of information.   
+  In this problem, we use a single return value but distinguish between two scenarios by using negative and positive values.
 
 ## 4. Search in Rotated Sorted Array
 [Back to `Dichotomy`](#h-dichotomy)
