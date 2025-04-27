@@ -241,6 +241,21 @@ Solution:
  * Author: Craig Brown
  * Date:   April 25, 2025
  * Source: https://github.com/saidake/simi-docs
+ */ 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
  */
 class Solution {
     public int amountOfTime(TreeNode root, int start) {
@@ -288,6 +303,12 @@ Author: Craig Brown
 Date:   April 25, 2025
 Source: https://github.com/saidake/simi-docs
 """
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def __init__(self):
         self.maxTime=0
