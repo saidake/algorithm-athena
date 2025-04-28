@@ -4,9 +4,9 @@ Simi Docs is a collection of technical documents.
 Note:
 * External sources will be marked with links whenever possible.
 * These documents were co-authored with AI.
-* This technical documents is licensed under CC-BY-SA. 
-  You are free to use and share it, but you must credit the author Craig Brown and include the original link: https://github.com/saidake/simi-docs.
-* For any concerns or corrections, feel free to contact me at `craigbrowndev@gmail.com` or open an issue on GitHub.
+* These technical documents are licensed under CC-BY-SA 4.0.  
+  You may use and share them freely, provided you include attribution with a link to the original source: https://github.com/saidake/simi-docs.
+* For any concerns or corrections, feel free to contact me at `craigbrowndev@gmail.com`.
 
 ## Table of Contents
 - [Algorithms](docs/Algorithms.md)
