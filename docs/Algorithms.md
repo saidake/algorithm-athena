@@ -1,6 +1,6 @@
 <!-----------------------------------------------------------
 Author:  Craig Brown
-Version: simi-docs-1.6.0
+Version: 1.0.1
 Source:  https://github.com/saidake/simi-docs
 ------------------------------------------------------------->
 # Table of Contents
