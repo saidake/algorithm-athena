@@ -5595,30 +5595,37 @@ public class QuickSort {
 ### Source
 https://leetcode.com/problems/maximum-number-of-pairs-in-array/
 ### Array Solution
+Define a frequency array `freqArr` to count the occuerences of elements in `nums`.
 
+Solution:  
+1. Count the occurences of unique elements in `nums`.
+2. Calculate the number of pairs and the leftover elements by traversing `freqArr`.
 #### Java Implementation
 ```java
+/**
+ * @author Craig Brown
+ * @date April 29, 2025
+ **/
 class Solution {
     public int[] numberOfPairs(int[] nums) {
-        int[] valArr=new int[101];
-        int[] res=new int[2];
+        int[] freqArr=new int[101];
         for(int i=0;i<nums.length; i++){
-            valArr[nums[i]]++;
-            if(valArr[nums[i]]>0 && valArr[nums[i]]%2==0){
-                res[0]++;
-                res[1]--;
-            }else{
-                res[1]++;
-            }
+            freqArr[nums[i]]++;
         }
-        return res;
+        int pair=0, leftover=0;
+        for(int i=0;i<freqArr.length; i++){
+            pair+=freqArr[i]/2;
+            leftover+=freqArr[i]%2;;
+        }
+        return new int[]{pair, leftover};
     }
 }
 ```
 #### Complexity Analysis
 * Time Complexity: $O(n)$
+  * Traversing `nums` and `freqArr` results in a time complexity of $O(n)$.
 * Space Complexity: $O(1)$
-
+    * `freqArr` and the result array take constant space.
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
