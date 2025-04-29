@@ -5652,9 +5652,31 @@ class Solution:
 ### Source
 https://leetcode.com/problems/can-i-win/
 ### Analysis
-
 #### Java Implementation
+```java
+// 45 / 58 testcases passed
+class Solution {
+    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+        // Case 1:
+        // 20   60  
+        // 20 1 18 1 20 
+        //    ^    ^
+        // ?  21 21 
+        // 18
+        // 
+        // Case 2:
+        // 10 40
+        // 1 2 3 4 5 6 7 8 9 10
+        //       #     ^
+        // 7  4  11 11 
+        // 7 11 11 11 
 
+        if(maxChoosableInteger>=desiredTotal)return true;
+        int fixedNum=maxChoosableInteger+1;
+        return desiredTotal%fixedNum>0;
+    }
+}
+```
 
 
 # SQL Problems
