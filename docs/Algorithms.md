@@ -5609,9 +5609,11 @@ Solution:
 class Solution {
     public int[] numberOfPairs(int[] nums) {
         int[] freqArr=new int[101];
+        // Compute the frequency of elements in `nums`
         for(int i=0;i<nums.length; i++){
             freqArr[nums[i]]++;
         }
+        // Calculate the result
         int pair=0, leftover=0;
         for(int i=0;i<freqArr.length; i++){
             pair+=freqArr[i]/2;
@@ -5621,11 +5623,42 @@ class Solution {
     }
 }
 ```
+#### Python Implementation
+```python
+"""
+Author: Craig Brown
+Date:   April 29, 2025
+"""
+class Solution:
+    def numberOfPairs(self, nums: List[int]) -> List[int]:
+        freqArr=[0]*101
+        pair=0
+        leftover=0
+        # Compute the frequency of elements in `nums`
+        for val in nums:
+            freqArr[val]+=1
+        # Calculate the result
+        for val in freqArr:
+            pair+=val//2
+            leftover+=val%2
+        return [pair, leftover]
+```
 #### Complexity Analysis
 * Time Complexity: $O(n)$
   * Traversing `nums` and `freqArr` results in a time complexity of $O(n)$.
 * Space Complexity: $O(1)$
     * `freqArr` and the result array take constant space.
+* Consideration
+  * Using `freqArr[i]/2` is more efficient for counting pairs than checking `freqArr[i]>0 && freqArr[i]%2==0`.
+## 53. Can I Win
+### Source
+https://leetcode.com/problems/can-i-win/
+### Analysis
+
+#### Java Implementation
+
+
+
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
