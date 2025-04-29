@@ -12,6 +12,7 @@ Source:  https://github.com/saidake/simi-docs
       - [31. Minimum Number Game](#31-minimum-number-game)
     - <a id="h-array-meaningful-index">Meaningful Index</a> (`Automatic Sorting`)
       - [34. Sort Array by Increasing Frequency](#34-sort-array-by-increasing-frequency)
+      - [52. Maximum Number of Pairs in Array](#52-maximum-number-of-pairs-in-array)
   - <a id="h-backtracking">Backtracking</a>
     - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
@@ -78,6 +79,7 @@ Source:  https://github.com/saidake/simi-docs
   - <a id="h-sorting">Sorting</a>
     - [49. Bubble Sort](#49-bubble-sort)
     - [50. Merge Sort](#50-merge-sort)
+    - [51. Quick Sort](#51-quick-sort)
   - <a id="h-stack">Stack</a>
     - <a id="h-stack-monotonic-stack">Monotonic Stack</a>
       - [47. Beautiful Towers II](#47-beautiful-towers-ii)
@@ -5392,6 +5394,7 @@ public class BubbleSort {
 
 ## 50. Merge Sort
 [Back to `Backtracking`](#h-backtracking)  
+[Back to `Sorting`](#h-sorting)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5502,6 +5505,7 @@ public class MergeSort {
 
 ## 51. Quick Sort
 [Back to `Depth-first Search`](#h-dfs)  
+[Back to `Sorting`](#h-sorting)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5587,6 +5591,34 @@ public class QuickSort {
   Thus, the average space complexity is $O(\log n)$, and the worst-case is $O(n)$.
 #### Consideration
 * The `if (left < right)` check ensures no out-of-bounds access, even if the indices exceed valid ranges.
+## 52. Maximum Number of Pairs in Array
+### Source
+https://leetcode.com/problems/maximum-number-of-pairs-in-array/
+### Array Solution
+
+#### Java Implementation
+```java
+class Solution {
+    public int[] numberOfPairs(int[] nums) {
+        int[] valArr=new int[101];
+        int[] res=new int[2];
+        for(int i=0;i<nums.length; i++){
+            valArr[nums[i]]++;
+            if(valArr[nums[i]]>0 && valArr[nums[i]]%2==0){
+                res[0]++;
+                res[1]--;
+            }else{
+                res[1]++;
+            }
+        }
+        return res;
+    }
+}
+```
+#### Complexity Analysis
+* Time Complexity: $O(n)$
+* Space Complexity: $O(1)$
+
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
