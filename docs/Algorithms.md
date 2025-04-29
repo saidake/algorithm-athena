@@ -5631,14 +5631,12 @@ Date:   April 29, 2025
 """
 class Solution:
     def numberOfPairs(self, nums: List[int]) -> List[int]:
-        freqArr=[0]*101
+        # Compute the frequency of elements in `nums`
+        freqArr=Counter(nums)
+        # Calculate the result
         pair=0
         leftover=0
-        # Compute the frequency of elements in `nums`
-        for val in nums:
-            freqArr[val]+=1
-        # Calculate the result
-        for val in freqArr:
+        for val in freqArr.values():
             pair+=val//2
             leftover+=val%2
         return [pair, leftover]
