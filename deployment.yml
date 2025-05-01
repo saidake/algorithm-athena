@@ -1,0 +1,4 @@
+loadPDFFiles:
+  - file: C:\Users\simi\Desktop\DevProjects\simi-docs\pdf\Japanese_v1.3.0.pdf
+    ignoreHeadings:
+      - Japanese / Verb
