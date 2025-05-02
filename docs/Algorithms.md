@@ -5651,29 +5651,83 @@ class Solution:
 ## 53. Can I Win
 ### Source
 https://leetcode.com/problems/can-i-win/
-### Analysis
+### Depth-first Search Solution
+To make a force win for the first winner, the sums of all the premutations must be greater than `desiredTotal`.
+Using binary premutation to avoid repeat computation, define an array `memo` to store traversed DFS premutation.
+
+Solution:
+1. 
+
 #### Java Implementation
 ```java
-// 45 / 58 testcases passed
+/*
+Case: 
+    E: 10 10, 12 10
+    R: true
+
+Case: 
+    E: 10 11
+      (1, 10) 
+    R: false
+
+Case: 
+    E: 10 12
+      (1, 10) 
+    R: true
+
+
+Case:
+    E: 20   60  
+    20 1 18 1 20 
+       ^    ^
+    ?  21 21 
+    18
+
+Case:
+    E: 10 40
+    1 [2 3] 4 5 6 7 8 [9 10]
+    #                  
+    11 11 11 
+    1 12 12 8  (if desiredTotal > 33, result = true) 
+    1 12 12 12  (if desiredTotal = 37, result = true) 
+    1 12 12 12  (if desiredTotal = 38, result = false) 
+
+Case:
+    E: 18 79
+    R: true
+
+    1 20 20 20 18
+
+Case: 
+    E: 7 16
+    R: true
+    1 2 3 4 5 6 7
+    1 9 8
+*/
 class Solution {
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        // Case 1:
-        // 20   60  
-        // 20 1 18 1 20 
-        //    ^    ^
-        // ?  21 21 
-        // 18
-        // 
-        // Case 2:
-        // 10 40
-        // 1 2 3 4 5 6 7 8 9 10
-        //       #     ^
-        // 7  4  11 11 
-        // 7 11 11 11 
-
+        // Compute the maximum sum
         if(maxChoosableInteger>=desiredTotal)return true;
-        int fixedNum=maxChoosableInteger+1;
-        return desiredTotal%fixedNum>0;
+        int maxSum=maxChoosableInteger*(maxChoosableInteger+1)/2;
+        if(desiredTotal>maxSum)return false;
+        // Enumerate all cases
+        Boolean[] memo=new Boolean[1 << maxChoosableInteger];
+        return dfs(memo, maxChoosableInteger, desiredTotal, 0);
+    }
+
+    private boolean dfs(Boolean[] memo, int maxChoosableInteger, int desiredTotal, int premutation){
+        if(memo[premutation]!=null)return memo[premutation];
+        if(desiredTotal<=0)return memo[premutation]=true;
+        // Find a none-selected integer
+        boolean isPassed=true;
+        for(int i=0; i<maxChoosableInteger; i++){
+            int cur = 1 << i;
+            if((premutation & cur) != 0)continue;  // already exists
+            premutation |= cur;
+            boolean res=dfs(memo, maxChoosableInteger, desiredTotal-i-1, premutation);
+            if(res)return true;
+        }
+        return false;
     }
 }
 ```
