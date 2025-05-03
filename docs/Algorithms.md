@@ -5652,87 +5652,58 @@ class Solution:
 ### Source
 https://leetcode.com/problems/can-i-win/
 ### Depth-first Search Solution
-To make a force win for the first winner, the sums of all the premutations must be greater than `desiredTotal`.
-Using binary premutation to avoid repeat computation, define an array `memo` to store traversed DFS premutation.
+Define a bitmask `permutation` to represent the current selection state of integers for both players.   
+Use a Boolean array `memo` to cache computed results and avoid repeated work.
 
-Solution:
-1. 
+Solution:  
+
+Try all available integers during each player's turn:
+- If selecting an integer directly meets or exceeds `desiredTotal`, the current player wins — return `true`.
+- Otherwise, recursively simulate the opponent's turn:
+  - If all subsequent opponent responses return `false`, then the current move guarantees a win — return `true`.
+  - If the opponent has **any** move return `true` that guarantees a win, continue searching other options.
+- If no such winning move exists, return `false`.
 
 #### Java Implementation
 ```java
-/*
-Case: 
-    E: 10 10, 12 10
-    R: true
-
-Case: 
-    E: 10 11
-      (1, 10) 
-    R: false
-
-Case: 
-    E: 10 12
-      (1, 10) 
-    R: true
-
-
-Case:
-    E: 20   60  
-    20 1 18 1 20 
-       ^    ^
-    ?  21 21 
-    18
-
-Case:
-    E: 10 40
-    1 [2 3] 4 5 6 7 8 [9 10]
-    #                  
-    11 11 11 
-    1 12 12 8  (if desiredTotal > 33, result = true) 
-    1 12 12 12  (if desiredTotal = 37, result = true) 
-    1 12 12 12  (if desiredTotal = 38, result = false) 
-
-Case:
-    E: 18 79
-    R: true
-
-    1 20 20 20 18
-
-Case: 
-    E: 7 16
-    R: true
-    1 2 3 4 5 6 7
-    1 9 8
-*/
+/**
+ * Author: Craig Brown
+ * Date:   May 3, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
 class Solution {
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        // Compute the maximum sum
+        // If the largest integer is enough to reach or exceed the `desiredTotal`, first player wins immediately
         if(maxChoosableInteger>=desiredTotal)return true;
+        // If the total sum of all numbers is less than the target, no one can win
         int maxSum=maxChoosableInteger*(maxChoosableInteger+1)/2;
         if(desiredTotal>maxSum)return false;
-        // Enumerate all cases
+        // Memoization array to store results of all possible permutations represented by bitmask
         Boolean[] memo=new Boolean[1 << maxChoosableInteger];
         return dfs(memo, maxChoosableInteger, desiredTotal, 0);
     }
 
-    private boolean dfs(Boolean[] memo, int maxChoosableInteger, int desiredTotal, int premutation){
-        if(memo[premutation]!=null)return memo[premutation];
-        if(desiredTotal<=0)return memo[premutation]=true;
-        // Find a none-selected integer
-        boolean isPassed=true;
+    private boolean dfs(Boolean[] memo, int maxChoosableInteger, int desiredTotal, int permutation){
+        if(memo[permutation]!=null)return memo[permutation];
+        // Try every unused number from 1 to `maxChoosableInteger`
         for(int i=0; i<maxChoosableInteger; i++){
             int cur = 1 << i;
-            if((premutation & cur) != 0)continue;  // already exists
-            premutation |= cur;
-            boolean res=dfs(memo, maxChoosableInteger, desiredTotal-i-1, premutation);
-            if(res)return true;
+            // Skip if the current integer (i+1) has already been chosen
+            if((permutation & cur) != 0)continue;  
+            // If choosing (i + 1) reaches or exceeds the target, or forces the opponent into a losing state
+            if (desiredTotal <= i+1 || !dfs(memo, maxChoosableInteger, desiredTotal - (i + 1), permutation | cur)) {
+                return memo[permutation] = true;
+            }
         }
-        return false;
+        return memo[permutation] = false;
     }
 }
 ```
-
-
+#### Complexity Analysis
+* Time Complexity: $O(2^n \cdot n)$
+  * There are $2^n$ possible states (bitmask combinations), and for each state we try up to $n$ options.
+* Space Complexity: $O(2^n)$
+  * $O(2^n)$ for the memoization array, where each bitmask state consumes a Boolean entry.
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
