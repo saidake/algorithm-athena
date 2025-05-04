@@ -5708,21 +5708,26 @@ Source: https://github.com/saidake/simi-docs
 """
 class Solution:
     def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
+        # If the largest integer is enough to reach or exceed the `desiredTotal`, first player wins immediately
         if maxChoosableInteger>=desiredTotal: 
             return True
+        # If the total sum of all numbers is less than the target, no one can win
         maxSum = maxChoosableInteger*(maxChoosableInteger+1) // 2
         if desiredTotal>maxSum:
             return False
-        memo = [None]* (1<<maxChoosableInteger)
+        # Memoization directionary to store results of all possible permutations represented by bitmask
+        memo = {}
         return self.dfs(memo, maxChoosableInteger, desiredTotal, 0)
     def dfs(self, memo, maxChoosableInteger, desiredTotal, permutation):
-        if memo[permutation] is not None:
+        if permutation in memo:
             return memo[permutation]
-        # Try all possible integers
+        # Try every unused number from 1 to `maxChoosableInteger`
         for i in range(maxChoosableInteger): 
             cur = 1 << i
+            # Skip if the current integer (i+1) has already been chosen
             if (permutation & cur) != 0:
                 continue
+            # If choosing (i + 1) reaches or exceeds the target, or forces the opponent into a losing state
             if i+1 >= desiredTotal or not self.dfs(memo, maxChoosableInteger, desiredTotal-(i+1), permutation | cur):
                 memo[permutation]=True
                 return True
