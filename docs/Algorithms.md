@@ -5660,9 +5660,9 @@ Solution:
 Try all available integers during each player's turn:
 - If selecting an integer directly meets or exceeds `desiredTotal`, the current player wins — return `true`.
 - Otherwise, recursively simulate the opponent's turn:
-  - If all subsequent opponent responses return `false`, then the current move guarantees a win — return `true`.
-  - If the opponent has **any** move return `true` that guarantees a win, continue searching other options.
-- If no such winning move exists, return `false`.
+  - If all possible opponent responses return false, then the current move guarantees a win — return `true`.
+  - If any opponent response returns `true`, continue checking other options.
+- If no option leads to a win, return `false`.
 
 #### Java Implementation
 ```java
@@ -5699,11 +5699,43 @@ class Solution {
     }
 }
 ```
+#### Python3 Implementation
+```python
+"""
+Author: Craig Brown
+Date:   May 4, 2025
+Source: https://github.com/saidake/simi-docs
+"""
+class Solution:
+    def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
+        if maxChoosableInteger>=desiredTotal: 
+            return True
+        maxSum = maxChoosableInteger*(maxChoosableInteger+1) // 2
+        if desiredTotal>maxSum:
+            return False
+        memo = [None]* (1<<maxChoosableInteger)
+        return self.dfs(memo, maxChoosableInteger, desiredTotal, 0)
+    def dfs(self, memo, maxChoosableInteger, desiredTotal, permutation):
+        if memo[permutation] is not None:
+            return memo[permutation]
+        # Try all possible integers
+        for i in range(maxChoosableInteger): 
+            cur = 1 << i
+            if (permutation & cur) != 0:
+                continue
+            if i+1 >= desiredTotal or not self.dfs(memo, maxChoosableInteger, desiredTotal-(i+1), permutation | cur):
+                memo[permutation]=True
+                return True
+        memo[permutation]=False
+        return False
+```
 #### Complexity Analysis
 * Time Complexity: $O(2^n \cdot n)$
-  * There are $2^n$ possible states (bitmask combinations), and for each state we try up to $n$ options.
+  * There are $2^n$ possible states (bitmask combinations), and for each state we try up to $n$ options (`n` is `maxChoosableInteger`).
 * Space Complexity: $O(2^n)$
-  * $O(2^n)$ for the memoization array, where each bitmask state consumes a Boolean entry.
+  * $O(2^n)$ for the memoization array, where each bitmask state consumes a Boolean entry (`n` is `maxChoosableInteger`).
+#### Consideration
+* To analyze the time complexity of the depth-first algorithm, focus on **the total number of recursive calls** and **all possible combinations traversed**, rather than just the recursion depth.
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
