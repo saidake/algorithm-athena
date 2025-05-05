@@ -230,7 +230,7 @@ https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
 Use a **positive** path length to represent the distance from a leaf node to the current node (red path in the image),  
 and a **negative** path length to represent the distance from the node with the `start` value to the current node (green path).
 
-Solution: 
+Approach: 
 1. Use backtracking to calculate the infection time starting from leaf nodes.
 2. When the backtracking process reaches the node with the `start` value, compute the required infection time using the maximum path length at that node.  
    Then, reset the path length to a **negative value** to indicate the path now originates from the `start` node instead of a leaf.
@@ -3159,7 +3159,7 @@ Define an array `self.cal` to store inserted elements and `self.cnt` to track th
  * The value in `self.cnt` at `startTime` represents the total overlap count at that moment.
  * The value in `self.cnt` at `endTime` indicates the number of events that cover the current event.
 
-Solution: 
+Approach: 
 1. Insert `endTime`.
    * if it already exists, ignore it, as the number of events that cover the current event remain unchanged.
    * if it doesn't exist, directly copy `self.cnt[r-1]` to `self.cnt[r]`, as explained below:
@@ -3468,7 +3468,7 @@ Define a fixed node `root` to represent the root event in the tree.
 `X` to denote the absence of such a range, 
 * Use `start` for the start of a new range, and `end` for the end of the new range.
 
-Solution:  
+Approach:  
 
 When a new booking event arrives, recursively check the left and right nodes from `root`.
 
@@ -5152,7 +5152,7 @@ $$res=max(sum(incList1[i])+sum(incList2[i]))$$
   For `i=0`, the `incList1[0]=0`.  
   * The `incList2[i]` represent the sum of first `i+1` elements of `incList2`.
 
-Solution: 
+Approach: 
 1. Traverse `maxHeights` from left to right to compute `incList1`, storing the maximum prefix sum at each index.
 2. Traverse `maxHeights` from right to left to compute `incList2`, storing the maximum suffix sum.
     * At each index, calculate the total height sum as `incList1[i] + incList[2]`, and update `res` with the maximum value found.
@@ -5597,7 +5597,7 @@ https://leetcode.com/problems/maximum-number-of-pairs-in-array/
 ### Array Solution
 Define a frequency array `freqArr` to count the occuerences of elements in `nums`.
 
-Solution:  
+Approach:  
 1. Count the occurences of unique elements in `nums`.
 2. Calculate the number of pairs and the leftover elements by traversing `freqArr`.
 #### Java Implementation
@@ -5655,12 +5655,12 @@ https://leetcode.com/problems/can-i-win/
 Define a bitmask `permutation` to represent the current selection state of integers for both players.   
 Use a Boolean array `memo` to cache computed results and avoid repeated work.
 
-Solution:  
+Approach:  
 
 Try all available integers during each player's turn:
 - If selecting an integer directly meets or exceeds `desiredTotal`, the current player wins — return `true`.
 - Otherwise, recursively simulate the opponent's turn:
-  - If all possible opponent responses return false, then the current move guarantees a win — return `true`.
+  - If all possible opponent responses return `false`, then the current move guarantees a win — return `true`.
   - If any opponent response returns `true`, continue checking other options.
 - If no option leads to a win, return `false`.
 
