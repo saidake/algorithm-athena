@@ -99,6 +99,7 @@ Source:  https://github.com/saidake/simi-docs
     - [26. Boats to Save People](#26-boats-to-save-people)
     - [27. Find the Lexicographically Largest String From the Box I](#27-find-the-lexicographically-largest-string-from-the-box-i)
     - [28. Merge Sorted Array](#28-merge-sorted-array)
+    - [54. 3Sum Closest](#54-3sum-closest)
   - <a id="h-union-find">Union-Find</a>
     - [33. Graph Connectivity With Threshold](#33-graph-connectivity-with-threshold)
 - <a id="h-sql-problems">SQL Problems</a>
@@ -5746,55 +5747,72 @@ class Solution:
 #### Consideration
 * To analyze the time complexity of the depth-first algorithm, focus on **the total number of recursive calls** and **all possible combinations traversed**, rather than just the recursion depth.
 ## 54. 3Sum Closest
-
+[Back to `Two Pointer`](#h-two-pointer)
 ### Source
 https://leetcode.com/problems/3sum-closest/
+### Two-Pointer Solution
+Fix one element and apply the two-pointer technique to find the closest sum for the remaining two elements.
 
-### Analysis
-
+Approach:
+1. Sort the input array `nums` to enable efficient two-pointer traversal.
+2. Iterate through the array, fixing one element at a time.
+3. For each fixed element:
+   - Initialize two pointers: `left` (starting just after the fixed element) and `right` (at the end of the array).
+   - Use the two-pointer approach to find the pair whose sum, along with the fixed element, is closest to the target.
+   - Update the result whenever a smaller absolute difference from the target is found.
 #### Java Implementation
 ```java
 /**
--1  3  3  -4
-
-2 3 -4
-
-5 -4
-
-
- */
-
-// 96 / 106 testcases passed
+ * Author: Craig Brown
+ * Date:   May 6, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
 class Solution {
     public int threeSumClosest(int[] nums, int target) {
-        int sum=0;
-        int[] sArr=new int[3];
-        for(int i=0; i<3; i++){
-            sArr[i]=nums[i];
-            sum+=nums[i];
-        }
+        // Sort `nums`
+        Arrays.sort(nums);
+        int sum=nums[0]+nums[1]+nums[2];
+        // Iterate through `nums`
+        for(int i=0; i<nums.length; i++){
+            int left=i+1;
+            int right=nums.length-1;
 
-        // Greedy search
-        for(int i=3; i<nums.length; i++){
-            int cDis=-1;
-            int ind=-1;
-            for(int j=0; j<3; j++){
-                int dDis=Math.abs(sum-target) - Math.abs(sum-sArr[j]+nums[i]-target);
-                if(dDis>0 && dDis>cDis){
-                    cDis = dDis;
-                    ind =j;
+            // find the closest sum for each num[i]
+            while(left<right){
+                int cSum = nums[i]+nums[left]+nums[right];
+                // If an exact match is found, return immediately
+                if(cSum == target)return target;
+
+                // Update the closest sum if this combination is closer to the target
+                if(Math.abs(target-sum)>Math.abs(target-cSum) ){
+                    sum=cSum;
                 }
-            }
-            if(cDis>0){
-                sum=sum-sArr[ind]+nums[i];
-                sArr[ind]=nums[i];
+                // Utilize the sorted order to adjust pointers and minimize the difference to the target sum
+                if(cSum<target){
+                    left++;
+                }else{
+                    right--;
+                }
             }
         }
         return sum;
     }
 }
 ```
+#### Python Implementation
+```python
 
+```
+#### Complexity Analysis
+* Time Complexity: $O(n^2)$
+  * Sort `nums`
+  
+    Sorting the input array nums takes $O(n log n)$ time. 
+  * Iterate through `nums`
+    
+     
+* Space Complexity: $O(n\log n)$
+  * 
 
 # SQL Problems
 ## 1. Odd and Even Transactions
