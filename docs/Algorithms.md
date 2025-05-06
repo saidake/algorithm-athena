@@ -26,6 +26,7 @@ Source:  https://github.com/saidake/simi-docs
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [46. Number of Paths with Max Score](#46-number-of-paths-with-max-score)
     - [51. Quick Sort](#51-quick-sort)
+    - [53. Can I Win](#53-can-i-win)
   - <a id="h-dichotomy">Dichotomy</a>
     - [4. Search in Rotated Sorted Array](#4-search-in-rotated-sorted-array)
   - <a id="h-difference-array">Difference Array</a>
@@ -3853,7 +3854,7 @@ class Solution {
     Thus the overall space complexity is $O(n+m)$.
 
 ## 34. Sort Array by Increasing Frequency
-[Back to `Meaningful Index`](#h-array-meaningful-index)  
+[Back to `Array / Meaningful Index`](#h-array-meaningful-index)  
 ### Source
 https://leetcode.com/problems/sort-array-by-increasing-frequency/
 
@@ -5593,6 +5594,7 @@ public class QuickSort {
 #### Consideration
 * The `if (left < right)` check ensures no out-of-bounds access, even if the indices exceed valid ranges.
 ## 52. Maximum Number of Pairs in Array
+[Back to `Array / Meaningful Index`](#h-array-meaningful-index)  
 ### Source
 https://leetcode.com/problems/maximum-number-of-pairs-in-array/
 ### Array Solution
@@ -5650,6 +5652,7 @@ class Solution:
 * Consideration
   * Using `freqArr[i]/2` is more efficient for counting pairs than checking `freqArr[i]>0 && freqArr[i]%2==0`.
 ## 53. Can I Win
+[Back to `Depth-first Search`](#h-dfs)  
 ### Source
 https://leetcode.com/problems/can-i-win/
 ### Depth-first Search Solution
@@ -5742,6 +5745,57 @@ class Solution:
   * $O(2^n)$ for the memoization array, where each bitmask state consumes a Boolean entry (`n` is `maxChoosableInteger`).
 #### Consideration
 * To analyze the time complexity of the depth-first algorithm, focus on **the total number of recursive calls** and **all possible combinations traversed**, rather than just the recursion depth.
+## 54. 3Sum Closest
+
+### Source
+https://leetcode.com/problems/3sum-closest/
+
+### Analysis
+
+#### Java Implementation
+```java
+/**
+-1  3  3  -4
+
+2 3 -4
+
+5 -4
+
+
+ */
+
+// 96 / 106 testcases passed
+class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+        int sum=0;
+        int[] sArr=new int[3];
+        for(int i=0; i<3; i++){
+            sArr[i]=nums[i];
+            sum+=nums[i];
+        }
+
+        // Greedy search
+        for(int i=3; i<nums.length; i++){
+            int cDis=-1;
+            int ind=-1;
+            for(int j=0; j<3; j++){
+                int dDis=Math.abs(sum-target) - Math.abs(sum-sArr[j]+nums[i]-target);
+                if(dDis>0 && dDis>cDis){
+                    cDis = dDis;
+                    ind =j;
+                }
+            }
+            if(cDis>0){
+                sum=sum-sArr[ind]+nums[i];
+                sArr[ind]=nums[i];
+            }
+        }
+        return sum;
+    }
+}
+```
+
+
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
