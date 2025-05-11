@@ -111,15 +111,23 @@ Source:  https://github.com/saidake/simi-docs
 ### Source
 https://leetcode.com/problems/array-partition/
 ### Array Solution
-In each group, the larger integer will be omitted, and we need to maximize the `sum`.
-Therefore, The omitted value must be smaller.
-To ensure this, wen can sort the array, so that the smaller integer is omitted when calculating the minimal value from the group.
+In each group, the larger integer will be omitted to maximize the sum.   
+Thus, the omitted value must be as small as possible.
 
-#### Implementation
+To achieve this, we can sort the array and group every two elements into pairs, ensuring that the omitted integer in each group is the smallest possible, thereby maximizing the sum of `min(a_i, b_i)` across all groups.
+
+#### Java Implementation
 ```java
+/**
+ * Author: Craig Brown
+ * Date:   May 11, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
 class Solution {
     public int arrayPairSum(int[] nums) {
+        // Sort `nums`
         Arrays.sort(nums);
+        // Compute the result sum
         int sum=0;
         for(int i=0; i< nums.length; i+=2){
             sum+=nums[i];
@@ -128,9 +136,57 @@ class Solution {
     }
 }
 ```
+#### Python3 Implementation
+```python
+"""
+Author: Craig Brown
+Date:   May 11, 2025
+Source: https://github.com/saidake/simi-docs
+"""
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        # Sort `nums`
+        nums.sort()
+        # Compute the result sum
+        sum=0
+        for i in range(0, len(nums), 2):
+            sum += nums[i]
+        return sum
+```
+#### CPlusPlus Implementation
+```c++
+/**
+ * Author: Craig Brown
+ * Date:   May 11, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
+class Solution {
+public:
+    int arrayPairSum(vector<int>& nums) {
+        // Sort `nums`
+        std::sort(nums.begin(), nums.end());
+        // Compute the result sum
+        int sum=0;
+        for(int i=0; i<nums.size(); i+=2){
+            sum+=nums[i];
+        }
+        return sum;
+    }
+};
+```
+#### Golang Implementation
+```golang
+var a=0;
+```
+
 #### Complexity Analysis
 * Time Complexity: $O(n \log n)$
-    * `Arrays.sort` has a time complexity of $O(nlogn)$;
+  * Sort `nums`
+    * Java Implementation
+      * `Arrays.sort()` uses Dual-Pivot Quicksort for primitive types, with an average time complexity of $O(n \log n)$ and a worst-case complexity of $O(n^2)$.
+    * Python3 Implementation
+      * 
+  * Compute the result sum
     * The loop iterates through the array with a step of 2, so it runs $n/2$ times, resulting a time complexity of $O(n)$.  
     
     Hence, The total time complexity is $O(n \log n)$.
@@ -5835,7 +5891,7 @@ class Solution:
   * Sort `nums`
     * Java implementation
       
-      `Arrays.sort()` has an average time complexity of $O(n \log n)$ for primitive types. In the worst case, it takes $O(n²)$.
+      `Arrays.sort()` uses Dual-Pivot Quicksort for primitive types, with an average time complexity of $O(n \log n)$ and a worst-case complexity of $O(n^2)$.
     * Python implementation
       
       `list.sort()` has an average time complexity of $O(n \log n)$ and $O(n)$ in the best case (when the list is already sorted).
