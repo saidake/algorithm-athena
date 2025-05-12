@@ -5,7 +5,7 @@ Simi Docs is a collection of technical documents.
 - [Algorithms](docs/Algorithms.md)
 
   In-depth LeetCode problem analysis with illustrated, high-performance Java solutions, including time and space complexity analysis.
-    * Python3 solution analyses will be gradually introduced in future releases.
+    * Python3, C++ and Golang solution analyses will be gradually introduced in future releases.
 - [Configuration](docs/Configuration.md)
 
   A tutorial document for configuring various development environments.  
@@ -23,23 +23,20 @@ Simi Docs is a collection of technical documents.
   Logs updates and changes for Simi Docs releases.
 - [pdf](./pdf/)
 
-    * **Japanese_vx.x.x.pdf**
+    * **Japanese.pdf**
     
-      A technical document introducing Japanese grammar.
-
-- [temppdf](./temppdf/)
-
-  Contains outdated PDFs for future updates or archival purposes.  
-  * Not recommended for reading due to mixed Chinese content.
-  * Chinese content will be removed in future releases.
-  * Once all chinese content is removed, the PDFs will be moved to the `pdf` folder.
-- [temp](./temp/)
-
-  A temporary folder.  
+      Overview of Japanese grammar and language structure.
+    * **Java.pdf**
+    
+      Introduction to Java programming grammar and syntax.
+    
+    * **Python.pdf**
+    
+      Introduction to Python programming grammar and syntax.
 
 Note:
-* External sources will be marked with links whenever possible.
-* These documents were co-authored with AI.
 * These technical documents are licensed under CC-BY-SA 4.0.  
-  You may use and share them freely, provided you include attribution with a link to the original source: https://github.com/saidake/simi-docs.
+  * The content is free to use and share, but **commercial use** is prohibited.
+  * Attribution is required: please credit the original source with a link to https://github.com/saidake/simi-docs.
+
 * For any concerns or corrections, feel free to contact me at `craigbrowndev@gmail.com`.
