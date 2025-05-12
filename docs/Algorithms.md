@@ -153,7 +153,7 @@ class Solution:
             sum += nums[i]
         return sum
 ```
-#### CPlusPlus Implementation
+#### C++ Implementation
 ```c++
 /**
  * Author: Craig Brown
@@ -174,30 +174,72 @@ public:
     }
 };
 ```
-#### Golang Implementation
-```golang
-var a=0;
-```
+#### Build-in Method Complexity Analysis
+##### Java Implementation
+* `Arrays.sort(nums)`
+  * For primitive types (e.g., int[], double[])   
+  
+    Algorithm: Dual-Pivot Quicksort  
+  
+    Time Complexity:
+    * Average case: $O(n \log n)$
+    * Worst-case case: $O(n²)$ (rare due to optimized pivot selection).  
+  
+    Space Complexity:
+    * $O(\log n)$ (due to recursion stack, in-place sorting)
+  
+  * For Object Types (e.g., Integer[], String[])    
+  
+    Algorithm: TimSort (hybrid of MergeSort and InsertionSort)  
+  
+    Time Complexity:  
+    * Average and worst case: $O(n \log n)$
+  
+    Space Complexity:  
+    * $O(n)$ (requires temporary storage for merging)
 
+##### Python3 Implementation
+* `nums.sort()`
+  * Algorithm: TimSort (same as Java's for objects)  
+  * Time Complexity:  
+    * Average and worst case: $O(n \log n)$  
+  * Space Complexity:  
+    * $O(n)$ (stable sort with extra space for merges)
+
+##### C++ Implementation
+* `std::sort(nums.begin(), nums.end())`
+  * Algorithm: IntroSort (hybrid of Quicksort, Heapsort, and InsertionSort)  
+  * Time Complexity:  
+    * Average case: $O(n \log n)$  
+    * Worst case: $O(n \log n)$ (Heapsort fallback prevents $O(n^2)$)  
+  * Space Complexity:  
+    * $O(\log n)$ (due to recursion stack, in-place)
 #### Complexity Analysis
-* Time Complexity: $O(n \log n)$
+* Time Complexity
   * Sort `nums`
-    * Java Implementation
-      * `Arrays.sort()` uses Dual-Pivot Quicksort for primitive types, with an average time complexity of $O(n \log n)$ and a worst-case complexity of $O(n^2)$.
-    * Python3 Implementation
-      * 
+    - Java: $O(n \log n)$ for `int` type. 
+    - Python: $O(n \log n)$  
+    - C++: $O(n \log n)$  
   * Compute the result sum
-    * The loop iterates through the array with a step of 2, so it runs $n/2$ times, resulting a time complexity of $O(n)$.  
-    
-    Hence, The total time complexity is $O(n \log n)$.
-* Space Complexity: $O(logn)$
-    * `Arrays.sort` typically requires $O(logn)$ space for sorting a primitive array.  
-    
-    Therefore, the total space complexity is $O(logn)$.
+  
+    The loop iterates through the array with a step of 2, so it runs $n/2$ times, resulting a time complexity of $O(n)$.  
 
-Note that the space complexity of `Arrays.sort` is:
-* $O(logn)$ for sorting primitive arrays.
-* $O(n)$ for sorting object arrays.
+  Total Time Complexity:
+  
+    - Java: $O(n \log n)$
+    - Python: $O(n \log n)$  
+    - C++: $O(n \log n)$  
+* Space Complexity
+  * Sort `nums`
+    - Java: $O(\log n)$ for `int` type.  
+    - Python: $O(n)$  
+    - C++: $O(\log n)$  
+
+  Total Space Complexity:
+
+  * Java: $O(\log n)$
+  * Python: $O(n)$
+  * C++: $O(\log n)$
 
 ## 2. Add Edges to Make Degrees of All Nodes Even
 [Back to `Conditional Logic`](#h-conditionallogic)
