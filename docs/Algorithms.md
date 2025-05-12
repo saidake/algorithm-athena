@@ -1,7 +1,7 @@
 <!-----------------------------------------------------------
 Author:  Craig Brown
-Version: 1.0.2
-Date:    May 6, 2025
+Version: 1.0.3
+Date:    May 13, 2025
 Source:  https://github.com/saidake/simi-docs
 ------------------------------------------------------------->
 # Table of Contents
