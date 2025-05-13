@@ -174,6 +174,25 @@ public:
     }
 };
 ```
+#### Golang Implementation
+```golang
+/**
+ * Author: Craig Brown
+ * Date:   May 13, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
+func arrayPairSum(nums []int) int {
+    // Sort `nums`
+    sort.Ints(nums)
+    // Compute the result sum
+    sum :=0
+    for i:=0; i<len(nums); i+=2 {
+        sum+=nums[i]
+    } 
+    return sum
+}
+```
+
 #### Build-in Method Complexity Analysis
 ##### Java Implementation
 * `Arrays.sort(nums)`
@@ -183,7 +202,7 @@ public:
   
     Time Complexity:
     * Average case: $O(n \log n)$
-    * Worst-case case: $O(n²)$ (rare due to optimized pivot selection).  
+    * Worst-case case: $O(n²)$ (rare in practice due to optimized pivot selection).  
   
     Space Complexity:
     * $O(\log n)$ (due to recursion stack, in-place sorting)
@@ -214,32 +233,45 @@ public:
     * Worst case: $O(n \log n)$ (Heapsort fallback prevents $O(n^2)$)  
   * Space Complexity:  
     * $O(\log n)$ (due to recursion stack, in-place)
+##### Golang Implementation
+* `sort.Ints([]int)`
+  * Algorithm: IntroSort (specifically pdqsort with fallbacks, optimized for performance and stability)  
+  * Time Complexity:
+    * Average-case: $O(n \log n)$  
+    * Worst-case: $O(n \log n)$ (Heapsort fallback prevents $O(n^2)$)
+  * Space Complexity:
+    * $O(\log n)$ (due to recursion stack for quicksort)
+
 #### Complexity Analysis
 * Time Complexity
   * Sort `nums`
     - Java: $O(n \log n)$ for `int` type. 
     - Python: $O(n \log n)$  
     - C++: $O(n \log n)$  
+    - Golang: $O(n \log n)$  
   * Compute the result sum
-  
+
     The loop iterates through the array with a step of 2, so it runs $n/2$ times, resulting a time complexity of $O(n)$.  
 
-  Total Time Complexity:
+  * Total Time Complexity:
   
-    - Java: $O(n \log n)$
-    - Python: $O(n \log n)$  
-    - C++: $O(n \log n)$  
+    - Java: $O(n \log n)$ (dominates over $O(n)$)
+    - Python: $O(n \log n)$ (dominates over $O(n)$)
+    - C++: $O(n \log n)$ (dominates over $O(n)$)
+    - Golang: $O(n \log n)$ (dominates over $O(n)$)
 * Space Complexity
   * Sort `nums`
     - Java: $O(\log n)$ for `int` type.  
     - Python: $O(n)$  
     - C++: $O(\log n)$  
+    - Golang: $O(\log n)$  
 
-  Total Space Complexity:
+  * Total Space Complexity:
 
-  * Java: $O(\log n)$
-  * Python: $O(n)$
-  * C++: $O(\log n)$
+    - Java: $O(\log n)$
+    - Python: $O(n)$
+    - C++: $O(\log n)$
+    - Golang: $O(\log n)$  
 
 ## 2. Add Edges to Make Degrees of All Nodes Even
 [Back to `Conditional Logic`](#h-conditionallogic)
