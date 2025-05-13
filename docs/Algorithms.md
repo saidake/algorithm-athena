@@ -5987,6 +5987,59 @@ class Solution:
       `list.sort()` uses a non-recursive algorithm and requires linear space $O(n)$ for temporary storage.
 #### Consideration
 * All relevant combinations should be carefully considered by iterating through `nums`.
+
+## 55. Maximum Balanced Subsequence Sum
+### Source
+https://leetcode.com/problems/maximum-balanced-subsequence-sum/
+### Analysis
+
+#### Java Implementation
+```java
+class Solution {
+    public long maxBalancedSubsequenceSum(int[] nums) {
+        // 1<= j <= k-1
+        // nums[m] - nums[n] >= m - n
+        // Case 1:
+        // [3, 3, 5, 6]
+        // [3, 5, 6]  (subsequence)
+        //  0  2  3
+        //  6 - 5  >=  3 - 2 
+        //  5 - 3  >=  2 - 0
+        //  6 - 3  >=  3 - 0  (new)
+        // Find the elements that satisfies `nums[ij] - nums[ij-1] >= ij - ij-1`
+        // int len=nums.length;
+        // boolean[][] conditions = new boolean[len][len];
+        // for(int i=0; i<len; i++){
+        //     for(int j=i+1; j<len; j++){
+        //         boolean cur=nums[j]-nums[i]>=j-i;
+        //         conditions[j][i] = cur;
+        //         conditions[i][j] = cur;
+        //     }
+        // }
+        Deque<Integer> indList= new LinkedList<>();
+        dfs(nums, indList, 0, 0);
+        return this.maxSum;
+    }
+
+    private int maxSum=0;
+
+    private void dfs(int[] nums, Deque<Integer> indList, int i, int sum){
+        if(i==nums.length){
+            return;
+        }
+        int last=indList.offerLast();
+        if(nums[i]-nums[last]>=i-last){
+            sum+=nums[i];
+            this.maxSum=Math.max(this.maxSum, sum);
+        }else{
+            
+        }
+
+        dfs()
+    }
+}
+```
+
 # SQL Problems
 ## 1. Odd and Even Transactions
 [Back to `Sql Problems`](#h-sql-problems)  
