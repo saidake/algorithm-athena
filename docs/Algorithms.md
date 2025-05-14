@@ -5999,38 +5999,64 @@ class Solution {
         //  6 - 5  >=  3 - 2 
         //  5 - 3  >=  2 - 0
         //  6 - 3  >=  3 - 0  (new)
-        // Find the elements that satisfies `nums[ij] - nums[ij-1] >= ij - ij-1`
-        // int len=nums.length;
-        // boolean[][] conditions = new boolean[len][len];
-        // for(int i=0; i<len; i++){
-        //     for(int j=i+1; j<len; j++){
-        //         boolean cur=nums[j]-nums[i]>=j-i;
-        //         conditions[j][i] = cur;
-        //         conditions[i][j] = cur;
-        //     }
-        // }
-        Deque<Integer> indList= new LinkedList<>();
-        dfs(nums, indList, 0, 0);
-        return this.maxSum;
+        
+        // nums[j] - j >= nums[i] - i
+
+        // Calculate all keys
+        Set<Integer> keySet = new TreeSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            keySet.add(nums[i]-i);
+        }
+
+        // Map keys with the tree indices
+        Map<Integer, Integer> idxMap = new HashMap<>();
+        int idx = 1;
+        for (int key : keySet) {
+            idxMap.put(key, idx++);
+        }
+
+        FenwickTree tree = new FenwickTree(idx+1);
+        long ans=Long.MIN_VALUE;
+        for(int i=0; i<nums.length; i++){
+            // Add current element
+            int curIdx = idxMap.get(nums[i]-i);
+            long curSum = Math.max(tree.prefixSum(curIdx), 0) + nums[i]; 
+            tree.update(curIdx, curSum);
+            // Update result
+            ans = Math.max(ans, curSum);
+        }
+        return ans;
     }
 
-    private int maxSum=0;
+    class FenwickTree {
+        private long[] tree;
 
-    private void dfs(int[] nums, Deque<Integer> indList, int i, int sum){
-        if(i==nums.length){
-            return;
-        }
-        int last=indList.offerLast();
-        if(nums[i]-nums[last]>=i-last){
-            sum+=nums[i];
-            this.maxSum=Math.max(this.maxSum, sum);
-        }else{
-            
+        public FenwickTree(int size){
+            this.tree = new long[size];
+            Arrays.fill(tree, Long.MIN_VALUE);
         }
 
-        dfs()
+        public void update(int i, long val){
+            // [i, tree.length)
+            while (i < tree.length){
+                tree[i]= Math.max(tree[i], val);
+                i += i & -i;
+            }
+        }
+
+        public long prefixSum(int i){
+            long res = 0;
+            // (0, i]
+            while(i > 0){
+                res = Math.max(tree[i], res);
+                i &= i-1;
+            }
+            return res;
+        }
     }
 }
+
+
 ```
 
 # SQL Problems
