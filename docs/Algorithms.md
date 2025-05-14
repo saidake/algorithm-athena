@@ -245,33 +245,22 @@ func arrayPairSum(nums []int) int {
 #### Complexity Analysis
 * Time Complexity
   * Sort `nums`
-    - Java: $O(n \log n)$ for `int` type. 
-    - Python: $O(n \log n)$  
-    - C++: $O(n \log n)$  
-    - Golang: $O(n \log n)$  
+    - Java, Python, C++, Golang: $O(n \log n)$ for `int` type. 
   * Compute the result sum
 
     The loop iterates through the array with a step of 2, so it runs $n/2$ times, resulting a time complexity of $O(n)$.  
 
   * Total Time Complexity:
   
-    - Java: $O(n \log n)$ (dominates over $O(n)$)
-    - Python: $O(n \log n)$ (dominates over $O(n)$)
-    - C++: $O(n \log n)$ (dominates over $O(n)$)
-    - Golang: $O(n \log n)$ (dominates over $O(n)$)
+    - Java, Python, C++, Golang: $O(n \log n)$ (dominates over $O(n)$)
 * Space Complexity
   * Sort `nums`
-    - Java: $O(\log n)$ for `int` type.  
+    - Java, C++, Golang: $O(\log n)$.  
     - Python: $O(n)$  
-    - C++: $O(\log n)$  
-    - Golang: $O(\log n)$  
 
   * Total Space Complexity:
-
-    - Java: $O(\log n)$
+    - Java, C++, Golang: $O(\log n)$.  
     - Python: $O(n)$
-    - C++: $O(\log n)$
-    - Golang: $O(\log n)$  
 
 ## 2. Add Edges to Make Degrees of All Nodes Even
 [Back to `Conditional Logic`](#h-conditionallogic)
