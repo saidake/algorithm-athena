@@ -1906,7 +1906,9 @@ class FenwickTree {
         tree = new int[len];
     }
 
-    public void add(int i) {
+    public void update(int i) {
+        // [i, tree.length)
+        // Increment all nodes that include index i in their range.
         while (i < tree.length) {
             tree[i]++;
             i += i & -i;
@@ -1915,6 +1917,8 @@ class FenwickTree {
 
     public int prefixSum(int i) {
         int res = 0;
+        // (0, i]
+        // Accumulate values from all relevant ranges that cover index i.
         while (i > 0) {
             res += tree[i];
             i &= i - 1;
@@ -1936,8 +1940,8 @@ class Solution {
 
         FenwickTree ft1 = new FenwickTree(len + 1);
         FenwickTree ft2 = new FenwickTree(len + 1);
-        ft1.add(Arrays.binarySearch(sortedArr, nums[0]) + 1);
-        ft2.add(Arrays.binarySearch(sortedArr, nums[1]) + 1);
+        ft1.update(Arrays.binarySearch(sortedArr, nums[0]) + 1);
+        ft2.update(Arrays.binarySearch(sortedArr, nums[1]) + 1);
         // Traverse array 'nums'
         for (int i = 2; i < nums.length; i++) {
             int cu = nums[i];
@@ -1947,10 +1951,10 @@ class Solution {
             int gc2 = list2.size() - ft2.prefixSum(sInd); 
             if (gc1 > gc2 || gc1 == gc2 && list1.size() <= list2.size()) {
                 list1.add(cu);
-                ft1.add(sInd);
+                ft1.update(sInd);
             } else {
                 list2.add(cu);
-                ft2.add(sInd);
+                ft2.update(sInd);
             }
         }
         // Concatenate the two lists
