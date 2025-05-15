@@ -1856,7 +1856,7 @@ public class Solution {
 [Back to `Fenwick Tree`](#h-fenwick-tree) 
 ### Source
 https://leetcode.com/problems/distribute-elements-into-two-arrays-ii/
-### Analysis
+### Fenwick Tree Solution
 Follow the problem description, the key point is to find the number of elements in array `nums` that are strictly greater than val.
 
 
@@ -1908,17 +1908,18 @@ class FenwickTree {
 
     public void update(int i) {
         // [i, tree.length)
-        // Increment all nodes that include index i in their range.
+        // Update all relevant positions starting from `i`.
         while (i < tree.length) {
             tree[i]++;
             i += i & -i;
+            // 0000 0001 (1) -> 0000 0010 (2) -> 0000 0100 (4) -> 0000 1000 (8)
         }
     }
 
     public int prefixSum(int i) {
         int res = 0;
         // (0, i]
-        // Accumulate values from all relevant ranges that cover index i.
+        // Sum positions at or before `i`.
         while (i > 0) {
             res += tree[i];
             i &= i - 1;
@@ -5981,34 +5982,63 @@ class Solution:
 #### Consideration
 * All relevant combinations should be carefully considered by iterating through `nums`.
 
-## 55. Maximum Balanced Subsequence Sum
+## 55. Maximum Balanced Subsequence Sum   
+[Back to `Fenwick Tree`](#h-fenwick-tree) 
 ### Source
 https://leetcode.com/problems/maximum-balanced-subsequence-sum/
-### Analysis
+### Fenwick Tree Solution
+For any balanced subsequence with indices $i₀ < i₁ < ... < i_{k-1}$, the condition  
+$$nums[i_j] - nums[i_{j-1}] ≥ i_j - i_{j-1}$$  
+is **equivalent to**:  
+$$nums[i_j] - i_j ≥ nums[i_{j-1}] - i_{j-1}$$
+
+This transforms the problem into **finding a subsequence with non-decreasing `nums[i] - i` values**, where we want to **maximize the sum**.
+
+Approach:
+1. Transform Each Element:  
+   For every index `i`, compute a key `k = nums[i] - i`.
+
+2. Coordinate Compression:  
+   Store all distinct `k` values in **a sorted set** and map them to compressed indices.  
+   This allows efficient indexing in the Fenwick Tree.
+
+3. Dynamic Programming + Fenwick Tree:  
+   Traverse `nums` in original order:
+   - Query the maximum prefix sum up to `k = nums[i] - i`
+   - Update the Fenwick Tree with the new sum `dp[i] = max(prev_sum, 0) + nums[i]`
+
+4. Result:  
+   Keep track of the maximum `dp[i]` across all indices.
+
+**Example:**  
+![](./assets/Algorithms/55.%20Maximum%20Balanced%20Subsequence%20Sum.png)
+
+In the image above:
+
+- The **red number** represents the value to be inserted into the Fenwick Tree.  
+  It is computed as:  
+  `Math.max(tree.prefixSum(curIdx), 0) + nums[i]`  
+  This ensures we extend the best possible balanced subsequence ending **at or before** `curIdx`, or start a new one if no valid prefix exists.
+
+- The **green number** indicates where the red value is propagated in the tree.  
+    This update affects all future queries that rely on this position or any superset of its prefix, enabling efficient reuse of previously computed optimal subsequences.
 
 #### Java Implementation
 ```java
+/**
+ * Author: Craig Brown
+ * Date:   May 15, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
 class Solution {
     public long maxBalancedSubsequenceSum(int[] nums) {
-        // 1<= j <= k-1
-        // nums[m] - nums[n] >= m - n
-        // Case 1:
-        // [3, 3, 5, 6]
-        // [3, 5, 6]  (subsequence)
-        //  0  2  3
-        //  6 - 5  >=  3 - 2 
-        //  5 - 3  >=  2 - 0
-        //  6 - 3  >=  3 - 0  (new)
-        
-        // nums[j] - j >= nums[i] - i
-
-        // Calculate all keys
+        // Coordinate compression for nums[i] - i
         Set<Integer> keySet = new TreeSet<>();
         for (int i = 0; i < nums.length; i++) {
             keySet.add(nums[i]-i);
         }
 
-        // Map keys with the tree indices
+        // Map keys to compressed indices
         Map<Integer, Integer> idxMap = new HashMap<>();
         int idx = 1;
         for (int key : keySet) {
@@ -6038,6 +6068,7 @@ class Solution {
 
         public void update(int i, long val){
             // [i, tree.length)
+            // Update all relevant positions starting from `i`.
             while (i < tree.length){
                 tree[i]= Math.max(tree[i], val);
                 i += i & -i;
@@ -6055,8 +6086,6 @@ class Solution {
         }
     }
 }
-
-
 ```
 
 # SQL Problems
