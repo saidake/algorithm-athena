@@ -5982,7 +5982,7 @@ class Solution:
 #### Consideration
 * All relevant combinations should be carefully considered by iterating through `nums`.
 
-## 55. Maximum Balanced Subsequence Sum   
+## 55. Maximum Balanced Subsequence Sum   <!-- [May 15] 55 - 65 -->
 [Back to `Fenwick Tree`](#h-fenwick-tree) 
 ### Source
 https://leetcode.com/problems/maximum-balanced-subsequence-sum/
@@ -6087,6 +6087,70 @@ class Solution {
     }
 }
 ```
+#### Python3 Implementation
+```python
+class Solution:
+    def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
+        keySet = sorted(set(val-i for i, val in enumerate(nums)))
+        keyMap = {key: idx+1 for idx, key in enumerate(keySet)}
+        tree = FenwickTree(len(keyMap)+1)
+        res=-inf
+        for i, val in enumerate(nums):
+            curIdx=keyMap[val-i]
+            curSum=max(tree.prefixSum(curIdx), 0)+val
+            tree.udpate(curIdx, curSum)
+            res=max(res, curSum)
+        return res
+
+
+class FenwickTree:
+    def __init__(self, size):
+        self.tree=[-inf]*size
+        
+    def udpate(self, i, val):
+        while i<len(self.tree):
+            self.tree[i] = max(self.tree[i], val)
+            i += i&-i
+    def prefixSum(self, i):
+        res=-inf
+        while i>0:
+            res=max(self.tree[i], res)
+            i &= i-1
+        return res
+```
+
+
+## 56. Find Subarray With Bitwise OR Closest to K   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/find-subarray-with-bitwise-or-closest-to-k/
+## 57. Can Make Palindrome from Substring   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/can-make-palindrome-from-substring/
+## 58. Substrings of Size Three with Distinct Characters   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
+## 59. Count Number of Bad Pairs   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/count-number-of-bad-pairs/
+## 60. Make Three Strings Equal   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/make-three-strings-equal/
+## 61. Count the Number of Good Nodes   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/count-the-number-of-good-nodes/
+## 62. Finding the Users Active Minutes   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/finding-the-users-active-minutes/
+## 63. Merge Intervals   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/merge-intervals/
+## 64. Max Dot Product of Two Subsequences   <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/max-dot-product-of-two-subsequences/
+## 65. Create Sorted Array through Instructions  <!-- [May 15] 55 - 65 -->
+### Source
+https://leetcode.com/problems/create-sorted-array-through-instructions/
+
 
 # SQL Problems
 ## 1. Odd and Even Transactions
