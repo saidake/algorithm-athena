@@ -5982,7 +5982,7 @@ class Solution:
 #### Consideration
 * All relevant combinations should be carefully considered by iterating through `nums`.
 
-## 55. Maximum Balanced Subsequence Sum   <!-- [May 15] 55 - 65 -->
+## 55. Maximum Balanced Subsequence Sum   
 [Back to `Fenwick Tree`](#h-fenwick-tree) 
 ### Source
 https://leetcode.com/problems/maximum-balanced-subsequence-sum/
@@ -5995,20 +5995,17 @@ $$nums[i_j] - i_j ≥ nums[i_{j-1}] - i_{j-1}$$
 This transforms the problem into **finding a subsequence with non-decreasing `nums[i] - i` values**, where we want to **maximize the sum**.
 
 Approach:
-1. Transform Each Element:  
-   For every index `i`, compute a key `k = nums[i] - i`.
+1. Extract distinct values of `nums[i] - i` for positive `nums[i]`.
 
-2. Coordinate Compression:  
-   Store all distinct `k` values in **a sorted set** and map them to compressed indices.  
-   This allows efficient indexing in the Fenwick Tree.
+   Store these in a sorted set `keySet`. Also, track the maximum negative value to handle edge cases with no positives.
 
-3. Dynamic Programming + Fenwick Tree:  
-   Traverse `nums` in original order:
-   - Query the maximum prefix sum up to `k = nums[i] - i`
-   - Update the Fenwick Tree with the new sum `dp[i] = max(prev_sum, 0) + nums[i]`
-
-4. Result:  
-   Keep track of the maximum `dp[i]` across all indices.
+2. Map each key in `keySet` to an index in the Fenwick Tree.
+   
+   This enables efficient range queries and updates.
+4. Iterate through `nums` in order.
+   * For each `nums[i]`, find the prefix sum at the index mapped from `nums[i] - i`.
+   * Compute the new sum as `prefixSum + nums[i]`, and update the tree.
+   * Keep track of the maximum sum encountered.
 
 **Example:**  
 ![](./assets/Algorithms/55.%20Maximum%20Balanced%20Subsequence%20Sum.png)
@@ -6022,6 +6019,11 @@ In the image above:
 
 - The **green number** indicates where the red value is propagated in the tree.  
     This update affects all future queries that rely on this position or any superset of its prefix, enabling efficient reuse of previously computed optimal subsequences.
+#### Consideration
+* `i += i & -i`
+
+    When `i=3`, `i & -i = 1`.
+* The subsequence must maintain the original order of elements.
 
 #### Java Implementation
 ```java
@@ -6032,21 +6034,20 @@ In the image above:
  */ 
 class Solution {
     public long maxBalancedSubsequenceSum(int[] nums) {
-        // Coordinate compression for nums[i] - i
+        // Extract distinct values of `nums[i] - i` for positive `nums[i]`
         Set<Integer> keySet = new TreeSet<>();
-        long maxVal = Long.MIN_VALUE;
-        // Include positives only
+        long maxNegVal = Long.MIN_VALUE;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > 0) {
                 keySet.add(nums[i] - i);
             } else {
-                maxVal = Math.max(maxVal, nums[i]);
+                maxNegVal = Math.max(maxNegVal, nums[i]);
             }
         }
 
-        if (keySet.isEmpty()) return maxVal;
+        if (keySet.isEmpty()) return maxNegVal;
 
-        // Map keys to compressed indices
+        // Map each key in `keySet` to an index in the Fenwick Tree.
         Map<Integer, Integer> idxMap = new HashMap<>();
         int idx = 1;
         for (int key : keySet) {
@@ -6054,7 +6055,8 @@ class Solution {
         }
 
         FenwickTree tree = new FenwickTree(idx+1);
-        long ans=maxVal;
+        long ans=maxNegVal;
+        // Iterate through `nums` in order
         for(int i=0; i<nums.length; i++){
             if(nums[i]<=0) continue;
             // Update the tree with the new prefix sum
@@ -6097,24 +6099,27 @@ class Solution {
 ```
 #### Python3 Implementation
 ```python
-from typing import List
-
+"""
+Author: Craig Brown
+Date:   May 15, 2025
+Source: https://github.com/saidake/simi-docs
+"""
 class Solution:
     def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
-        # Coordinate compression for nums[i] - i
-        # Include positives only
+        # Extract distinct values of `nums[i] - i` for positive `nums[i]`
         key_set = sorted(set(val - i for i, 
         val in enumerate(nums) if val > 0))
-        max_val = max(nums)
+        max_neg_val = max(nums)
         
         if not key_set:
-            return max_val
+            return max_neg_val
         
-        # Map keys to compressed indices
+        # Map each key in `keySet` to an index in the Fenwick Tree.
         idx_map = {key: idx + 1 for idx, key in enumerate(key_set)}
         tree = FenwickTree(len(idx_map) + 1)
-        res = max_val
+        res = max_neg_val
         
+        # Iterate through `nums` in order
         for i, val in enumerate(nums):
             if val <= 0:
                 continue
@@ -6149,36 +6154,6 @@ class FenwickTree:
 ```
 
 
-## 56. Find Subarray With Bitwise OR Closest to K   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/find-subarray-with-bitwise-or-closest-to-k/
-## 57. Can Make Palindrome from Substring   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/can-make-palindrome-from-substring/
-## 58. Substrings of Size Three with Distinct Characters   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
-## 59. Count Number of Bad Pairs   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/count-number-of-bad-pairs/
-## 60. Make Three Strings Equal   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/make-three-strings-equal/
-## 61. Count the Number of Good Nodes   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/count-the-number-of-good-nodes/
-## 62. Finding the Users Active Minutes   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/finding-the-users-active-minutes/
-## 63. Merge Intervals   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/merge-intervals/
-## 64. Max Dot Product of Two Subsequences   <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/max-dot-product-of-two-subsequences/
-## 65. Create Sorted Array through Instructions  <!-- [May 15] 55 - 65 -->
-### Source
-https://leetcode.com/problems/create-sorted-array-through-instructions/
 
 
 # SQL Problems
