@@ -6034,9 +6034,17 @@ class Solution {
     public long maxBalancedSubsequenceSum(int[] nums) {
         // Coordinate compression for nums[i] - i
         Set<Integer> keySet = new TreeSet<>();
+        long maxVal = Long.MIN_VALUE;
+        // Include positives only
         for (int i = 0; i < nums.length; i++) {
-            keySet.add(nums[i]-i);
+            if (nums[i] > 0) {
+                keySet.add(nums[i] - i);
+            } else {
+                maxVal = Math.max(maxVal, nums[i]);
+            }
         }
+
+        if (keySet.isEmpty()) return maxVal;
 
         // Map keys to compressed indices
         Map<Integer, Integer> idxMap = new HashMap<>();
@@ -6046,13 +6054,14 @@ class Solution {
         }
 
         FenwickTree tree = new FenwickTree(idx+1);
-        long ans=Long.MIN_VALUE;
+        long ans=maxVal;
         for(int i=0; i<nums.length; i++){
-            // Add current element
+            if(nums[i]<=0) continue;
+            // Update the tree with the new prefix sum
             int curIdx = idxMap.get(nums[i]-i);
-            long curSum = Math.max(tree.prefixSum(curIdx), 0) + nums[i]; 
+            long curSum = tree.prefixSum(curIdx) + nums[i]; 
             tree.update(curIdx, curSum);
-            // Update result
+            // Update the maximum sum
             ans = Math.max(ans, curSum);
         }
         return ans;
@@ -6063,7 +6072,6 @@ class Solution {
 
         public FenwickTree(int size){
             this.tree = new long[size];
-            Arrays.fill(tree, Long.MIN_VALUE);
         }
 
         public void update(int i, long val){
@@ -6089,33 +6097,54 @@ class Solution {
 ```
 #### Python3 Implementation
 ```python
+from typing import List
+
 class Solution:
     def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
-        keySet = sorted(set(val-i for i, val in enumerate(nums)))
-        keyMap = {key: idx+1 for idx, key in enumerate(keySet)}
-        tree = FenwickTree(len(keyMap)+1)
-        res=-inf
+        # Coordinate compression for nums[i] - i
+        # Include positives only
+        key_set = sorted(set(val - i for i, 
+        val in enumerate(nums) if val > 0))
+        max_val = max(nums)
+        
+        if not key_set:
+            return max_val
+        
+        # Map keys to compressed indices
+        idx_map = {key: idx + 1 for idx, key in enumerate(key_set)}
+        tree = FenwickTree(len(idx_map) + 1)
+        res = max_val
+        
         for i, val in enumerate(nums):
-            curIdx=keyMap[val-i]
-            curSum=max(tree.prefixSum(curIdx), 0)+val
-            tree.udpate(curIdx, curSum)
-            res=max(res, curSum)
+            if val <= 0:
+                continue
+            # Update the tree with the new prefix sum
+            cur_idx = idx_map[val - i]
+            cur_sum = tree.prefixSum(cur_idx) + val
+            tree.update(cur_idx, cur_sum)
+            # Update the maximum sum
+            res = max(res, cur_sum)
+        
         return res
 
 
 class FenwickTree:
     def __init__(self, size):
-        self.tree=[-inf]*size
-        
-    def udpate(self, i, val):
-        while i<len(self.tree):
+        self.tree = [0] * size 
+
+    def update(self, i, val):
+        # [i, tree.length)
+        # Update all relevant positions starting from `i`.
+        while i < len(self.tree):
             self.tree[i] = max(self.tree[i], val)
-            i += i&-i
+            i += i & -i
+
     def prefixSum(self, i):
-        res=-inf
-        while i>0:
-            res=max(self.tree[i], res)
-            i &= i-1
+        res = 0
+        #  (0, i]
+        while i > 0:
+            res = max(self.tree[i], res)
+            i &= i - 1
         return res
 ```
 
