@@ -6004,7 +6004,7 @@ Approach:
    This enables efficient range queries and updates.
 4. Iterate through `nums` in order.
    * For each `nums[i]`, find the prefix sum at the index mapped from `nums[i] - i`.
-   * Compute the new sum as `prefixSum + nums[i]`, and update the tree.
+   * Compute the new sum as `tree.prefixSum(curIdx) + nums[i]`, and update the tree.
    * Keep track of the maximum sum encountered.
 
 **Example:**  
@@ -6012,13 +6012,13 @@ Approach:
 
 In the image above:
 
-- The **red number** represents the value to be inserted into the Fenwick Tree.  
+- The **red number** represents the value to be updated into the Fenwick Tree.  
   It is computed as:  
-  `Math.max(tree.prefixSum(curIdx), 0) + nums[i]`  
+  `tree.prefixSum(curIdx) + nums[i]`  
   This ensures we extend the best possible balanced subsequence ending **at or before** `curIdx`, or start a new one if no valid prefix exists.
 
 - The **green number** indicates where the red value is propagated in the tree.  
-    This update affects all future queries that rely on this position or any superset of its prefix, enabling efficient reuse of previously computed optimal subsequences.
+    Update all relevant positions starting from `curIdx`, enabling efficient reuse of previously computed optimal subsequences.
 #### Consideration
 * `i += i & -i`
 
@@ -6152,7 +6152,111 @@ class FenwickTree:
             i &= i - 1
         return res
 ```
+#### C++ Implementation
+```c++
+class FenwickTree {
+public:
+    FenwickTree(int size) : tree(size, 0) {}
 
+    void update(int i, long long val) {
+        while (i < tree.size()) {
+            tree[i] = max(tree[i], val);
+            i += i & -i;
+        }
+    }
+
+    long long prefixSum(int i) {
+        long long res = 0;
+        while (i > 0) {
+            res = max(res, tree[i]);
+            i &= i - 1;
+        }
+        return res;
+    }
+
+private:
+    vector<long long> tree;
+};
+
+class Solution {
+public:
+    long long maxBalancedSubsequenceSum(vector<int>& nums) {
+        // Extract distinct values of `nums[i] - i` for positive `nums[i]`
+        set<int> keySet;
+        long long maxNegVal = LLONG_MIN;
+
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] > 0) {
+                keySet.insert(nums[i] - i);
+            } else {
+                maxNegVal = max(maxNegVal, (long long)nums[i]);
+            }
+        }
+
+        if (keySet.empty()) return maxNegVal;
+
+        map<int, int> idxMap;
+        int idx = 1;
+        for (int key : keySet) {
+            idxMap[key] = idx++;
+        }
+
+        FenwickTree tree(idx + 2);
+        long long ans = maxNegVal;
+
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] <= 0) continue;
+            int curIdx = idxMap[nums[i] - i];
+            long long curSum = tree.prefixSum(curIdx) + nums[i];
+            tree.update(curIdx, curSum);
+            ans = max(ans, curSum);
+        }
+
+        return ans;
+    }
+};
+
+```
+#### Golang Implementation
+```golang
+
+```
+
+
+
+## 56. Find Subarray With Bitwise OR Closest to K
+### Source
+https://leetcode.com/problems/find-subarray-with-bitwise-or-closest-to-k/
+## 57. Can Make Palindrome from Substring
+### Source
+https://leetcode.com/problems/can-make-palindrome-from-substring/
+## 58. Substrings of Size Three with Distinct Characters
+### Source
+https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
+## 59. Count Number of Bad Pairs
+### Source
+https://leetcode.com/problems/count-number-of-bad-pairs/
+## 60. Make Three Strings Equal
+### Source
+https://leetcode.com/problems/make-three-strings-equal/
+## 61. Count the Number of Good Nodes
+### Source
+https://leetcode.com/problems/count-the-number-of-good-nodes/
+## 62. Finding the Users Active Minutes
+### Source
+https://leetcode.com/problems/finding-the-users-active-minutes/
+## 63. Merge Intervals
+### Source
+https://leetcode.com/problems/merge-intervals/
+## 64. Max Dot Product of Two Subsequences
+### Source
+https://leetcode.com/problems/max-dot-product-of-two-subsequences/
+## 65. Create Sorted Array through Instruction
+### Source
+https://leetcode.com/problems/create-sorted-array-through-instructions/
+## 66. Longest Univalue Path
+### Source
+https://leetcode.com/problems/longest-univalue-path/
 
 
 
