@@ -5,35 +5,34 @@ Date:    May 13, 2025
 Source:  https://github.com/saidake/simi-docs
 ------------------------------------------------------------->
 # Table of Contents
-[Back to Main Project README](../README.md)
 - [Algorithm Problems](#algorithm-problems)
-  - <a id="h-array">Array</a>
-    - <a id="h-array-standard">Standard</a>
+  - Array
+    - Standard
       - [1. Array Partition](#1-array-partition)
       - [31. Minimum Number Game](#31-minimum-number-game)
-    - <a id="h-array-meaningful-index">Meaningful Index</a> (`Automatic Sorting`)
+    - Meaningful Index (`Automatic Sorting`)
       - [34. Sort Array by Increasing Frequency](#34-sort-array-by-increasing-frequency)
       - [52. Maximum Number of Pairs in Array](#52-maximum-number-of-pairs-in-array)
-  - <a id="h-backtracking">Backtracking</a>
+  - Backtracking
     - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [50. Merge Sort](#50-merge-sort)
-  - <a id="h-binarysearch">Binary Search</a>
+  - Binary Search
     - [32. My Calendar II](#32-my-calendar-ii)
-  - <a id="h-conditionallogic">Conditional Logic</a>
+  - Conditional Logic
     - [2. Add Edges to Make Degrees of All Nodes Even](#2-add-edges-to-make-degrees-of-all-nodes-even)
-  - <a id="h-dfs">Depth-first Search</a>
+  - Depth-first Search
     - [29. Power Set LCCI](#29-power-set-lcci)
     - [46. Number of Paths with Max Score](#46-number-of-paths-with-max-score)
     - [51. Quick Sort](#51-quick-sort)
     - [53. Can I Win](#53-can-i-win)
-  - <a id="h-dichotomy">Dichotomy</a>
+  - Dichotomy
     - [4. Search in Rotated Sorted Array](#4-search-in-rotated-sorted-array)
-  - <a id="h-difference-array">Difference Array</a>
+  - Difference Array
     - [5. Jump Game VII](#5-jump-game-vii)
     - [37. Zero Array Transformation II](#37-zero-array-transformation-ii)
-  - <a id="h-dynamic-programming">Dynamic Programming</a>
-    - <a id="h-dynamic-programming-standard">Standard</a>
+  - Dynamic Programming
+    - Standard
       - [6. Climbing Stairs](#6-climbing-stairs)
       - [7. Count All Valid Pickup and Delivery Options](#7-count-all-valid-pickup-and-delivery-options)
       - [8. Decode Ways II](#8-decode-ways-ii)
@@ -42,52 +41,52 @@ Source:  https://github.com/saidake/simi-docs
       - [11. Minimum Deletions to Make String Balanced](#11-minimum-deletions-to-make-string-balanced)
       - [12. Stone Game](#12-stone-game)
       - [13. Target Sum](#13-target-sum)
-    - <a id="h-dynamic-programming-problem-breakdown">Problem Breakdown</a>
+    - Problem Breakdown
       - [35. Maximum Multiplication Score](#35-maximum-multiplication-score)
-  - <a id="h-hashmap">HashMap</a>
+  - HashMap
     - [30. Count Common Words With One Occurrence](#30-count-common-words-with-one-occurrence)
     - [45. Intersection of Two Arrays II](#45-intersection-of-two-arrays-ii)
-  - <a id="h-heap">Heap</a>
+  - Heap
     - [39. Trapping Rain Water II](#39-trapping-rain-water-ii)
     - [43. Total Cost to Hire K Workers](#43-total-cost-to-hire-k-workers)
-  - <a id="h-fenwick-tree">Fenwick Tree</a>
+  - Fenwick Tree
     - [14. Distribute Elements Into Two Arrays II](#14-distribute-elements-into-two-arrays-ii)
-  - <a id="h-graph">Graph</a>
-    - <a id="h-graph-dijkstra">Dijkstra</a>
+  - Graph
+    - Dijkstra
       - [41. Path with Maximum Probability](#41-path-with-maximum-probability)
-    - <a id="h-graph-bellman-ford">Bellman-Ford</a>
+    - Bellman-Ford
       - [41. Path with Maximum Probability](#41-path-with-maximum-probability)
-  - <a id="h-greedy">Greedy</a>
+  - Greedy
     - [15. Max Difference You Can Get From Changing an Integer](#15-max-difference-you-can-get-from-changing-an-integer)
     - [16. Maximum Length of Subarray With Positive Product](#16-maximum-length-of-subarray-with-positive-product)
-  - <a id="h-math">Math</a>
+  - Math
     - [17. Construct the Minimum Bitwise Array II](#17-construct-the-minimum-bitwise-array-ii)
     - [18. Egg Drop With 2 Eggs and N Floors](#18-egg-drop-with-2-eggs-and-n-floors)
     - [19. Find Number of Ways to Reach the K-th Stair](#19-find-number-of-ways-to-reach-the-k-th-stair)
     - [20. Minimum Moves to Capture The Queen](#20-minimum-moves-to-capture-the-queen)
-  - <a id="h-pattern-rule">Pattern Rule</a>
+  - Pattern Rule
     - [38. Transform to Chessboard](#38-transform-to-chessboard)
-  - <a id="h-precomputation">Precomputation</a>
+  - Precomputation
     - [21. Range Product Queries of Powers](#21-range-product-queries-of-powers)
-  - <a id="h-segment-tree">Segment Tree</a>
+  - Segment Tree
     - [32. My Calendar II](#32-my-calendar-ii)
-  - <a id="h-sliding-window">Sliding Window</a>
-    - <a id="h-sliding-window-standard">Standard</a>
+  - Sliding Window
+    - Standard
       - [22. Find the Longest Equal Subarray](#22-find-the-longest-equal-subarray)
-    - <a id="h-sliding-window-subset-concatenation">Subset Concatenation</a>
+    - Subset Concatenation
       - [40. Count Subarrays Where Max Element Appears at Least K Times](#40-count-subarrays-where-max-element-appears-at-least-k-times)
-    - <a id="h-sliding-window-fixed-size-window">Fixed-size Window</a>
+    - Fixed-size Window
       - [44. Find Indices With Index and Value Difference I](#44-find-indices-with-index-and-value-difference-i) 
-  - <a id="h-sorting">Sorting</a>
+  - Sorting
     - [49. Bubble Sort](#49-bubble-sort)
     - [50. Merge Sort](#50-merge-sort)
     - [51. Quick Sort](#51-quick-sort)
-  - <a id="h-stack">Stack</a>
-    - <a id="h-stack-monotonic-stack">Monotonic Stack</a>
+  - Stack
+    - Monotonic Stack
       - [47. Beautiful Towers II](#47-beautiful-towers-ii)
-  - <a id="h-string">String</a>
+  - String
     - [23. License Key Formatting](#23-license-key-formatting)
-  - <a id="h-traversal">Traversal</a>
+  - Traversal
     - [24. Find the Number of Ways to Place People I](#24-find-the-number-of-ways-to-place-people-i)
     - [25. Maximum Number of Operations With the Same Score I](#25-maximum-number-of-operations-with-the-same-score-i)
     - [29. Power Set LCCI](#29-power-set-lcci)
@@ -95,19 +94,18 @@ Source:  https://github.com/saidake/simi-docs
     - [42. Count Prefix and Suffix Pairs I](#42-count-prefix-and-suffix-pairs-i)
     - [48. Longest Common Prefix](#48-longest-common-prefix)
     - [49. Bubble Sort](#49-bubble-sort)
-  - <a id="h-two-pointer">Two Pointer</a>
+  - Two Pointer
     - [26. Boats to Save People](#26-boats-to-save-people)
     - [27. Find the Lexicographically Largest String From the Box I](#27-find-the-lexicographically-largest-string-from-the-box-i)
     - [28. Merge Sorted Array](#28-merge-sorted-array)
     - [54. 3Sum Closest](#54-3sum-closest)
-  - <a id="h-union-find">Union-Find</a>
+  - Union-Find
     - [33. Graph Connectivity With Threshold](#33-graph-connectivity-with-threshold)
-- <a id="h-sql-problems">SQL Problems</a>
+- SQL Problems
     - [1. Odd and Even Transactions](#1-odd-and-even-transactions)
     - [2. Find Customer Referee](#2-find-customer-referee)
 # Algorithm Problems
 ## 1. Array Partition
-[Back to `Array / Standard`](#h-array-standard)  
 ### Source
 https://leetcode.com/problems/array-partition/
 ### Array Solution
@@ -263,7 +261,6 @@ func arrayPairSum(nums []int) int {
     - Python: $O(n)$
 
 ## 2. Add Edges to Make Degrees of All Nodes Even
-[Back to `Conditional Logic`](#h-conditionallogic)
 ### Source
 https://leetcode.com/problems/add-edges-to-make-degrees-of-all-nodes-even/
 ### Conditional Logic Solution
@@ -343,7 +340,6 @@ class Solution {
     Thus, the total space complexity is $O(m+n)$.
 
 ## 3. Amount of Time for Binary Tree to Be Infected  <!-- 3 -->
-[Back to `Backtracking`](#h-backtracking)
 ### Source
 https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
 ### Backtracking Solution
@@ -492,7 +488,6 @@ class Solution:
   In this problem, we use a single return value but distinguish between two scenarios by using negative and positive values.
 
 ## 4. Search in Rotated Sorted Array
-[Back to `Dichotomy`](#h-dichotomy)
 ### Source
 https://leetcode.com/problems/search-in-rotated-sorted-array/
 ### Analysis
@@ -549,7 +544,6 @@ class Solution {
     Each recursive call adds a frame to the recursion stack, with a maximum depth of $O(\log n)$, leading to a space complexity of $O(\log n)$.
 
 ## 5. Jump Game VII
-[Back to `Difference Array`](#h-difference-array)  
 ### Source
 https://leetcode.com/problems/jump-game-vii/
 
@@ -729,7 +723,6 @@ class Solution {
     The `dp` array has a size of len, contributing $O(n)$ to the space complexity.
 
 ## 6. Climbing Stairs
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
 ### Source
 https://leetcode.com/problems/climbing-stairs/
 ### Analysis
@@ -775,7 +768,6 @@ class Solution {
     The `for` loop iterate over the stairs starting from `3`, yielding a time complexity of $O(n)$.
 * Space Complexity: $O(1)$
 ## 7. Count All Valid Pickup and Delivery Options
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
 ### Source
 https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
 ### Analysis
@@ -842,7 +834,6 @@ class Solution {
 
 
 ## 8. Decode Ways II
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
 ### Source
 https://leetcode.com/problems/decode-ways-ii/
 ### Analysis
@@ -969,7 +960,6 @@ class Solution {
 * Using `Character.getNumericValue()` to obtain the numeric value of `'*'` in string `s` will return `'-1'` and using the `-1` for checking purposes can lead to misleading readability.
 
 ## 9. Make the XOR of All Segments Equal to Zero
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
 ### Source
 https://leetcode.com/problems/make-the-xor-of-all-segments-equal-to-zero/
 ### Dynamic Programming Solution
@@ -1164,7 +1154,6 @@ class Solution {
         Includes variables like sum, min, and loop variables. These require $O(1)$ space.
 
 ## 10. Maximize Value of Function in a Ball Passing Game
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
  
 ### Source
 https://leetcode.com/problems/maximize-value-of-function-in-a-ball-passing-game/
@@ -1335,7 +1324,6 @@ class Solution {
         
         The other variables, such as `len`, `passCount`, `i`, `x`, `k`, `ctz`, `s`, and `ans`, require constant extra space.
 ## 11. Minimum Deletions to Make String Balanced
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
 ### Source
 https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/
 
@@ -1376,7 +1364,6 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 12. Stone Game
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
 ### Source
 https://leetcode.com/problems/stone-game/
 ### Depth-first Search Solution
@@ -1542,7 +1529,6 @@ class Solution {
     The space requried for this array is $O(n)$.
 
 ## 13. Target Sum
-[Back to `Dynamic Programming / Standard`](#h-dynamic-programming-standard)  
 ### Source
 https://leetcode.com/problems/target-sum/
 ### Depth-first Search Solution
@@ -1853,7 +1839,6 @@ public class Solution {
 
 
 ## 14. Distribute Elements Into Two Arrays II
-[Back to `Fenwick Tree`](#h-fenwick-tree) 
 ### Source
 https://leetcode.com/problems/distribute-elements-into-two-arrays-ii/
 ### Fenwick Tree Solution
@@ -1989,7 +1974,6 @@ class Solution {
     Therefore, the total space complexity is $O(n)$.
 
 ## 15. Max Difference You Can Get From Changing an Integer
-[Back to `Greedy`](#h-greedy)  
 ### Source
 https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/
 
@@ -2030,7 +2014,6 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 16. Maximum Length of Subarray With Positive Product
-[Back to `Greedy`](#h-greedy)  
 ### Source
 https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/
 
@@ -2135,7 +2118,6 @@ class Solution {
 
 
 ## 17. Construct the Minimum Bitwise Array II
-[Back to `Math`](#h-math)  
 ### Source
 https://leetcode.com/problems/construct-the-minimum-bitwise-array-ii/
 ### Analysis
@@ -2208,7 +2190,6 @@ class Solution {
     The array `ans` takes $O(n)$ space.
 
 ## 18. Egg Drop With 2 Eggs and N Floors
-[Back to `Math`](#h-math)  
 ### Source
 https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
 ### Analysis
@@ -2275,7 +2256,6 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 19. Find Number of Ways to Reach the K-th Stair
-[Back to `Math`](#h-math)
 ### Source
 https://leetcode.com/problems/find-number-of-ways-to-reach-the-k-th-stair/
 
@@ -2358,7 +2338,6 @@ class Solution {
     The time and space used during the precomputation process are not factored into the solution.
 * Space Complexity: $O(1)$
 ## 20. Minimum Moves to Capture The Queen
-[Back to `Math`](#h-math)
 ### Source
 https://leetcode.com/problems/minimum-moves-to-capture-the-queen/
 
@@ -2436,7 +2415,6 @@ class Solution {
 * Time Complexity: $O(1)$
 * Space Complexity: $O(1)$
 ## 21. Range Product Queries of Powers
-[Back to `Precomputation`](#h-precomputation)  
 ### Source
 https://leetcode.com/problems/range-product-queries-of-powers/
 
@@ -2517,7 +2495,6 @@ class Solution {
     Because $O(q)$ grows slower than $O(bc^2)$ and can be omitted, the total space complexity is $O(bc^2)$.
 
 ## 22. Find the Longest Equal Subarray
-[Back to `Sliding Window / Standard`](#h-sliding-window-standard)  
 ### Source
 https://leetcode.com/problems/find-the-longest-equal-subarray/
 ### Analysis
@@ -2627,7 +2604,6 @@ class Solution {
    Since the primary space usage comes from the `valCount` array, the space complexity is $O(n)$
 
 ## 23. License Key Formatting
-[Back to `String`](#h-string)  
 ### Source
 https://leetcode.com/problems/license-key-formatting/
 ### Analysis
@@ -2664,7 +2640,6 @@ class Solution {
     `StringBuilder sb` stores the result string, which can also be of size $O(n)$.  
     Therefore, the total space complexity is $O(n)$
 ## 24. Find the Number of Ways to Place People I
-[Back to `Traversal`](#h-traversal)  
 ### Source
 https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/
 
@@ -2717,7 +2692,6 @@ Note that the space complexity of `Arrays.sort` is:
 
 
 ## 25. Maximum Number of Operations With the Same Score I
-[Back to `Traversal`](#h-traversal)
 ### Source
 https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-i/
 
@@ -2749,7 +2723,6 @@ class Solution {
 
     Only a constant amount of additional space is used.
 ## 26. Boats to Save People
-[Back to `Two Pointer`](#h-two-pointer)  
 ### Source
 https://leetcode.com/problems/boats-to-save-people/
 
@@ -2794,7 +2767,6 @@ Note that the space complexity of `Arrays.sort` is:
 * $O(logn)$ for sorting primitive arrays.
 * $O(n)$ for sorting object arrays.
 ## 27. Find the Lexicographically Largest String From the Box I
-[Back to `Two Pointer`](#h-two-pointer)
 ### Source
 https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i/
 
@@ -2882,7 +2854,6 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 28. Merge Sorted Array
-[Back to `Two Pointer`](#h-two-pointer)
 ### Source
 https://leetcode.com/problems/merge-sorted-array/
 
@@ -2922,9 +2893,6 @@ class Solution {
     The array `nums1Cp` occupies $O(m)$ space where `m` is the first `m` integers in array `nums1`.
 
 ## 29. Power Set LCCI
-[Back to `Backtracking`](#h-backtracking)  
-[Back to `Depth-first Search`](#h-dfs)  
-[Back to `Traversal`](#h-traversal)
 ### Source
 https://leetcode.com/problems/power-set-lcci/
 ### Backtracking Solution
@@ -3198,7 +3166,6 @@ class Solution {
     Thus, the overall space complexity is $O(n\times2^n)$.
 
 ## 30. Count Common Words With One Occurrence
-[Back to `HashMap`](#h-hashmap)  
 ### Source
 https://leetcode.com/problems/count-common-words-with-one-occurrence/
 
@@ -3244,7 +3211,6 @@ class Solution {
     The maps `wordCount1` and `wordCount1` store keys from `words1` and `words2` respectively, with fixed-size values, resulting in a total space complexity of $O(m+n)$.
 
 ## 31. Minimum Number Game
-[Back to `Array / Standard`](#h-array-standard)  
 ### Source
 https://leetcode.com/problems/minimum-number-game/
 
@@ -3276,8 +3242,6 @@ class Solution {
     Therefore, the total space complexity is $O(\log n)$.
 
 ## 32. My Calendar II
-[Back to `Binary Search`](#h-binarysearch)  
-[Back to `Segment Tree`](#h-segment-tree)
 ### Source
 https://leetcode.com/problems/my-calendar-ii/
 
@@ -3826,7 +3790,6 @@ class MyCalendarTwo {
     Thus, the overall space complexity is $O(\log n)$ (Best Case) or $O(n)$ (Worst Case).
 
 ## 33. Graph Connectivity With Threshold
-[Back to `Union Find`](#h-union-find)  
 ### Source
 https://leetcode.com/problems/graph-connectivity-with-threshold/
 
@@ -3979,7 +3942,6 @@ class Solution {
     Thus the overall space complexity is $O(n+m)$.
 
 ## 34. Sort Array by Increasing Frequency
-[Back to `Array / Meaningful Index`](#h-array-meaningful-index)  
 ### Source
 https://leetcode.com/problems/sort-array-by-increasing-frequency/
 
@@ -4077,7 +4039,6 @@ class Solution {
     Manually copying values into a new list offers better performance compared to using Java Streams.
 
 ## 35. Maximum Multiplication Score
-[Back to `Dynamic Programming / Problem Breakdown`](#h-dynamic-programming-problem-breakdown)  
 ### Source
 https://leetcode.com/problems/maximum-multiplication-score/
 ### Dynamic Programming Solution
@@ -4196,7 +4157,6 @@ class Solution {
   The variables `dp1`, `dp2`, `dp3`, `dp4` each take constant time $O(1)$.
 
 ## 36. Find Triangular Sum of an Array
-[Back to `Traversal`](#h-traversal) 
 ### Source
 https://leetcode.com/problems/find-triangular-sum-of-an-array/
 
@@ -4232,7 +4192,6 @@ class Solution {
  * Reusing `nums` is more efficient since its original elements are no longer required in the following steps.
 
 ## 37. Zero Array Transformation II
-[Back to `Difference Array`](#h-difference-array)   
 ### Source
 https://leetcode.com/problems/zero-array-transformation-ii/
 
@@ -4285,7 +4244,6 @@ class Solution {
   * The `diff` array requires $O(n)$ space, where `n` is the length of `nums`.
 
 ## 38. Transform to Chessboard
-[Back to `Pattern Rule`](#h-pattern-rule)  
 ### Source
 https://leetcode.com/problems/transform-to-chessboard/
 ### Pattern Rule Solution 
@@ -4383,7 +4341,6 @@ class Solution {
     Thus, the overall space complexity is $O(n)$.
 
 ## 39. Trapping Rain Water II
-[Back to `Heap`](#h-heap)  
 ### Source
 https://leetcode.com/problems/trapping-rain-water-ii/
 
@@ -4582,7 +4539,6 @@ class Solution {
   Thus, the total space complexity is $O(m\times n)$.
 
 ## 40. Count Subarrays Where Max Element Appears at Least K Times
-[Back to `Sliding Window / Subset Concatenation`](#h-sliding-window-subset-concatenation)  
 ### Source
 https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/
 
@@ -4690,8 +4646,6 @@ class Solution {
     `max`, `ans`, `cntMax` and `left` each take constant time $O(1)$.
 
 ## 41. Path with Maximum Probability
-[Back to `Graph / Dijkstra`](#h-graph-dijkstra)  
-[Back to `Bellman-Ford`](#h-graph-bellman-ford)  
 ### Source
 https://leetcode.com/problems/path-with-maximum-probability/
 
@@ -4888,7 +4842,6 @@ class Solution {
   * `pathProb` has a space complexity of $O(n)$.
 
 ## 42. Count Prefix and Suffix Pairs I
-[Back to `Traversal`](#h-traversal)
 ### Source
 https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/
 ### Traversal Solution
@@ -4916,7 +4869,6 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 43. Total Cost to Hire K Workers
-[Back to `Heap`](#h-heap)  
 ### Source
 https://leetcode.com/problems/total-cost-to-hire-k-workers/
 
@@ -4989,7 +4941,6 @@ class Solution {
     The `leftQue` and `rightQue` each take $O(m)$ space where `m` is the number of candidates.
 
 ## 44. Find Indices With Index and Value Difference I
-[Back to `Fixed-size Window`](#h-sliding-window-fixed-size-window)
 ### Source
 https://leetcode.com/problems/find-indices-with-index-and-value-difference-i/
 
@@ -5032,7 +4983,6 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 45. Intersection of Two Arrays II
-[Back to `HashMap`](#h-hashmap)  
 ### Source
 https://leetcode.com/problems/intersection-of-two-arrays-ii/
 
@@ -5122,7 +5072,6 @@ class Solution {
   Thus, the overall space complexity is $O(n)$.
 
 ## 46. Number of Paths with Max Score
-[Back to `Depth-first Search`](#h-dfs)
 ### Source
 https://leetcode.com/problems/number-of-paths-with-max-score/
 
@@ -5263,7 +5212,6 @@ class Solution {
    Therefore, the total space complexity is $O(rLen\times cLen)$.
 
 ## 47. Beautiful Towers II
-[Back to `Monotonic Stack`](#h-stack-monotonic-stack)  
 
 ### Source
 https://leetcode.cn/problems/beautiful-towers-ii/
@@ -5367,7 +5315,6 @@ class Solution {
 
 
 ## 48. Longest Common Prefix
-[Back to `Traversal`](#h-traversal)  
 ### Source
 https://leetcode.com/problems/longest-common-prefix/
 ### Traversal Solution
@@ -5418,8 +5365,6 @@ class Solution {
   * All variables occupy constant space.
 
 ## 49. Bubble Sort
-[Back to `Sorting`](#h-sorting)  
-[Back to `Traversal`](#h-traversal)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5520,8 +5465,6 @@ public class BubbleSort {
     * All variables occupy constant space.
 
 ## 50. Merge Sort
-[Back to `Backtracking`](#h-backtracking)  
-[Back to `Sorting`](#h-sorting)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5631,8 +5574,6 @@ public class MergeSort {
   Each recursive call focuses on merging two already sorted partitions into a larger sorted array.
 
 ## 51. Quick Sort
-[Back to `Depth-first Search`](#h-dfs)  
-[Back to `Sorting`](#h-sorting)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5719,7 +5660,6 @@ public class QuickSort {
 #### Consideration
 * The `if (left < right)` check ensures no out-of-bounds access, even if the indices exceed valid ranges.
 ## 52. Maximum Number of Pairs in Array
-[Back to `Array / Meaningful Index`](#h-array-meaningful-index)  
 ### Source
 https://leetcode.com/problems/maximum-number-of-pairs-in-array/
 ### Array Solution
@@ -5777,7 +5717,6 @@ class Solution:
 * Consideration
   * Using `freqArr[i]/2` is more efficient for counting pairs than checking `freqArr[i]>0 && freqArr[i]%2==0`.
 ## 53. Can I Win
-[Back to `Depth-first Search`](#h-dfs)  
 ### Source
 https://leetcode.com/problems/can-i-win/
 ### Depth-first Search Solution
@@ -5871,7 +5810,6 @@ class Solution:
 #### Consideration
 * To analyze the time complexity of the depth-first algorithm, focus on **the total number of recursive calls** and **all possible combinations traversed**, rather than just the recursion depth.
 ## 54. 3Sum Closest
-[Back to `Two Pointer`](#h-two-pointer)
 ### Source
 https://leetcode.com/problems/3sum-closest/
 ### Two-Pointer Solution
@@ -5983,7 +5921,6 @@ class Solution:
 * All relevant combinations should be carefully considered by iterating through `nums`.
 
 ## 55. Maximum Balanced Subsequence Sum   
-[Back to `Fenwick Tree`](#h-fenwick-tree) 
 ### Source
 https://leetcode.com/problems/maximum-balanced-subsequence-sum/
 ### Fenwick Tree Solution
@@ -6262,7 +6199,6 @@ https://leetcode.com/problems/longest-univalue-path/
 
 # SQL Problems
 ## 1. Odd and Even Transactions
-[Back to `Sql Problems`](#h-sql-problems)  
 ### Source
 https://leetcode.com/problems/odd-and-even-transactions/
 ### Analysis
@@ -6295,7 +6231,6 @@ ORDER BY transaction_date ASC;
 ```
 
 ## 2. Find Customer Referee
-[Back to `Sql Problems`](#h-sql-problems) 
 ### Source
 https://leetcode.com/problems/find-customer-referee/
 
