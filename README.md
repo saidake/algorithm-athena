@@ -2,7 +2,7 @@
 Simi Docs is a collection of technical documents.  
 These technical documents are licensed under CC-BY-SA 4.0.  
 * The content is free to use and share, but **commercial use** is prohibited.
-* Attribution is required: please credit the original source with a link to https://github.com/saidake/simi-docs.
+* Attribution is required: please credit the original source with a link to https://github.com/saidake/interview.
 
 | Algorithms | Interview Questions | System Design |
 |------------|---------------------|----------------|
