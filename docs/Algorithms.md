@@ -1,6 +1,6 @@
 <!-----------------------------------------------------------
 Author:  Craig Brown
-Version: 1.0.3
+Version: 1.0.4
 Date:    May 13, 2025
 Source:  https://github.com/saidake/simi-docs
 ------------------------------------------------------------->
@@ -6184,11 +6184,18 @@ class FenwickTree:
 ```
 #### C++ Implementation
 ```c++
+/**
+ * Author: Craig Brown
+ * Date:   May 19, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
 class FenwickTree {
 public:
     FenwickTree(int size) : tree(size, 0) {}
 
     void update(int i, long long val) {
+        // [i, tree.length)
+        // Update all relevant positions starting from `i`.
         while (i < tree.size()) {
             tree[i] = max(tree[i], val);
             i += i & -i;
@@ -6197,6 +6204,7 @@ public:
 
     long long prefixSum(int i) {
         long long res = 0;
+        // (0, i]
         while (i > 0) {
             res = max(res, tree[i]);
             i &= i - 1;
@@ -6225,6 +6233,7 @@ public:
 
         if (keySet.empty()) return maxNegVal;
 
+        // Map each key in `keySet` to an index in the Fenwick Tree.
         map<int, int> idxMap;
         int idx = 1;
         for (int key : keySet) {
@@ -6234,11 +6243,14 @@ public:
         FenwickTree tree(idx + 2);
         long long ans = maxNegVal;
 
+        // Iterate through `nums` in order
         for (int i = 0; i < nums.size(); ++i) {
             if (nums[i] <= 0) continue;
+            // Update the tree with the new prefix sum
             int curIdx = idxMap[nums[i] - i];
             long long curSum = tree.prefixSum(curIdx) + nums[i];
             tree.update(curIdx, curSum);
+            // Update the maximum sum
             ans = max(ans, curSum);
         }
 
@@ -6247,8 +6259,92 @@ public:
 };
 
 ```
-<!-- #### Golang Implementation
+#### Golang Implementation
 ```golang
+/**
+ * Author: Craig Brown
+ * Date:   May 19, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
+func maxBalancedSubsequenceSum(nums []int) int64 {
+	// Extract distinct values of `nums[i] - i` for positive `nums[i]`
+    keySet := make(map[int]struct{})
+	maxNegVal := int64(math.MinInt64)
+	for i := 0; i < len(nums); i++ {
+		if nums[i] > 0 {
+			keySet[nums[i]-i] = struct{}{}
+		} else {
+			maxNegVal = maxInt64(maxNegVal, int64(nums[i]))
+		}
+	}
 
-``` -->
+	if len(keySet) == 0 {
+		return maxNegVal
+	}
 
+	keys := make([]int, 0, len(keySet))
+	for k := range keySet {
+		keys = append(keys, k)
+	}
+	sort.Ints(keys)
+
+    // Map each key in `keySet` to an index in the Fenwick Tree.
+	idxMap := make(map[int]int)
+	for i, k := range keys {
+		idxMap[k] = i + 1
+	}
+
+	tree := NewFenwickTree(len(keys) + 2)
+	ans := maxNegVal
+
+    // Iterate through `nums` in order
+	for i := 0; i < len(nums); i++ {
+		if nums[i] <= 0 {
+			continue
+		}
+		key := nums[i] - i
+        // Update the tree with the new prefix sum
+		curIdx := idxMap[key]
+		curSum := tree.PrefixSum(curIdx) + int64(nums[i])
+		tree.Update(curIdx, curSum)
+        // Update the maximum sum
+		ans = maxInt64(ans, curSum)
+	}
+
+	return ans
+}
+
+type FenwickTree struct {
+	tree []int64
+}
+
+func NewFenwickTree(size int) *FenwickTree {
+	return &FenwickTree{tree: make([]int64, size)}
+}
+
+func (f *FenwickTree) Update(i int, val int64) {
+    // [i, tree.length)
+    // Update all relevant positions starting from `i`.
+	for i < len(f.tree) {
+		f.tree[i] = maxInt64(f.tree[i], val)
+		i += i & -i
+	}
+}
+
+func (f *FenwickTree) PrefixSum(i int) int64 {
+	res := int64(0)
+    // (0, i]
+	for i > 0 {
+		res = maxInt64(res, f.tree[i])
+		i &= i - 1
+	}
+	return res
+}
+
+func maxInt64(a, b int64) int64 {
+	if a > b {
+		return a
+	}
+	return b
+}
+```
