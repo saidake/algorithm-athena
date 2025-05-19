@@ -1,5 +1,5 @@
-# Simi Docs
-Simi Docs is a collection of technical documents.  
+# Simi Interview
+Simi Interview is a collection of technical documents.  
 These technical documents are licensed under CC-BY-SA 4.0.  
 * The content is free to use and share, but **commercial use** is prohibited.
 * Attribution is required: please credit the original source with a link to https://github.com/saidake/interview.
