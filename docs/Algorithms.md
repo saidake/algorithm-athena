@@ -51,6 +51,7 @@ Source:  https://github.com/saidake/simi-docs
     - [43. Total Cost to Hire K Workers](#43-total-cost-to-hire-k-workers)
   - Fenwick Tree
     - [14. Distribute Elements Into Two Arrays II](#14-distribute-elements-into-two-arrays-ii)
+    - [55. Maximum Balanced Subsequence Sum](#55-maximum-balanced-subsequence-sum)
   - Graph
     - Dijkstra
       - [41. Path with Maximum Probability](#41-path-with-maximum-probability)
@@ -190,75 +191,20 @@ func arrayPairSum(nums []int) int {
     return sum
 }
 ```
-
-#### Build-in Method Complexity Analysis
-##### Java Implementation
-* `Arrays.sort(nums)`
-  * For primitive types (e.g., int[], double[])   
-  
-    Algorithm: Dual-Pivot Quicksort  
-  
-    Time Complexity:
-    * Average case: $O(n \log n)$
-    * Worst-case case: $O(n²)$ (rare in practice due to optimized pivot selection).  
-  
-    Space Complexity:
-    * $O(\log n)$ (due to recursion stack, in-place sorting)
-  
-  * For Object Types (e.g., Integer[], String[])    
-  
-    Algorithm: TimSort (hybrid of MergeSort and InsertionSort)  
-  
-    Time Complexity:  
-    * Average and worst case: $O(n \log n)$
-  
-    Space Complexity:  
-    * $O(n)$ (requires temporary storage for merging)
-
-##### Python3 Implementation
-* `nums.sort()`
-  * Algorithm: TimSort (same as Java's for objects)  
-  * Time Complexity:  
-    * Average and worst case: $O(n \log n)$  
-  * Space Complexity:  
-    * $O(n)$ (stable sort with extra space for merges)
-
-##### C++ Implementation
-* `std::sort(nums.begin(), nums.end())`
-  * Algorithm: IntroSort (hybrid of Quicksort, Heapsort, and InsertionSort)  
-  * Time Complexity:  
-    * Average case: $O(n \log n)$  
-    * Worst case: $O(n \log n)$ (Heapsort fallback prevents $O(n^2)$)  
-  * Space Complexity:  
-    * $O(\log n)$ (due to recursion stack, in-place)
-##### Golang Implementation
-* `sort.Ints([]int)`
-  * Algorithm: IntroSort (specifically pdqsort with fallbacks, optimized for performance and stability)  
-  * Time Complexity:
-    * Average-case: $O(n \log n)$  
-    * Worst-case: $O(n \log n)$ (Heapsort fallback prevents $O(n^2)$)
-  * Space Complexity:
-    * $O(\log n)$ (due to recursion stack for quicksort)
-
 #### Complexity Analysis
-* Time Complexity
+* Time Complexity: $O(n \log n)$
   * Sort `nums`
-    - Java, Python, C++, Golang: $O(n \log n)$ for `int` type. 
+    - The build-in sorting method takes $O(n \log n)$. 
   * Compute the result sum
 
     The loop iterates through the array with a step of 2, so it runs $n/2$ times, resulting a time complexity of $O(n)$.  
 
   * Total Time Complexity:
   
-    - Java, Python, C++, Golang: $O(n \log n)$ (dominates over $O(n)$)
-* Space Complexity
-  * Sort `nums`
-    - Java, C++, Golang: $O(\log n)$.  
-    - Python: $O(n)$  
-
-  * Total Space Complexity:
-    - Java, C++, Golang: $O(\log n)$.  
-    - Python: $O(n)$
+    $O(n \log n)$ (dominates over $O(n)$)
+* Space Complexity: $O(1)$
+  * All operations use constant extra space. 
+    (Note: While the built-in sorting method may require additional space depending on the language, this variation is omitted for simplicity.)
 
 ## 2. Add Edges to Make Degrees of All Nodes Even
 ### Source
@@ -268,7 +214,7 @@ To make all node degrees in the graph even by adding only two edges, the followi
 * The number of nodes with odd degrees must be even and cannot exceed 4.
     * If there are 4 such nodes, two distinct pairs must exist that can be connected.
     * If there are 2 such nodes, they must either be unconnected, or a third node must exist that can connect to both.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public boolean isPossible(int n, List<List<Integer>> edges) {
@@ -505,7 +451,7 @@ In each division, the approach is as follows:
 
 The key is leveraging the guaranteed existence of an ordered segment in each division.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int search(int[] nums, int target) {
@@ -574,7 +520,7 @@ acc:        +     -
                 +     -
 ```
 In both cases, the `diff` array enables distinguishing whether current index is within a reachable range, even when multiple ranges overlap.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
 
@@ -677,7 +623,7 @@ Step n:
                        R     i
     Return dp[9]
 ```
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public boolean canReach(String s, int minJump, int maxJump) {
@@ -742,7 +688,7 @@ The number of ways to reach stair `1` is `1` and stair `2` is `2`, so:
 $$F(1) = 1,  F(2) = 2$$
 #### Filling the DP Table
 Since this process only depends on the previous two stairs, we can just define two variables to store the number of ways for the previous two stairs.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int climbStairs(int n) {
@@ -812,7 +758,7 @@ $$F(n)=F(n-1) \times ( 2n^2-n )$$
 The initial condition is: 
 $$F(1)=1$$
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     private int MOD=1_000_000_007;
@@ -895,7 +841,7 @@ dp[i] = d1 + d2
 #### Result
 The `dp[len]` is the number of ways to decode the string `s`.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     static final int MOD = 1000000007;
@@ -1059,7 +1005,7 @@ Assuming the approach of retaining the element with the highest frequency in eac
 The maximum number of elements retained in the array `nums` to satisfy the problem's requirements is:
 $$nums.length - Math.max(rnum, dp[k - 1][0])$$
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int minChanges(int[] nums, int k) {
@@ -1258,7 +1204,7 @@ Using bitwise operations can significantly improve the efficiency of the passing
 
     Count the trailing zeros of `k`, which corresponds to the exponent of the number $2^n$  subtracted from `k` after the operations `k &= k-1`.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public long getMaxFunctionValue(List<Integer> receiver, long K) {
@@ -1342,7 +1288,7 @@ f[i] =
     f[i-1],                   if the current character is 'b'
     min(f[i-1] + 1, countB),  if the current character is 'a'
 ```
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int minimumDeletions(String s) {
@@ -1585,7 +1531,7 @@ target =  67 + (- 8 - 4 -5 - 1 - 2 - 7)*2 = 13
 neg = (- 8 - 4 -5 - 1 - 2 - 7) = 27
 ```
 The initial solution can be optimized as follows:
-#### Implementation
+#### Java Implementation
 ```java
 public class Solution {
     public int findTargetSumWays(int[] nums, int target) {
@@ -1882,7 +1828,7 @@ This `tree` corresponds to a sorted version of the array `nums`, called `sortedA
 When inserting a new element at index `i` into the Binary Indexed Tree, increment the value at index `i` of array `tree` by `1`.  
 This update allows the tree to maintain a count of elements before index `i` in the array `tree`, which represents the number of elements in `nums` that are less than `sortedArr[i]`.
 
-#### Implementation
+#### Java Implementation
 ```java
 class FenwickTree {
     private final int[] tree;
@@ -2241,7 +2187,7 @@ Because we expect a positive number, the formula will be:
 $$j=\frac{-1 + \sqrt{1+8n}}{2}$$ 
 This gives the smallest integer $j$, where the fractional part is treated as a full drop.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int twoEggDrop(int n) {
@@ -2302,7 +2248,7 @@ Given the constraint $0 <= k <= 10^9$,
 even though an additional upward jump may need to be considered,
 The combination probability result remains less than $2^{ex+1}$, which is equivalent to `2k`.  
 Since integer value range is $-2,147,483,648$ to $2,147,483,647$,the result within $0 \sim 2\times10^9$ can be safely represented as an `int`.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     private static final int MX = 31;
@@ -2384,7 +2330,7 @@ In such situations, the maximum steps required are 2.
 * If the rook or bishop cannot directly capture the queen, they can move an additional step to do so.
 The maximum steps required are also 2.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     private int moves=0;
@@ -2430,7 +2376,7 @@ with each set bit's value added to the array `powers`.
 Using a mask value of `0001` and shift it left to isolate the set bits.
 
 Since the array `powers` is small (<32), precomputing all products for possible query ranges ensures efficiency with small time complexity.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     int MOD=1_000_000_007;
@@ -2541,7 +2487,7 @@ There are several different choices next:
   By counting the occurrences of each value in the current range, we can ensure each number to be excluded is properly checked.  
 
 Here, choose the second one as it uses less space.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
   public int longestEqualSubarray(List<Integer> nums, int k) {
@@ -2698,7 +2644,7 @@ https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-i
 ### Analysis
 Since `2 <= nums.length <= 100`, the operation score can be determined using the first two elements of the array nums.   
 Traverse the array `nums` to evaluate the maximum number of operations you can perform sequentially.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int maxOperations(int[] nums) {
@@ -2817,7 +2763,7 @@ Comparison and Updates:
 Note:
 * `len - numFriends + 1` represents the maximum length of the lexicographically smallest substring after splitting into `numFriends` parts.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public String answerString(String s, int numFriends) {
@@ -2976,7 +2922,7 @@ After the first recursive call completes and adds the current element to the `pa
 the second call follows the same process to generate all subsets.   
 Finally, it removes the current element and backtracks to the previous index.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     private final List<List<Integer>> ans = new ArrayList<>();
@@ -3063,7 +3009,7 @@ Recursion:
 
 ```
 The right arrays represent the subset added in the current recursive call.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     private final List<List<Integer>> ans = new ArrayList<>();
@@ -3128,7 +3074,7 @@ Binary Representation:
     ..., 
     1111. (`1`,`2`,`3` and `4` are selected) 
 ```
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
@@ -3165,13 +3111,103 @@ class Solution {
 
     Thus, the overall space complexity is $O(n\times2^n)$.
 
+## 1. Odd and Even Transactions
+### Source
+https://leetcode.com/problems/odd-and-even-transactions/
+### Analysis
+Group the data by the `transaction_date` field (using `GROUP BY` or `PARTITION BY`), and calculate the total amounts for odd and even transactions on each transaction_date.
+
+Oracle Functions:
+* NVL(expression, replacement_value)
+
+    The NVL function is used to replace NULL values with a specified replacement value.   
+    If the first argument is NULL, it returns the second argument. Otherwise, it returns the first argument.
+* BITAND(x, y)				
+
+    The BITAND function performs a bitwise AND operation between two integer values. 
+
+#### MySQL Implementation
+```sql
+SELECT DISTINCT transaction_date, 
+SUM(CASE WHEN amount % 2=0 THEN 0 ELSE amount END) OVER( PARTITION BY transaction_date  ) AS odd_sum,
+SUM(CASE WHEN amount % 2=0 THEN amount ELSE 0 END) OVER( PARTITION BY transaction_date  ) AS even_sum
+FROM transactions;
+```
+#### Oracle Implementation
+```sql
+SELECT TO_CHAR(transaction_date,'yyyy-MM-dd') AS transaction_date,
+       NVL(SUM(CASE WHEN BITAND(amount,1)=1 THEN amount END),0) AS odd_sum,
+       NVL(SUM(CASE WHEN BITAND(amount,1)=0 THEN amount END),0) AS even_sum
+FROM transactions
+GROUP BY transaction_date
+ORDER BY transaction_date ASC;
+```
+
+## 2. Find Customer Referee
+### Source
+https://leetcode.com/problems/find-customer-referee/
+
+### Analysis
+1. Use of Common Table Expressions (CTEs)
+
+    Define two CTEs: one for storing the salary categories and another for counting the number of employees in each category.
+
+2. Direct Query with `UNION ALL`
+
+    Directly select and combine the results for each salary category in a single query using `UNION ALL`. 
+
+#### MySQL Implementation
+```sql
+WITH category AS(
+    SELECT 'Low Salary' AS category
+    union
+    SELECT 'Average Salary'
+    union 
+    SELECT 'High Salary'
+), cnt AS (
+    SELECT
+        CASE 
+        WHEN income<20000 THEN 'Low Salary'
+        WHEN income>=20000 AND income<=50000 THEN 'Average Salary'
+        WHEN income>50000 THEN 'High Salary '
+        END AS category,
+        count(1) AS accounts_count
+    FROM
+        accounts
+    GROUP BY 1
+) 
+
+SELECT
+    category.category,
+    IFNULL(accounts_count,0) AS accounts_count
+FROM category
+LEFT JOIN cnt
+ON category.category=cnt.category;
+```
+
+#### Oracle Implementation
+```sql
+SELECT  'Low Salary' AS category, NVL(count(account_id),0) accounts_count 
+    FROM accounts  
+    WHERE income <20000
+UNION ALL 
+    SELECT  'Average Salary' AS category, NVL(count(account_id),0) ct 
+        FROM accounts  
+        WHERE income  between  20000 and 50000 
+UNION ALL 
+    SELECT 'High Salary'  AS category, NVL( count(account_id),0) ct
+        FROM accounts 
+        WHERE income > 50000; 
+```
+
+
 ## 30. Count Common Words With One Occurrence
 ### Source
 https://leetcode.com/problems/count-common-words-with-one-occurrence/
 
 ### HashMap Solution
 Use two Hashmaps to count the word occurrences in both arrays and identify strings that appear exactly once in each.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int countWords(String[] words1, String[] words2) {
@@ -3216,7 +3252,7 @@ https://leetcode.com/problems/minimum-number-game/
 
 ### Array Solution
 Sort the `nums` array, and swap every two elements.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int[] numberGame(int[] nums) {
@@ -3849,7 +3885,7 @@ x = 8, y = 4
     Common divisor = 4  
 ```
 For each query, determine if `x` and `y` share the same smallest valid divisor.
-#### Implementation
+#### Java Implementation
 ```java
 import java.util.*;
 
@@ -3960,7 +3996,7 @@ indices:  100 101 102 103 104 105 ...
 
 Filter out elements with `frequency>0` into `arr` and sort them by frequency.
 Repeat each element in `arr` based on its frequency to form the final result.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int[] frequencySort(int[] nums) {
@@ -4133,7 +4169,7 @@ Step 3:
 
 ...
 ```
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public long maxScore(int[] a, int[] b) {
@@ -4166,7 +4202,7 @@ Since `nums` is no longer needed in next steps, reuse it as `newNums`.
 
 Return the result when only one element remains.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int triangularSum(int[] nums) {
@@ -4203,7 +4239,7 @@ Since only used queires are counted and must be rechecked for the next index, th
 
 1. Traverse `nums`, and at each index `i`, iterate through all queries to reduct `nums[i]` to `0` within the first `k` queries, determining minimum required queries.
 2. Using the `diff` array to track the previously traversed query ranges, allowing the decrement amount to be efficiently retrieved at index `i`.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int minZeroArray(int[] nums, int[][] queries) {
@@ -4267,7 +4303,7 @@ So if there are $diff$ different digits, $\frac{diff}{2}$ swaps are required.
 If the number of digit `0` and `1` are equal, and additional same case must be considered.
 
 Following this pattern, the minimum swaps for both rows and columns can be calculated.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int movesToChessboard(int[][] board) {
@@ -4440,7 +4476,7 @@ Step 9:
 Total volume of trapped water: 5
 ```
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     
@@ -4601,7 +4637,7 @@ Step 6:
 ```
 In the last step, each added `L` indicates that the four previous added subsets `[3,3]`, `[2,3,3]`, `[3,2,3,3]` and `[1,3,2,3,3]` concatenate the current `C` to form four new valid subsets.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public long countSubarrays(int[] nums, int k) {
@@ -4803,7 +4839,7 @@ Edge [2,3]:
     
 ...
 ```
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public double maxProbability(int n, int[][] edges, double[] succProb, int start_node, int end_node) {
@@ -4846,7 +4882,7 @@ class Solution {
 https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/
 ### Traversal Solution
 Iterate through all possible pairs in the `words` array and check `isPrefixAndSuffix(words[i], words[j])` for each.
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public int countPrefixSuffixPairs(String[] words) {
@@ -4877,7 +4913,7 @@ Use two min-heaps, `leftQue` and `rightQue`, to store candidates from the left a
 
 Since the heap maintains automatic sorting, each poll retrieves the lowest-cost candidate corresponding to each selection.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
     public long totalCost(int[] costs, int k, int candidates) {
@@ -4950,7 +4986,7 @@ To satisfy `abs(i - j) >= indexDifference`, use a fixed-size sliding window of `
 To meet the condition `abs(nums[i] - nums[j]) >= valueDifference`, compute the largest difference between `nums[j]` and `nums[0 ~ i]` at each step.  
 This is equivalent to the absolute difference between `nums[j]` and either the **maximum value** or the **minimum value** in the range `nums[0 ~ i]`.
 
-#### Implementation
+#### Java Implementation
 ```java
 class Solution {
   public int[] findIndices(int[] nums, int indexDifference, int valueDifference) {
@@ -5490,7 +5526,7 @@ Step-by-step Splits:
           /     \            /     \             /     \
        [38]   [27]        [43]   [3]         [9]     [82]
 ```
-### Java Implementation
+#### Java Implementation
 ```java
 /**
  * @author Craig Brown
@@ -5920,7 +5956,7 @@ class Solution:
 #### Consideration
 * All relevant combinations should be carefully considered by iterating through `nums`.
 
-## 55. Maximum Balanced Subsequence Sum   
+## 55. Maximum Balanced Subsequence Sum
 ### Source
 https://leetcode.com/problems/maximum-balanced-subsequence-sum/
 ### Fenwick Tree Solution
@@ -6154,135 +6190,8 @@ public:
 };
 
 ```
-#### Golang Implementation
+<!-- #### Golang Implementation
 ```golang
 
-```
+``` -->
 
-
-
-## 56. Find Subarray With Bitwise OR Closest to K
-### Source
-https://leetcode.com/problems/find-subarray-with-bitwise-or-closest-to-k/
-## 57. Can Make Palindrome from Substring
-### Source
-https://leetcode.com/problems/can-make-palindrome-from-substring/
-## 58. Substrings of Size Three with Distinct Characters
-### Source
-https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
-## 59. Count Number of Bad Pairs
-### Source
-https://leetcode.com/problems/count-number-of-bad-pairs/
-## 60. Make Three Strings Equal
-### Source
-https://leetcode.com/problems/make-three-strings-equal/
-## 61. Count the Number of Good Nodes
-### Source
-https://leetcode.com/problems/count-the-number-of-good-nodes/
-## 62. Finding the Users Active Minutes
-### Source
-https://leetcode.com/problems/finding-the-users-active-minutes/
-## 63. Merge Intervals
-### Source
-https://leetcode.com/problems/merge-intervals/
-## 64. Max Dot Product of Two Subsequences
-### Source
-https://leetcode.com/problems/max-dot-product-of-two-subsequences/
-## 65. Create Sorted Array through Instruction
-### Source
-https://leetcode.com/problems/create-sorted-array-through-instructions/
-## 66. Longest Univalue Path
-### Source
-https://leetcode.com/problems/longest-univalue-path/
-
-
-
-# SQL Problems
-## 1. Odd and Even Transactions
-### Source
-https://leetcode.com/problems/odd-and-even-transactions/
-### Analysis
-Group the data by the `transaction_date` field (using `GROUP BY` or `PARTITION BY`), and calculate the total amounts for odd and even transactions on each transaction_date.
-
-Oracle Functions:
-* NVL(expression, replacement_value)
-
-    The NVL function is used to replace NULL values with a specified replacement value.   
-    If the first argument is NULL, it returns the second argument. Otherwise, it returns the first argument.
-* BITAND(x, y)				
-
-    The BITAND function performs a bitwise AND operation between two integer values. 
-
-### MySQL Implementation
-```sql
-SELECT DISTINCT transaction_date, 
-SUM(CASE WHEN amount % 2=0 THEN 0 ELSE amount END) OVER( PARTITION BY transaction_date  ) AS odd_sum,
-SUM(CASE WHEN amount % 2=0 THEN amount ELSE 0 END) OVER( PARTITION BY transaction_date  ) AS even_sum
-FROM transactions;
-```
-### Oracle Implementation
-```sql
-SELECT TO_CHAR(transaction_date,'yyyy-MM-dd') AS transaction_date,
-       NVL(SUM(CASE WHEN BITAND(amount,1)=1 THEN amount END),0) AS odd_sum,
-       NVL(SUM(CASE WHEN BITAND(amount,1)=0 THEN amount END),0) AS even_sum
-FROM transactions
-GROUP BY transaction_date
-ORDER BY transaction_date ASC;
-```
-
-## 2. Find Customer Referee
-### Source
-https://leetcode.com/problems/find-customer-referee/
-
-### Analysis
-1. Use of Common Table Expressions (CTEs)
-
-    Define two CTEs: one for storing the salary categories and another for counting the number of employees in each category.
-
-2. Direct Query with `UNION ALL`
-
-    Directly select and combine the results for each salary category in a single query using `UNION ALL`. 
-
-### MySQL Implementation
-```sql
-WITH category AS(
-    SELECT 'Low Salary' AS category
-    union
-    SELECT 'Average Salary'
-    union 
-    SELECT 'High Salary'
-), cnt AS (
-    SELECT
-        CASE 
-        WHEN income<20000 THEN 'Low Salary'
-        WHEN income>=20000 AND income<=50000 THEN 'Average Salary'
-        WHEN income>50000 THEN 'High Salary '
-        END AS category,
-        count(1) AS accounts_count
-    FROM
-        accounts
-    GROUP BY 1
-) 
-
-SELECT
-    category.category,
-    IFNULL(accounts_count,0) AS accounts_count
-FROM category
-LEFT JOIN cnt
-ON category.category=cnt.category;
-```
-
-### Oracle Implementation
-```sql
-SELECT  'Low Salary' AS category, NVL(count(account_id),0) accounts_count 
-    FROM accounts  
-    WHERE income <20000
-UNION ALL 
-    SELECT  'Average Salary' AS category, NVL(count(account_id),0) ct 
-        FROM accounts  
-        WHERE income  between  20000 and 50000 
-UNION ALL 
-    SELECT 'High Salary'  AS category, NVL( count(account_id),0) ct
-        FROM accounts 
-        WHERE income > 50000; 
-```
