@@ -2,7 +2,7 @@
 Author:  Craig Brown
 Version: 1.0.4
 Date:    May 13, 2025
-Source:  https://github.com/saidake/interview
+Source:  https://github.com/saidake/simi-docs
 ------------------------------------------------------------->
 # Table of Contents
 - [Algorithm Problems](#algorithm-problems)
@@ -121,7 +121,7 @@ To achieve this, we can sort the array and group every two elements into pairs, 
 /**
  * Author: Craig Brown
  * Date:   May 11, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 class Solution {
     public int arrayPairSum(int[] nums) {
@@ -141,7 +141,7 @@ class Solution {
 """
 Author: Craig Brown
 Date:   May 11, 2025
-Source: https://github.com/saidake/interview
+Source: https://github.com/saidake/simi-docs
 """
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:
@@ -158,7 +158,7 @@ class Solution:
 /**
  * Author: Craig Brown
  * Date:   May 11, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 class Solution {
 public:
@@ -179,7 +179,7 @@ public:
 /**
  * Author: Craig Brown
  * Date:   May 13, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 func arrayPairSum(nums []int) int {
     // Sort `nums`
@@ -309,7 +309,7 @@ Approach:
 /**
  * Author: Craig Brown
  * Date:   April 25, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 /**
  * Definition for a binary tree node.
@@ -370,7 +370,7 @@ class Solution {
 """
 Author: Craig Brown
 Date:   April 25, 2025
-Source: https://github.com/saidake/interview
+Source: https://github.com/saidake/simi-docs
 """
 # Definition for a binary tree node.
 # class TreeNode:
@@ -5828,7 +5828,7 @@ Try all available integers during each player's turn:
 /**
  * Author: Craig Brown
  * Date:   May 3, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 class Solution {
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
@@ -5863,7 +5863,7 @@ class Solution {
 """
 Author: Craig Brown
 Date:   May 4, 2025
-Source: https://github.com/saidake/interview
+Source: https://github.com/saidake/simi-docs
 """
 class Solution:
     def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
@@ -5919,7 +5919,7 @@ Approach:
 /**
  * Author: Craig Brown
  * Date:   May 6, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 class Solution {
     public int threeSumClosest(int[] nums, int target) {
@@ -5958,7 +5958,7 @@ class Solution {
 """
 Author: Craig Brown
 Date:   May 8, 2025
-Source: https://github.com/saidake/interview
+Source: https://github.com/saidake/simi-docs
 """
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
@@ -6060,7 +6060,7 @@ In the image above:
 /**
  * Author: Craig Brown
  * Date:   May 15, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 class Solution {
     public long maxBalancedSubsequenceSum(int[] nums) {
@@ -6132,7 +6132,7 @@ class Solution {
 """
 Author: Craig Brown
 Date:   May 15, 2025
-Source: https://github.com/saidake/interview
+Source: https://github.com/saidake/simi-docs
 """
 class Solution:
     def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
@@ -6187,7 +6187,7 @@ class FenwickTree:
 /**
  * Author: Craig Brown
  * Date:   May 19, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 class FenwickTree {
 public:
@@ -6264,7 +6264,7 @@ public:
 /**
  * Author: Craig Brown
  * Date:   May 19, 2025
- * Source: https://github.com/saidake/interview
+ * Source: https://github.com/saidake/simi-docs
  */ 
 func maxBalancedSubsequenceSum(nums []int) int64 {
 	// Extract distinct values of `nums[i] - i` for positive `nums[i]`
