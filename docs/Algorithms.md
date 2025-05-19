@@ -107,6 +107,7 @@ Source:  https://github.com/saidake/simi-docs
     - [2. Find Customer Referee](#2-find-customer-referee)
 # Algorithm Problems
 ## 1. Array Partition
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/array-partition/
 ### Array Solution
@@ -207,6 +208,7 @@ func arrayPairSum(nums []int) int {
     (Note: While the built-in sorting method may require additional space depending on the language, this variation is omitted for simplicity.)
 
 ## 2. Add Edges to Make Degrees of All Nodes Even
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/add-edges-to-make-degrees-of-all-nodes-even/
 ### Conditional Logic Solution
@@ -286,6 +288,7 @@ class Solution {
     Thus, the total space complexity is $O(m+n)$.
 
 ## 3. Amount of Time for Binary Tree to Be Infected  <!-- 3 -->
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
 ### Backtracking Solution
@@ -434,6 +437,7 @@ class Solution:
   In this problem, we use a single return value but distinguish between two scenarios by using negative and positive values.
 
 ## 4. Search in Rotated Sorted Array
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/search-in-rotated-sorted-array/
 ### Analysis
@@ -490,6 +494,7 @@ class Solution {
     Each recursive call adds a frame to the recursion stack, with a maximum depth of $O(\log n)$, leading to a space complexity of $O(\log n)$.
 
 ## 5. Jump Game VII
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/jump-game-vii/
 
@@ -669,6 +674,7 @@ class Solution {
     The `dp` array has a size of len, contributing $O(n)$ to the space complexity.
 
 ## 6. Climbing Stairs
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/climbing-stairs/
 ### Analysis
@@ -714,6 +720,7 @@ class Solution {
     The `for` loop iterate over the stairs starting from `3`, yielding a time complexity of $O(n)$.
 * Space Complexity: $O(1)$
 ## 7. Count All Valid Pickup and Delivery Options
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
 ### Analysis
@@ -780,6 +787,7 @@ class Solution {
 
 
 ## 8. Decode Ways II
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/decode-ways-ii/
 ### Analysis
@@ -906,6 +914,7 @@ class Solution {
 * Using `Character.getNumericValue()` to obtain the numeric value of `'*'` in string `s` will return `'-1'` and using the `-1` for checking purposes can lead to misleading readability.
 
 ## 9. Make the XOR of All Segments Equal to Zero
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/make-the-xor-of-all-segments-equal-to-zero/
 ### Dynamic Programming Solution
@@ -1100,6 +1109,7 @@ class Solution {
         Includes variables like sum, min, and loop variables. These require $O(1)$ space.
 
 ## 10. Maximize Value of Function in a Ball Passing Game
+[Back to Main Project README](../README.md)  
  
 ### Source
 https://leetcode.com/problems/maximize-value-of-function-in-a-ball-passing-game/
@@ -1270,6 +1280,7 @@ class Solution {
         
         The other variables, such as `len`, `passCount`, `i`, `x`, `k`, `ctz`, `s`, and `ans`, require constant extra space.
 ## 11. Minimum Deletions to Make String Balanced
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/
 
@@ -1310,6 +1321,7 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 12. Stone Game
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/stone-game/
 ### Depth-first Search Solution
@@ -1475,6 +1487,7 @@ class Solution {
     The space requried for this array is $O(n)$.
 
 ## 13. Target Sum
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/target-sum/
 ### Depth-first Search Solution
@@ -1785,6 +1798,7 @@ public class Solution {
 
 
 ## 14. Distribute Elements Into Two Arrays II
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/distribute-elements-into-two-arrays-ii/
 ### Fenwick Tree Solution
@@ -1920,6 +1934,7 @@ class Solution {
     Therefore, the total space complexity is $O(n)$.
 
 ## 15. Max Difference You Can Get From Changing an Integer
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/
 
@@ -1960,6 +1975,7 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 16. Maximum Length of Subarray With Positive Product
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/
 
@@ -2064,6 +2080,7 @@ class Solution {
 
 
 ## 17. Construct the Minimum Bitwise Array II
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/construct-the-minimum-bitwise-array-ii/
 ### Analysis
@@ -2136,6 +2153,7 @@ class Solution {
     The array `ans` takes $O(n)$ space.
 
 ## 18. Egg Drop With 2 Eggs and N Floors
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
 ### Analysis
@@ -2202,6 +2220,7 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 19. Find Number of Ways to Reach the K-th Stair
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/find-number-of-ways-to-reach-the-k-th-stair/
 
@@ -2284,6 +2303,7 @@ class Solution {
     The time and space used during the precomputation process are not factored into the solution.
 * Space Complexity: $O(1)$
 ## 20. Minimum Moves to Capture The Queen
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/minimum-moves-to-capture-the-queen/
 
@@ -2361,6 +2381,7 @@ class Solution {
 * Time Complexity: $O(1)$
 * Space Complexity: $O(1)$
 ## 21. Range Product Queries of Powers
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/range-product-queries-of-powers/
 
@@ -2441,6 +2462,7 @@ class Solution {
     Because $O(q)$ grows slower than $O(bc^2)$ and can be omitted, the total space complexity is $O(bc^2)$.
 
 ## 22. Find the Longest Equal Subarray
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/find-the-longest-equal-subarray/
 ### Analysis
@@ -2550,6 +2572,7 @@ class Solution {
    Since the primary space usage comes from the `valCount` array, the space complexity is $O(n)$
 
 ## 23. License Key Formatting
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/license-key-formatting/
 ### Analysis
@@ -2586,6 +2609,7 @@ class Solution {
     `StringBuilder sb` stores the result string, which can also be of size $O(n)$.  
     Therefore, the total space complexity is $O(n)$
 ## 24. Find the Number of Ways to Place People I
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/
 
@@ -2638,6 +2662,7 @@ Note that the space complexity of `Arrays.sort` is:
 
 
 ## 25. Maximum Number of Operations With the Same Score I
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-i/
 
@@ -2669,6 +2694,7 @@ class Solution {
 
     Only a constant amount of additional space is used.
 ## 26. Boats to Save People
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/boats-to-save-people/
 
@@ -2713,6 +2739,7 @@ Note that the space complexity of `Arrays.sort` is:
 * $O(logn)$ for sorting primitive arrays.
 * $O(n)$ for sorting object arrays.
 ## 27. Find the Lexicographically Largest String From the Box I
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i/
 
@@ -2800,6 +2827,7 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 28. Merge Sorted Array
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/merge-sorted-array/
 
@@ -2839,6 +2867,7 @@ class Solution {
     The array `nums1Cp` occupies $O(m)$ space where `m` is the first `m` integers in array `nums1`.
 
 ## 29. Power Set LCCI
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/power-set-lcci/
 ### Backtracking Solution
@@ -3112,6 +3141,7 @@ class Solution {
     Thus, the overall space complexity is $O(n\times2^n)$.
 
 ## 1. Odd and Even Transactions
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/odd-and-even-transactions/
 ### Analysis
@@ -3144,6 +3174,7 @@ ORDER BY transaction_date ASC;
 ```
 
 ## 2. Find Customer Referee
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/find-customer-referee/
 
@@ -3202,6 +3233,7 @@ UNION ALL
 
 
 ## 30. Count Common Words With One Occurrence
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/count-common-words-with-one-occurrence/
 
@@ -3247,6 +3279,7 @@ class Solution {
     The maps `wordCount1` and `wordCount1` store keys from `words1` and `words2` respectively, with fixed-size values, resulting in a total space complexity of $O(m+n)$.
 
 ## 31. Minimum Number Game
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/minimum-number-game/
 
@@ -3278,6 +3311,7 @@ class Solution {
     Therefore, the total space complexity is $O(\log n)$.
 
 ## 32. My Calendar II
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/my-calendar-ii/
 
@@ -3826,6 +3860,7 @@ class MyCalendarTwo {
     Thus, the overall space complexity is $O(\log n)$ (Best Case) or $O(n)$ (Worst Case).
 
 ## 33. Graph Connectivity With Threshold
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/graph-connectivity-with-threshold/
 
@@ -3978,6 +4013,7 @@ class Solution {
     Thus the overall space complexity is $O(n+m)$.
 
 ## 34. Sort Array by Increasing Frequency
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/sort-array-by-increasing-frequency/
 
@@ -4075,6 +4111,7 @@ class Solution {
     Manually copying values into a new list offers better performance compared to using Java Streams.
 
 ## 35. Maximum Multiplication Score
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/maximum-multiplication-score/
 ### Dynamic Programming Solution
@@ -4193,6 +4230,7 @@ class Solution {
   The variables `dp1`, `dp2`, `dp3`, `dp4` each take constant time $O(1)$.
 
 ## 36. Find Triangular Sum of an Array
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/find-triangular-sum-of-an-array/
 
@@ -4228,6 +4266,7 @@ class Solution {
  * Reusing `nums` is more efficient since its original elements are no longer required in the following steps.
 
 ## 37. Zero Array Transformation II
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/zero-array-transformation-ii/
 
@@ -4280,6 +4319,7 @@ class Solution {
   * The `diff` array requires $O(n)$ space, where `n` is the length of `nums`.
 
 ## 38. Transform to Chessboard
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/transform-to-chessboard/
 ### Pattern Rule Solution 
@@ -4377,6 +4417,7 @@ class Solution {
     Thus, the overall space complexity is $O(n)$.
 
 ## 39. Trapping Rain Water II
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/trapping-rain-water-ii/
 
@@ -4575,6 +4616,7 @@ class Solution {
   Thus, the total space complexity is $O(m\times n)$.
 
 ## 40. Count Subarrays Where Max Element Appears at Least K Times
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/
 
@@ -4682,6 +4724,7 @@ class Solution {
     `max`, `ans`, `cntMax` and `left` each take constant time $O(1)$.
 
 ## 41. Path with Maximum Probability
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/path-with-maximum-probability/
 
@@ -4878,6 +4921,7 @@ class Solution {
   * `pathProb` has a space complexity of $O(n)$.
 
 ## 42. Count Prefix and Suffix Pairs I
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/
 ### Traversal Solution
@@ -4905,6 +4949,7 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 43. Total Cost to Hire K Workers
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/total-cost-to-hire-k-workers/
 
@@ -4977,6 +5022,7 @@ class Solution {
     The `leftQue` and `rightQue` each take $O(m)$ space where `m` is the number of candidates.
 
 ## 44. Find Indices With Index and Value Difference I
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/find-indices-with-index-and-value-difference-i/
 
@@ -5019,6 +5065,7 @@ class Solution {
 * Space Complexity: $O(1)$
 
 ## 45. Intersection of Two Arrays II
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/intersection-of-two-arrays-ii/
 
@@ -5108,6 +5155,7 @@ class Solution {
   Thus, the overall space complexity is $O(n)$.
 
 ## 46. Number of Paths with Max Score
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/number-of-paths-with-max-score/
 
@@ -5248,6 +5296,7 @@ class Solution {
    Therefore, the total space complexity is $O(rLen\times cLen)$.
 
 ## 47. Beautiful Towers II
+[Back to Main Project README](../README.md)  
 
 ### Source
 https://leetcode.cn/problems/beautiful-towers-ii/
@@ -5351,6 +5400,7 @@ class Solution {
 
 
 ## 48. Longest Common Prefix
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/longest-common-prefix/
 ### Traversal Solution
@@ -5401,6 +5451,7 @@ class Solution {
   * All variables occupy constant space.
 
 ## 49. Bubble Sort
+[Back to Main Project README](../README.md)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5501,6 +5552,7 @@ public class BubbleSort {
     * All variables occupy constant space.
 
 ## 50. Merge Sort
+[Back to Main Project README](../README.md)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5610,6 +5662,7 @@ public class MergeSort {
   Each recursive call focuses on merging two already sorted partitions into a larger sorted array.
 
 ## 51. Quick Sort
+[Back to Main Project README](../README.md)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 
@@ -5696,6 +5749,7 @@ public class QuickSort {
 #### Consideration
 * The `if (left < right)` check ensures no out-of-bounds access, even if the indices exceed valid ranges.
 ## 52. Maximum Number of Pairs in Array
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/maximum-number-of-pairs-in-array/
 ### Array Solution
@@ -5753,6 +5807,7 @@ class Solution:
 * Consideration
   * Using `freqArr[i]/2` is more efficient for counting pairs than checking `freqArr[i]>0 && freqArr[i]%2==0`.
 ## 53. Can I Win
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/can-i-win/
 ### Depth-first Search Solution
@@ -5846,6 +5901,7 @@ class Solution:
 #### Consideration
 * To analyze the time complexity of the depth-first algorithm, focus on **the total number of recursive calls** and **all possible combinations traversed**, rather than just the recursion depth.
 ## 54. 3Sum Closest
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/3sum-closest/
 ### Two-Pointer Solution
@@ -5957,6 +6013,7 @@ class Solution:
 * All relevant combinations should be carefully considered by iterating through `nums`.
 
 ## 55. Maximum Balanced Subsequence Sum
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/maximum-balanced-subsequence-sum/
 ### Fenwick Tree Solution
