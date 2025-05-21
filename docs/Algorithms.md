@@ -6348,3 +6348,43 @@ func maxInt64(a, b int64) int64 {
 	return b
 }
 ```
+## 56. Custom Sort String
+### Source
+https://leetcode.com/problems/custom-sort-string/
+### Analysis
+#### Java Implementation
+```java
+class Solution {
+    public String customSortString(String order, String s) {
+        // Case 1:
+        // bcafg   abcd
+        // Map:
+        // b c a f g
+        // 0 1 2 3 4
+        // s: 
+        // a b c d
+        // 2 0 1 ?
+        char [] chars1=order.toCharArray();
+        Map<Character, Integer> map=new HashMap<>();
+        for (int i=0; i<chars1.length; i++){
+            char c = chars1[i];  
+            map.put(c, i);
+        }
+        char[] chars2=s.toCharArray();
+        for(int i=0; i<s.length(); i++){
+            for(int j=i+1; j<s.length(); j++){
+                Integer ord1=map.get(chars2[i]);
+                if(ord1==null) continue;
+                Integer ord2=map.get(chars2[j]);
+                if(ord2==null) continue;
+                if(ord1>ord2){
+                    char temp=chars2[i];
+                    chars2[i]=chars2[j];
+                    chars2[j]=temp;
+                }
+            }
+        }
+        return new String(chars2);
+    }
+}
+```
