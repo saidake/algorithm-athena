@@ -6413,3 +6413,34 @@ class Solution:
 
         return ''.join(res)
 ```
+## 57. Valid Palindrome
+[Back to Main Project README](../README.md)  
+### Source
+https://leetcode.com/problems/valid-palindrome/
+### Solution
+
+#### Java Implementation
+```java
+/**
+ * Author: Craig Brown
+ * Date:   May 23, 2025
+ * Source: https://github.com/saidake/simi-docs
+ */ 
+class Solution {
+    public boolean isPalindrome(String s) {
+        s=s.toLowerCase().replaceAll("[^a-z0-9]","");
+        System.out.println(s);
+        int len=s.length();
+        for(int i=0; i<len; i++){
+            if(s.charAt(i)!=s.charAt(len-1-i))return false;
+        }
+        return true;
+    }
+}
+```
+
+
+
+
+
+
