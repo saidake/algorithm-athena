@@ -13,6 +13,7 @@ Source:  https://github.com/saidake/simi-docs
     - Meaningful Index (`Automatic Sorting`)
       - [34. Sort Array by Increasing Frequency](#34-sort-array-by-increasing-frequency)
       - [52. Maximum Number of Pairs in Array](#52-maximum-number-of-pairs-in-array)
+      - [56. Custom Sort String](#56-custom-sort-string)
   - Backtracking
     - [3. Amount of Time for Binary Tree to Be Infected](#3-amount-of-time-for-binary-tree-to-be-infected)
     - [29. Power Set LCCI](#29-power-set-lcci)
@@ -6349,42 +6350,66 @@ func maxInt64(a, b int64) int64 {
 }
 ```
 ## 56. Custom Sort String
+[Back to Main Project README](../README.md)  
 ### Source
 https://leetcode.com/problems/custom-sort-string/
-### Analysis
+### Array Solution
+* Count frequency of each character in 's'
+* Repeat each character from 'order' based on its frequency in 's'
+* Add remaining characters not in 'order'
 #### Java Implementation
 ```java
 class Solution {
     public String customSortString(String order, String s) {
-        // Case 1:
-        // bcafg   abcd
-        // Map:
-        // b c a f g
-        // 0 1 2 3 4
-        // s: 
-        // a b c d
-        // 2 0 1 ?
-        char [] chars1=order.toCharArray();
-        Map<Character, Integer> map=new HashMap<>();
-        for (int i=0; i<chars1.length; i++){
-            char c = chars1[i];  
-            map.put(c, i);
+        int[] freq = new int[26];
+        char[] result = new char[s.length()];
+        int index = 0;
+
+        // Count frequency of each character in 's'
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;
         }
-        char[] chars2=s.toCharArray();
-        for(int i=0; i<s.length(); i++){
-            for(int j=i+1; j<s.length(); j++){
-                Integer ord1=map.get(chars2[i]);
-                if(ord1==null) continue;
-                Integer ord2=map.get(chars2[j]);
-                if(ord2==null) continue;
-                if(ord1>ord2){
-                    char temp=chars2[i];
-                    chars2[i]=chars2[j];
-                    chars2[j]=temp;
-                }
+
+        // Repeat each character from 'order' based on its frequency in 's'
+        for (char c : order.toCharArray()) {
+            while (freq[c - 'a']-- > 0) {
+                result[index++] = c;
             }
         }
-        return new String(chars2);
+
+        // Add remaining characters not in 'order'
+        for (int i = 0; i < 26; i++) {
+            while (freq[i]-- > 0) {
+                result[index++] = (char) (i + 'a');
+            }
+        }
+
+        return new String(result);
     }
 }
+```
+#### Python Implementation
+```python
+"""
+Author: Craig Brown
+Date:   May 22, 2025
+Source: https://github.com/saidake/simi-docs
+"""
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        # Count frequency of each character in 's'
+        freq = Counter(s)
+        res = []
+
+        # Repeat each character from 'order' based on its frequency in 's'
+        for char in order:
+            if char in freq:
+                res.extend([char] * freq[char])
+                del freq[char]
+
+        # Add remaining characters not in 'order'
+        for char, count in freq.items():
+            res.extend([char] * count)
+
+        return ''.join(res)
 ```
