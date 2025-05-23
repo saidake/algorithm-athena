@@ -6428,11 +6428,27 @@ https://leetcode.com/problems/valid-palindrome/
  */ 
 class Solution {
     public boolean isPalindrome(String s) {
-        s=s.toLowerCase().replaceAll("[^a-z0-9]","");
-        System.out.println(s);
-        int len=s.length();
-        for(int i=0; i<len; i++){
-            if(s.charAt(i)!=s.charAt(len-1-i))return false;
+        char[] chars = new char[s.length()];
+        int len = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            // Convert uppercase to lowercase
+            if (c >= 'A' && c <= 'Z') {
+                c += 32;
+            }
+            // Keep only alphanumeric characters
+            if ((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
+                chars[len++] = c;
+            }
+        }
+
+        // Check if the filtered string is a palindrome
+        int left = 0, right = len - 1;
+        while (left < right) {
+            if (chars[left++] != chars[right--]) {
+                return false;
+            }
         }
         return true;
     }
