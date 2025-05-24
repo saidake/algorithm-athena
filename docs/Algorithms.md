@@ -6454,7 +6454,30 @@ class Solution {
     }
 }
 ```
-
+#### Python3 Implementation
+```python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        chars = []
+        
+        for c in s:
+            # Convert uppercase to lowercase
+            if 'A' <= c <= 'Z':
+                c = chr(ord(c) + 32)
+            # Keep only alphanumeric characters
+            if ('a' <= c <= 'z') or ('0' <= c <= '9'):
+                chars.append(c)
+        
+        # Check if the filtered string is a palindrome
+        left, right = 0, len(chars) - 1
+        while left < right:
+            if chars[left] != chars[right]:
+                return False
+            left += 1
+            right -= 1
+        
+        return True
+```
 
 
 
