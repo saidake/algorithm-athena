@@ -6418,7 +6418,11 @@ class Solution:
 ### Source
 https://leetcode.com/problems/valid-palindrome/
 ### Solution
-
+1. Extract alphanumeric characters from string `s`
+   * Convert uppercase to lowercase
+   * Keep only alphanumeric characters
+   * Store the result in a temporary array `chars`.
+2. Check if the filtered string is a palindrome
 #### Java Implementation
 ```java
 /**
@@ -6430,7 +6434,7 @@ class Solution {
     public boolean isPalindrome(String s) {
         char[] chars = new char[s.length()];
         int len = 0;
-
+        // Extract alphanumeric characters from string `s`
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             // Convert uppercase to lowercase
@@ -6459,7 +6463,7 @@ class Solution {
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         chars = []
-        
+        # Extract alphanumeric characters from string `s`
         for c in s:
             # Convert uppercase to lowercase
             if 'A' <= c <= 'Z':
@@ -6475,8 +6479,13 @@ class Solution:
                 return False
             left += 1
             right -= 1
-        
         return True
+```
+## 58. Maximum Frequency After Subarray Operation
+### Source
+https://leetcode.com/problems/maximum-frequency-after-subarray-operation/
+#### Java Implementation
+```
 ```
 
 
