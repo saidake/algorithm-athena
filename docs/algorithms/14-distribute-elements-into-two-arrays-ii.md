@@ -1,5 +1,5 @@
 ## 14. Distribute Elements Into Two Arrays II
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/distribute-elements-into-two-arrays-ii/
 ### Fenwick Tree Solution

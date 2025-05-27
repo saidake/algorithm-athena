@@ -1,5 +1,5 @@
 ## 16. Maximum Length of Subarray With Positive Product
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/
 

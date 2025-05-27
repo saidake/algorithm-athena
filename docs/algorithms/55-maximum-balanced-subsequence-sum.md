@@ -1,5 +1,5 @@
 ## 55. Maximum Balanced Subsequence Sum
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/maximum-balanced-subsequence-sum/
 ### Fenwick Tree Solution

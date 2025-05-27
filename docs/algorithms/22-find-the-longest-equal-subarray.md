@@ -1,5 +1,5 @@
 ## 22. Find the Longest Equal Subarray
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/find-the-longest-equal-subarray/
 ### Analysis

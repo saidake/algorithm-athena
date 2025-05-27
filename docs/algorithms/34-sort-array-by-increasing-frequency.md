@@ -1,5 +1,5 @@
 ## 34. Sort Array by Increasing Frequency
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/sort-array-by-increasing-frequency/
 

@@ -1,5 +1,5 @@
 ## 35. Maximum Multiplication Score
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/maximum-multiplication-score/
 ### Dynamic Programming Solution

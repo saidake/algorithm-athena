@@ -1,5 +1,5 @@
 ## 26. Boats to Save People
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/boats-to-save-people/
 

@@ -1,5 +1,5 @@
 ## 24. Find the Number of Ways to Place People I
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/
 

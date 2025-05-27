@@ -1,5 +1,5 @@
 ## 13. Target Sum
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/target-sum/
 ### Depth-first Search Solution

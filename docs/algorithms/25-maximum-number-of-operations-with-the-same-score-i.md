@@ -1,5 +1,5 @@
 ## 25. Maximum Number of Operations With the Same Score I
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-i/
 

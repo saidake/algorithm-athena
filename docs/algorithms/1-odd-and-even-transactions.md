@@ -1,5 +1,5 @@
 ## 1. Odd and Even Transactions
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/odd-and-even-transactions/
 ### Analysis

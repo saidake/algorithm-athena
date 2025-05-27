@@ -1,5 +1,5 @@
 ## 12. Stone Game
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/stone-game/
 ### Depth-first Search Solution

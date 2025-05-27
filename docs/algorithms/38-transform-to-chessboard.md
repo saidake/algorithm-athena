@@ -1,5 +1,5 @@
 ## 38. Transform to Chessboard
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/transform-to-chessboard/
 ### Pattern Rule Solution 

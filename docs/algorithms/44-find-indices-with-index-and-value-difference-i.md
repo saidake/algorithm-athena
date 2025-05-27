@@ -1,5 +1,5 @@
 ## 44. Find Indices With Index and Value Difference I
-[Back to Main Project README](../README.md)  
+**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
 ### Source
 https://leetcode.com/problems/find-indices-with-index-and-value-difference-i/
 
