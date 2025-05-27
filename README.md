@@ -2,6 +2,8 @@
 Algorithm Athena is a collection of algorithm solutions.  
 These algorithm solutions are licensed under CC-BY-SA 4.0.
 
+**View:** **Solutions** | [Category Structure](docs/Algorithms.md)
+
 ## Algorithms
 
 | Algorithms |
