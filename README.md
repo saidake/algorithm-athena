@@ -8,7 +8,6 @@ These algorithm solutions are licensed under CC-BY-SA 4.0.
 
 | Algorithms |
 |------------|
-| [58. Maximum Frequency After Subarray Operation](docs/algorithms/58-maximum-frequency-after-subarray-operation.md) [Java] |
 | [57. Valid Palindrome](docs/algorithms/57-valid-palindrome.md) [Java, Python] |
 | [56. Custom Sort String](docs/algorithms/56-custom-sort-string.md) [Java, Python] |
 | [55. Maximum Balanced Subsequence Sum](docs/algorithms/55-maximum-balanced-subsequence-sum.md) [Java, Python, C++, Golang] |
