@@ -1,5 +1,5 @@
 ## 27. Find the Lexicographically Largest String From the Box I
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i/
 

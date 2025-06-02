@@ -1,5 +1,5 @@
 ## 20. Minimum Moves to Capture The Queen
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/minimum-moves-to-capture-the-queen/
 

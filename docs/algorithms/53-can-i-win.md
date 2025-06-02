@@ -1,5 +1,5 @@
 ## 53. Can I Win
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/can-i-win/
 ### Depth-first Search Solution

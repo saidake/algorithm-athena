@@ -1,5 +1,5 @@
 ## 54. 3Sum Closest
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/3sum-closest/
 ### Two-Pointer Solution

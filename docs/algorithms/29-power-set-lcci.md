@@ -1,5 +1,5 @@
 ## 29. Power Set LCCI
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/power-set-lcci/
 ### Backtracking Solution

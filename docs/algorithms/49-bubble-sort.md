@@ -1,5 +1,5 @@
 ## 49. Bubble Sort
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Description
 Given an integer array `arr`, sort it in ascending order.
 

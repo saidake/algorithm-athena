@@ -1,5 +1,5 @@
 ## 9. Make the XOR of All Segments Equal to Zero
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/make-the-xor-of-all-segments-equal-to-zero/
 ### Dynamic Programming Solution

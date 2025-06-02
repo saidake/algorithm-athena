@@ -2,68 +2,109 @@
 Algorithm Athena is a collection of algorithm solutions.  
 These algorithm solutions are licensed under CC-BY-SA 4.0.
 
-**View:** **Solutions** | [Category Structure](docs/Algorithms.md)
+**Latest:** [57. Valid Palindrome](docs/algorithms/57-valid-palindrome.md) [Java, Python]
 
-## Algorithms
-
-| Algorithms |
-|------------|
-| [57. Valid Palindrome](docs/algorithms/57-valid-palindrome.md) [Java, Python] |
-| [56. Custom Sort String](docs/algorithms/56-custom-sort-string.md) [Java, Python] |
-| [55. Maximum Balanced Subsequence Sum](docs/algorithms/55-maximum-balanced-subsequence-sum.md) [Java, Python, C++, Golang] |
-| [54. 3Sum Closest](docs/algorithms/54-3sum-closest.md) [Java, Python] |
-| [53. Can I Win](docs/algorithms/53-can-i-win.md) [Java, Python] |
-| [52. Maximum Number of Pairs in Array](docs/algorithms/52-maximum-number-of-pairs-in-array.md) [Java, Python] |
-| [51. Quick Sort](docs/algorithms/51-quick-sort.md) [Java] |
-| [50. Merge Sort](docs/algorithms/50-merge-sort.md) [Java] |
-| [49. Bubble Sort](docs/algorithms/49-bubble-sort.md) [Java] |
-| [48. Longest Common Prefix](docs/algorithms/48-longest-common-prefix.md) [Java] |
-| [47. Beautiful Towers II](docs/algorithms/47-beautiful-towers-ii.md) [Java] |
-| [46. Number of Paths with Max Score](docs/algorithms/46-number-of-paths-with-max-score.md) [Java] |
-| [45. Intersection of Two Arrays II](docs/algorithms/45-intersection-of-two-arrays-ii.md) [Java, Python] |
-| [44. Find Indices With Index and Value Difference I](docs/algorithms/44-find-indices-with-index-and-value-difference-i.md) [Java] |
-| [43. Total Cost to Hire K Workers](docs/algorithms/43-total-cost-to-hire-k-workers.md) [Java] |
-| [42. Count Prefix and Suffix Pairs I](docs/algorithms/42-count-prefix-and-suffix-pairs-i.md) [Java] |
-| [41. Path with Maximum Probability](docs/algorithms/41-path-with-maximum-probability.md) [Java] |
-| [40. Count Subarrays Where Max Element Appears at Least K Times](docs/algorithms/40-count-subarrays-where-max-element-appears-at-least-k-times.md) [Java] |
-| [39. Trapping Rain Water II](docs/algorithms/39-trapping-rain-water-ii.md) [Java] |
-| [38. Transform to Chessboard](docs/algorithms/38-transform-to-chessboard.md) [Java] |
-| [37. Zero Array Transformation II](docs/algorithms/37-zero-array-transformation-ii.md) [Java] |
-| [36. Find Triangular Sum of an Array](docs/algorithms/36-find-triangular-sum-of-an-array.md) [Java] |
-| [35. Maximum Multiplication Score](docs/algorithms/35-maximum-multiplication-score.md) [Java] |
-| [34. Sort Array by Increasing Frequency](docs/algorithms/34-sort-array-by-increasing-frequency.md) [Java] |
-| [33. Graph Connectivity With Threshold](docs/algorithms/33-graph-connectivity-with-threshold.md) [Java] |
-| [32. My Calendar II](docs/algorithms/32-my-calendar-ii.md) [Java, Python] |
-| [31. Minimum Number Game](docs/algorithms/31-minimum-number-game.md) [Java] |
-| [30. Count Common Words With One Occurrence](docs/algorithms/30-count-common-words-with-one-occurrence.md) [Java] |
-| [2. Find Customer Referee](docs/algorithms/2-find-customer-referee.md) [MySQL, Oracle] |
-| [1. Odd and Even Transactions](docs/algorithms/1-odd-and-even-transactions.md) [MySQL, Oracle] |
-| [29. Power Set LCCI](docs/algorithms/29-power-set-lcci.md) [Java] |
-| [28. Merge Sorted Array](docs/algorithms/28-merge-sorted-array.md) [Java] |
-| [27. Find the Lexicographically Largest String From the Box I](docs/algorithms/27-find-the-lexicographically-largest-string-from-the-box-i.md) [Java] |
-| [26. Boats to Save People](docs/algorithms/26-boats-to-save-people.md) [Java] |
-| [25. Maximum Number of Operations With the Same Score I](docs/algorithms/25-maximum-number-of-operations-with-the-same-score-i.md) [Java] |
-| [24. Find the Number of Ways to Place People I](docs/algorithms/24-find-the-number-of-ways-to-place-people-i.md) [Java] |
-| [23. License Key Formatting](docs/algorithms/23-license-key-formatting.md) [Java] |
-| [22. Find the Longest Equal Subarray](docs/algorithms/22-find-the-longest-equal-subarray.md) [Java] |
-| [21. Range Product Queries of Powers](docs/algorithms/21-range-product-queries-of-powers.md) [Java] |
-| [20. Minimum Moves to Capture The Queen](docs/algorithms/20-minimum-moves-to-capture-the-queen.md) [Java] |
-| [19. Find Number of Ways to Reach the K-th Stair](docs/algorithms/19-find-number-of-ways-to-reach-the-k-th-stair.md) [Java] |
-| [18. Egg Drop With 2 Eggs and N Floors](docs/algorithms/18-egg-drop-with-2-eggs-and-n-floors.md) [Java] |
-| [17. Construct the Minimum Bitwise Array II](docs/algorithms/17-construct-the-minimum-bitwise-array-ii.md) [Java] |
-| [16. Maximum Length of Subarray With Positive Product](docs/algorithms/16-maximum-length-of-subarray-with-positive-product.md) [Java] |
-| [15. Max Difference You Can Get From Changing an Integer](docs/algorithms/15-max-difference-you-can-get-from-changing-an-integer.md) [Java] |
-| [14. Distribute Elements Into Two Arrays II](docs/algorithms/14-distribute-elements-into-two-arrays-ii.md) [Java] |
-| [13. Target Sum](docs/algorithms/13-target-sum.md) [Java] |
-| [12. Stone Game](docs/algorithms/12-stone-game.md) [Java] |
-| [11. Minimum Deletions to Make String Balanced](docs/algorithms/11-minimum-deletions-to-make-string-balanced.md) [Java] |
-| [10. Maximize Value of Function in a Ball Passing Game](docs/algorithms/10-maximize-value-of-function-in-a-ball-passing-game.md) [Java] |
-| [9. Make the XOR of All Segments Equal to Zero](docs/algorithms/9-make-the-xor-of-all-segments-equal-to-zero.md) [Java] |
-| [8. Decode Ways II](docs/algorithms/8-decode-ways-ii.md) [Java] |
-| [7. Count All Valid Pickup and Delivery Options](docs/algorithms/7-count-all-valid-pickup-and-delivery-options.md) [Java] |
-| [6. Climbing Stairs](docs/algorithms/6-climbing-stairs.md) [Java] |
-| [5. Jump Game VII](docs/algorithms/5-jump-game-vii.md) [Java] |
-| [4. Search in Rotated Sorted Array](docs/algorithms/4-search-in-rotated-sorted-array.md) [Java] |
-| [3. Amount of Time for Binary Tree to Be Infected](docs/algorithms/3-amount-of-time-for-binary-tree-to-be-infected-3.md) [Java, Python] |
-| [2. Add Edges to Make Degrees of All Nodes Even](docs/algorithms/2-add-edges-to-make-degrees-of-all-nodes-even.md) [Java] |
-| [1. Array Partition](docs/algorithms/1-array-partition.md) [Java, Python, C++, Golang] |
+# Table of Contents
+- Algorithm Problems
+  - Array
+    - Standard
+      - [1. Array Partition](docs/algorithms/1-array-partition.md) [Java, Python, C++, Golang]
+      - [31. Minimum Number Game](docs/algorithms/31-minimum-number-game.md) [Java]
+    - Meaningful Index (`Automatic Sorting`)
+      - [34. Sort Array by Increasing Frequency](docs/algorithms/34-sort-array-by-increasing-frequency.md) [Java]
+      - [52. Maximum Number of Pairs in Array](docs/algorithms/52-maximum-number-of-pairs-in-array.md) [Java, Python]
+      - [56. Custom Sort String](docs/algorithms/56-custom-sort-string.md) [Java, Python]
+  - Backtracking
+    - [3. Amount of Time for Binary Tree to Be Infected](docs/algorithms/3-amount-of-time-for-binary-tree-to-be-infected-3.md) [Java, Python]
+    - [29. Power Set LCCI](docs/algorithms/29-power-set-lcci.md) [Java]
+    - [50. Merge Sort](docs/algorithms/50-merge-sort.md) [Java]
+  - Binary Search
+    - [32. My Calendar II](docs/algorithms/32-my-calendar-ii.md) [Java, Python]
+  - Conditional Logic
+    - [2. Add Edges to Make Degrees of All Nodes Even](docs/algorithms/2-add-edges-to-make-degrees-of-all-nodes-even.md) [Java]
+  - Depth-first Search
+    - [29. Power Set LCCI](docs/algorithms/29-power-set-lcci.md) [Java]
+    - [46. Number of Paths with Max Score](docs/algorithms/46-number-of-paths-with-max-score.md) [Java]
+    - [51. Quick Sort](docs/algorithms/51-quick-sort.md) [Java]
+    - [53. Can I Win](docs/algorithms/53-can-i-win.md) [Java, Python]
+  - Dichotomy
+    - [4. Search in Rotated Sorted Array](docs/algorithms/4-search-in-rotated-sorted-array.md) [Java]
+  - Difference Array
+    - [5. Jump Game VII](docs/algorithms/5-jump-game-vii.md) [Java]
+    - [37. Zero Array Transformation II](docs/algorithms/37-zero-array-transformation-ii.md) [Java]
+  - Dynamic Programming
+    - Standard
+      - [6. Climbing Stairs](docs/algorithms/6-climbing-stairs.md) [Java]
+      - [7. Count All Valid Pickup and Delivery Options](docs/algorithms/7-count-all-valid-pickup-and-delivery-options.md) [Java]
+      - [8. Decode Ways II](docs/algorithms/8-decode-ways-ii.md) [Java]
+      - [9. Make the XOR of All Segments Equal to Zero](docs/algorithms/9-make-the-xor-of-all-segments-equal-to-zero.md) [Java]
+      - [10. Maximize Value of Function in a Ball Passing Game](docs/algorithms/10-maximize-value-of-function-in-a-ball-passing-game.md) [Java]
+      - [11. Minimum Deletions to Make String Balanced](docs/algorithms/11-minimum-deletions-to-make-string-balanced.md) [Java]
+      - [12. Stone Game](docs/algorithms/12-stone-game.md) [Java]
+      - [13. Target Sum](docs/algorithms/13-target-sum.md) [Java]
+    - Problem Breakdown
+      - [35. Maximum Multiplication Score](docs/algorithms/35-maximum-multiplication-score.md) [Java]
+  - HashMap
+    - [30. Count Common Words With One Occurrence](docs/algorithms/30-count-common-words-with-one-occurrence.md) [Java]
+    - [45. Intersection of Two Arrays II](docs/algorithms/45-intersection-of-two-arrays-ii.md) [Java, Python]
+  - Heap
+    - [39. Trapping Rain Water II](docs/algorithms/39-trapping-rain-water-ii.md) [Java]
+    - [43. Total Cost to Hire K Workers](docs/algorithms/43-total-cost-to-hire-k-workers.md) [Java]
+  - Fenwick Tree
+    - [14. Distribute Elements Into Two Arrays II](docs/algorithms/14-distribute-elements-into-two-arrays-ii.md) [Java]
+    - [55. Maximum Balanced Subsequence Sum](docs/algorithms/55-maximum-balanced-subsequence-sum.md) [Java, Python, C++, Golang]
+  - Graph
+    - Dijkstra
+      - [41. Path with Maximum Probability](docs/algorithms/41-path-with-maximum-probability.md) [Java]
+    - Bellman-Ford
+      - [41. Path with Maximum Probability](docs/algorithms/41-path-with-maximum-probability.md) [Java]
+  - Greedy
+    - [15. Max Difference You Can Get From Changing an Integer](docs/algorithms/15-max-difference-you-can-get-from-changing-an-integer.md) [Java]
+    - [16. Maximum Length of Subarray With Positive Product](docs/algorithms/16-maximum-length-of-subarray-with-positive-product.md) [Java]
+  - Math
+    - [17. Construct the Minimum Bitwise Array II](docs/algorithms/17-construct-the-minimum-bitwise-array-ii.md) [Java]
+    - [18. Egg Drop With 2 Eggs and N Floors](docs/algorithms/18-egg-drop-with-2-eggs-and-n-floors.md) [Java]
+    - [19. Find Number of Ways to Reach the K-th Stair](docs/algorithms/19-find-number-of-ways-to-reach-the-k-th-stair.md) [Java]
+    - [20. Minimum Moves to Capture The Queen](docs/algorithms/20-minimum-moves-to-capture-the-queen.md) [Java]
+  - Pattern Rule
+    - [38. Transform to Chessboard](docs/algorithms/38-transform-to-chessboard.md) [Java]
+  - Precomputation
+    - [21. Range Product Queries of Powers](docs/algorithms/21-range-product-queries-of-powers.md) [Java]
+  - Segment Tree
+    - [32. My Calendar II](docs/algorithms/32-my-calendar-ii.md) [Java, Python]
+  - Sliding Window
+    - Standard
+      - [22. Find the Longest Equal Subarray](docs/algorithms/22-find-the-longest-equal-subarray.md) [Java]
+    - Subset Concatenation
+      - [40. Count Subarrays Where Max Element Appears at Least K Times](docs/algorithms/40-count-subarrays-where-max-element-appears-at-least-k-times.md) [Java]
+    - Fixed-size Window
+      - [44. Find Indices With Index and Value Difference I](docs/algorithms/44-find-indices-with-index-and-value-difference-i.md) [Java]
+  - Sorting
+    - [49. Bubble Sort](docs/algorithms/49-bubble-sort.md) [Java]
+    - [50. Merge Sort](docs/algorithms/50-merge-sort.md) [Java]
+    - [51. Quick Sort](docs/algorithms/51-quick-sort.md) [Java]
+  - Stack
+    - Monotonic Stack
+      - [47. Beautiful Towers II](docs/algorithms/47-beautiful-towers-ii.md) [Java]
+  - String
+    - [23. License Key Formatting](docs/algorithms/23-license-key-formatting.md) [Java]
+    - [57. Valid Palindrome](docs/algorithms/57-valid-palindrome.md) [Java, Python]
+  - Traversal
+    - [24. Find the Number of Ways to Place People I](docs/algorithms/24-find-the-number-of-ways-to-place-people-i.md) [Java]
+    - [25. Maximum Number of Operations With the Same Score I](docs/algorithms/25-maximum-number-of-operations-with-the-same-score-i.md) [Java]
+    - [29. Power Set LCCI](docs/algorithms/29-power-set-lcci.md) [Java]
+    - [36. Find Triangular Sum of an Array](docs/algorithms/36-find-triangular-sum-of-an-array.md) [Java]
+    - [42. Count Prefix and Suffix Pairs I](docs/algorithms/42-count-prefix-and-suffix-pairs-i.md) [Java]
+    - [48. Longest Common Prefix](docs/algorithms/48-longest-common-prefix.md) [Java]
+    - [49. Bubble Sort](docs/algorithms/49-bubble-sort.md) [Java]
+  - Two Pointer
+    - [26. Boats to Save People](docs/algorithms/26-boats-to-save-people.md) [Java]
+    - [27. Find the Lexicographically Largest String From the Box I](docs/algorithms/27-find-the-lexicographically-largest-string-from-the-box-i.md) [Java]
+    - [28. Merge Sorted Array](docs/algorithms/28-merge-sorted-array.md) [Java]
+    - [54. 3Sum Closest](docs/algorithms/54-3sum-closest.md) [Java, Python]
+    - [57. Valid Palindrome](docs/algorithms/57-valid-palindrome.md) [Java, Python]
+  - Union-Find
+    - [33. Graph Connectivity With Threshold](docs/algorithms/33-graph-connectivity-with-threshold.md) [Java]
+- SQL Problems
+    - [1. Odd and Even Transactions](docs/algorithms/1-odd-and-even-transactions.md) [MySQL, Oracle]
+    - [2. Find Customer Referee](docs/algorithms/2-find-customer-referee.md) [MySQL, Oracle]

@@ -1,5 +1,5 @@
 ## 47. Beautiful Towers II
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 
 ### Source
 https://leetcode.cn/problems/beautiful-towers-ii/

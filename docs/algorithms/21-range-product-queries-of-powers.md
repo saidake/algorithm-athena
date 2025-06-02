@@ -1,5 +1,5 @@
 ## 21. Range Product Queries of Powers
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/range-product-queries-of-powers/
 

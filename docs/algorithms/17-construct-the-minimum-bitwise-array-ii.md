@@ -1,5 +1,5 @@
 ## 17. Construct the Minimum Bitwise Array II
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/construct-the-minimum-bitwise-array-ii/
 ### Analysis

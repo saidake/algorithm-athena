@@ -1,5 +1,5 @@
 ## 7. Count All Valid Pickup and Delivery Options
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
 ### Analysis

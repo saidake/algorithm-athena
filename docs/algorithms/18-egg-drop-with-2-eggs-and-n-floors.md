@@ -1,5 +1,5 @@
 ## 18. Egg Drop With 2 Eggs and N Floors
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
 ### Analysis

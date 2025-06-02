@@ -1,5 +1,5 @@
 ## 15. Max Difference You Can Get From Changing an Integer
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/
 

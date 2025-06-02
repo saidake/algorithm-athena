@@ -1,5 +1,5 @@
 ## 57. Valid Palindrome
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/valid-palindrome/
 ### Solution

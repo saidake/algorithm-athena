@@ -1,5 +1,5 @@
 ## 4. Search in Rotated Sorted Array
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/search-in-rotated-sorted-array/
 ### Analysis

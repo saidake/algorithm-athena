@@ -1,5 +1,5 @@
 ## 23. License Key Formatting
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/license-key-formatting/
 ### Analysis

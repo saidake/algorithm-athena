@@ -1,5 +1,5 @@
 ## 39. Trapping Rain Water II
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/trapping-rain-water-ii/
 

@@ -1,5 +1,5 @@
 ## 10. Maximize Value of Function in a Ball Passing Game
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
  
 ### Source
 https://leetcode.com/problems/maximize-value-of-function-in-a-ball-passing-game/

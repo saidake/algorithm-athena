@@ -1,5 +1,5 @@
 ## 56. Custom Sort String
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/custom-sort-string/
 ### Array Solution

@@ -1,5 +1,5 @@
 ## 5. Jump Game VII
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/jump-game-vii/
 

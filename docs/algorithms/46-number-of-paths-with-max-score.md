@@ -1,5 +1,5 @@
 ## 46. Number of Paths with Max Score
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/number-of-paths-with-max-score/
 

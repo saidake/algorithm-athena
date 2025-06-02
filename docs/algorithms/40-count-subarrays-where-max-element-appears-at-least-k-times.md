@@ -1,5 +1,5 @@
 ## 40. Count Subarrays Where Max Element Appears at Least K Times
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/
 

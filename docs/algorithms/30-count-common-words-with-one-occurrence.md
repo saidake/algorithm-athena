@@ -1,5 +1,5 @@
 ## 30. Count Common Words With One Occurrence
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/count-common-words-with-one-occurrence/
 

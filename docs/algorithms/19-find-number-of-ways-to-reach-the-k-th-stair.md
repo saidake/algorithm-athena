@@ -1,5 +1,5 @@
 ## 19. Find Number of Ways to Reach the K-th Stair
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/find-number-of-ways-to-reach-the-k-th-stair/
 

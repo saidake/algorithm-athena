@@ -1,5 +1,5 @@
 ## 33. Graph Connectivity With Threshold
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/graph-connectivity-with-threshold/
 

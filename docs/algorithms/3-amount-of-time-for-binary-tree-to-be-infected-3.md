@@ -1,5 +1,5 @@
 ## 3. Amount of Time for Binary Tree to Be Infected  <!-- 3 -->
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
 ### Backtracking Solution

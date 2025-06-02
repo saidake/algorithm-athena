@@ -1,5 +1,5 @@
 ## 28. Merge Sorted Array
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/merge-sorted-array/
 

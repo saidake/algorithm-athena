@@ -1,5 +1,5 @@
 ## 2. Add Edges to Make Degrees of All Nodes Even
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/add-edges-to-make-degrees-of-all-nodes-even/
 ### Conditional Logic Solution

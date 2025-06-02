@@ -1,5 +1,5 @@
 ## 41. Path with Maximum Probability
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/path-with-maximum-probability/
 

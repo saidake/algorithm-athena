@@ -1,5 +1,5 @@
 ## 31. Minimum Number Game
-**Back:** [Solutions](../../README.md) | [Category Structure](../Algorithms.md)  
+**Back:** [README](../../README.md)  
 ### Source
 https://leetcode.com/problems/minimum-number-game/
 
